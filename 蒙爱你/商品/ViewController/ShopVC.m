@@ -24,36 +24,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MJWeakSelf
-    [self.tableView addHeaderRefresh:^{
-        [weakSelf.viewmodel getDataWithRequestMode:RequestModeRefresh handler:^(NSError *error) {
-            if (!error) {
-                [weakSelf.tableView reloadData];
-                [weakSelf.tableView endHeaderRefresh];
-            } else {
-                [weakSelf.view.superview.superview showWarning:@"网络错误"];
-                [weakSelf.tableView endHeaderRefresh];
-            }
-        }];
-    }];
-    [self.tableView addFooterRefresh:^{
-        [weakSelf.viewmodel getDataWithRequestMode:RequestModeMore handler:^(NSError *error) {
-            if (!error) {
-                [weakSelf.tableView reloadData];
-                [weakSelf.tableView endFooterRefresh];
-            } else {
-                
-                [weakSelf.view.superview.superview showWarning:@"网络错误"];
-                [weakSelf.tableView endFooterRefresh];
-            }
-        }];
-    }];
-    [self.tableView beginHeaderRefresh];
+//    MJWeakSelf
+//    [self.tableView addHeaderRefresh:^{
+//        [weakSelf.viewmodel getDataWithRequestMode:RequestModeRefresh handler:^(NSError *error) {
+//            if (!error) {
+//                [weakSelf.tableView reloadData];
+//                [weakSelf.tableView endHeaderRefresh];
+//            } else {
+//                [weakSelf.view.superview.superview showWarning:@"网络错误"];
+//                [weakSelf.tableView endHeaderRefresh];
+//            }
+//        }];
+//    }];
+//    [self.tableView addFooterRefresh:^{
+//        [weakSelf.viewmodel getDataWithRequestMode:RequestModeMore handler:^(NSError *error) {
+//            if (!error) {
+//                [weakSelf.tableView reloadData];
+//                [weakSelf.tableView endFooterRefresh];
+//            } else {
+//                
+//                [weakSelf.view.superview.superview showWarning:@"网络错误"];
+//                [weakSelf.tableView endFooterRefresh];
+//            }
+//        }];
+//    }];
+//    [self.tableView beginHeaderRefresh];
     
+    
+  
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([commodityCell class]) bundle:nil] forCellReuseIdentifier:@"cell"];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.type==ShopTypeSovenir) {
+        NSLog(@"纪念品");
+    }
+    if (self.type==ShopTypeArt) {
+        NSLog(@"艺术品");
+    }
+    if (self.type==ShopTypeFood) {
+        NSLog(@"食品");
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
