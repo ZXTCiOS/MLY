@@ -10,6 +10,8 @@
 #import "commodityCell.h"
 #import "ShopDetailVC.h"
 
+#import "MBProgressHUD+XMG.h"
+
 
 @interface ShopVC ()
 
@@ -50,7 +52,8 @@
 //    }];
 //    [self.tableView beginHeaderRefresh];
     
-    
+    [self addHeader];
+    [self addFooter];
   
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.tableFooterView = [UIView new];
@@ -61,8 +64,52 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+}
+
+#pragma mark - 刷新控件
+
+- (void)addHeader
+{
+    // 头部刷新控件
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)addFooter
+{
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshLoadMore)];
+}
+
+- (void)refreshAction {
+    [self headerRefreshEndAction];
+}
+
+- (void)refreshLoadMore {
+    
+    [self footerRefreshEndAction];
+}
+
+-(void)headerRefreshEndAction
+{
     if (self.type==ShopTypeSovenir) {
         NSLog(@"纪念品");
+        
+        NSLog(@"url-----%@",get_shop_sovenir);
+        
+        [DNNetworking getWithURLString:get_shop_sovenir success:^(id obj) {
+            NSLog(@"obj-----%@",obj);
+            if ([[obj objectForKey:@"code"] intValue]==200) {
+                
+            }else
+            {
+                NSString *toast = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:toast];
+            }
+            [self.tableView endHeaderRefresh];
+        } failure:^(NSError *error) {
+            [self.tableView endHeaderRefresh];
+        }];
     }
     if (self.type==ShopTypeArt) {
         NSLog(@"艺术品");
@@ -70,12 +117,28 @@
     if (self.type==ShopTypeFood) {
         NSLog(@"食品");
     }
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)footerRefreshEndAction
+{
+    if (self.type==ShopTypeSovenir) {
+        NSLog(@"纪念品");
+        
+        NSLog(@"url-----%@",get_shop_sovenir);
+        
+        [DNNetworking getWithURLString:get_shop_sovenir success:^(id obj) {
+            NSLog(@"obj-----%@",obj);
+            
+        } failure:^(NSError *error) {
+            [self.tableView endFooterRefresh];
+        }];
+    }
+    if (self.type==ShopTypeArt) {
+        NSLog(@"艺术品");
+    }
+    if (self.type==ShopTypeFood) {
+        NSLog(@"食品");
+    }
 }
 
 #pragma mark - Table view data source
@@ -91,7 +154,6 @@
     if (isDebug) return 10;
     return self.viewmodel.datalist.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     commodityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];

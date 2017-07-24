@@ -148,6 +148,7 @@
 		117105881F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117105821F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib */; };
 		1171058C1F14EF7D008A2F25 /* TravelAdviseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171058A1F14EF7D008A2F25 /* TravelAdviseCell.m */; };
 		1171058D1F14EF7D008A2F25 /* TravelAdviseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1171058B1F14EF7D008A2F25 /* TravelAdviseCell.xib */; };
+		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
 /* End PBXBuildFile section */
 
@@ -401,6 +402,9 @@
 		429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.release.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.release.xcconfig"; sourceTree = "<group>"; };
 		4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-蒙爱你.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.debug.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.debug.xcconfig"; sourceTree = "<group>"; };
+		536022B61F25F49300364CDD /* wangHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wangHeader.h; sourceTree = "<group>"; };
+		536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XMG.h"; sourceTree = "<group>"; };
+		536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XMG.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -716,6 +720,7 @@
 			children = (
 				11093BD21F0B3A8C00AFCB20 /* const.h */,
 				11093BD31F0B3A8C00AFCB20 /* requestPath.h */,
+				536022B61F25F49300364CDD /* wangHeader.h */,
 			);
 			path = define;
 			sourceTree = "<group>";
@@ -1005,6 +1010,7 @@
 		11093C681F0B587E00AFCB20 /* 商品 */ = {
 			isa = PBXGroup;
 			children = (
+				536022B71F25FCA000364CDD /* utlis */,
 				1144163F1F134A8F0079B1E2 /* ViewModel */,
 				11093C691F0B587E00AFCB20 /* Model */,
 				11093C6A1F0B587E00AFCB20 /* View */,
@@ -1336,6 +1342,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		536022B71F25FCA000364CDD /* utlis */ = {
+			isa = PBXGroup;
+			children = (
+				536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */,
+				536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */,
+			);
+			name = utlis;
+			sourceTree = "<group>";
+		};
 		BF92CEBB9E10DCBBBDCF8502 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1519,6 +1534,7 @@
 				11405FC61F0E0C8800B5CBAE /* ShunFengCheViewModel.m in Sources */,
 				11353E9B1F15F8EE00B34D7C /* ScenicModel.m in Sources */,
 				115502241F189A5F00977217 /* ChooseView.m in Sources */,
+				536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */,
 				117105791F14EEF8008A2F25 /* ScenicTVC.m in Sources */,
 				11585ADA1F1CABB800061734 /* BedDetailCell.m in Sources */,
 				113CBB091F1F336600C6A766 /* LiJiYuDingTVC.m in Sources */,

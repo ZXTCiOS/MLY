@@ -34,5 +34,5 @@
 #import "DNNetworking.h"
 #import "XDFactory.h"
 #import "UIView+HUD.h"
-
+#import "wangHeader.h"
 #endif /* PrefixHeader_pch */
