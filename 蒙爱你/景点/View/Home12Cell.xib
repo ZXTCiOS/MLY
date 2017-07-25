@@ -15,11 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="191"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="191"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touxiang" translatesAutoresizingMaskIntoConstraints="NO" id="fa1-kE-vRA">
-                        <rect key="frame" x="8" y="8" width="304" height="175"/>
+                        <rect key="frame" x="15" y="5" width="290" height="180.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="呼伦贝尔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqI-bC-hcy">
                         <rect key="frame" x="20" y="124.5" width="147" height="17"/>
@@ -35,12 +35,12 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fa1-kE-vRA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1kK-rh-g0J"/>
-                    <constraint firstItem="fa1-kE-vRA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="2hW-Us-Gda"/>
-                    <constraint firstAttribute="bottom" secondItem="fa1-kE-vRA" secondAttribute="bottom" constant="8" id="5nM-J2-9AO"/>
+                    <constraint firstItem="fa1-kE-vRA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="1kK-rh-g0J"/>
+                    <constraint firstItem="fa1-kE-vRA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="2hW-Us-Gda"/>
+                    <constraint firstAttribute="bottom" secondItem="fa1-kE-vRA" secondAttribute="bottom" constant="5" id="5nM-J2-9AO"/>
                     <constraint firstAttribute="trailingMargin" secondItem="rqI-bC-hcy" secondAttribute="trailing" constant="145" id="9F9-8N-FkY"/>
                     <constraint firstAttribute="trailingMargin" secondItem="32r-r5-xmC" secondAttribute="trailing" constant="8" id="Gbk-qH-eiz"/>
-                    <constraint firstAttribute="trailing" secondItem="fa1-kE-vRA" secondAttribute="trailing" constant="8" id="Jcl-GV-fGI"/>
+                    <constraint firstAttribute="trailing" secondItem="fa1-kE-vRA" secondAttribute="trailing" constant="15" id="Jcl-GV-fGI"/>
                     <constraint firstAttribute="bottomMargin" secondItem="32r-r5-xmC" secondAttribute="bottom" constant="8" id="RMG-Be-E1L"/>
                     <constraint firstItem="32r-r5-xmC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="W0V-Q0-Jom"/>
                     <constraint firstItem="rqI-bC-hcy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="rn3-Te-miD"/>

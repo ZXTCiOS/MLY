@@ -84,7 +84,7 @@
     self.banner.imageUrls = arr;
     self.headName.text = self.viewmodel.model.jingdian_xiangqing.scenic_name;
     self.headDesc.text = self.viewmodel.model.jingdian_xiangqing.scenic_intro;
-    
+    self.address.text = self.viewmodel.model.jingdian_xiangqing.scenic_address;
     
     
     MJWeakSelf

@@ -15,6 +15,6 @@
 
 
 
-- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout meng_id:(NSInteger) meng_id;
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout meng_id:(NSInteger) meng_id meng_name:(NSString *)meng_name;
 
 @end

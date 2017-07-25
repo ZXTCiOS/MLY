@@ -148,6 +148,8 @@
 		117105881F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117105821F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib */; };
 		1171058C1F14EF7D008A2F25 /* TravelAdviseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171058A1F14EF7D008A2F25 /* TravelAdviseCell.m */; };
 		1171058D1F14EF7D008A2F25 /* TravelAdviseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1171058B1F14EF7D008A2F25 /* TravelAdviseCell.xib */; };
+		1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */; };
+		1173B7001F26109000AB4287 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FF1F26109000AB4287 /* SearchViewController.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
 /* End PBXBuildFile section */
 
@@ -398,6 +400,10 @@
 		117105891F14EF7D008A2F25 /* TravelAdviseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelAdviseCell.h; sourceTree = "<group>"; };
 		1171058A1F14EF7D008A2F25 /* TravelAdviseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelAdviseCell.m; sourceTree = "<group>"; };
 		1171058B1F14EF7D008A2F25 /* TravelAdviseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelAdviseCell.xib; sourceTree = "<group>"; };
+		1173B6FB1F2602BF00AB4287 /* ScenicListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicListModel.h; sourceTree = "<group>"; };
+		1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicListModel.m; sourceTree = "<group>"; };
+		1173B6FE1F26109000AB4287 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		1173B6FF1F26109000AB4287 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.release.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.release.xcconfig"; sourceTree = "<group>"; };
 		4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-蒙爱你.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.debug.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.debug.xcconfig"; sourceTree = "<group>"; };
@@ -494,6 +500,8 @@
 				11093B7B1F0B3A8C00AFCB20 /* ZXTCNavigationViewController.m */,
 				1143DC7D1F208330005E73FD /* NaviBar.h */,
 				1143DC7E1F208330005E73FD /* NaviBar.m */,
+				1173B6FE1F26109000AB4287 /* SearchViewController.h */,
+				1173B6FF1F26109000AB4287 /* SearchViewController.m */,
 			);
 			path = "导航栏";
 			sourceTree = "<group>";
@@ -1291,6 +1299,8 @@
 				11353E8D1F15F7A900B34D7C /* HomeScenicModel.m */,
 				11353E961F15F8BF00B34D7C /* Scenic12Model.h */,
 				11353E971F15F8BF00B34D7C /* Scenic12Model.m */,
+				1173B6FB1F2602BF00AB4287 /* ScenicListModel.h */,
+				1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */,
 				11353E991F15F8EE00B34D7C /* ScenicModel.h */,
 				11353E9A1F15F8EE00B34D7C /* ScenicModel.m */,
 			);
@@ -1523,6 +1533,7 @@
 				11585ADA1F1CABB800061734 /* BedDetailCell.m in Sources */,
 				113CBB091F1F336600C6A766 /* LiJiYuDingTVC.m in Sources */,
 				11093C001F0B3A8C00AFCB20 /* UIView+HUD.m in Sources */,
+				1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */,
 				114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */,
 				1143DC771F206090005E73FD /* MSSCalendarHeaderModel.m in Sources */,
 				11093C021F0B3A8C00AFCB20 /* TabBarController.m in Sources */,
@@ -1578,6 +1589,7 @@
 				11093C221F0B3DC100AFCB20 /* UIImage+UzysExtension.m in Sources */,
 				114416381F132ADF0079B1E2 /* ShopVC.m in Sources */,
 				11093C281F0B3DC100AFCB20 /* UzysGroupPickerView.m in Sources */,
+				1173B7001F26109000AB4287 /* SearchViewController.m in Sources */,
 				114416311F131E920079B1E2 /* commodityCell.m in Sources */,
 				11093C231F0B3DC100AFCB20 /* UzysAppearanceConfig.m in Sources */,
 				117105751F14EEF8008A2F25 /* HomeCityCVC.m in Sources */,

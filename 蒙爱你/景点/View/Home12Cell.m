@@ -14,6 +14,7 @@
     [super awakeFromNib];
     // Initialization code
     self.imgV.layer.cornerRadius = 5;
+    self.imgV.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -21,19 +21,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="151" height="204"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鄂托克思" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7J-aB-ZZV">
-                        <rect key="frame" x="14" y="169" width="57.5" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="49" y="94.5" width="53.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="v7J-aB-ZZV" firstAttribute="centerY" secondItem="VBQ-cX-jDk" secondAttribute="centerY" id="1GC-km-YzK"/>
                 <constraint firstItem="VBQ-cX-jDk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3Bx-jZ-f8Z"/>
-                <constraint firstAttribute="bottom" secondItem="v7J-aB-ZZV" secondAttribute="bottom" constant="18" id="QbF-lc-Epf"/>
+                <constraint firstItem="v7J-aB-ZZV" firstAttribute="centerX" secondItem="VBQ-cX-jDk" secondAttribute="centerX" id="Cuf-ai-Sxv"/>
                 <constraint firstItem="VBQ-cX-jDk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aCP-EE-c9F"/>
                 <constraint firstAttribute="trailing" secondItem="VBQ-cX-jDk" secondAttribute="trailing" id="beh-jq-VLN"/>
-                <constraint firstItem="v7J-aB-ZZV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="ioG-Lj-46a"/>
                 <constraint firstAttribute="bottom" secondItem="VBQ-cX-jDk" secondAttribute="bottom" id="lRx-0K-Jig"/>
             </constraints>
             <size key="customSize" width="151" height="204"/>

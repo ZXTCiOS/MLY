@@ -15,7 +15,7 @@
  *  网址
  */
 
-#define baseURL                 @"http://192.168.1.142"         // baseurl
+#define baseURL                 @"http://192.168.1.142/"         // baseurl
 
 
 #define post_register           @""         //注册
@@ -31,9 +31,9 @@
 
 
 
-#define get_12menglist          @""         //12盟列表
-#define get_citylist            @""         //12盟下区县列表
-#define get_sceniclist          @""         //区县下景点列表
+#define get_12menglist          @"MLY/api.php/Scenic/jingdianFirst"         //12盟列表
+#define get_citylist            @"MLY/api.php/Scenic/jingdianSecond"         //12盟下区县列表
+#define get_sceniclist          @"MLY/api.php/Scenic/jingdianList"         //区县下景点列表
 
 
 

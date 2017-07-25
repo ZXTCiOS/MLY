@@ -16,7 +16,7 @@
 
 @property (nonatomic, copy) NSString *message;
 
-@property (nonatomic, strong) ScenicAreaModel *data;
+@property (nonatomic, strong) NSArray<ScenicAreaModel *> *data;
 
 @end
 

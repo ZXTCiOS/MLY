@@ -18,6 +18,7 @@
 #import "ScenicVC.h"
 #import "BedDetailTVC.h"
 #import "HomeTravelVC.h"
+#import "SearchViewController.h"
 
 
 
@@ -39,6 +40,8 @@
 
 @property (nonatomic, strong) FoodAndHotelCell *foodCell;
 
+@property (nonatomic, strong) UIView *naviBar;
+
 @property (nonatomic, assign) NSInteger time_scenic;
 @property (nonatomic, assign) NSInteger time_travel;
 @property (nonatomic, assign) NSInteger time_food;
@@ -52,7 +55,8 @@
     [super viewDidLoad];
     
     
-    
+    [self tableView];
+    [self configNaviBar];
     MJWeakSelf      // 添加头部刷新
     [self.tableView addHeaderRefresh:^{
         
@@ -70,6 +74,92 @@
     }];
     [self.tableView beginHeaderRefresh];
 }
+
+- (void)configNaviBar{
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    [self setNeedsStatusBarAppearanceUpdate];
+    self.naviBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 64)];
+    [self.view addSubview:self.naviBar];
+    self.naviBar.backgroundColor = [UIColor clearColor];
+    UIControl *bgV = [[UIControl alloc] init];
+    [self.naviBar addSubview:bgV];
+    bgV.backgroundColor = krgb(50, 50, 50, 0.31);
+    bgV.layer.cornerRadius = 17;
+    bgV.layer.masksToBounds = YES;
+    [bgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(10);
+        make.bottom.equalTo(-5);
+        make.height.equalTo(34);
+    }];
+    [bgV bk_addEventHandler:^(id sender) {
+        SearchViewController *vc = [[SearchViewController alloc] initWithSearchType:SearchTypeScenic];
+        [self.navigationController pushViewController:vc animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIImageView *search = [[UIImageView alloc] init];
+    [bgV addSubview:search];
+    [search mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(10);
+        make.centerY.equalTo(0);
+        make.size.equalTo(CGSizeMake(17, 17));
+    }];
+    search.image = [UIImage imageNamed:@"sy-ss"];
+    
+    UILabel *label = [UILabel new];
+    [bgV addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(search.mas_right).equalTo(10);
+        make.centerY.equalTo(bgV.mas_centerY);
+        make.right.equalTo(bgV.mas_right).equalTo(-10);
+    }];
+    label.text = @"搜索景点,民宿或出行";
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont systemFontOfSize:14];
+    label.textAlignment = NSTextAlignmentLeft;
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [shareBtn setImage:[UIImage imageNamed:@"sy-fx"] forState:UIControlStateNormal];
+    shareBtn.tintColor = [UIColor whiteColor];
+    [self.naviBar addSubview:shareBtn];
+    [shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(-10);
+        make.centerY.equalTo(bgV.mas_centerY);
+        make.left.equalTo(bgV.mas_right).equalTo(15);
+        make.size.equalTo(CGSizeMake(29, 26));
+    }];
+    
+    [shareBtn bk_addEventHandler:^(id sender) {
+        // 分享
+        
+        
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    
+    if (scrollView.tag != 300) return;
+    CGPoint offset = scrollView.contentOffset;
+    
+    if (offset.y < -23 || offset.y > 100) {
+        self.naviBar.hidden = YES;
+    } else {
+        self.naviBar.hidden = NO;
+    }
+    
+    
+}
+
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    return UIStatusBarStyleLightContent;
+}
+
+
 
 - (void)collectionViewReloadData{
     [((HomeTableCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]).collectV reloadData];
@@ -377,7 +467,7 @@
     ScenicSpotAdviseCell *cell = [collection dequeueReusableCellWithReuseIdentifier:ScenicSpotAdviseC forIndexPath:indexPath];
     [cell.imgV sd_setImageWithURL:self.viewModel.scenicList[indexPath.row].scenic_pic.xd_URL placeholderImage:[UIImage imageNamed:@"15"]];
     cell.name.text = self.viewModel.scenicList[indexPath.row].scenic_name;
-    
+    cell.islike = self.viewModel.scenicList[indexPath.row].is_shoucang;
     return cell;
 }
 
@@ -402,7 +492,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -419,9 +509,12 @@
     return _viewModel;
 }
 
+
+
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+        CGRect frame = self.view.frame;
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -20, frame.size.width, frame.size.height+20) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableHeaderView = [self loopScrollView];
@@ -432,6 +525,7 @@
         self.time_food = 1;
         self.time_scenic = 1;
         self.time_travel = 1;
+        _tableView.tag = 300;
     }
     return _tableView;
 }

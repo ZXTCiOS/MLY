@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "TabBarController.h"
-
-
+#import <MLTransition.h>
+#import <AFNetworking.h>
 
 @interface AppDelegate ()
 
@@ -29,7 +29,7 @@
     
     
     
-    
+    [self configInfo];
     _window.rootViewController = [[TabBarController alloc] init];
     [_window makeKeyAndVisible];
     
@@ -42,10 +42,11 @@
 
 - (void)configInfo{
     
-    [userDefault setValue:@(1) forKey:@"user_id"];
-    
-    
-    
+    [userDefault setInteger:1 forKey:user_key_user_id];
+    [userDefault synchronize];
+    [UIImageView appearance].clipsToBounds = YES;
+    [MLTransition validatePanBackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypeScreenEdgePan];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 }
 
 

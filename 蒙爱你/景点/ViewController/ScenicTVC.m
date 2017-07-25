@@ -66,30 +66,23 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (isDebug) {
-        return 1;
-    }
+    
     return self.viewmodel.datalist.count ? 1 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (isDebug) {
-        return 10;
-    }
+    
     return self.viewmodel.datalist.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ScenicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    if (isDebug) {
-        return cell;
-    }
     
-    ScenicAreaModel *model = self.viewmodel.datalist[indexPath.row];
-    [cell.imageV sd_setImageWithURL:model.area_pic.xd_URL placeholderImage:[UIImage imageNamed:@""]];
-    cell.name.text = model.area_name;
-    cell.detail.text = model.area_des;
+    ScenicelEmentModel *model = self.viewmodel.datalist[indexPath.row];
+    [cell.imageV sd_setImageWithURL:model.scenic_pic.xd_URL placeholderImage:[UIImage imageNamed:@"15"]];
+    cell.name.text = model.scenic_name;
+    cell.detail.text = model.scenic_intro;
     cell.price.text = [NSString stringWithFormat:@"¥%0.2f起", model.min_price];
     cell.isLike = model.is_shoucang;
     return cell;
@@ -98,15 +91,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewmodel.datalist[indexPath.row].scenic_id];
-    ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:3];
+    ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewmodel.datalist[indexPath.row].scenic_id];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 
+
+
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 200;
+    return 140;
 }
 
 - (ScenicViewModel *)viewmodel{
@@ -116,10 +113,11 @@
     return _viewmodel;
 }
 
-- (instancetype)initWithArea_id:(NSInteger)area_id{
+- (instancetype)initWithArea_id:(NSInteger)area_id area_name:(NSString *)area_name{
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         self.area_id = area_id;
+        self.title = area_name;
     }
     return self;
 }

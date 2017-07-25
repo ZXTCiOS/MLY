@@ -12,7 +12,7 @@
 
 @property (nonatomic, assign) NSInteger city_id;
 
-- (instancetype)initWithArea_id:(NSInteger) area_id;
+- (instancetype)initWithArea_id:(NSInteger) area_id area_name:(NSString *)area_name;
 
 
 @end

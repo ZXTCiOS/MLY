@@ -52,6 +52,11 @@
 }
 
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    UIViewController *topVC = self.topViewController;
+    return [topVC preferredStatusBarStyle];
+}
 
 
 - (void)didReceiveMemoryWarning {

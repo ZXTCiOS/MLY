@@ -10,6 +10,8 @@
 #import "HomeScenicModel.h"
 #import "ScenicModel.h"
 #import "Scenic12Model.h"
+#import "ScenicListModel.h"
+
 
 typedef NS_ENUM(NSUInteger, RequestMode) {
     RequestModeRefresh,
@@ -22,7 +24,7 @@ typedef NS_ENUM(NSUInteger, RequestMode) {
 
 @property (nonatomic, assign) NSInteger city_id;
 
-@property (nonatomic, strong) NSMutableArray<ScenicAreaModel *> *datalist;
+@property (nonatomic, strong) NSMutableArray<ScenicelEmentModel *> *datalist;
 
 
 

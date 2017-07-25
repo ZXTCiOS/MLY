@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 
 
-
+@property (nonatomic, assign) BOOL islike;
 
 
 

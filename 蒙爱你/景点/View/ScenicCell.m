@@ -24,7 +24,8 @@
 
 
 - (void)setIsLike:(BOOL)isLike{
-    NSString *img = isLike ? @"" :@"";
+    _isLike = isLike;
+    NSString *img = isLike ? @"sc-s" :@"sc-ns";
     self.likeV.image = [UIImage imageNamed:img];
 }
 

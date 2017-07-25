@@ -9,8 +9,13 @@
 #import "HomeScenicCVC.h"
 #import "Home12Cell.h"
 #import "HomeCityCVC.h"
+#import "Scenic12Model.h"
+
 
 @interface HomeScenicCVC ()
+
+@property (nonatomic, strong) NSMutableArray<ScenicAreaModel *> *datalist;
+
 
 @end
 
@@ -22,6 +27,19 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     
+    [DNNetworking getWithURLString:get_12menglist success:^(id obj) {
+        
+        NSString *code = [obj valueForKey:@"code"];
+        if (code.integerValue == 200) {
+            Scenic12Model *model = [Scenic12Model parse:obj];
+            [self.datalist addObjectsFromArray:model.data];
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        [self.view showWarning:@"网络错误"];
+    }];
+    
+    self.title = @"12盟市";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:@"Home12Cell" bundle:nil] forCellReuseIdentifier:@"cell"];
@@ -47,22 +65,22 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UITableViewDataSource>
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return self.datalist.count ? 1 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 12;
+    return self.datalist.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return kScreenW * 0.75;
+    return kScreenW * 0.6 + 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     Home12Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    
-    
+    [cell.imgV sd_setImageWithURL:self.datalist[indexPath.row].area_pic.xd_URL placeholderImage:[UIImage imageNamed:@"7"]];
+    cell.name.text = self.datalist[indexPath.row].area_name;
+    cell.desc.text = self.datalist[indexPath.row].area_des;
     return cell;
 }
 
@@ -74,50 +92,24 @@ static NSString * const reuseIdentifier = @"Cell";
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumInteritemSpacing = 10;
     layout.minimumLineSpacing = 10;
-    layout.sectionInset = UIEdgeInsetsMake(10, 8, 10, 8);
-    CGFloat width = (kScreenW - 40) / 3.0;
+    layout.sectionInset = UIEdgeInsetsMake(25, 25, 10, 25);
+    CGFloat width = (kScreenW - 70) / 3.0;
     layout.itemSize = CGSizeMake(width, width *4 / 3);
     
-    HomeCityCVC *vc = [[HomeCityCVC alloc] initWithCollectionViewLayout:layout meng_id:indexPath.row];
+    HomeCityCVC *vc = [[HomeCityCVC alloc] initWithCollectionViewLayout:layout meng_id:self.datalist[indexPath.row].area_id meng_name:self.datalist[indexPath.row].area_name];
     [self.navigationController pushViewController:vc animated:YES];
     
     NSLog(@"%ld", indexPath.row);
     
 }
 
-
-
-
-
-
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+- (NSMutableArray<ScenicAreaModel *> *)datalist{
+    if (!_datalist) {
+        _datalist = [NSMutableArray<ScenicAreaModel *> array];
+    }
+    return _datalist;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
 
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

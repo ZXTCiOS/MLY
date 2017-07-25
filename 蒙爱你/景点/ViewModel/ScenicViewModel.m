@@ -8,6 +8,8 @@
 
 #import "ScenicViewModel.h"
 
+
+
 @interface ScenicViewModel ()
 @property(nonatomic, assign) NSInteger page;
 @end
@@ -42,28 +44,32 @@
 - (void)getDataWithRequestMode:(RequestMode)mode withID:(NSInteger)area_id handller:(void (^)(NSError *))handller{
     
     if (mode == RequestModeRefresh) {
-        self.page = 0;
+        self.page = 1;
     }
-    NSDictionary *dic = @{@"page":@(self.page), @"id":@(area_id)};
+    NSDictionary *dic;
+    
+    
+    NSInteger user_id = [[NSUserDefaults standardUserDefaults] integerForKey:user_key_user_id];
+    if ([userDefault integerForKey:user_key_user_id]) {
+        dic = @{@"page":@(self.page), @"id":@(area_id), @"user_id": @(user_id)};
+    }
+    dic = @{@"page":@(self.page), @"id":@(area_id)};
     [DNNetworking getWithURLString:get_sceniclist parameters:dic success:^(id obj) {
         if (mode == RequestModeRefresh) {
             [self.datalist removeAllObjects];
         }
-        NSArray *arr = [NSArray modelArrayWithClass:[ScenicModel class] json:obj];
-        [self.datalist addObjectsFromArray:arr];
+        ScenicListModel *model = [ScenicListModel parse:obj];
+        [self.datalist addObjectsFromArray:model.data];
         !handller ?: handller(nil);
     } failure:^(NSError *error) {
         !handller ?: handller(error);
     }];
-    
-    
-    
-    
 }
 
-- (NSMutableArray<ScenicAreaModel *> *)datalist{
+
+- (NSMutableArray<ScenicelEmentModel *> *)datalist{
     if (!_datalist) {
-        _datalist = [NSMutableArray<ScenicAreaModel *> array];
+        _datalist = [NSMutableArray<ScenicelEmentModel *> array];
     }
     return _datalist;
 }
