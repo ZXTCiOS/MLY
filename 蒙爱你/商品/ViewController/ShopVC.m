@@ -16,9 +16,9 @@
 @interface ShopVC ()
 
 @property (nonatomic, strong) ShopViewModel *viewmodel;
-
 @property (nonatomic,  assign) ShopType type;
 
+@property (nonatomic,strong) NSMutableArray *dataSource;
 @end
 
 @implementation ShopVC
@@ -51,6 +51,9 @@
 //        }];
 //    }];
 //    [self.tableView beginHeaderRefresh];
+    
+    self.dataSource = [NSMutableArray array];
+    
     
     [self addHeader];
     [self addFooter];
@@ -95,9 +98,11 @@
     if (self.type==ShopTypeSovenir) {
         NSLog(@"纪念品");
         
-        NSLog(@"url-----%@",get_shop_sovenir);
-        
-        [DNNetworking getWithURLString:get_shop_sovenir success:^(id obj) {
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSLog(@"userid----%@",userid);
+        NSString *urlstr = [NSString stringWithFormat:get_shop_sovenir,userid,@"1"];
+        NSLog(@"url-----%@",urlstr);
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
             NSLog(@"obj-----%@",obj);
             if ([[obj objectForKey:@"code"] intValue]==200) {
                 

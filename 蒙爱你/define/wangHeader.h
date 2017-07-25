@@ -16,9 +16,9 @@
 
 //#define baseURL                 @"http://192.168.1.142"         // baseurl
 
-#define get_shop_sovenir           @""baseURL"/MLY/api.php/Good/goodList?type=1"      // 商城 纪念品
-#define get_shop_art               @""baseURL"/MLY/api.php/Good/goodList?type=2"      // 商城 工艺品
-#define get_shop_food              @""baseURL"/MLY/api.php/Good/goodList?type=3"      // 商城 特色食品
+#define get_shop_sovenir           @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=1?page=%@"      // 商城 纪念品
+#define get_shop_art               @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=2?page=%@"      // 商城 工艺品
+#define get_shop_food              @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=3?page=%@"      // 商城 特色食品
 
 
 #endif /* wangHeader_h */
