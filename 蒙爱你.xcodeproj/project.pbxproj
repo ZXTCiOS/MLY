@@ -10,7 +10,6 @@
 		11093B621F0B361C00AFCB20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11093B611F0B361C00AFCB20 /* main.m */; };
 		11093B651F0B361C00AFCB20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11093B641F0B361C00AFCB20 /* AppDelegate.m */; };
 		11093B6B1F0B361C00AFCB20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11093B691F0B361C00AFCB20 /* Main.storyboard */; };
-		11093B6D1F0B361C00AFCB20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11093B6C1F0B361C00AFCB20 /* Assets.xcassets */; };
 		11093B701F0B361C00AFCB20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11093B6E1F0B361C00AFCB20 /* LaunchScreen.storyboard */; };
 		11093BE61F0B3A8C00AFCB20 /* ZXTCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11093B7B1F0B3A8C00AFCB20 /* ZXTCNavigationViewController.m */; };
 		11093BE71F0B3A8C00AFCB20 /* VerifiedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 11093B7F1F0B3A8C00AFCB20 /* VerifiedVC.m */; };
@@ -148,13 +147,11 @@
 		117105881F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117105821F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib */; };
 		1171058C1F14EF7D008A2F25 /* TravelAdviseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171058A1F14EF7D008A2F25 /* TravelAdviseCell.m */; };
 		1171058D1F14EF7D008A2F25 /* TravelAdviseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1171058B1F14EF7D008A2F25 /* TravelAdviseCell.xib */; };
-
 		1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */; };
 		1173B7001F26109000AB4287 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FF1F26109000AB4287 /* SearchViewController.m */; };
-
+		117823361F275FBF008B4973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117823351F275FBF008B4973 /* Assets.xcassets */; };
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
-
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
 /* End PBXBuildFile section */
 
@@ -164,7 +161,6 @@
 		11093B631F0B361C00AFCB20 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11093B641F0B361C00AFCB20 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		11093B6A1F0B361C00AFCB20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11093B6C1F0B361C00AFCB20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		11093B6F1F0B361C00AFCB20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11093B711F0B361C00AFCB20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11093B7A1F0B3A8C00AFCB20 /* ZXTCNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXTCNavigationViewController.h; sourceTree = "<group>"; };
@@ -409,6 +405,7 @@
 		1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicListModel.m; sourceTree = "<group>"; };
 		1173B6FE1F26109000AB4287 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		1173B6FF1F26109000AB4287 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		117823351F275FBF008B4973 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "蒙爱你/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.release.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.release.xcconfig"; sourceTree = "<group>"; };
 		4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-蒙爱你.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.debug.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.debug.xcconfig"; sourceTree = "<group>"; };
@@ -750,7 +747,7 @@
 		11093BD71F0B3A8C00AFCB20 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				11093B6C1F0B361C00AFCB20 /* Assets.xcassets */,
+				117823351F275FBF008B4973 /* Assets.xcassets */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1454,7 +1451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				11093B701F0B361C00AFCB20 /* LaunchScreen.storyboard in Resources */,
-				11093B6D1F0B361C00AFCB20 /* Assets.xcassets in Resources */,
 				11093C891F0B775F00AFCB20 /* FoodAndHotelCell.xib in Resources */,
 				1146E5E01F0F96E80066B37F /* ShouHuoDiZhiCell.xib in Resources */,
 				11585AD71F1C6AF900061734 /* BedDetailTVC.storyboard in Resources */,
@@ -1480,6 +1476,7 @@
 				11093C4C1F0B3DFF00AFCB20 /* ShareSDKUI.bundle in Resources */,
 				11353EA21F16173500B34D7C /* scenic.storyboard in Resources */,
 				115502261F189A6E00977217 /* ChooseView.xib in Resources */,
+				117823361F275FBF008B4973 /* Assets.xcassets in Resources */,
 				117105861F14EF3A008A2F25 /* HomeCityCell.xib in Resources */,
 				11093B6B1F0B361C00AFCB20 /* Main.storyboard in Resources */,
 			);
