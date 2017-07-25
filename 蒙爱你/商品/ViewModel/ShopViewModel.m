@@ -59,13 +59,13 @@
     NSString *path = nil;
     switch (self.type) {
         case ShopTypeSovenir:
-            path = post_shop_sovenir;
+            path = get_shop_sovenir;
             break;
         case ShopTypeArt:
-            path = post_shop_art;
+            path = get_shop_art;
             break;
         case ShopTypeFood:
-            path = post_shop_food;
+            path = get_shop_food;
             break;
         default:
             break;
