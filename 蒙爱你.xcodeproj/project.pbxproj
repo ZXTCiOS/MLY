@@ -149,6 +149,7 @@
 		1171058C1F14EF7D008A2F25 /* TravelAdviseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171058A1F14EF7D008A2F25 /* TravelAdviseCell.m */; };
 		1171058D1F14EF7D008A2F25 /* TravelAdviseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1171058B1F14EF7D008A2F25 /* TravelAdviseCell.xib */; };
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
+		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
 /* End PBXBuildFile section */
 
@@ -405,6 +406,7 @@
 		536022B61F25F49300364CDD /* wangHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wangHeader.h; sourceTree = "<group>"; };
 		536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XMG.h"; sourceTree = "<group>"; };
 		536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XMG.m"; sourceTree = "<group>"; };
+		536022BB1F26EABE00364CDD /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1345,6 +1347,7 @@
 		536022B71F25FCA000364CDD /* utlis */ = {
 			isa = PBXGroup;
 			children = (
+				536022BB1F26EABE00364CDD /* NullSafe.m */,
 				536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */,
 				536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */,
 			);
@@ -1409,7 +1412,7 @@
 				TargetAttributes = {
 					11093B5C1F0B361C00AFCB20 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 693CCUSTEP;
+						DevelopmentTeam = GZJLNU22Y5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1578,6 +1581,7 @@
 				11093BFD1F0B3A8C00AFCB20 /* NSString+myUrl.m in Sources */,
 				11353E911F15F7E100B34D7C /* HomeTravelModel.m in Sources */,
 				1171055F1F14D744008A2F25 /* UITextView+Placeholder.m in Sources */,
+				536022BC1F26EABE00364CDD /* NullSafe.m in Sources */,
 				117105761F14EEF8008A2F25 /* HomeScenicCVC.m in Sources */,
 				116AE5F11F21DE6D00CD76F1 /* MinsuListModel.m in Sources */,
 				1146E5E31F0F9DC70066B37F /* NewAddressCell.m in Sources */,
@@ -1738,7 +1742,7 @@
 			baseConfigurationReference = 48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",
@@ -1766,7 +1770,7 @@
 			baseConfigurationReference = 429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",

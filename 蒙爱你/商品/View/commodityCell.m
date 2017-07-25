@@ -7,12 +7,12 @@
 //
 
 #import "commodityCell.h"
-
+#import "ShopGoodsModel.h"
 
 @interface commodityCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *storedV;
-
+@property (nonatomic,strong) ShopGoodsModel *smodel;
 @end
 
 
@@ -41,7 +41,16 @@
 
 
 
-
+-(void)setData:(ShopGoodsModel *)model
+{
+    self.smodel = model;
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:model.goods_img] placeholderImage:nil];
+    self.nameL.text = model.goods_name;
+    self.detailL.text = model.goods_detail;
+    self.describeL.text = model.goods_description;
+    self.priceL.text = [NSString stringWithFormat:@"%@%ld",@"$",(long)model.goods_price];
+    self.discountL.text = [NSString stringWithFormat:@"满%ld件批发单价%ld",(long)model.goods_lownum,(long)model.goods_lowprice];
+}
 
 
 @end

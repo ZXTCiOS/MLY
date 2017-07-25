@@ -11,53 +11,30 @@
 #import "ShopDetailVC.h"
 
 #import "MBProgressHUD+XMG.h"
-
+#import "ShopGoodsModel.h"
 
 @interface ShopVC ()
-
+{
+    int pn1;
+    int pn2;
+    int pn3;
+}
 @property (nonatomic, strong) ShopViewModel *viewmodel;
 @property (nonatomic,  assign) ShopType type;
-
 @property (nonatomic,strong) NSMutableArray *dataSource;
+
 @end
 
 @implementation ShopVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    MJWeakSelf
-//    [self.tableView addHeaderRefresh:^{
-//        [weakSelf.viewmodel getDataWithRequestMode:RequestModeRefresh handler:^(NSError *error) {
-//            if (!error) {
-//                [weakSelf.tableView reloadData];
-//                [weakSelf.tableView endHeaderRefresh];
-//            } else {
-//                [weakSelf.view.superview.superview showWarning:@"网络错误"];
-//                [weakSelf.tableView endHeaderRefresh];
-//            }
-//        }];
-//    }];
-//    [self.tableView addFooterRefresh:^{
-//        [weakSelf.viewmodel getDataWithRequestMode:RequestModeMore handler:^(NSError *error) {
-//            if (!error) {
-//                [weakSelf.tableView reloadData];
-//                [weakSelf.tableView endFooterRefresh];
-//            } else {
-//                
-//                [weakSelf.view.superview.superview showWarning:@"网络错误"];
-//                [weakSelf.tableView endFooterRefresh];
-//            }
-//        }];
-//    }];
-//    [self.tableView beginHeaderRefresh];
-    
+    pn1 = 1;
+    pn2 = 1;
+    pn3 = 1;
     self.dataSource = [NSMutableArray array];
-    
-    
     [self addHeader];
     [self addFooter];
-  
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -99,13 +76,34 @@
         NSLog(@"纪念品");
         
         NSString *userid = [userDefault objectForKey:user_key_user_id];
-        NSLog(@"userid----%@",userid);
         NSString *urlstr = [NSString stringWithFormat:get_shop_sovenir,userid,@"1"];
-        NSLog(@"url-----%@",urlstr);
         [DNNetworking getWithURLString:urlstr success:^(id obj) {
             NSLog(@"obj-----%@",obj);
+            [self.dataSource removeAllObjects];
             if ([[obj objectForKey:@"code"] intValue]==200) {
-                
+                NSArray *dataArr = [obj objectForKey:@"data"];
+                for (int i = 0; i<dataArr.count; i++) {
+                    ShopGoodsModel *model = [[ShopGoodsModel alloc] init];
+                    NSDictionary *dit = [dataArr objectAtIndex:i];
+                    model.goods_id = [[dit objectForKey:@"goods_id"] intValue];
+                    model.goods_img = [dit objectForKey:@"goods_pic"];
+                    model.goods_name = [dit objectForKey:@"goods_name"];
+                    model.goods_type = [[dit objectForKey:@"goods_type"] intValue];
+                    model.goods_price = [[dit objectForKey:@"goods_price"] intValue];
+                    if ([[dit objectForKey:@"is_shoucang"] intValue]==0) {
+                        model.isStored = NO;
+                    }else
+                    {
+                        model.isStored = YES;
+                    }
+                    model.time = [[dit objectForKey:@"time"] intValue];
+                    model.goods_lownum = [[dit objectForKey:@"goods_lownum"] intValue];
+                    model.goods_lowprice = [[dit objectForKey:@"goods_lowprice"] intValue];
+                    model.goods_detail = [dit objectForKey:@"goods_intro"];
+                    model.goods_description = [dit objectForKey:@"goods_description"];
+                    [self.dataSource addObject:model];
+                }
+                [self.tableView reloadData];
             }else
             {
                 NSString *toast = [obj objectForKey:@"message"];
@@ -118,9 +116,87 @@
     }
     if (self.type==ShopTypeArt) {
         NSLog(@"艺术品");
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSString *urlstr = [NSString stringWithFormat:get_shop_art,userid,@"1"];
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
+            NSLog(@"obj-----%@",obj);
+            [self.dataSource removeAllObjects];
+            if ([[obj objectForKey:@"code"] intValue]==200) {
+                NSArray *dataArr = [obj objectForKey:@"data"];
+                for (int i = 0; i<dataArr.count; i++) {
+                    ShopGoodsModel *model = [[ShopGoodsModel alloc] init];
+                    NSDictionary *dit = [dataArr objectAtIndex:i];
+                    model.goods_id = [[dit objectForKey:@"goods_id"] intValue];
+                    model.goods_img = [dit objectForKey:@"goods_pic"];
+                    model.goods_name = [dit objectForKey:@"goods_name"];
+                    model.goods_type = [[dit objectForKey:@"goods_type"] intValue];
+                    model.goods_price = [[dit objectForKey:@"goods_price"] intValue];
+                    if ([[dit objectForKey:@"is_shoucang"] intValue]==0) {
+                        model.isStored = NO;
+                    }else
+                    {
+                        model.isStored = YES;
+                    }
+                    model.time = [[dit objectForKey:@"time"] intValue];
+                    model.goods_lownum = [[dit objectForKey:@"goods_lownum"] intValue];
+                    model.goods_lowprice = [[dit objectForKey:@"goods_lowprice"] intValue];
+                    model.goods_detail = [dit objectForKey:@"goods_intro"];
+                    model.goods_description = [dit objectForKey:@"goods_description"];
+                    [self.dataSource addObject:model];
+                }
+                [self.tableView reloadData];
+            }else
+            {
+                NSString *toast = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:toast];
+            }
+            [self.tableView endHeaderRefresh];
+        } failure:^(NSError *error) {
+            [self.tableView endHeaderRefresh];
+        }];
+
     }
     if (self.type==ShopTypeFood) {
         NSLog(@"食品");
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSString *urlstr = [NSString stringWithFormat:get_shop_food,userid,@"1"];
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
+            NSLog(@"obj-----%@",obj);
+            [self.dataSource removeAllObjects];
+            if ([[obj objectForKey:@"code"] intValue]==200) {
+                NSArray *dataArr = [obj objectForKey:@"data"];
+                for (int i = 0; i<dataArr.count; i++) {
+                    ShopGoodsModel *model = [[ShopGoodsModel alloc] init];
+                    NSDictionary *dit = [dataArr objectAtIndex:i];
+                    model.goods_id = [[dit objectForKey:@"goods_id"] intValue];
+                    model.goods_img = [dit objectForKey:@"goods_pic"];
+                    model.goods_name = [dit objectForKey:@"goods_name"];
+                    model.goods_type = [[dit objectForKey:@"goods_type"] intValue];
+                    model.goods_price = [[dit objectForKey:@"goods_price"] intValue];
+                    if ([[dit objectForKey:@"is_shoucang"] intValue]==0) {
+                        model.isStored = NO;
+                    }else
+                    {
+                        model.isStored = YES;
+                    }
+                    model.time = [[dit objectForKey:@"time"] intValue];
+                    model.goods_lownum = [[dit objectForKey:@"goods_lownum"] intValue];
+                    model.goods_lowprice = [[dit objectForKey:@"goods_lowprice"] intValue];
+                    model.goods_detail = [dit objectForKey:@"goods_intro"];
+                    model.goods_description = [dit objectForKey:@"goods_description"];
+                    [self.dataSource addObject:model];
+                }
+                [self.tableView reloadData];
+            }else
+            {
+                NSString *toast = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:toast];
+            }
+            [self.tableView endHeaderRefresh];
+        } failure:^(NSError *error) {
+            [self.tableView endHeaderRefresh];
+        }];
+
     }
 }
 
@@ -128,49 +204,145 @@
 {
     if (self.type==ShopTypeSovenir) {
         NSLog(@"纪念品");
-        
-        NSLog(@"url-----%@",get_shop_sovenir);
-        
-        [DNNetworking getWithURLString:get_shop_sovenir success:^(id obj) {
+        pn1 ++;
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSString *pnstr = [NSString stringWithFormat:@"%d",pn1];
+        NSString *urlstr = [NSString stringWithFormat:get_shop_sovenir,userid,pnstr];
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
             NSLog(@"obj-----%@",obj);
-            
+            if ([[obj objectForKey:@"code"] intValue]==200) {
+                NSArray *dataArr = [obj objectForKey:@"data"];
+                for (int i = 0; i<dataArr.count; i++) {
+                    ShopGoodsModel *model = [[ShopGoodsModel alloc] init];
+                    NSDictionary *dit = [dataArr objectAtIndex:i];
+                    model.goods_id = [[dit objectForKey:@"goods_id"] intValue];
+                    model.goods_img = [dit objectForKey:@"goods_pic"];
+                    model.goods_name = [dit objectForKey:@"goods_name"];
+                    model.goods_type = [[dit objectForKey:@"goods_type"] intValue];
+                    model.goods_price = [[dit objectForKey:@"goods_price"] intValue];
+                    if ([[dit objectForKey:@"is_shoucang"] intValue]==0) {
+                        model.isStored = NO;
+                    }else
+                    {
+                        model.isStored = YES;
+                    }
+                    model.time = [[dit objectForKey:@"time"] intValue];
+                    model.goods_lownum = [[dit objectForKey:@"goods_lownum"] intValue];
+                    model.goods_lowprice = [[dit objectForKey:@"goods_lowprice"] intValue];
+                    model.goods_detail = [dit objectForKey:@"goods_intro"];
+                    model.goods_description = [dit objectForKey:@"goods_description"];
+                    [self.dataSource addObject:model];
+                }
+                [self.tableView reloadData];
+            }else
+            {
+                NSString *toast = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:toast];
+            }
+            [self.tableView endFooterRefresh];
         } failure:^(NSError *error) {
             [self.tableView endFooterRefresh];
         }];
     }
     if (self.type==ShopTypeArt) {
         NSLog(@"艺术品");
+        pn2 ++;
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSString *pnstr = [NSString stringWithFormat:@"%d",pn2];
+        NSString *urlstr = [NSString stringWithFormat:get_shop_art,userid,pnstr];
+        
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
+            NSLog(@"obj-----%@",obj);
+            if ([[obj objectForKey:@"code"] intValue]==200) {
+                NSArray *dataArr = [obj objectForKey:@"data"];
+                for (int i = 0; i<dataArr.count; i++) {
+                    ShopGoodsModel *model = [[ShopGoodsModel alloc] init];
+                    NSDictionary *dit = [dataArr objectAtIndex:i];
+                    model.goods_id = [[dit objectForKey:@"goods_id"] intValue];
+                    model.goods_img = [dit objectForKey:@"goods_pic"];
+                    model.goods_name = [dit objectForKey:@"goods_name"];
+                    model.goods_type = [[dit objectForKey:@"goods_type"] intValue];
+                    model.goods_price = [[dit objectForKey:@"goods_price"] intValue];
+                    if ([[dit objectForKey:@"is_shoucang"] intValue]==0) {
+                        model.isStored = NO;
+                    }else
+                    {
+                        model.isStored = YES;
+                    }
+                    model.time = [[dit objectForKey:@"time"] intValue];
+                    model.goods_lownum = [[dit objectForKey:@"goods_lownum"] intValue];
+                    model.goods_lowprice = [[dit objectForKey:@"goods_lowprice"] intValue];
+                    model.goods_detail = [dit objectForKey:@"goods_intro"];
+                    model.goods_description = [dit objectForKey:@"goods_description"];
+                    [self.dataSource addObject:model];
+                }
+                [self.tableView reloadData];
+            }else
+            {
+                NSString *toast = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:toast];
+            }
+            [self.tableView endFooterRefresh];
+        } failure:^(NSError *error) {
+            [self.tableView endFooterRefresh];
+        }];
     }
     if (self.type==ShopTypeFood) {
         NSLog(@"食品");
+        pn3 ++;
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSString *pnstr = [NSString stringWithFormat:@"%d",pn3];
+        NSString *urlstr = [NSString stringWithFormat:get_shop_food,userid,pnstr];
+        
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
+            NSLog(@"obj-----%@",obj);
+            if ([[obj objectForKey:@"code"] intValue]==200) {
+                NSArray *dataArr = [obj objectForKey:@"data"];
+                for (int i = 0; i<dataArr.count; i++) {
+                    ShopGoodsModel *model = [[ShopGoodsModel alloc] init];
+                    NSDictionary *dit = [dataArr objectAtIndex:i];
+                    model.goods_id = [[dit objectForKey:@"goods_id"] intValue];
+                    model.goods_img = [dit objectForKey:@"goods_pic"];
+                    model.goods_name = [dit objectForKey:@"goods_name"];
+                    model.goods_type = [[dit objectForKey:@"goods_type"] intValue];
+                    model.goods_price = [[dit objectForKey:@"goods_price"] intValue];
+                    if ([[dit objectForKey:@"is_shoucang"] intValue]==0) {
+                        model.isStored = NO;
+                    }else
+                    {
+                        model.isStored = YES;
+                    }
+                    model.time = [[dit objectForKey:@"time"] intValue];
+                    model.goods_lownum = [[dit objectForKey:@"goods_lownum"] intValue];
+                    model.goods_lowprice = [[dit objectForKey:@"goods_lowprice"] intValue];
+                    model.goods_detail = [dit objectForKey:@"goods_intro"];
+                    model.goods_description = [dit objectForKey:@"goods_description"];
+                    [self.dataSource addObject:model];
+                }
+                [self.tableView reloadData];
+            }else
+            {
+                NSString *toast = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:toast];
+            }
+            [self.tableView endFooterRefresh];
+        } failure:^(NSError *error) {
+            [self.tableView endFooterRefresh];
+        }];
     }
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (isDebug) {
-        return 1;
-    }
-    return self.viewmodel.datalist.count ? 1 : 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (isDebug) return 10;
-    return self.viewmodel.datalist.count;
+
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     commodityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    if (isDebug) return cell;
-    
-    [cell.imageV sd_setImageWithURL:[self.viewmodel imageURLatIndexPath:indexPath] placeholderImage:img_canyinMinsu_default];
-    cell.isStored = [self.viewmodel isStoredAtIndexPath:indexPath];
-    cell.nameL.text = [self.viewmodel nameAtIndexPath:indexPath];
-    cell.detailL.text = [self.viewmodel detailAtIndexPath:indexPath];
-    cell.describeL.text = [self.viewmodel descriptionAtIndexPath:indexPath];
-    cell.priceL.text = [self.viewmodel discountAtIndexPath:indexPath];
-    cell.discountL.text = [self.viewmodel priceAtIndexPath:indexPath];
+
+    [cell setData:self.dataSource[indexPath.row]];
     return cell;
 }
 
@@ -180,7 +352,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if (self.dataSource.count==0) {
+        return;
+    }
     ShopDetailVC *vc = [[ShopDetailVC alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ShopGoodsModel;
 @interface commodityCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
@@ -23,5 +23,5 @@
 @property (nonatomic, assign) BOOL isStored;
 
 @property (weak, nonatomic) IBOutlet UILabel *discountL;
-
+-(void)setData:(ShopGoodsModel *)model;
 @end
