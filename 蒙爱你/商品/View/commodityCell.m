@@ -48,7 +48,7 @@
     self.nameL.text = model.goods_name;
     self.detailL.text = model.goods_detail;
     self.describeL.text = model.goods_description;
-    self.priceL.text = [NSString stringWithFormat:@"%@%ld",@"$",(long)model.goods_price];
+    self.priceL.text = [NSString stringWithFormat:@"%@%ld",@"¥",(long)model.goods_price];
     self.discountL.text = [NSString stringWithFormat:@"满%ld件批发单价%ld",(long)model.goods_lownum,(long)model.goods_lowprice];
 }
 

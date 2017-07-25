@@ -167,6 +167,9 @@
 - (void)configScrollView{
     
     self.scrollV = [[UIScrollView alloc] init];
+    UITapGestureRecognizer *TapGestureTecognizer=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide)];
+    TapGestureTecognizer.cancelsTouchesInView=NO;
+    [self.scrollV addGestureRecognizer:TapGestureTecognizer];
     [self.view addSubview:self.scrollV];
     [self.scrollV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(0);
@@ -383,14 +386,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)keyboardHide
+{
+    NSLog(@"keyboardHide");
+    [self.textView resignFirstResponder];
 }
-*/
 
 @end
