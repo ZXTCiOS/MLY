@@ -23,5 +23,10 @@
 #define get_shop_art               @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=2?page=%@"      // 商城 工艺品
 #define get_shop_food              @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=3?page=%@"      // 商城 特色食品
 
+//我的订单
+#define get_myorder  @""baseURL"/MLY/api.php/User/myOrder?user_id=%@&user_token=%@&order_type=%@"
+
+//详细订单
+#define get_detalorder @""baseURL"/MLY/api.php/User/myOrderDetail?user_id=%@&user_token=%@&order_sn=%@"
 
 #endif /* wangHeader_h */

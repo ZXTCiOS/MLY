@@ -157,7 +157,11 @@
 		534C17601F2839740067C3E4 /* myOrderVC4.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C175F1F2839740067C3E4 /* myOrderVC4.m */; };
 		534C17631F28398B0067C3E4 /* myOrderVC5.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17621F28398B0067C3E4 /* myOrderVC5.m */; };
 		534C17661F28399A0067C3E4 /* myOrderVC6.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17651F28399A0067C3E4 /* myOrderVC6.m */; };
-		534C17691F283BB50067C3E4 /* myorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17681F283BB50067C3E4 /* myorderCell.m */; };
+		534C176F1F28889E0067C3E4 /* detailedOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C176E1F28889E0067C3E4 /* detailedOrderVC.m */; };
+		534C17831F289BFC0067C3E4 /* myorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17821F289BFC0067C3E4 /* myorderCell.m */; };
+		534C17861F289C050067C3E4 /* myOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17851F289C050067C3E4 /* myOrderModel.m */; };
+		534C178C1F289C800067C3E4 /* detailCell0.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C178B1F289C800067C3E4 /* detailCell0.m */; };
+		534C178F1F289C900067C3E4 /* detailCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C178E1F289C900067C3E4 /* detailCell1.m */; };
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
@@ -431,8 +435,16 @@
 		534C17621F28398B0067C3E4 /* myOrderVC5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC5.m; sourceTree = "<group>"; };
 		534C17641F28399A0067C3E4 /* myOrderVC6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC6.h; sourceTree = "<group>"; };
 		534C17651F28399A0067C3E4 /* myOrderVC6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC6.m; sourceTree = "<group>"; };
-		534C17671F283BB50067C3E4 /* myorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myorderCell.h; path = "蒙爱你/我的/我的订单/viewController/myorderCell.h"; sourceTree = SOURCE_ROOT; };
-		534C17681F283BB50067C3E4 /* myorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myorderCell.m; path = "蒙爱你/我的/我的订单/viewController/myorderCell.m"; sourceTree = SOURCE_ROOT; };
+		534C176D1F28889E0067C3E4 /* detailedOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailedOrderVC.h; sourceTree = "<group>"; };
+		534C176E1F28889E0067C3E4 /* detailedOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailedOrderVC.m; sourceTree = "<group>"; };
+		534C17811F289BFC0067C3E4 /* myorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myorderCell.h; sourceTree = "<group>"; };
+		534C17821F289BFC0067C3E4 /* myorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myorderCell.m; sourceTree = "<group>"; };
+		534C17841F289C050067C3E4 /* myOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderModel.h; sourceTree = "<group>"; };
+		534C17851F289C050067C3E4 /* myOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderModel.m; sourceTree = "<group>"; };
+		534C178A1F289C800067C3E4 /* detailCell0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailCell0.h; sourceTree = "<group>"; };
+		534C178B1F289C800067C3E4 /* detailCell0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailCell0.m; sourceTree = "<group>"; };
+		534C178D1F289C900067C3E4 /* detailCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailCell1.h; sourceTree = "<group>"; };
+		534C178E1F289C900067C3E4 /* detailCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailCell1.m; sourceTree = "<group>"; };
 		536022B61F25F49300364CDD /* wangHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wangHeader.h; sourceTree = "<group>"; };
 		536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XMG.h"; sourceTree = "<group>"; };
 		536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XMG.m"; sourceTree = "<group>"; };
@@ -1247,27 +1259,11 @@
 		117105451F14B338008A2F25 /* 我的订单 */ = {
 			isa = PBXGroup;
 			children = (
-				117105461F14B338008A2F25 /* model */,
-				117105471F14B338008A2F25 /* view */,
+				534C177F1F289BC30067C3E4 /* model */,
+				534C17801F289BC30067C3E4 /* view */,
 				117105481F14B338008A2F25 /* viewController */,
 			);
 			path = "我的订单";
-			sourceTree = "<group>";
-		};
-		117105461F14B338008A2F25 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		117105471F14B338008A2F25 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				534C17671F283BB50067C3E4 /* myorderCell.h */,
-				534C17681F283BB50067C3E4 /* myorderCell.m */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		117105481F14B338008A2F25 /* viewController */ = {
@@ -1289,6 +1285,8 @@
 				534C17621F28398B0067C3E4 /* myOrderVC5.m */,
 				534C17641F28399A0067C3E4 /* myOrderVC6.h */,
 				534C17651F28399A0067C3E4 /* myOrderVC6.m */,
+				534C176D1F28889E0067C3E4 /* detailedOrderVC.h */,
+				534C176E1F28889E0067C3E4 /* detailedOrderVC.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1392,6 +1390,28 @@
 				11353EA11F16173500B34D7C /* scenic.storyboard */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		534C177F1F289BC30067C3E4 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				534C17841F289C050067C3E4 /* myOrderModel.h */,
+				534C17851F289C050067C3E4 /* myOrderModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		534C17801F289BC30067C3E4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				534C17811F289BFC0067C3E4 /* myorderCell.h */,
+				534C17821F289BFC0067C3E4 /* myorderCell.m */,
+				534C178A1F289C800067C3E4 /* detailCell0.h */,
+				534C178B1F289C800067C3E4 /* detailCell0.m */,
+				534C178D1F289C900067C3E4 /* detailCell1.h */,
+				534C178E1F289C900067C3E4 /* detailCell1.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		536022B71F25FCA000364CDD /* utlis */ = {
@@ -1578,6 +1598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11093BFC1F0B3A8C00AFCB20 /* NSObject+Parse.m in Sources */,
+				534C178F1F289C900067C3E4 /* detailCell1.m in Sources */,
 				11093C721F0B58D900AFCB20 /* HomePageTVC.m in Sources */,
 				117105561F14B3E8008A2F25 /* AboutUsVC.m in Sources */,
 				1143DC751F206090005E73FD /* MSSCalendarCollectionReusableView.m in Sources */,
@@ -1596,7 +1617,6 @@
 				1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */,
 				114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */,
 				1143DC771F206090005E73FD /* MSSCalendarHeaderModel.m in Sources */,
-				534C17691F283BB50067C3E4 /* myorderCell.m in Sources */,
 				11093C021F0B3A8C00AFCB20 /* TabBarController.m in Sources */,
 				11093BEC1F0B3A8C00AFCB20 /* BindTeleNumVC.m in Sources */,
 				11093BFA1F0B3A8C00AFCB20 /* ModifyInfoVC.m in Sources */,
@@ -1644,15 +1664,18 @@
 				1144E4871F1E1F190015B5EE /* EditSHDZVC.m in Sources */,
 				11093B621F0B361C00AFCB20 /* main.m in Sources */,
 				1143DC781F206090005E73FD /* MSSCalendarManager.m in Sources */,
+				534C17861F289C050067C3E4 /* myOrderModel.m in Sources */,
 				117105871F14EF3A008A2F25 /* ScenicSpotAdviseCell.m in Sources */,
 				11353E8E1F15F7A900B34D7C /* HomeScenicModel.m in Sources */,
 				1143DC7A1F206090005E73FD /* MSSCalendarViewController.m in Sources */,
 				1144164B1F1370900079B1E2 /* FoodCollectionVC.m in Sources */,
+				534C17831F289BFC0067C3E4 /* myorderCell.m in Sources */,
 				11353E9F1F16040700B34D7C /* ScenicVC.m in Sources */,
 				11353EA51F16243400B34D7C /* ScenicHeaderV.m in Sources */,
 				11093C751F0B591A00AFCB20 /* HomeTableCell.m in Sources */,
 				11093C221F0B3DC100AFCB20 /* UIImage+UzysExtension.m in Sources */,
 				114416381F132ADF0079B1E2 /* ShopVC.m in Sources */,
+				534C176F1F28889E0067C3E4 /* detailedOrderVC.m in Sources */,
 				11093C281F0B3DC100AFCB20 /* UzysGroupPickerView.m in Sources */,
 				1173B7001F26109000AB4287 /* SearchViewController.m in Sources */,
 				114416311F131E920079B1E2 /* commodityCell.m in Sources */,
@@ -1682,6 +1705,7 @@
 				116AE5F41F21DEF500CD76F1 /* MinsuDetailModel.m in Sources */,
 				11093C251F0B3DC100AFCB20 /* UzysAssetsPickerController.m in Sources */,
 				534C175D1F2839470067C3E4 /* myOrderVC3.m in Sources */,
+				534C178C1F289C800067C3E4 /* detailCell0.m in Sources */,
 				113CBB051F1F274D00C6A766 /* DiscountCell.m in Sources */,
 				117105851F14EF3A008A2F25 /* HomeCityCell.m in Sources */,
 			);

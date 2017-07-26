@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CKPagerComponent.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>HYBLoopScrollView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -40,6 +35,11 @@
 			<false/>
 		</dict>
 		<key>Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NinaPagerView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -77,12 +77,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
+		<key>006B966FB16C64B5CBAF93DE80DA408C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0A5AAF8C833188D35F718E4296D33099</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DDF92177F53BAA6B51BB442DFE65F37</key>
+		<key>0D0B9FD119493497BB9CBDEBD4FBF738</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>37079D674B10ACDFA0A5AF6AD48CFB08</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4127A7D947A761CE7CB63E3C0157E182</key>
+		<key>53DC0DD867F4EAA4EF9A9942F703D2CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,7 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61CCE242A8F728486143FA38F7C39044</key>
+		<key>7F5A0FB47C5B57C845FC82355D47778C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8C7D896CE78939A241B97081D4A3E1B</key>
+		<key>DB9FBFF0C6FBE5A58605A6FD7C9E285D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE808D3754170682F6983C97C9B00EBE</key>
+		<key>EDF3481801098ED4EF680A9B22E6F402</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE935F79851BC102E6B566D7D9EFFE4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
