@@ -27,10 +27,11 @@
     
     
     
-    
+
     
     [self configInfo];
     _window.rootViewController = [[TabBarController alloc] init];
+    _window.backgroundColor = [UIColor whiteColor];
     [_window makeKeyAndVisible];
     
     return YES;

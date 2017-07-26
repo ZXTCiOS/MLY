@@ -1,1 +1,0 @@
-../../../CKPagerComponent/CKPagerComponent/Classes/CKSegmentBarConfig.h

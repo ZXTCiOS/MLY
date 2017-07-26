@@ -29,12 +29,12 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - CKPagerComponent (1.0.0)
   - HYBLoopScrollView (3.2.1)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - MLTransition (2.1.3)
+  - NinaPagerView (1.6.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -48,12 +48,12 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BlocksKit
-  - CKPagerComponent
   - HYBLoopScrollView
   - Masonry
   - MBProgressHUD
   - MJRefresh
   - MLTransition
+  - NinaPagerView
   - SDWebImage
   - TPKeyboardAvoiding
   - UITableView+FDTemplateLayoutCell
@@ -63,18 +63,18 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  CKPagerComponent: 3e8acbaa6d9de5a30f03fed142886e934e7730d6
   HYBLoopScrollView: 12ff9f5764cdd76f34171164c6517d5e01ee6766
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MLTransition: 8ebe393aedfb61507202085a5bb16c7b17363e43
+  NinaPagerView: 5346d0725c12530adddb438cc35adc352fb45325
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 40eb68885bf02f55b4cc8266cd36a8c3cf285c10
+PODFILE CHECKSUM: d661a2515e3f7d6b07803576ddc7899ee4badd4a
 
 COCOAPODS: 1.2.1
