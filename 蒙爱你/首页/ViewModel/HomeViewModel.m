@@ -48,25 +48,33 @@
 
 - (void)PostMoreType:(HomeMoreOfType)type completionHandller:(void (^)(NSError *))handller{
     NSString *url = nil;
-    NSDictionary *dic = nil;
+    NSMutableDictionary *dic = nil;
     switch (type) {
-        case HomeMoreOfTypeScenic:
+        case HomeMoreOfTypeScenic:{
             url = post_home_scenic_more;
-            dic = @{@"page": @(self.scenicNum)};
+            [dic setValue:@(self.scenicNum) forKey:@"page"];
+        }
             break;
-        case HomeMoreOfTypeTravel:
+        case HomeMoreOfTypeTravel:{
             url = post_home_travel_more;
-            dic = @{@"page": @(self.travelNum)};;
+            [dic setValue:@(self.travelNum) forKey:@"page"];
+        }
             break;
-        case HomeMoreOfTypeFood:
+        case HomeMoreOfTypeFood:{
             url = post_home_food_more;
-            dic = @{@"page": @(self.foodNum)};;
+            [dic setValue:@(self.foodNum) forKey:@"page"];
+        }
             break;
         default:
             break;
     }
     
-    [DNNetworking postWithURLString:url parameters:dic success:^(id obj) {
+    NSInteger user_id = [userDefault integerForKey: user_key_user_id];
+    if (user_id) {
+        [dic setValue:@(user_id) forKey:@"user_id"];
+    }
+    
+    [DNNetworking getWithURLString:url parameters:dic success:^(id obj) {
         switch (type) {
             case HomeMoreOfTypeScenic:{
                 HomeModel *model = [HomeModel parse:obj];

@@ -344,7 +344,7 @@
     cell.otherL.text = array[indexPath.row].bedeat_des;
     cell.name.text = array[indexPath.row].bedeat_name;
     cell.priceL.text = [NSString stringWithFormat:@"%.2ld元", (long)array[indexPath.row].bedeat_price];
-    //cell.otherL.text = array[indexPath.row].bedeat_desc;
+   
     [cell.imgV sd_setImageWithURL:array[indexPath.row].bedeat_pic.xd_URL placeholderImage:[UIImage imageNamed:@"7"]];
     cell.buynow = ^(){
        UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
@@ -353,6 +353,12 @@
        //vc.minsu_id =
        [self.navigationController pushViewController:vc animated:YES];
     };
+   NSInteger shouqi = [bedeat[indexPath.row] integerValue];
+   [cell.shouqiBtn setTitle:shouqi ? @"收起" : @"展开" forState:UIControlStateNormal];
+   UIImage *img = [UIImage imageNamed:shouqi ? @"msxx-sq" : @"msxx-zk2"];
+   [cell.shouqiBtn setImage:img forState:UIControlStateNormal];
+   
+   
    
     cell.kefu = ^(){
        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%ld",(long)self.phone];
@@ -363,9 +369,7 @@
    [cell.shouqiBtn bk_addEventHandler:^(id sender) {
       int b = [bedeat[indexPath.row] intValue];
       bedeat[indexPath.row] = b ? @(0) : @(1);
-      //[self.tableView beginUpdates];
-      //[self.tableView endUpdates];
-      [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationFade];
+      [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationMiddle];
    } forControlEvents:UIControlEventTouchUpInside];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -393,10 +397,7 @@
    return 283 + h1;
    
    
-    /*return [tableView fd_heightForCellWithIdentifier:@"bedCell" configuration:^(BedDetailCell* cell) {
-       cell.detailL.text = array[indexPath.row].bedeat_intro;
-       cell.otherL.text = array[indexPath.row].bedeat_des;
-    }];*/
+   
    
 }
 
