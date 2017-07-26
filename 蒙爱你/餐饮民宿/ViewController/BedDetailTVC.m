@@ -130,6 +130,7 @@
     [self getDataFromNet];
     [XDFactory addBackItemForVC:self];
     self.title = @"民宿信息";
+   [self configNaviBar];
 }
 
 - (void)getDataFromNet{
@@ -507,6 +508,20 @@ static UIView *view;
 }
 
 #pragma mark - NaviBar   透明
+
+- (void)configNaviBar{
+   
+   UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 64)];
+   [self.view.superview.superview addSubview:view];
+   view.backgroundColor = [UIColor redColor];
+   
+}
+
+
+
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated{
    [super viewWillAppear:animated];
