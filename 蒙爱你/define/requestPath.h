@@ -24,16 +24,16 @@
 
 
 
-#define get_Home_zhuye          @"MLY/api.php/Index/index"         //首页主页
-#define post_home_scenic_more   @""         //首页景点推荐 更多
-#define post_home_travel_more   @""         //首页出行推荐 更多
-#define post_home_food_more     @""         //首页餐饮民宿 更多
+#define get_Home_zhuye          @"MLY/api.php/Index/index"                  //首页主页
+#define post_home_scenic_more   @"/MLY/api.php/Index/jingdianMore"          //首页景点推荐 更多
+#define post_home_travel_more   @"/MLY/api.php/Index/chuxingMore"           //首页出行推荐 更多
+#define post_home_food_more     @"/MLY/api.php/Index/minsuMore"             //首页餐饮民宿 更多
 
 
 
 #define get_12menglist          @"MLY/api.php/Scenic/jingdianFirst"         //12盟列表
-#define get_citylist            @"MLY/api.php/Scenic/jingdianSecond"         //12盟下区县列表
-#define get_sceniclist          @"MLY/api.php/Scenic/jingdianList"         //区县下景点列表
+#define get_citylist            @"MLY/api.php/Scenic/jingdianSecond"        //12盟下区县列表
+#define get_sceniclist          @"MLY/api.php/Scenic/jingdianList"          //区县下景点列表
 
 
 

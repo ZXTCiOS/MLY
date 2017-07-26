@@ -22,8 +22,8 @@
 
 
 
-#define delayTime 1     //  延时请求
-#define distanceToRight  200     //  右滑距离右边的最远刷新距离
+#define delayTime 1.5               //  延时请求
+#define distanceToRight  (-50)       //  右滑距离右边的最远刷新距离
 
 
 @interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -34,17 +34,7 @@
 
 @property (nonatomic, strong) HomeViewModel *viewModel;
 
-@property (nonatomic, strong) ScenicSpotAdviseCell *scenicCell;
-
-@property (nonatomic, strong) TravelAdviseCell *travelCell;
-
-@property (nonatomic, strong) FoodAndHotelCell *foodCell;
-
 @property (nonatomic, strong) UIView *naviBar;
-
-@property (nonatomic, assign) NSInteger time_scenic;
-@property (nonatomic, assign) NSInteger time_travel;
-@property (nonatomic, assign) NSInteger time_food;
 
 @end
 
@@ -138,20 +128,7 @@
     
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    
-    if (scrollView.tag != 300) return;
-    CGPoint offset = scrollView.contentOffset;
-    
-    if (offset.y < -23 || offset.y > 100) {
-        self.naviBar.hidden = YES;
-    } else {
-        self.naviBar.hidden = NO;
-    }
-    
-    
-}
+
 
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -207,59 +184,67 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    //HomeTableCell *cell = [[HomeTableCell alloc] init];
     cell.collectV.tag = indexPath.section;
     cell.collectV.delegate = self;
     cell.collectV.dataSource = self;
-    MJWeakSelf
-    
-    HomeMoreOfType type = HomeMoreOfTypeScenic;
-    __block NSInteger time;
-    switch (indexPath.row) {
-        case 0:
-            type = HomeMoreOfTypeScenic;
-            time = self.time_scenic;
-            break;
-        case 1:
-            type = HomeMoreOfTypeTravel;
-            time = self.time_travel;
-            
-            break;
-        case 2:
-            type = HomeMoreOfTypeFood;
-            time = self.time_food;
-            break;
-        default:
-            break;
-    }
-    __weak typeof(cell) weakCell = cell;
-    cell.didScroll = ^(CGFloat contentOffset_x, CGFloat contentSize_width){
-        if (contentOffset_x > contentSize_width -  distanceToRight - kScreenW) {
-            //  加延时处理
-            if (time == 1) {
-                time = 0;
-                NSLog(@"%f, %f", contentOffset_x, contentSize_width);
-                [weakSelf.viewModel PostMoreType:type completionHandller:^(NSError *error) {
-                    if (!error) {
-                        [weakCell.collectV reloadData];
-                        time = 1;
-                    } else {
-                        [weakSelf.view showWarning:@"网络错误"];
-                    }
-                }];
-                [NSTimer bk_scheduledTimerWithTimeInterval: delayTime block:^(NSTimer *timer) {
-                    time = 1;
-                } repeats:NO];
-            }
-            
-        }
-        
-    };
     
     return cell;
 }
 
-
+static BOOL ok = YES;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGPoint offset = scrollView.contentOffset;
+    
+    if (scrollView.tag == 300) {
+        if (offset.y < -23 || offset.y > 100) {
+            self.naviBar.hidden = YES;
+        } else {
+            self.naviBar.hidden = NO;
+        }
+        return;
+    }
+    
+    
+    HomeMoreOfType type = HomeMoreOfTypeScenic;
+    switch (scrollView.tag) {
+        case 0:
+            type = HomeMoreOfTypeScenic;
+            break;
+        case 1:
+            type = HomeMoreOfTypeTravel;
+            break;
+        case 2:
+            type = HomeMoreOfTypeFood;
+            break;
+        default:
+            break;
+    }
+    HomeTableCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:scrollView.tag]];
+    __weak typeof(cell) weakCell = cell;
+    float contentOffset_x = offset.x;
+    float contentSize_width = scrollView.contentSize.width;
+    
+    
+    if (contentOffset_x > contentSize_width -  distanceToRight - kScreenW) {
+            //  加延时处理
+        if (ok) {
+            ok = NO;
+            NSLog(@"%f, %f", contentOffset_x, contentSize_width);
+            [self.viewModel PostMoreType:type completionHandller:^(NSError *error) {
+                if (!error) {
+                [weakCell.collectV reloadData];
+                } else {
+                    [self.view showWarning:@"网络错误"];
+                }
+            }];
+            [NSTimer bk_scheduledTimerWithTimeInterval: delayTime block:^(NSTimer *timer) {
+                ok = YES;
+            } repeats:NO];
+        }
+    };
+    
+}
 
 
 
@@ -522,9 +507,6 @@
         [_tableView registerClass:[HomeTableCell class] forCellReuseIdentifier:@"cell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableFooterView = [UIView new];
-        self.time_food = 1;
-        self.time_scenic = 1;
-        self.time_travel = 1;
         _tableView.tag = 300;
     }
     return _tableView;

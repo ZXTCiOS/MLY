@@ -39,7 +39,7 @@
 #pragma mark - collection Delegate
 
 
-
+/*
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     CGFloat x = scrollView.contentOffset.x;
@@ -50,7 +50,7 @@
     self.offset_x = x;
 }
 
-
+*/
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

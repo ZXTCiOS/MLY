@@ -26,7 +26,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.navigationController.navigationBar.hidden = NO;
     [DNNetworking getWithURLString:get_12menglist success:^(id obj) {
         
         NSString *code = [obj valueForKey:@"code"];

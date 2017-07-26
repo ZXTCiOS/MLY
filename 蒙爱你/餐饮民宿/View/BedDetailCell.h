@@ -33,7 +33,6 @@
 
 
 
-
 @property (nonatomic, strong) void(^kefu)();
 
 @property (nonatomic, strong) void(^buynow)();
