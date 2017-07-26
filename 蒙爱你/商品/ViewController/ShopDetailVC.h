@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ShopDetailVC : UIViewController
-
+@property (nonatomic,copy) NSDictionary *infodic;
 @end

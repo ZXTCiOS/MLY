@@ -29,12 +29,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - CocoaLumberjack (3.2.0):
-    - CocoaLumberjack/Default (= 3.2.0)
-    - CocoaLumberjack/Extensions (= 3.2.0)
-  - CocoaLumberjack/Default (3.2.0)
-  - CocoaLumberjack/Extensions (3.2.0):
-    - CocoaLumberjack/Default
+  - CKPagerComponent (1.0.0)
   - HYBLoopScrollView (3.2.1)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
@@ -53,7 +48,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BlocksKit
-  - CocoaLumberjack
+  - CKPagerComponent
   - HYBLoopScrollView
   - Masonry
   - MBProgressHUD
@@ -68,7 +63,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
+  CKPagerComponent: 3e8acbaa6d9de5a30f03fed142886e934e7730d6
   HYBLoopScrollView: 12ff9f5764cdd76f34171164c6517d5e01ee6766
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -80,6 +75,6 @@ SPEC CHECKSUMS:
   WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: b4123e3105da4334fe3f480a999f8f5e2d5da114
+PODFILE CHECKSUM: 40eb68885bf02f55b4cc8266cd36a8c3cf285c10
 
 COCOAPODS: 1.2.1

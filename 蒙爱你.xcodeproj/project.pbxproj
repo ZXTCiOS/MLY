@@ -150,6 +150,14 @@
 		1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */; };
 		1173B7001F26109000AB4287 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FF1F26109000AB4287 /* SearchViewController.m */; };
 		117823361F275FBF008B4973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117823351F275FBF008B4973 /* Assets.xcassets */; };
+		534C17531F2839060067C3E4 /* myOrderVC0.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17511F2839060067C3E4 /* myOrderVC0.m */; };
+		534C17571F2839280067C3E4 /* myOrderVC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17561F2839280067C3E4 /* myOrderVC1.m */; };
+		534C175A1F2839360067C3E4 /* myOrderVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17591F2839360067C3E4 /* myOrderVC2.m */; };
+		534C175D1F2839470067C3E4 /* myOrderVC3.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C175C1F2839470067C3E4 /* myOrderVC3.m */; };
+		534C17601F2839740067C3E4 /* myOrderVC4.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C175F1F2839740067C3E4 /* myOrderVC4.m */; };
+		534C17631F28398B0067C3E4 /* myOrderVC5.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17621F28398B0067C3E4 /* myOrderVC5.m */; };
+		534C17661F28399A0067C3E4 /* myOrderVC6.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17651F28399A0067C3E4 /* myOrderVC6.m */; };
+		534C17691F283BB50067C3E4 /* myorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17681F283BB50067C3E4 /* myorderCell.m */; };
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
@@ -409,6 +417,22 @@
 		429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.release.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.release.xcconfig"; sourceTree = "<group>"; };
 		4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-蒙爱你.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.debug.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.debug.xcconfig"; sourceTree = "<group>"; };
+		534C17501F2839060067C3E4 /* myOrderVC0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC0.h; sourceTree = "<group>"; };
+		534C17511F2839060067C3E4 /* myOrderVC0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC0.m; sourceTree = "<group>"; };
+		534C17551F2839280067C3E4 /* myOrderVC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC1.h; sourceTree = "<group>"; };
+		534C17561F2839280067C3E4 /* myOrderVC1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC1.m; sourceTree = "<group>"; };
+		534C17581F2839360067C3E4 /* myOrderVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC2.h; sourceTree = "<group>"; };
+		534C17591F2839360067C3E4 /* myOrderVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC2.m; sourceTree = "<group>"; };
+		534C175B1F2839470067C3E4 /* myOrderVC3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC3.h; sourceTree = "<group>"; };
+		534C175C1F2839470067C3E4 /* myOrderVC3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC3.m; sourceTree = "<group>"; };
+		534C175E1F2839740067C3E4 /* myOrderVC4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC4.h; sourceTree = "<group>"; };
+		534C175F1F2839740067C3E4 /* myOrderVC4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC4.m; sourceTree = "<group>"; };
+		534C17611F28398B0067C3E4 /* myOrderVC5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC5.h; sourceTree = "<group>"; };
+		534C17621F28398B0067C3E4 /* myOrderVC5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC5.m; sourceTree = "<group>"; };
+		534C17641F28399A0067C3E4 /* myOrderVC6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC6.h; sourceTree = "<group>"; };
+		534C17651F28399A0067C3E4 /* myOrderVC6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC6.m; sourceTree = "<group>"; };
+		534C17671F283BB50067C3E4 /* myorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myorderCell.h; path = "蒙爱你/我的/我的订单/viewController/myorderCell.h"; sourceTree = SOURCE_ROOT; };
+		534C17681F283BB50067C3E4 /* myorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myorderCell.m; path = "蒙爱你/我的/我的订单/viewController/myorderCell.m"; sourceTree = SOURCE_ROOT; };
 		536022B61F25F49300364CDD /* wangHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wangHeader.h; sourceTree = "<group>"; };
 		536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XMG.h"; sourceTree = "<group>"; };
 		536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XMG.m"; sourceTree = "<group>"; };
@@ -1240,6 +1264,8 @@
 		117105471F14B338008A2F25 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				534C17671F283BB50067C3E4 /* myorderCell.h */,
+				534C17681F283BB50067C3E4 /* myorderCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1249,6 +1275,20 @@
 			children = (
 				117105501F14B3A5008A2F25 /* MyListVC.h */,
 				117105511F14B3A5008A2F25 /* MyListVC.m */,
+				534C17501F2839060067C3E4 /* myOrderVC0.h */,
+				534C17511F2839060067C3E4 /* myOrderVC0.m */,
+				534C17551F2839280067C3E4 /* myOrderVC1.h */,
+				534C17561F2839280067C3E4 /* myOrderVC1.m */,
+				534C17581F2839360067C3E4 /* myOrderVC2.h */,
+				534C17591F2839360067C3E4 /* myOrderVC2.m */,
+				534C175B1F2839470067C3E4 /* myOrderVC3.h */,
+				534C175C1F2839470067C3E4 /* myOrderVC3.m */,
+				534C175E1F2839740067C3E4 /* myOrderVC4.h */,
+				534C175F1F2839740067C3E4 /* myOrderVC4.m */,
+				534C17611F28398B0067C3E4 /* myOrderVC5.h */,
+				534C17621F28398B0067C3E4 /* myOrderVC5.m */,
+				534C17641F28399A0067C3E4 /* myOrderVC6.h */,
+				534C17651F28399A0067C3E4 /* myOrderVC6.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1543,6 +1583,7 @@
 				1143DC751F206090005E73FD /* MSSCalendarCollectionReusableView.m in Sources */,
 				114416451F134AB70079B1E2 /* ShopGoodsModel.m in Sources */,
 				1171054F1F14B380008A2F25 /* discountTVC.m in Sources */,
+				534C17571F2839280067C3E4 /* myOrderVC1.m in Sources */,
 				115502291F189B6B00977217 /* StarBtn.m in Sources */,
 				11405FC61F0E0C8800B5CBAE /* ShunFengCheViewModel.m in Sources */,
 				11353E9B1F15F8EE00B34D7C /* ScenicModel.m in Sources */,
@@ -1555,17 +1596,20 @@
 				1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */,
 				114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */,
 				1143DC771F206090005E73FD /* MSSCalendarHeaderModel.m in Sources */,
+				534C17691F283BB50067C3E4 /* myorderCell.m in Sources */,
 				11093C021F0B3A8C00AFCB20 /* TabBarController.m in Sources */,
 				11093BEC1F0B3A8C00AFCB20 /* BindTeleNumVC.m in Sources */,
 				11093BFA1F0B3A8C00AFCB20 /* ModifyInfoVC.m in Sources */,
 				11093C011F0B3A8C00AFCB20 /* DNNetworking.m in Sources */,
 				11405FC11F0DFF6200B5CBAE /* HomeTravelVC.m in Sources */,
+				534C17631F28398B0067C3E4 /* myOrderVC5.m in Sources */,
 				11093C201F0B3DC100AFCB20 /* CorePhoto.m in Sources */,
 				1146E5D11F0F616B0066B37F /* MyStorageVC.m in Sources */,
 				114625131F0C9B090005D61C /* HomeBannerModel.m in Sources */,
 				11353E8A1F15F3EB00B34D7C /* ScenicCell.m in Sources */,
 				11353E951F15F83000B34D7C /* ScenicViewModel.m in Sources */,
 				11093BE61F0B3A8C00AFCB20 /* ZXTCNavigationViewController.m in Sources */,
+				534C17601F2839740067C3E4 /* myOrderVC4.m in Sources */,
 				11093BE71F0B3A8C00AFCB20 /* VerifiedVC.m in Sources */,
 				1146E5DB1F0F96A00066B37F /* ShouHuoDiZhiTVC.m in Sources */,
 				11093C031F0B3A8C00AFCB20 /* ChoosePicture.m in Sources */,
@@ -1584,6 +1628,7 @@
 				11093B651F0B361C00AFCB20 /* AppDelegate.m in Sources */,
 				1143DC7B1F206090005E73FD /* MSSChineseCalendarManager.m in Sources */,
 				1146E5D41F0F71890066B37F /* MyStorageTravelVC.m in Sources */,
+				534C175A1F2839360067C3E4 /* myOrderVC2.m in Sources */,
 				11093BE91F0B3A8C00AFCB20 /* FogetPwdViewController.m in Sources */,
 				1146E5DF1F0F96E80066B37F /* ShouHuoDiZhiCell.m in Sources */,
 				1143DC7F1F208330005E73FD /* NaviBar.m in Sources */,
@@ -1623,8 +1668,10 @@
 				11093C041F0B3A8C00AFCB20 /* WKWedViewController.m in Sources */,
 				114416531F13716F0079B1E2 /* FoodViewModel.m in Sources */,
 				11585AD41F1C6AD500061734 /* BedDetailTVC.m in Sources */,
+				534C17661F28399A0067C3E4 /* myOrderVC6.m in Sources */,
 				114416351F132AA60079B1E2 /* ShopPageController.m in Sources */,
 				114625101F0C9A790005D61C /* HomeModel.m in Sources */,
+				534C17531F2839060067C3E4 /* myOrderVC0.m in Sources */,
 				11093BEA1F0B3A8C00AFCB20 /* RegisterViewController.m in Sources */,
 				114625181F0CA82D0005D61C /* HomeViewModel.m in Sources */,
 				1171055B1F14C30A008A2F25 /* AddAddressTVC.m in Sources */,
@@ -1634,6 +1681,7 @@
 				114416421F134A9B0079B1E2 /* ShopViewModel.m in Sources */,
 				116AE5F41F21DEF500CD76F1 /* MinsuDetailModel.m in Sources */,
 				11093C251F0B3DC100AFCB20 /* UzysAssetsPickerController.m in Sources */,
+				534C175D1F2839470067C3E4 /* myOrderVC3.m in Sources */,
 				113CBB051F1F274D00C6A766 /* DiscountCell.m in Sources */,
 				117105851F14EF3A008A2F25 /* HomeCityCell.m in Sources */,
 			);

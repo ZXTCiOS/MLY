@@ -20,5 +20,5 @@ pod 'SDWebImage'
 pod 'HYBLoopScrollView'
 pod 'WMPageController'
 pod 'UITableView+FDTemplateLayoutCell'
-
+pod 'CKPagerComponent'
 end

@@ -8,7 +8,10 @@
 
 #ifndef wangHeader_h
 #define wangHeader_h
-
+//屏幕宽度比
+#define WIDTH_SCALE [UIScreen mainScreen].bounds.size.width / 375
+//屏幕高度比
+#define HEIGHT_SCALE [UIScreen mainScreen].bounds.size.height / 667
 
 /*
  *  网址
