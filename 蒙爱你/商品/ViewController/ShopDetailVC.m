@@ -54,7 +54,7 @@
     
     self.title = @"商品详情";
     [XDFactory addBackItemForVC:self];
-
+    NSLog(@"%@",self.infodic);
 }
 
 #pragma  mark - textView   delegate
@@ -184,7 +184,7 @@
         make.height.equalTo(200);
     }];
     
-    //[self.imgV sd_setImageWithURL:<#(nullable NSURL *)#> placeholderImage:<#(nullable UIImage *)#>];
+    [self.imgV sd_setImageWithURL:[NSURL URLWithString:[self.infodic objectForKey:@"img"]] placeholderImage:nil];
     
     self.nameL = [UILabel new];
     [self.scrollV addSubview:self.nameL];
@@ -197,6 +197,7 @@
     }];
     self.nameL.textColor = krgb(11, 121, 182, 1);
     self.nameL.text = @"工艺品名字";
+    self.nameL.text = [self.infodic objectForKey:@"name"];
     
     self.pric = [UILabel new];
     [self.scrollV addSubview:self.pric];
@@ -210,12 +211,13 @@
     }];
     self.pric.textColor = krgb(223, 8, 66, 1);
     self.pric.text = [NSString stringWithFormat:@"¥%.2f", 33.0];
-    
+    self.pric.text = [NSString stringWithFormat:@"¥%.2f",[[self.infodic objectForKey:@"price"] floatValue]];
     self.beiZhuL = [UILabel new];
     [self.scrollV addSubview:self.beiZhuL];
     self.beiZhuL.numberOfLines = 0;
     self.beiZhuL.font = [UIFont systemFontOfSize:14];
-    NSString *str = @"sald kfj slgj wotep gijdlk fj msdfsdfsdf sdfsdf sdfdfg3grd sd sldfjdklfreiwo jdsdfs fsdfsdf sdfsd tklgvh qoesld jfmdl kgjmnrt kwj";
+    NSString *str = [NSString string];
+    str = [self.infodic objectForKey:@"intro"];
     CGSize size = [str sizeForFont:[UIFont systemFontOfSize:14] size:CGSizeMake(kScreenW - 20, 1000) mode:NSLineBreakByWordWrapping];
     
     [self.beiZhuL mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -231,7 +233,8 @@
     [self.scrollV addSubview:self.jianjieL];
     self.jianjieL.numberOfLines = 0;
     self.jianjieL.font = [UIFont systemFontOfSize:14];
-    NSString *jiastr = @"sdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwjsdfsdfdfdsf sdfsd fsadfsadfsa dfsdf sdfsdfs dfs  东方天郡东方国际拉开距离看见李会计的立刻感觉到廊坊控股 来看几点上课了飞机数量肯定  就是打开了房间fjdklfr eiwojdtkl gvhqoesldjfmdlkgjmnrtkwj";
+    NSString *jiastr = [NSString string];
+    jiastr = [self.infodic objectForKey:@"descrip"];
     CGSize jiansize = [jiastr sizeForFont:[UIFont systemFontOfSize:14] size:CGSizeMake(kScreenW - 20, 1000) mode:NSLineBreakByWordWrapping];
     
     [self.jianjieL mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -307,14 +310,8 @@
             [self.navigationController presentViewController:alert animated:YES completion:nil];
         } else {
             [self.view endEditing:YES];
-            
-            
-            
-            
         }
     } forControlEvents:UIControlEventTouchUpInside];
-    
-    
     
     self.jiaBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.jiaBtn setBackgroundImage:[UIImage imageNamed:@"sl-zj"] forState:UIControlStateNormal];

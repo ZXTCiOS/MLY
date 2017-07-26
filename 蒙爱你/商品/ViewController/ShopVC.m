@@ -341,7 +341,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     commodityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-
     [cell setData:self.dataSource[indexPath.row]];
     return cell;
 }
@@ -355,8 +354,19 @@
     if (self.dataSource.count==0) {
         return;
     }
+    ShopGoodsModel *model = self.dataSource[indexPath.row];
+    
+    NSString *idstr = [NSString stringWithFormat:@"%ld",(long)model.goods_id];
+    NSString *imgstr = model.goods_img;
+    NSString *namestr = model.goods_name;
+    NSString *typestr = [NSString stringWithFormat:@"%ld",(long)model.goods_type];
+    NSString *pricestr = [NSString stringWithFormat:@"%ld",(long)model.goods_price];
+    NSString *introstr = model.goods_detail;
+    NSString *descripstr = model.goods_description;
     ShopDetailVC *vc = [[ShopDetailVC alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
+    vc.infodic = [NSDictionary dictionary];
+    vc.infodic = @{@"id":idstr,@"img":imgstr,@"name":namestr,@"type":typestr,@"price":pricestr,@"descrip":descripstr,@"intro":introstr};
     [self.navigationController pushViewController:vc animated:YES];
     
 }
