@@ -18,4 +18,6 @@
 @property (nonatomic,strong) NSString *preferentialstr;
 @property (nonatomic,strong) NSString *orderidstr;
 @property (nonatomic,strong) NSString *ordersn;
+
+@property (nonatomic,strong) NSString *ordertype;
 @end

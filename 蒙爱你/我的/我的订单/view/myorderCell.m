@@ -16,8 +16,27 @@
 @property (nonatomic,strong) UILabel *contentLab;
 @property (nonatomic,strong) UILabel *numLab;
 @property (nonatomic,strong) UILabel *totalLab;
+
+//待付款
+//取消
 @property (nonatomic,strong) UIButton *cancelBtn;
+//付款
 @property (nonatomic,strong) UIButton *payBtn;
+
+//已付款
+//退款
+@property (nonatomic,strong) UIButton *refundBtn;
+//修改
+@property (nonatomic,strong) UIButton *changeBtn;
+
+//已完成
+@property (nonatomic,strong) UIButton *evaluationBtn;
+
+//退款
+//退款状态
+@property (nonatomic,strong) UIButton *refundstateBtn;
+
+
 @property (nonatomic,strong) myOrderModel *omodel;
 @end
 
@@ -36,6 +55,13 @@
         [self.contentView addSubview:self.totalLab];
         [self.contentView addSubview:self.cancelBtn];
         [self.contentView addSubview:self.payBtn];
+        
+        [self.contentView addSubview:self.refundBtn];
+        [self.contentView addSubview:self.changeBtn];
+        
+        
+        [self.contentView addSubview:self.evaluationBtn];
+        [self.contentView addSubview:self.refundstateBtn];
         [self setuplayout];
     }
     return self;
@@ -167,9 +193,9 @@
     if(!_totalLab)
     {
         _totalLab = [[UILabel alloc] init];
-        _totalLab.text = @"根据规定，只要是用于";
+       // _totalLab.text = @"根据规定，只要是用于";
         _totalLab.font = [UIFont systemFontOfSize:14];
-        _totalLab.backgroundColor = [UIColor greenColor];
+//        _totalLab.backgroundColor = [UIColor greenColor];
     }
     return _totalLab;
 }
@@ -207,6 +233,47 @@
     return _payBtn;
 }
 
+-(UIButton *)refundBtn
+{
+    if(!_refundBtn)
+    {
+        _refundBtn = [[UIButton alloc] init];
+        
+    }
+    return _refundBtn;
+}
+
+-(UIButton *)changeBtn
+{
+    if(!_changeBtn)
+    {
+        _changeBtn = [[UIButton alloc] init];
+        
+    }
+    return _changeBtn;
+}
+
+
+-(UIButton *)evaluationBtn
+{
+    if(!_evaluationBtn)
+    {
+        _evaluationBtn = [[UIButton alloc] init];
+        
+    }
+    return _evaluationBtn;
+}
+
+-(UIButton *)refundstateBtn
+{
+    if(!_refundstateBtn)
+    {
+        _refundstateBtn = [[UIButton alloc] init];
+        
+    }
+    return _refundstateBtn;
+}
+
 #pragma mark -点击方法
 
 -(void)cancelBtnclick
@@ -227,16 +294,38 @@
     [self.orderImg sd_setImageWithURL:[NSURL URLWithString:model.orderimgstr] placeholderImage:nil];
     self.nameLab.text = model.namestr;
     self.priceLab.text = [NSString stringWithFormat:@"%@%@",model.pricestr,@"/天"];
-    self.contentLab.text = model.contentstr;
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:model.contentstr];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:8];//调整行间距
-    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.contentstr length])];
-    self.contentLab.attributedText = attributedString;
-    [self.contentLab sizeToFit];
+    if (model.contentstr.length!=0) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:model.contentstr];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:8];//调整行间距
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.contentstr length])];
+        self.contentLab.attributedText = attributedString;
+        [self.contentLab sizeToFit];
+    }
+    
+    if ([model.ordertype isEqualToString:@"1"]) {
+        //待付款
+        
+    }
+    if ([model.ordertype isEqualToString:@"2"]) {
+        //已付款
+        
+    }
+    if ([model.ordertype isEqualToString:@"3"]) {
+        //已发货
+        
+    }
+    if ([model.ordertype isEqualToString:@"4"]) {
+        //已完成
+        
+    }
+    if ([model.ordertype isEqualToString:@"5"]) {
+        //退款／售后
+        
+    }
+    
+    self.totalLab.text = [NSString stringWithFormat:@"%@%@",@"合计:",model.totalpricestr];
     self.numLab.text = [NSString stringWithFormat:@"%@%@",@"X",model.numstr];
-    
-    
     [super layoutIfNeeded];
 }
 

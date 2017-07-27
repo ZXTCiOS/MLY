@@ -7,14 +7,11 @@
 //
 
 #import "MyStorageVC.h"
-
-
-
-
-
+#import "UIParameter.h"
+#import "NinaPagerView.h"
 
 @interface MyStorageVC ()
-
+@property (nonatomic, strong) NinaPagerView *ninaPagerView;
 @end
 
 @implementation MyStorageVC
@@ -22,40 +19,72 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"我的收藏";
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"dh-fh.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithHexString:@"333333"];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    [self.view addSubview:self.ninaPagerView];
+
     
-    self.titles = @[@"民宿", @"商品", @"出行"];
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
     
 }
 
 
-- (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
-    return self.titles.count;
+#pragma mark - NinaParaArrays
+
+- (NSArray *)ninaTitleArray {
+    return @[
+             @"景点",
+             @"出行",
+             @"民宿",
+             @"商品",
+             @"美食"
+             ];
 }
 
-- (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
-    
-    
-    
-    return nil;
+- (NSArray *)ninaVCsArray {
+    return @[
+             @"sotrageVC0",
+             @"sotrageVC1",
+             @"sotrageVC2",
+             @"sotrageVC3",
+             @"sotrageVC4"
+             ];
 }
 
+#pragma mark - LazyLoad
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NinaPagerView *)ninaPagerView {
+    if (!_ninaPagerView) {
+        NSArray *titleArray = [self ninaTitleArray];
+        NSArray *vcsArray = [self ninaVCsArray];
+        _ninaPagerView.unSelectTitleColor = [UIColor whiteColor];
+        
+        CGRect pagerRect = CGRectMake(0, 0, FUll_VIEW_WIDTH, FUll_CONTENT_HEIGHT);
+        _ninaPagerView = [[NinaPagerView alloc] initWithFrame:pagerRect WithTitles:titleArray WithVCs:vcsArray];
+        _ninaPagerView.titleScale = 1;
+        _ninaPagerView.unSelectTitleColor = [UIColor colorWithHexString:@"333333"];
+        _ninaPagerView.selectTitleColor = [UIColor colorWithHexString:@"df0843"];
+        _ninaPagerView.underlineColor = [UIColor colorWithHexString:@"df0842"];
+        _ninaPagerView.ninaPagerStyles = NinaPagerStyleBottomLine;
+    }
+    return _ninaPagerView;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - 实现方法
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
+
 
 @end
