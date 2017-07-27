@@ -7,6 +7,11 @@
 //
 
 #import "FogetPwdViewController.h"
+#import "TabBarController.h"
+#import "AppDelegate.h"
+
+
+
 
 @interface FogetPwdViewController ()
 
@@ -30,7 +35,7 @@
     [super viewDidLoad];
     
     [XDFactory addBackItemForVC:self];
-    self.navigationItem.title = @"注册";
+    self.navigationItem.title = @"修改密码";
     [self setCornerRadius];
 }
 
@@ -53,11 +58,97 @@
 - (IBAction)getCode:(UIButton *)sender {
     
     
+    if (self.teleNum.text.length != 11) {
+        [self.view showWarning:@"手机号错误,请重新输入"];
+        [self.teleNum becomeFirstResponder];
+        return;
+    }
+    
+    // 发送验证码
+    [DNNetworking postWithURLString:get_yanzhengma parameters:@{@"phone": self.teleNum.text} success:^(id obj) {
+        
+        sender.enabled = NO;
+        __block NSInteger time = 5;
+        [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
+            time--;
+            sender.tintColor = [UIColor clearColor];
+            sender.backgroundColor = [UIColor clearColor];
+            //sender.titleLabel.text = [NSString stringWithFormat:@"%ld秒后再试", time];
+            [sender setTitle:@(time).stringValue forState:UIControlStateNormal];
+            sender.backgroundColor = [UIColor grayColor];
+            if (!time) {
+                [sender setTitle:@"获取验证码" forState:UIControlStateNormal];
+                sender.enabled = YES;
+                [timer invalidate];
+                sender.backgroundColor = [UIColor colorWithRed:225/225.0 green:53/225.0 blue:121/225.0 alpha:1];
+            }
+        } repeats:YES];
+        
+        NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];
+        if ([code isEqualToString:@"200"]) {
+            NSDictionary *data = [obj valueForKey:@"data"];
+            NSString *v = [NSString stringWithFormat:@"%@",[data valueForKey:@"verify"]];
+            self.code.text = v;
+        } else {
+            [self.view showWarning:[obj valueForKey:@"message"]];
+        }
+        
+    } failure:^(NSError *error) {
+        [self.view showWarning:@"网络错误"];
+    }];
+    
+    
+    
+    
+    
 }
 
 - (IBAction)submite:(id)sender {
     
+    if (self.password.text.length < 6) {
+        [self.view showWarning:@"密码太短,重新输入"];
+        [self.password becomeFirstResponder];
+        return;
+    }
+    if (![self.password.text isEqualToString:self.passwordCertify.text]) {
+        [self.view showWarning:@"重新输入密码"];
+        self.password.text = @"";
+        self.passwordCertify.text = @"";
+        [self.password becomeFirstResponder];
+        return;
+    }
     
+    NSDictionary *dic = @{@"phone":self.teleNum.text, @"pwd":self.password.text, @"code": self.code.text};
+    [DNNetworking getWithURLString:get_change_pwd parameters:dic success:^(id obj) {
+        
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        // 为userdefaults 赋值
+        NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];
+        NSString *message = [NSString stringWithFormat:@"%@", [obj valueForKey:@"message"]];
+        //success.intValue
+        if ([code isEqualToString:@"200"]) {
+            NSDictionary *data = [obj valueForKey:@"data"];
+            NSString *token = [data objectForKey:@"api_token"];
+            NSString *user_id = [NSString stringWithFormat:@"%@", [data objectForKey:@"user_id"]];
+            [user setValue:token forKey:user_key_token];
+            [user setValue:user_id forKey:user_key_user_id];
+            TabBarController *tab = [[TabBarController alloc] init];
+            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            delegate.window.rootViewController = tab;
+        } else {
+            
+            [self.view showWarning:message];
+            [self.teleNum becomeFirstResponder];
+            self.teleNum.text = @"";
+            self.password.text = @"";
+        }
+        
+        
+        
+        
+    } failure:^(NSError *error) {
+        [self.view showWarning:@"网络异常"];
+    }];
     
     
 }

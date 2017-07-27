@@ -11,10 +11,11 @@
 
 @interface ShunFengCheModel : NSObject
 
+@property (nonatomic, assign) NSInteger code;
 
 @property (nonatomic, strong) NSArray<HomeTravelModel *> *data;
 
-
+@property (nonatomic, copy) NSString *message;
 
 
 @end

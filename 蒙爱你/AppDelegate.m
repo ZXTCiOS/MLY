@@ -30,9 +30,7 @@
 
     
     [self configInfo];
-    _window.rootViewController = [[TabBarController alloc] init];
-    _window.backgroundColor = [UIColor whiteColor];
-    [_window makeKeyAndVisible];
+    
     
     return YES;
 }
@@ -43,8 +41,12 @@
 
 - (void)configInfo{
     
-    [userDefault setInteger:1 forKey:user_key_user_id];
-    [userDefault synchronize];
+    if ([userDefault valueForKey:user_key_user_id]) {
+        _window.rootViewController = [[TabBarController alloc] init];
+        _window.backgroundColor = [UIColor whiteColor];
+        [_window makeKeyAndVisible];
+    }
+    
     [UIImageView appearance].clipsToBounds = YES;
     [MLTransition validatePanBackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypeScreenEdgePan];
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;

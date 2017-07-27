@@ -203,6 +203,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="iiS-lE-z8k"/>
                     <connections>
+                        <outlet property="QQ" destination="cD7-lu-kgM" id="xeI-eD-C7W"/>
+                        <outlet property="WX" destination="lIq-b0-p9T" id="nHk-OT-FLl"/>
                         <outlet property="iconView" destination="GnT-3i-Kjf" id="RQ0-Rx-9dR"/>
                         <outlet property="loginBtn" destination="RqP-Bx-aHn" id="teJ-dH-4bw"/>
                         <outlet property="password" destination="Zbq-9k-S8N" id="BGq-nb-QXH"/>
@@ -269,7 +271,7 @@
                                     <constraint firstAttribute="width" constant="110" id="A4x-Rc-WJ1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="立即发送" backgroundImage="dd-btn-fk">
+                                <state key="normal" title="立即发送" backgroundImage="zc-ljfs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -354,7 +356,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U8P-0q-EWV">
-                                <rect key="frame" x="51" y="240.5" width="273" height="35"/>
+                                <rect key="frame" x="51" y="245.5" width="273" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="vQd-ep-4tF"/>
                                 </constraints>
@@ -363,7 +365,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请确认密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d0Z-2Z-yu3">
-                                <rect key="frame" x="51" y="298.5" width="273" height="35"/>
+                                <rect key="frame" x="51" y="303.5" width="273" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="eop-lE-t0Y"/>
                                 </constraints>
@@ -372,13 +374,13 @@
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fg-Zl-Dh5">
-                                <rect key="frame" x="224" y="189.5" width="100" height="30"/>
+                                <rect key="frame" x="224" y="184.5" width="100" height="40"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94901960784313721" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="8N4-gK-tjJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="立即发送" backgroundImage="dd-btn-fk">
+                                <state key="normal" title="立即发送" backgroundImage="zc-ljfs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -386,7 +388,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1H-YK-WVK">
-                                <rect key="frame" x="51" y="377.5" width="274" height="40"/>
+                                <rect key="frame" x="51" y="382.5" width="274" height="40"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94901960784313721" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7Qe-gX-qys"/>
@@ -529,12 +531,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dd-btn-fk" width="64" height="30"/>
         <image name="login-btn" width="300" height="44"/>
         <image name="login-qq" width="32" height="32"/>
         <image name="login-tb" width="288" height="70"/>
         <image name="login-wx" width="32" height="32"/>
         <image name="zc-btn-bc" width="300" height="44"/>
         <image name="zc-btn-zc" width="300" height="44"/>
+        <image name="zc-ljfs" width="130" height="40"/>
     </resources>
 </document>
