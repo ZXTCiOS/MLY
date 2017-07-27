@@ -10,4 +10,12 @@
 
 @implementation MinsuListModel
 
+
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass{
+    return @{
+             @"data": [HomeFoodModel class]
+             };
+}
+
+
 @end

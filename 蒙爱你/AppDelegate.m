@@ -41,15 +41,16 @@
 
 - (void)configInfo{
     
+    [UIImageView appearance].clipsToBounds = YES;
+    [MLTransition validatePanBackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypeScreenEdgePan];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     if ([userDefault valueForKey:user_key_user_id]) {
         _window.rootViewController = [[TabBarController alloc] init];
         _window.backgroundColor = [UIColor whiteColor];
         [_window makeKeyAndVisible];
     }
     
-    [UIImageView appearance].clipsToBounds = YES;
-    [MLTransition validatePanBackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypeScreenEdgePan];
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
 }
 
 

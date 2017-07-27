@@ -14,7 +14,7 @@
 
 @property (nonatomic, copy) NSString *home_name;
 
-@property (nonatomic, copy) NSString *detail;
+@property (nonatomic, copy) NSString *home_description;
 
 @property (nonatomic, assign) NSInteger home_star;
 

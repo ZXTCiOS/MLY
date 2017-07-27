@@ -18,6 +18,7 @@
 
 @property (nonatomic, assign) BOOL isStored;
 
+@property (weak, nonatomic) IBOutlet UILabel *detailL;
 
 
 @end

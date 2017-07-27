@@ -51,7 +51,10 @@
 #define post_shop_food              @""      // 商城 纪念品
 
 
-#define get_food_main               @""      // 餐饮民宿 首页
+#define get_food_main               @"/MLY/api.php/Food/foodList"       // 餐饮民宿_没事列表 
+#define get_bed_main                @"/MLY/api.php/Home/minsuList"      // 餐饮民宿_民宿列表
+
+
 
 
 /*

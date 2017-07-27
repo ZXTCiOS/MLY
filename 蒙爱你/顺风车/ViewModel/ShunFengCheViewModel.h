@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, RequestMode) {
 - (void)getDataWithMode:(RequestMode) mode url:(NSString *)url handller:(void(^)(NSError *error)) handller;
 
 
-- (void)postDataWithTokenandMode:(RequestMode) mode url:(NSString *)url handller:(void(^)(NSError *error)) handller;
+//- (void)postDataWithTokenandMode:(RequestMode) mode url:(NSString *)url handller:(void(^)(NSError *error)) handller;
 
 
 

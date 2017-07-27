@@ -41,7 +41,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     }];
     [self.collectionView addFooterRefresh:^{
-        [weakSelf.viewmodel getDataWithMode:RequestModeRefresh url:get_shunFengChe_zhuye handller:^(NSError *error) {
+        [weakSelf.viewmodel getDataWithMode:RequestModeMore url:get_shunFengChe_zhuye handller:^(NSError *error) {
             if (!error) {
                 [weakSelf.collectionView reloadData];
                 [weakSelf.collectionView endFooterRefresh];
@@ -68,20 +68,17 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;//self.viewmodel.datalist.count ? 1 : 0;
+    return self.viewmodel.datalist.count ? 1 : 0;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 10;//self.viewmodel.datalist.count;
+    return self.viewmodel.datalist.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TravelAdviseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    if (isDebug) {
-        return cell;
-    }
     HomeTravelModel *model = self.viewmodel.datalist[indexPath.row];
     [cell.imageV sd_setImageWithURL:model.trip_pic.xd_URL placeholderImage:img_shunFengChe_default];
     cell.nameL.text = model.trip_driver;
@@ -97,8 +94,8 @@ static NSString * const reuseIdentifier = @"Cell";
     NSLog(@"%ld", indexPath.row);
     
     
-    //HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row]];
-    HomeTravelVC *vc = [[HomeTravelVC alloc] init];
+    HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row]];
+    
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

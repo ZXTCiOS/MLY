@@ -93,16 +93,19 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FoodAndHotelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    if (isDebug) return cell;
+    
     
     [cell.imgV setImageWithURL:self.viewmodel.datalist[indexPath.row].home_pic.xd_URL placeholder:img_canyinMinsu_default];
     cell.isStored = self.viewmodel.datalist[indexPath.row].is_shoucang;
-    cell.desc.text = self.viewmodel.datalist[indexPath.row].detail;
+    cell.desc.text = self.viewmodel.datalist[indexPath.row].home_description;
     cell.star = self.viewmodel.datalist[indexPath.row].home_star;
-    
+    cell.detailL.text = self.viewmodel.datalist[indexPath.row].home_description;
     
     return cell;
 }
+
+
+
 
 #pragma mark <UICollectionViewDelegate>
 
@@ -121,10 +124,10 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewLayout *)collectionViewLayout{
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     
-    layout.minimumLineSpacing = 10;
-    layout.minimumInteritemSpacing = 10;
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    layout.itemSize = CGSizeMake((kScreenW - 30) /2 , (kScreenW - 30) *3/2);
+    layout.minimumLineSpacing = 15;
+    layout.minimumInteritemSpacing = 15;
+    layout.sectionInset = UIEdgeInsetsMake(20, 18, 18, 18);
+    layout.itemSize = CGSizeMake((kScreenW - 45) /2 , 239 + (kScreenW - 45) /2 - 150);
     return layout;
 }
 
