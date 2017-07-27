@@ -23,6 +23,12 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
+@property (weak, nonatomic) IBOutlet UIControl *QQ;
+
+@property (weak, nonatomic) IBOutlet UIControl *WX;
+
+
+
 @end
 
 @implementation loginVC
@@ -36,8 +42,10 @@
 }
 
 - (void)setCornerRadius{
-    self.iconView.layer.cornerRadius = self.iconView.frame.size.width / 2.0;
-    self.iconView.layer.masksToBounds = YES;
+    self.QQ.layer.cornerRadius = 8;
+    self.QQ.layer.masksToBounds = YES;
+    self.WX.layer.cornerRadius = 8;
+    self.WX.layer.masksToBounds = YES;
     self.teleNum.layer.cornerRadius = 8;
     self.teleNum.layer.masksToBounds = YES;
     self.password.layer.cornerRadius = 8;
@@ -51,18 +59,6 @@
 
 - (IBAction)QQLogin:(id)sender {
 }
-
-- (IBAction)VisitorLogin:(id)sender {
-    //  清空 userdefaults
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    
-    TabBarController *tab = [[TabBarController alloc] init];
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    delegate.window.rootViewController = tab;
-}
-
-
 
 
 
@@ -87,32 +83,29 @@
         return;
     }
     
-    NSDictionary *dic = @{@"phone":self.teleNum.text, @"pwd":self.password.text};
+    NSDictionary *dic = @{@"user_phone":self.teleNum.text, @"user_pwd":self.password.text, @"type": @(1)};
     [DNNetworking postWithURLString:post_login parameters:dic success:^(id obj) {
         
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         // 为userdefaults 赋值
-        NSString *success = [NSString stringWithFormat:@"%@", [obj objectForKey:@"message"]];
-        NSString *error = [NSString stringWithFormat:@"%@", [obj objectForKey:@"error"]];
+        NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];
+        NSString *message = [NSString stringWithFormat:@"%@", [obj valueForKey:@"message"]];
         //success.intValue
-        if ([success isEqualToString:@"1"]) {
-            NSString *token = [obj objectForKey:@"token"];
-            NSString *user_id = [NSString stringWithFormat:@"%@", [obj objectForKey:@"user_id"]];
-            [user setObject:token forKey:user_key_token];
-            [user setObject:user_id forKey:user_key_user_id];
+        if ([code isEqualToString:@"200"]) {
+            NSDictionary *data = [obj valueForKey:@"data"];
+            NSString *token = [data objectForKey:@"api_token"];
+            NSString *user_id = [NSString stringWithFormat:@"%@", [data objectForKey:@"user_id"]];
+            [user setValue:token forKey:user_key_token];
+            [user setValue:user_id forKey:user_key_user_id];
             TabBarController *tab = [[TabBarController alloc] init];
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.window.rootViewController = tab;
         } else {
-            if ([error isEqualToString:@"0"]) {
-                [self.view showWarning:@"账号不存在"];
-                [self.teleNum becomeFirstResponder];
-                self.teleNum.text = @"";
-            } else if (error.intValue){
-                [self.view showWarning:@"密码错误"];
-                self.password.text = @"";
-                [self.password becomeFirstResponder];
-            }
+            
+            [self.view showWarning:message];
+            [self.teleNum becomeFirstResponder];
+            self.teleNum.text = @"";
+            self.password.text = @"";
         }
         
     } failure:^(NSError *error) {

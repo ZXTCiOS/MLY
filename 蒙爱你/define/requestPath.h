@@ -15,13 +15,13 @@
  *  网址
  */
 
-#define baseURL                 @"http://192.168.1.142/"         // baseurl
+#define baseURL                 @"http://192.168.1.142/"            // baseurl
 
 
-#define post_register           @""         //注册
-#define get_yanzhengma          @""         //获取验证码
-#define post_login              @""         //登录
-
+#define post_register           @"/MLY/api.php/Login/register"      //注册
+#define get_yanzhengma          @"/MLY/api.php/Login/getVerify"     //获取验证码
+#define post_login              @"/MLY/api.php/Login/login"         //登录
+#define get_change_pwd          @"/MLY/api.php/Forget/userChange"   // 修改密码
 
 
 #define get_Home_zhuye          @"MLY/api.php/Index/index"                  //首页主页
@@ -40,7 +40,7 @@
 
 
 
-#define get_shunFengChe_zhuye       @"%ld"   // 顺风车主页
+#define get_shunFengChe_zhuye       @"/MLY/api.php/Trip/tripList"   // 顺风车主页
 #define post_shunFengChe_shouCang   @"%ld"   // 顺风车收藏
 
 
@@ -52,7 +52,6 @@
 
 
 #define get_food_main               @""      // 餐饮民宿 首页
-
 
 
 /*
