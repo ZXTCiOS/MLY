@@ -26,6 +26,10 @@
     } forControlEvents:UIControlEventTouchUpInside];
     
     self.imgV.layer.masksToBounds = YES;
+    
+    self.kefuBtn.layer.borderWidth = 1.5;
+    self.kefuBtn.layer.borderColor = krgb(135, 135, 135, 1).CGColor;
+    
 }
 
 @end

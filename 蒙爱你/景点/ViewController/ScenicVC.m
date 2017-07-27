@@ -49,6 +49,9 @@
 
 @property (nonatomic, strong) ScenicViewModel *viewmodel;
 
+@property (nonatomic, strong) UIView *naviBar;
+@property (nonatomic, strong) UIButton *popBtn;
+@property (nonatomic, strong) UILabel *titleL;
 
 @end
 
@@ -159,10 +162,63 @@
 
 #pragma mark - scrollview delegate
 
+- (void)configNaviBar{
+    
+    self.naviBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 64)];
+    [self.navigationController.view addSubview:self.naviBar];
+    self.naviBar.backgroundColor = krgb(225, 225, 225, 0);
+    
+    
+    self.popBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.naviBar addSubview:self.popBtn];
+    [self.popBtn setImage:[UIImage imageNamed:@"dh-fh-w"] forState:UIControlStateNormal];
+    self.popBtn.tintColor = [UIColor whiteColor];
+    self.popBtn.frame = CGRectMake(15, 30, 20, 20);
+    [self.popBtn bk_addEventHandler:^(id sender) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.naviBar addSubview:self.popBtn];
+    
+    
+    self.titleL = [[UILabel alloc] init];
+    [self.naviBar addSubview:self.titleL];
+    [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(0);
+        make.centerY.equalTo(self.popBtn.mas_centerY);
+    }];
+    self.titleL.textColor = [UIColor whiteColor];
+    self.titleL.text = @"景点";
+    
+}
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
+    CGPoint p = scrollView.contentOffset;
+    if (p.y < 0) {
+        self.tableView.contentOffset = CGPointMake(0, 0);
+    } else if (p.y > 0 && p.y < 150) {
+        self.naviBar.backgroundColor = krgb(225, 225, 225, p.y / 150.0);
+        self.titleL.textColor = [UIColor whiteColor];
+        self.popBtn.tintColor = [UIColor whiteColor];
+    } else if (p.y > 150) {
+        self.titleL.textColor = [UIColor colorWithHexString:@"#333333"];
+        self.popBtn.tintColor = krgb(38, 38, 38, 1);
+    }
     
     
+    
+}
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self configNaviBar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.naviBar removeFromSuperview];
 }
 
 

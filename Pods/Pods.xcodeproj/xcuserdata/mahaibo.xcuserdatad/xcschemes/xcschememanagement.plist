@@ -65,6 +65,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>NinaPagerView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 		<key>Pods-蒙爱你.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -110,6 +115,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>006B966FB16C64B5CBAF93DE80DA408C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
@@ -121,6 +131,11 @@
 			<true/>
 		</dict>
 		<key>0AC55E754182E1FCF070AC7F74379523</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0D0B9FD119493497BB9CBDEBD4FBF738</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -150,6 +165,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>53DC0DD867F4EAA4EF9A9942F703D2CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
@@ -161,6 +181,11 @@
 			<true/>
 		</dict>
 		<key>61CCE242A8F728486143FA38F7C39044</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7F5A0FB47C5B57C845FC82355D47778C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -195,6 +220,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DB9FBFF0C6FBE5A58605A6FD7C9E285D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E0005F560449C4E0EA711A6507ABC334</key>
 		<dict>
 			<key>primary</key>
@@ -205,12 +235,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>EDF3481801098ED4EF680A9B22E6F402</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FE808D3754170682F6983C97C9B00EBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>FE8E34FBFC6B0E0046240F2C149F6896</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE935F79851BC102E6B566D7D9EFFE4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
