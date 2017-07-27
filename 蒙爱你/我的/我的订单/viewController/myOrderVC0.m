@@ -13,7 +13,8 @@
 #import "myOrderModel.h"
 @interface myOrderVC0 ()<UITableViewDataSource,UITableViewDelegate,mycellVdelegate>
 @property (nonatomic,strong) UITableView *ordertableView;
-@property (nonatomic,copy) NSMutableArray *dataSource;
+@property (nonatomic,strong) NSMutableArray *dataSource;
+@property (nonatomic,copy) NSMutableArray *copydic;
 @end
 static NSString *myordercell0 = @"myordercell0identfid";
 @implementation myOrderVC0
@@ -24,8 +25,19 @@ static NSString *myordercell0 = @"myordercell0identfid";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.ordertableView];
     self.dataSource = [NSMutableArray array];
+    
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"order" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:nil];
+    self.copydic = [NSMutableArray array];
+    self.copydic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    NSLog(@"dic=====%@",self.copydic);
+    
+    
     [self addHeader];
     self.ordertableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,16 +64,47 @@ static NSString *myordercell0 = @"myordercell0identfid";
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *token = [userDefault objectForKey:user_key_token];
     NSString *urlstr = [NSString stringWithFormat:get_myorder,userid,token,@"1"];
+    
+    self.dataSource = [NSMutableArray array];
+    
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
-        NSLog(@"obj=%@",obj);
+        //NSLog(@"obj=%@",obj);
+        
+        obj = self.copydic;
+        
         if ([[obj objectForKey:@"code"] intValue]==200) {
             NSArray *data = [obj objectForKey:@"data"];
+            
             for (int i = 0; i<data.count; i++) {
                 NSDictionary *dit = [data objectAtIndex:i];
                 NSDictionary *gooddit = [dit objectForKey:@"goods"];
                 myOrderModel *model = [[myOrderModel alloc] init];
-                model.orderidstr = [dit objectForKey:@"order_id"];;
-                model.ordersn = [dit objectForKey:@""];
+                model.orderidstr = [dit objectForKey:@"order_id"];
+                model.ordertype = [dit objectForKey:@"order_type"];
+                model.ordersn = [dit objectForKey:@"order_sn"];
+                model.pricestr = [dit objectForKey:@"order_money"];
+                model.numstr = [dit objectForKey:@"order_count"];
+                model.totalpricestr = [dit objectForKey:@"order_money"];
+                
+                if ([gooddit objectForKey:@"bedeat_id"]==nil&&[gooddit objectForKey:@"ticket_id"]==nil) {
+                    //goods_id
+                    model.namestr = [gooddit objectForKey:@"goods_name"];
+                    model.orderimgstr = [gooddit objectForKey:@"goods_pic"];
+                    model.contentstr = [gooddit objectForKey:@"goods_intro"];
+                    
+                }
+                if ([gooddit objectForKey:@"goods_id"]==nil&&[gooddit objectForKey:@"ticket_id"]==nil) {
+                    //bedeat_id
+                    model.namestr = [gooddit objectForKey:@"bedeat_name"];
+                    model.orderimgstr = [gooddit objectForKey:@"bedeat_pic"];
+                    model.contentstr = [gooddit objectForKey:@"bedeat_intro"];
+                }
+                if ([gooddit objectForKey:@"goods_id"]==nil&&[gooddit objectForKey:@"bedeat_id"]==nil) {
+                    //ticket_id
+                    model.namestr = [gooddit objectForKey:@"ticket_name"];
+                    model.orderimgstr = [gooddit objectForKey:@"bedeat_pic"];
+                    model.contentstr = [gooddit objectForKey:@"ticket_intro"];
+                }
                 
                 [self.dataSource addObject:model];
             }
@@ -75,7 +118,6 @@ static NSString *myordercell0 = @"myordercell0identfid";
     } failure:^(NSError *error) {
         
     }];
-    
 }
 
 #pragma mark - getters
@@ -95,8 +137,8 @@ static NSString *myordercell0 = @"myordercell0identfid";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //return self.dataSource.count;
-    return 4;
+    return self.dataSource.count;
+    //return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -110,7 +152,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
     cell =  [[myorderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myordercell0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
-    //[cell setdata:self.dataSource[indexPath.section]];
+    [cell setdata:self.dataSource[indexPath.section]];
     return cell;
 }
 
@@ -137,13 +179,15 @@ static NSString *myordercell0 = @"myordercell0identfid";
 }
 
 //取消
+
 -(void)myTabVClick1:(UITableViewCell *)cell
 {
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
     NSLog(@"333===%ld   取消",index.section);
-    
 }
+
 //支付
+
 -(void)myTabVClick2:(UITableViewCell *)cell
 {
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
