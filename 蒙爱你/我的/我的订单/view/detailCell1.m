@@ -15,15 +15,10 @@
     self =  [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self)
     {
-        
-        [self setuplayout];
+        self.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+        self.textLabel.font = [UIFont systemFontOfSize:15];
     }
     return self;
-}
-
--(void)setuplayout
-{
-    
 }
 
 @end
