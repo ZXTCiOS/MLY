@@ -13,6 +13,14 @@
 @interface detailedOrderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *detailtableView;
 
+@property (nonatomic,strong) NSDictionary *detaldic;
+
+@property (nonatomic,strong) NSString *orderidstr;
+@property (nonatomic,strong) NSString *firsttimestr;
+@property (nonatomic,strong) NSString *lasttimestr;
+@property (nonatomic,strong) NSString *addresssstr;
+@property (nonatomic,strong) NSString *pricestr;
+
 @end
 
 static NSString *detalcellidentfid0 = @"detalcellidentfid0";
@@ -28,8 +36,8 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithHexString:@"333333"];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-    
-    
+    self.detaldic = [NSDictionary dictionary];
+    self.detailtableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.detailtableView];
 }
 
@@ -80,6 +88,22 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
         cell = [[detailCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detalcellidentfid1];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"text";
+        if (indexPath.row==0) {
+            cell.textLabel.text = @"订单编号：";
+            
+        }
+        if (indexPath.row==1) {
+            
+        }
+        if (indexPath.row==2) {
+            
+        }
+        if (indexPath.row==3) {
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        }
+        if (indexPath.row==4) {
+            
+        }
         return cell;
     }
     return nil;
@@ -93,6 +117,20 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
     }else
     {
         return 40*HEIGHT_SCALE;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.01f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 10;
+    }else
+    {
+        return 0.01f;
     }
 }
 

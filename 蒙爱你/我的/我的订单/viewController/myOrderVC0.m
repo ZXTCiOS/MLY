@@ -10,6 +10,7 @@
 #import "myorderCell.h"
 #import "detailedOrderVC.h"
 #import "MBProgressHUD+XMG.h"
+#import "myOrderModel.h"
 @interface myOrderVC0 ()<UITableViewDataSource,UITableViewDelegate,mycellVdelegate>
 @property (nonatomic,strong) UITableView *ordertableView;
 @property (nonatomic,copy) NSMutableArray *dataSource;
@@ -24,7 +25,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
     [self.view addSubview:self.ordertableView];
     self.dataSource = [NSMutableArray array];
     [self addHeader];
-
+    self.ordertableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +55,17 @@ static NSString *myordercell0 = @"myordercell0identfid";
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
         NSLog(@"obj=%@",obj);
         if ([[obj objectForKey:@"code"] intValue]==200) {
-            
+            NSArray *data = [obj objectForKey:@"data"];
+            for (int i = 0; i<data.count; i++) {
+                NSDictionary *dit = [data objectAtIndex:i];
+                NSDictionary *gooddit = [dit objectForKey:@"goods"];
+                myOrderModel *model = [[myOrderModel alloc] init];
+                model.orderidstr = [dit objectForKey:@"order_id"];;
+                model.ordersn = [dit objectForKey:@""];
+                
+                [self.dataSource addObject:model];
+            }
+            [self.ordertableView reloadData];
         }else
         {
             NSString *hud = [obj objectForKey:@"message"];
@@ -84,6 +95,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    //return self.dataSource.count;
     return 4;
 }
 
@@ -98,6 +110,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
     cell =  [[myorderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myordercell0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
+    //[cell setdata:self.dataSource[indexPath.section]];
     return cell;
 }
 
@@ -134,7 +147,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
 -(void)myTabVClick2:(UITableViewCell *)cell
 {
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
-    NSLog(@"222===%ld   取消",index.section);
+    NSLog(@"222===%ld   付款",index.section);
 }
 
 @end

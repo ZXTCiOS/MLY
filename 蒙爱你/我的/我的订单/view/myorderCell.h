@@ -16,4 +16,5 @@
 @end
 @interface myorderCell : UITableViewCell
 @property(assign,nonatomic)id<mycellVdelegate>delegate;
+-(void)setdata:(myOrderModel *)model;
 @end

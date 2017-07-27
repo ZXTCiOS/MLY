@@ -27,7 +27,7 @@
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithHexString:@"333333"];
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-    
+    [self.view addSubview:self.ninaPagerView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +39,7 @@
 {
     [super viewWillAppear:animated];
      self.navigationController.navigationBar.hidden = NO;
-    [self.view addSubview:self.ninaPagerView];
+    
 }
 
 
@@ -70,6 +70,7 @@
 }
 
 #pragma mark - LazyLoad
+
 - (NinaPagerView *)ninaPagerView {
     if (!_ninaPagerView) {
         NSArray *titleArray = [self ninaTitleArray];
@@ -79,6 +80,9 @@
         CGRect pagerRect = CGRectMake(0, 0, FUll_VIEW_WIDTH, FUll_CONTENT_HEIGHT);
         _ninaPagerView = [[NinaPagerView alloc] initWithFrame:pagerRect WithTitles:titleArray WithVCs:vcsArray];
         _ninaPagerView.titleScale = 1;
+        _ninaPagerView.unSelectTitleColor = [UIColor colorWithHexString:@"333333"];
+        _ninaPagerView.selectTitleColor = [UIColor colorWithHexString:@"df0843"];
+        _ninaPagerView.underlineColor = [UIColor colorWithHexString:@"df0842"];
         _ninaPagerView.ninaPagerStyles = NinaPagerStyleBottomLine;
     }
     return _ninaPagerView;
