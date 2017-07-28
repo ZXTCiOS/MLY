@@ -45,14 +45,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
+    return 10;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MoreActivityCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     //cell.img sd_setImageWithURL:<#(nullable NSURL *)#> placeholderImage:<#(nullable UIImage *)#>
     //cell.title.text =
-    cell.userInteractionEnabled = NO;
+    //cell.userInteractionEnabled = NO;
     return cell;
 }
 
