@@ -168,6 +168,15 @@
 		534C17A31F29CC530067C3E4 /* sotrageVC3.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17A21F29CC530067C3E4 /* sotrageVC3.m */; };
 		534C17A61F29CC620067C3E4 /* sotrageVC4.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17A51F29CC620067C3E4 /* sotrageVC4.m */; };
 		534C17AE1F29D6280067C3E4 /* attractionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17AD1F29D6280067C3E4 /* attractionsCell.m */; };
+		534C17B11F29EEC60067C3E4 /* travelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17B01F29EEC60067C3E4 /* travelCell.m */; };
+		534C17B41F29F4620067C3E4 /* hotelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17B31F29F4620067C3E4 /* hotelCell.m */; };
+		534C17BE1F29F89C0067C3E4 /* w_star_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17B61F29F89C0067C3E4 /* w_star_red.png */; };
+		534C17BF1F29F89C0067C3E4 /* w_star_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17B71F29F89C0067C3E4 /* w_star_red@2x.png */; };
+		534C17C01F29F89C0067C3E4 /* w_star_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17B81F29F89C0067C3E4 /* w_star_red@3x.png */; };
+		534C17C11F29F89C0067C3E4 /* w_star_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17B91F29F89C0067C3E4 /* w_star_white.png */; };
+		534C17C21F29F89C0067C3E4 /* w_star_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17BA1F29F89C0067C3E4 /* w_star_white@2x.png */; };
+		534C17C31F29F89C0067C3E4 /* w_star_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17BB1F29F89C0067C3E4 /* w_star_white@3x.png */; };
+		534C17C41F29F89C0067C3E4 /* WTKStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17BD1F29F89C0067C3E4 /* WTKStarView.m */; };
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
@@ -462,6 +471,18 @@
 		534C17A51F29CC620067C3E4 /* sotrageVC4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sotrageVC4.m; sourceTree = "<group>"; };
 		534C17AC1F29D6280067C3E4 /* attractionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attractionsCell.h; sourceTree = "<group>"; };
 		534C17AD1F29D6280067C3E4 /* attractionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = attractionsCell.m; sourceTree = "<group>"; };
+		534C17AF1F29EEC60067C3E4 /* travelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = travelCell.h; sourceTree = "<group>"; };
+		534C17B01F29EEC60067C3E4 /* travelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = travelCell.m; sourceTree = "<group>"; };
+		534C17B21F29F4620067C3E4 /* hotelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hotelCell.h; sourceTree = "<group>"; };
+		534C17B31F29F4620067C3E4 /* hotelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hotelCell.m; sourceTree = "<group>"; };
+		534C17B61F29F89C0067C3E4 /* w_star_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w_star_red.png; sourceTree = "<group>"; };
+		534C17B71F29F89C0067C3E4 /* w_star_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_star_red@2x.png"; sourceTree = "<group>"; };
+		534C17B81F29F89C0067C3E4 /* w_star_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_star_red@3x.png"; sourceTree = "<group>"; };
+		534C17B91F29F89C0067C3E4 /* w_star_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w_star_white.png; sourceTree = "<group>"; };
+		534C17BA1F29F89C0067C3E4 /* w_star_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_star_white@2x.png"; sourceTree = "<group>"; };
+		534C17BB1F29F89C0067C3E4 /* w_star_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_star_white@3x.png"; sourceTree = "<group>"; };
+		534C17BC1F29F89C0067C3E4 /* WTKStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTKStarView.h; sourceTree = "<group>"; };
+		534C17BD1F29F89C0067C3E4 /* WTKStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTKStarView.m; sourceTree = "<group>"; };
 		536022B61F25F49300364CDD /* wangHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wangHeader.h; sourceTree = "<group>"; };
 		536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XMG.h"; sourceTree = "<group>"; };
 		536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XMG.m"; sourceTree = "<group>"; };
@@ -1436,10 +1457,30 @@
 		534C17AB1F29D61F0067C3E4 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				534C17B51F29F89C0067C3E4 /* WTKStar */,
 				534C17AC1F29D6280067C3E4 /* attractionsCell.h */,
 				534C17AD1F29D6280067C3E4 /* attractionsCell.m */,
+				534C17AF1F29EEC60067C3E4 /* travelCell.h */,
+				534C17B01F29EEC60067C3E4 /* travelCell.m */,
+				534C17B21F29F4620067C3E4 /* hotelCell.h */,
+				534C17B31F29F4620067C3E4 /* hotelCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		534C17B51F29F89C0067C3E4 /* WTKStar */ = {
+			isa = PBXGroup;
+			children = (
+				534C17B61F29F89C0067C3E4 /* w_star_red.png */,
+				534C17B71F29F89C0067C3E4 /* w_star_red@2x.png */,
+				534C17B81F29F89C0067C3E4 /* w_star_red@3x.png */,
+				534C17B91F29F89C0067C3E4 /* w_star_white.png */,
+				534C17BA1F29F89C0067C3E4 /* w_star_white@2x.png */,
+				534C17BB1F29F89C0067C3E4 /* w_star_white@3x.png */,
+				534C17BC1F29F89C0067C3E4 /* WTKStarView.h */,
+				534C17BD1F29F89C0067C3E4 /* WTKStarView.m */,
+			);
+			path = WTKStar;
 			sourceTree = "<group>";
 		};
 		536022B71F25FCA000364CDD /* utlis */ = {
@@ -1538,6 +1579,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				534C17C01F29F89C0067C3E4 /* w_star_red@3x.png in Resources */,
 				11093B701F0B361C00AFCB20 /* LaunchScreen.storyboard in Resources */,
 				11093C891F0B775F00AFCB20 /* FoodAndHotelCell.xib in Resources */,
 				1146E5E01F0F96E80066B37F /* ShouHuoDiZhiCell.xib in Resources */,
@@ -1550,10 +1592,12 @@
 				11093BE81F0B3A8C00AFCB20 /* VerifiedVC.xib in Resources */,
 				117105881F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib in Resources */,
 				11093C241F0B3DC100AFCB20 /* UzysAssetPickerController.bundle in Resources */,
+				534C17C11F29F89C0067C3E4 /* w_star_white.png in Resources */,
 				11353E8B1F15F3EB00B34D7C /* ScenicCell.xib in Resources */,
 				117105841F14EF3A008A2F25 /* Home12Cell.xib in Resources */,
 				11093BFB1F0B3A8C00AFCB20 /* ModifyInfoVC.xib in Resources */,
 				113CBB061F1F274D00C6A766 /* DiscountCell.xib in Resources */,
+				534C17C21F29F89C0067C3E4 /* w_star_white@2x.png in Resources */,
 				114416321F131E920079B1E2 /* commodityCell.xib in Resources */,
 				11405FC21F0DFF6200B5CBAE /* HomeTravelVC.xib in Resources */,
 				11093C491F0B3DFF00AFCB20 /* ShareSDKConfigFile.bundle in Resources */,
@@ -1562,6 +1606,9 @@
 				1144E4891F1E1F5C0015B5EE /* SHDZ.storyboard in Resources */,
 				113CBB011F1F0A8500C6A766 /* TouSuVC.xib in Resources */,
 				117105571F14B3E8008A2F25 /* AboutUsVC.xib in Resources */,
+				534C17BF1F29F89C0067C3E4 /* w_star_red@2x.png in Resources */,
+				534C17BE1F29F89C0067C3E4 /* w_star_red.png in Resources */,
+				534C17C31F29F89C0067C3E4 /* w_star_white@3x.png in Resources */,
 				11093C4C1F0B3DFF00AFCB20 /* ShareSDKUI.bundle in Resources */,
 				11353EA21F16173500B34D7C /* scenic.storyboard in Resources */,
 				115502261F189A6E00977217 /* ChooseView.xib in Resources */,
@@ -1644,10 +1691,12 @@
 				113CBB091F1F336600C6A766 /* LiJiYuDingTVC.m in Sources */,
 				11093C001F0B3A8C00AFCB20 /* UIView+HUD.m in Sources */,
 				1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */,
+				534C17B41F29F4620067C3E4 /* hotelCell.m in Sources */,
 				114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */,
 				1143DC771F206090005E73FD /* MSSCalendarHeaderModel.m in Sources */,
 				11093C021F0B3A8C00AFCB20 /* TabBarController.m in Sources */,
 				11093BEC1F0B3A8C00AFCB20 /* BindTeleNumVC.m in Sources */,
+				534C17B11F29EEC60067C3E4 /* travelCell.m in Sources */,
 				11093BFA1F0B3A8C00AFCB20 /* ModifyInfoVC.m in Sources */,
 				11093C011F0B3A8C00AFCB20 /* DNNetworking.m in Sources */,
 				11405FC11F0DFF6200B5CBAE /* HomeTravelVC.m in Sources */,
@@ -1695,6 +1744,7 @@
 				11093B621F0B361C00AFCB20 /* main.m in Sources */,
 				1143DC781F206090005E73FD /* MSSCalendarManager.m in Sources */,
 				534C17A31F29CC530067C3E4 /* sotrageVC3.m in Sources */,
+				534C17C41F29F89C0067C3E4 /* WTKStarView.m in Sources */,
 				534C17861F289C050067C3E4 /* myOrderModel.m in Sources */,
 				117105871F14EF3A008A2F25 /* ScenicSpotAdviseCell.m in Sources */,
 				534C179A1F29CC2C0067C3E4 /* sotrageVC0.m in Sources */,

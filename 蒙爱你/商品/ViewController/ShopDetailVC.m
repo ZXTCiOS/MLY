@@ -292,7 +292,7 @@
     
     
     self.payNowBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.payNowBtn setBackgroundImage:[UIImage imageNamed:@"dd-btn-ljzf"] forState:UIControlStateNormal];
+    [self.payNowBtn setBackgroundImage:[UIImage imageNamed:@"lijigoumai"] forState:UIControlStateNormal];
     [view addSubview:self.payNowBtn];
     [self.payNowBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(-10);

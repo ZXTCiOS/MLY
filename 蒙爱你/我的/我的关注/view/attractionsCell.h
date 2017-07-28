@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+//创建一个代理
+@protocol mycellVdelegate <NSObject>
+-(void)myTabVClick1:(UITableViewCell *)cell;
 
+@end
 @interface attractionsCell : UITableViewCell
-
+@property(assign,nonatomic)id<mycellVdelegate>delegate;
 @end
