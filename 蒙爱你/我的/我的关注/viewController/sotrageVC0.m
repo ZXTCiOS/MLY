@@ -7,13 +7,14 @@
 //
 
 #import "sotrageVC0.h"
-
+#import "attractionsCell.h"
 @interface sotrageVC0 ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *attractionsTableView;
 
 @end
 
 
+static NSString *attractionidentfid = @"attractionidentfid";
 
 @implementation sotrageVC0
 
@@ -47,13 +48,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    return nil;
+    attractionsCell *cell = [tableView dequeueReusableCellWithIdentifier:attractionidentfid];
+    cell = [[attractionsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:attractionidentfid];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150*HEIGHT_SCALE;
 }
 
 @end

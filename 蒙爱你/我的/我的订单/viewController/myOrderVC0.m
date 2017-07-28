@@ -86,6 +86,8 @@ static NSString *myordercell0 = @"myordercell0identfid";
                 model.numstr = [dit objectForKey:@"order_count"];
                 model.totalpricestr = [dit objectForKey:@"order_money"];
                 
+                model.ordertype = @"5";
+                
                 if ([gooddit objectForKey:@"bedeat_id"]==nil&&[gooddit objectForKey:@"ticket_id"]==nil) {
                     //goods_id
                     model.namestr = [gooddit objectForKey:@"goods_name"];

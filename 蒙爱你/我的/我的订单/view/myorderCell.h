@@ -13,6 +13,11 @@
 @protocol mycellVdelegate <NSObject>
 -(void)myTabVClick1:(UITableViewCell *)cell;
 -(void)myTabVClick2:(UITableViewCell *)cell;
+-(void)myTabVClick3:(UITableViewCell *)cell;
+-(void)myTabVClick4:(UITableViewCell *)cell;
+-(void)myTabVClick5:(UITableViewCell *)cell;
+-(void)myTabVClick6:(UITableViewCell *)cell;
+-(void)myTabVClick7:(UITableViewCell *)cell;
 @end
 @interface myorderCell : UITableViewCell
 @property(assign,nonatomic)id<mycellVdelegate>delegate;

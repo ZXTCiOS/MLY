@@ -29,6 +29,9 @@
 //修改
 @property (nonatomic,strong) UIButton *changeBtn;
 
+//已发货
+@property (nonatomic,strong) UIButton *logisticsBtn;
+
 //已完成
 @property (nonatomic,strong) UIButton *evaluationBtn;
 
@@ -59,6 +62,7 @@
         [self.contentView addSubview:self.refundBtn];
         [self.contentView addSubview:self.changeBtn];
         
+        [self.contentView addSubview:self.logisticsBtn];
         
         [self.contentView addSubview:self.evaluationBtn];
         [self.contentView addSubview:self.refundstateBtn];
@@ -120,10 +124,43 @@
         make.height.mas_equalTo(25*HEIGHT_SCALE);
         make.right.mas_equalTo(weakSelf.payBtn.mas_left).with.offset(-8*WIDTH_SCALE);
     }];
+    
+    [self.changeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.numLab.mas_bottom).with.offset(20*HEIGHT_SCALE);
+        make.width.mas_equalTo(58*WIDTH_SCALE);
+        make.height.mas_equalTo(25*HEIGHT_SCALE);
+        make.right.mas_equalTo(weakSelf).with.offset(-14);
+    }];
+    
+    [self.refundBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.payBtn.mas_top);
+        make.width.mas_equalTo(58*WIDTH_SCALE);
+        make.height.mas_equalTo(25*HEIGHT_SCALE);
+        make.right.mas_equalTo(weakSelf.payBtn.mas_left).with.offset(-8*WIDTH_SCALE);
+    }];
+    
+    [self.logisticsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.numLab.mas_bottom).with.offset(20*HEIGHT_SCALE);
+        make.width.mas_equalTo(58*WIDTH_SCALE);
+        make.height.mas_equalTo(25*HEIGHT_SCALE);
+        make.right.mas_equalTo(weakSelf).with.offset(-14);
+    }];
+    
+    [self.evaluationBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.numLab.mas_bottom).with.offset(20*HEIGHT_SCALE);
+        make.width.mas_equalTo(58*WIDTH_SCALE);
+        make.height.mas_equalTo(25*HEIGHT_SCALE);
+        make.right.mas_equalTo(weakSelf).with.offset(-14);
+    }];
+    [self.refundstateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.numLab.mas_bottom).with.offset(20*HEIGHT_SCALE);
+        make.width.mas_equalTo(58*WIDTH_SCALE);
+        make.height.mas_equalTo(25*HEIGHT_SCALE);
+        make.right.mas_equalTo(weakSelf).with.offset(-14);
+    }];
 }
 
 #pragma mark - getters
-
 
 -(UIImageView *)orderImg
 {
@@ -205,7 +242,6 @@
     if(!_cancelBtn)
     {
         _cancelBtn = [[UIButton alloc] init];
-        [_cancelBtn setImage:[UIImage imageNamed:@""] forState:normal];
         _cancelBtn.layer.masksToBounds = YES;
         _cancelBtn.layer.borderColor = [UIColor colorWithHexString:@"df0842"].CGColor;
         _cancelBtn.layer.cornerRadius = 4;
@@ -214,6 +250,7 @@
         _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_cancelBtn setTitle:@"取消" forState:normal];
         [_cancelBtn addTarget:self action:@selector(cancelBtnclick) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelBtn setHidden:YES];
     }
     return _cancelBtn;
 }
@@ -229,6 +266,7 @@
         _payBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_payBtn setTitleColor:[UIColor whiteColor] forState:normal];
         [_payBtn addTarget:self action:@selector(payBtnclick) forControlEvents:UIControlEventTouchUpInside];
+        [_payBtn setHidden:YES];
     }
     return _payBtn;
 }
@@ -238,7 +276,15 @@
     if(!_refundBtn)
     {
         _refundBtn = [[UIButton alloc] init];
-        
+        _refundBtn.layer.masksToBounds = YES;
+        _refundBtn.layer.borderColor = [UIColor colorWithHexString:@"df0842"].CGColor;
+        _refundBtn.layer.cornerRadius = 4;
+        _refundBtn.layer.borderWidth = 1;
+        [_refundBtn setTitleColor:[UIColor colorWithHexString:@"df0842"] forState:normal];
+        _refundBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_refundBtn setTitle:@"退款" forState:normal];
+        [_refundBtn setHidden:YES];
+        [_refundBtn addTarget:self action:@selector(refundClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _refundBtn;
 }
@@ -248,9 +294,33 @@
     if(!_changeBtn)
     {
         _changeBtn = [[UIButton alloc] init];
-        
+        _changeBtn.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dd-btn-fk"]];
+        [_changeBtn setTitle:@"修改" forState:normal];
+        _changeBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_changeBtn setTitleColor:[UIColor whiteColor] forState:normal];
+        [_changeBtn setHidden:YES];
+        [_changeBtn addTarget:self action:@selector(changeBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _changeBtn;
+}
+
+
+-(UIButton *)logisticsBtn
+{
+    if(!_logisticsBtn)
+    {
+        _logisticsBtn = [[UIButton alloc] init];
+        _logisticsBtn.layer.masksToBounds = YES;
+        _logisticsBtn.layer.borderColor = [UIColor colorWithHexString:@"df0842"].CGColor;
+        _logisticsBtn.layer.cornerRadius = 4;
+        _logisticsBtn.layer.borderWidth = 1;
+        [_logisticsBtn setTitleColor:[UIColor colorWithHexString:@"df0842"] forState:normal];
+        _logisticsBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_logisticsBtn setTitle:@"物流" forState:normal];
+        [_logisticsBtn setHidden:YES];
+        [_logisticsBtn addTarget:self action:@selector(logisticsBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _logisticsBtn;
 }
 
 
@@ -259,7 +329,12 @@
     if(!_evaluationBtn)
     {
         _evaluationBtn = [[UIButton alloc] init];
-        
+        _evaluationBtn.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dd-btn-fk"]];
+        [_evaluationBtn setTitle:@"评价" forState:normal];
+        _evaluationBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_evaluationBtn setTitleColor:[UIColor whiteColor] forState:normal];
+        [_evaluationBtn setHidden:YES];
+        [_evaluationBtn addTarget:self action:@selector(evaluationBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _evaluationBtn;
 }
@@ -269,7 +344,14 @@
     if(!_refundstateBtn)
     {
         _refundstateBtn = [[UIButton alloc] init];
-        
+        [_refundstateBtn setHidden:YES];
+        _refundstateBtn.layer.masksToBounds = YES;
+        _refundstateBtn.layer.borderWidth = 1;
+        _refundstateBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_refundstateBtn setTitle:@"已退款" forState:normal];
+        [_refundstateBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:normal];
+        _refundstateBtn.layer.borderColor = [UIColor colorWithHexString:@"b3b3b3"].CGColor;
+        [_refundstateBtn addTarget:self action:@selector(refundstateBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _refundstateBtn;
 }
@@ -284,6 +366,36 @@
 -(void)payBtnclick
 {
     [self.delegate myTabVClick2:self];
+}
+
+-(void)refundClick
+{
+    //退款
+    [self.delegate myTabVClick3:self];
+}
+
+-(void)changeBtnClick
+{
+    //修改
+    [self.delegate myTabVClick4:self];
+}
+
+-(void)logisticsBtnClick
+{
+    //物流
+    [self.delegate myTabVClick5:self];
+}
+
+-(void)evaluationBtnClick
+{
+    //评价
+    [self.delegate myTabVClick6:self];
+}
+
+-(void)refundstateBtnClick
+{
+    //退款
+    [self.delegate myTabVClick7:self];
 }
 
 #pragma mark - 数据源方法
@@ -305,23 +417,28 @@
     
     if ([model.ordertype isEqualToString:@"1"]) {
         //待付款
+        [self.cancelBtn setHidden:NO];
+        [self.payBtn setHidden:NO];
         
     }
     if ([model.ordertype isEqualToString:@"2"]) {
         //已付款
+        [self.refundBtn setHidden:NO];
+        [self.changeBtn setHidden:NO];
         
     }
     if ([model.ordertype isEqualToString:@"3"]) {
         //已发货
+        [self.logisticsBtn setHidden:NO];
         
     }
     if ([model.ordertype isEqualToString:@"4"]) {
         //已完成
-        
+        [self.evaluationBtn setHidden:NO];
     }
     if ([model.ordertype isEqualToString:@"5"]) {
         //退款／售后
-        
+        [self.refundstateBtn setHidden:NO];
     }
     
     self.totalLab.text = [NSString stringWithFormat:@"%@%@",@"合计:",model.totalpricestr];

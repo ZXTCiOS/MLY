@@ -53,7 +53,7 @@
 - (NSArray *)ninaVCsArray {
     return @[
              @"sotrageVC0",
-             @"sotrageVC1",
+             @"storaveVC1",
              @"sotrageVC2",
              @"sotrageVC3",
              @"sotrageVC4"
