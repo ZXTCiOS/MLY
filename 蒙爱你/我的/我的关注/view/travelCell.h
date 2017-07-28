@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class travelModel;
 
 @interface travelCell : UICollectionViewCell
-
+-(void)setdata:(travelModel *)model;
 @end

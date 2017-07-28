@@ -37,7 +37,10 @@ static NSString *myordercell0 = @"myordercell0identfid";
     
     [self addHeader];
     self.ordertableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
+    NSString *token = [userDefault objectForKey:user_key_token];
+    NSLog(@"token------%@",token);
+    NSString *uid = [userDefault objectForKey:user_key_user_id];
+    NSLog(@"uid----%@",uid);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,10 +71,9 @@ static NSString *myordercell0 = @"myordercell0identfid";
     self.dataSource = [NSMutableArray array];
     
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
-        //NSLog(@"obj=%@",obj);
+        NSLog(@"obj=%@",obj);
         
         obj = self.copydic;
-        
         if ([[obj objectForKey:@"code"] intValue]==200) {
             NSArray *data = [obj objectForKey:@"data"];
             
@@ -85,8 +87,11 @@ static NSString *myordercell0 = @"myordercell0identfid";
                 model.pricestr = [dit objectForKey:@"order_money"];
                 model.numstr = [dit objectForKey:@"order_count"];
                 model.totalpricestr = [dit objectForKey:@"order_money"];
+                model.discountprice = [dit objectForKey:@"discount"];
+                //退款原因
+                model.refundstr = [dit objectForKey:@"order_invoice"];
                 
-                model.ordertype = @"5";
+                model.ordertype = @"6";
                 
                 if ([gooddit objectForKey:@"bedeat_id"]==nil&&[gooddit objectForKey:@"ticket_id"]==nil) {
                     //goods_id
@@ -118,7 +123,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
         }
         [self.ordertableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
-        
+        [self.ordertableView.mj_header endRefreshing];
     }];
 }
 
@@ -140,7 +145,6 @@ static NSString *myordercell0 = @"myordercell0identfid";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataSource.count;
-    //return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

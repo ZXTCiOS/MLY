@@ -8,12 +8,16 @@
 
 #import "hotelCell.h"
 #import "WTKStarView.h"
+
+#import "shoucanghomeModel.h"
+
 @interface hotelCell()
 @property (nonatomic,strong) UIImageView *hotelImg;
 @property (nonatomic,strong) UILabel *contentLab;
 @property (nonatomic,strong) UIButton *cancleBtn;
 @property (nonatomic,strong) UILabel *demolab;
 @property (nonatomic,strong) WTKStarView *starView;
+@property (nonatomic,strong) shoucanghomeModel *hmodel;
 @end
 
 @implementation hotelCell
@@ -54,8 +58,8 @@
     
     [self.demolab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.hotelImg.mas_left);
-        make.top.equalTo(weakSelf.contentLab.mas_bottom).with.offset(5);
-        make.height.mas_equalTo(20);
+        make.top.equalTo(weakSelf.contentLab.mas_bottom).with.offset(5*HEIGHT_SCALE);
+        make.height.mas_equalTo(20*HEIGHT_SCALE);
         make.width.mas_equalTo(40);
     }];
     
@@ -63,18 +67,17 @@
     
     [self.starView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.demolab.mas_right).with.offset(5);
-        make.top.equalTo(weakSelf.demolab.mas_top).with.offset(-5);
-        make.height.mas_equalTo(20);
+        make.top.equalTo(weakSelf.demolab.mas_top).with.offset(-5*HEIGHT_SCALE);
+        make.height.mas_equalTo(20*HEIGHT_SCALE);
         make.width.mas_equalTo(50);
     }];
     
     [self.cancleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakSelf).with.offset(-10);
-        make.width.mas_offset(80);
-        make.height.mas_offset(30);
-        make.bottom.equalTo(weakSelf).with.offset(-5);
+        make.right.equalTo(weakSelf).with.offset(-5);
+        make.width.mas_offset(60);
+        make.height.mas_offset(15*HEIGHT_SCALE);
+        make.bottom.equalTo(weakSelf).with.offset(-5*HEIGHT_SCALE);
     }];
-    
     
 }
 
@@ -87,7 +90,7 @@
     if(!_hotelImg)
     {
         _hotelImg = [[UIImageView alloc] init];
-        _hotelImg.backgroundColor = [UIColor orangeColor];
+
     }
     return _hotelImg;
 }
@@ -97,7 +100,7 @@
     if(!_contentLab)
     {
         _contentLab = [[UILabel alloc] init];
-        _contentLab.backgroundColor = [UIColor greenColor];
+
         _contentLab.numberOfLines = 2;
         _contentLab.text = @"请在Info.plist文件中配置你的MOBAppKey和MOBAppSecret.请在Info.plist文件中配置你的MOBAppKey和MOBAppSecret.";
     }
@@ -128,6 +131,20 @@
     return _cancleBtn;
 }
 
+#pragma mark - 数据源
 
+-(void)setdata:(shoucanghomeModel *)model
+{
+    self.hmodel = model;
+    [self.hotelImg sd_setImageWithURL:[NSURL URLWithString:model.home_pic]];
+    NSString *str1 = model.home_name;
+    NSString *str2 = model.home_description;
+    NSString *newestr = [NSString stringWithFormat:@"%@%@",model.home_name,model.home_description];
+    
+    NSMutableAttributedString *attstr = [[NSMutableAttributedString alloc] initWithString:newestr];
+    [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"0076b3"] range:NSMakeRange(0,str1.length)];
+    [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"333333"] range:NSMakeRange(str1.length,str2.length)];
+    self.contentLab.attributedText = attstr;
+}
 
 @end

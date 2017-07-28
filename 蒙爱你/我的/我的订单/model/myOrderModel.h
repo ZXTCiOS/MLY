@@ -19,5 +19,10 @@
 @property (nonatomic,strong) NSString *orderidstr;
 @property (nonatomic,strong) NSString *ordersn;
 
+@property (nonatomic,strong) NSString *discountprice;
+
 @property (nonatomic,strong) NSString *ordertype;
+
+//退款原因
+@property (nonatomic,strong) NSString *refundstr;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "attractionsCell.h"
+#import "attractionModel.h"
 
 @interface attractionsCell()
 @property (nonatomic,strong) UIImageView *attraImg;
@@ -14,6 +15,8 @@
 @property (nonatomic,strong) UILabel *contentLab;
 @property (nonatomic,strong) UILabel *priceLab;
 @property (nonatomic,strong) UIButton *cancelBtn;
+
+@property (nonatomic,strong) attractionModel *amodel;
 
 @end
 
@@ -147,7 +150,23 @@
 }
 
 
-
+-(void)setdata:(attractionModel *)model
+{
+    self.amodel = model;
+    [self.attraImg sd_setImageWithURL:[NSURL URLWithString:model.scenic_pic] placeholderImage:nil];
+    self.nameLab.text = model.scenic_name;
+    self.contentLab.text = model.scenic_intro;
+    
+    NSString *str1 = @"门票：";
+    NSString *str2 = [NSString stringWithFormat:@"%@%@%@",@"¥",model.min_price,@"起"];
+    NSString *str = [NSString stringWithFormat:@"%@%@",str1,str2];
+    
+    NSMutableAttributedString *attstr = [[NSMutableAttributedString alloc] initWithString:str];
+    [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"333333"] range:NSMakeRange(0,str1.length)];
+    [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"df0842"] range:NSMakeRange(str1.length,str2.length)];
+    self.priceLab.attributedText = attstr;
+    
+}
 
 
 @end

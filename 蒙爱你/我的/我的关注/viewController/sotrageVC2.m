@@ -8,9 +8,14 @@
 
 #import "sotrageVC2.h"
 #import "hotelCell.h"
-@interface sotrageVC2 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
-@property (strong,nonatomic) UICollectionView *myCollectionV;
+#import "shoucanghomeModel.h"
 
+@interface sotrageVC2 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+{
+    int pn;
+}
+@property (strong,nonatomic) UICollectionView *myCollectionV;
+@property (nonatomic,strong) NSMutableArray *dataSource;
 @end
 
 static NSString *hotelcellidentfid = @"hotelcellidentfid";
@@ -22,12 +27,101 @@ static NSString *hotelcellidentfid = @"hotelcellidentfid";
     
     self.view.backgroundColor = [UIColor whiteColor];
     [self addTheCollectionView];
+    self.dataSource = [NSMutableArray array];
     
+    [self addHeader];
+    [self addFooter];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 刷新控件
+
+- (void)addHeader
+{
+    // 头部刷新控件
+    self.myCollectionV.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    [self.myCollectionV.mj_header beginRefreshing];
+}
+
+- (void)addFooter
+{
+    self.myCollectionV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshLoadMore)];
+}
+
+- (void)refreshAction {
+    [self headerRefreshEndAction];
+}
+
+- (void)refreshLoadMore {
+    
+    [self footerRefreshEndAction];
+}
+
+-(void)headerRefreshEndAction
+{
+    pn = 1;
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *url = [NSString stringWithFormat:get_shoucang,userid,@"3",@"1"];
+    [self.dataSource removeAllObjects];
+    [DNNetworking getWithURLString:url success:^(id obj) {
+        if ([[obj objectForKey:@"code"] intValue]==200) {
+            NSArray *dataarr = [obj objectForKey:@"data"];
+            for (int i = 0; i<dataarr.count; i++) {
+                NSDictionary *dic = [dataarr objectAtIndex:i];
+                shoucanghomeModel *model = [[shoucanghomeModel alloc] init];
+                model.recommend_id = [dic objectForKey:@"recommend_id"];
+                model.home_id = [dic objectForKey:@"home_id"];
+                model.home_pic = [dic objectForKey:@"home_pic"];
+                model.home_star = [dic objectForKey:@"home_star"];
+                model.home_description = [dic objectForKey:@"home_description"];
+                model.home_name = [dic objectForKey:@"home_name"];
+                [self.dataSource addObject:model];
+            }
+            [self.myCollectionV reloadData];
+        }else
+        {
+            
+        }
+        [self.myCollectionV.mj_header endRefreshing];
+    } failure:^(NSError *error) {
+        [self.myCollectionV.mj_header endRefreshing];
+    }];
+}
+
+-(void)footerRefreshEndAction
+{
+    pn++;
+    NSString *pnstr = [NSString stringWithFormat:@"%d",pn];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *url = [NSString stringWithFormat:get_shoucang,userid,@"3",pnstr];
+    
+    [DNNetworking getWithURLString:url success:^(id obj) {
+        if ([[obj objectForKey:@"code"] intValue]==200) {
+            NSArray *dataarr = [obj objectForKey:@"data"];
+            for (int i = 0; i<dataarr.count; i++) {
+                NSDictionary *dic = [dataarr objectAtIndex:i];
+                shoucanghomeModel *model = [[shoucanghomeModel alloc] init];
+                model.recommend_id = [dic objectForKey:@"recommend_id"];
+                model.home_id = [dic objectForKey:@"home_id"];
+                model.home_pic = [dic objectForKey:@"home_pic"];
+                model.home_star = [dic objectForKey:@"home_star"];
+                model.home_description = [dic objectForKey:@"home_description"];
+                model.home_name = [dic objectForKey:@"home_name"];
+                [self.dataSource addObject:model];
+            }
+            [self.myCollectionV reloadData];
+        }else
+        {
+            
+        }
+        [self.myCollectionV.mj_footer endRefreshing];
+    } failure:^(NSError *error) {
+        [self.myCollectionV.mj_footer endRefreshing];
+    }];
 }
 
 #pragma mark - getters
@@ -73,7 +167,7 @@ static NSString *hotelcellidentfid = @"hotelcellidentfid";
 //每个section有多少个元素
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataSource.count;
 }
 
 //每个单元格的数据
@@ -81,8 +175,7 @@ static NSString *hotelcellidentfid = @"hotelcellidentfid";
 {
     //初始化每个单元格
     hotelCell *cell = (hotelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:hotelcellidentfid forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor lightGrayColor];
+    [cell setdata:self.dataSource[indexPath.item]];
     return cell;
     
 }

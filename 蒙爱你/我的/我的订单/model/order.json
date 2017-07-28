@@ -87,6 +87,7 @@
              "order_type": "4",
              "order_des": "蒙爱你",
              "order_invoice": "蒙爱你",
+             "discount":"10",
              "key": "bedeat",
              "goods": {
              "bedeat_id": "1",
@@ -120,6 +121,7 @@
              "order_des": "蒙爱你",
              "order_invoice": "蒙爱你",
              "key": "ticket",
+             "discount":"10",
              "goods": {
              "ticket_id": "1",
              "scenic_id": "1",

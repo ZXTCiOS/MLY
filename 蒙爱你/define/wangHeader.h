@@ -28,5 +28,9 @@
 
 //详细订单
 #define get_detalorder @""baseURL"/MLY/api.php/User/myOrderDetail?user_id=%@&user_token=%@&order_sn=%@"
+//
+#define get_shoucang @""baseURL"/MLY/api.php/Index/myLike?user_id=%@&type=%@&page=%@"
+
+#define get_quxiaoshoucang @""baseURL"/MLY/api.php/Index/noLike?user_id=%@&recommend_id=%@"
 
 #endif /* wangHeader_h */

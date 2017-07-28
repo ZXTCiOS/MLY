@@ -7,11 +7,13 @@
 //
 
 #import "travelCell.h"
+#import "travelModel.h"
 
 @interface travelCell()
 @property (nonatomic,strong) UIImageView *traveImg;
 @property (nonatomic,strong) UILabel *addressLab;
 @property (nonatomic,strong) UIButton *cancelBtn;
+@property (nonatomic,strong) travelModel *tmodel;
 
 @end
 
@@ -91,8 +93,13 @@
     return _cancelBtn;
 }
 
-
-
+-(void)setdata:(travelModel *)model
+{
+    self.tmodel = model;
+    [self.traveImg sd_setImageWithURL:[NSURL URLWithString:model.trip_pic] placeholderImage:nil];
+    self.addressLab.text = model.trip_line;
+    
+}
 
 
 @end

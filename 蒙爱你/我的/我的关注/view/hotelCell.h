@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class shoucanghomeModel;
 
 @interface hotelCell : UICollectionViewCell
+
+-(void)setdata:(shoucanghomeModel *)model;
 
 @end
