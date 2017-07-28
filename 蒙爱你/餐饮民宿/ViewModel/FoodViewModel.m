@@ -28,32 +28,37 @@
     // 筛选
     NSString *path = nil;
     if (type) {
-        path = @""; // 美食路径
+        path = get_food_main; // 美食路径
     } else {
-        path = @""; // 民宿
+        path = get_bed_main; // 民宿
     }
     
-    
-    
     if (mode == RequestModeRefresh) {
-        self.page = 0;
+        self.page = 1;
     }
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:@(self.page) forKey:@"page"];
-    
+    NSString *user_id = [userDefault valueForKey:user_key_user_id];
+    if (user_id) {
+        [dic setValue:user_id forKey:@"user_id"];
+    }
     //  添加  星级数组   价格
     
     
-    [DNNetworking getWithURLString:get_food_main parameters:dic success:^(id obj) {
-        if (mode == RequestModeRefresh) {
-            [self.datalist removeAllObjects];
+    [DNNetworking getWithURLString:path parameters:dic success:^(id obj) {
+        NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];
+        if ([code isEqualToString:@"200"]) {
+            if (mode == RequestModeRefresh) {
+                [self.datalist removeAllObjects];
+            }
+            MinsuListModel *model = [MinsuListModel parse:obj];
+            [self.datalist addObjectsFromArray:model.data];
+            self.page++;
+            
         }
-        //   处理数据    json 待定
-        
-        
-        self.page++;
         !handller ?: handller(nil);
+        
     } failure:^(NSError *error) {
         !handller ?: handller(error);
     }];

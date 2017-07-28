@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HomeFoodModel.h"
-
+#import "MinsuListModel.h"
 
 
 typedef NS_ENUM(NSUInteger, RequestMode) {

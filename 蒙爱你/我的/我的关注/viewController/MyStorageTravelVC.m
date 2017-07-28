@@ -27,7 +27,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     MJWeakSelf
     [self.collectionView addHeaderRefresh:^{
-        [weakSelf.viewmodel postDataWithTokenandMode:RequestModeRefresh url:post_shunFengChe_shouCang handller:^(NSError *error) {
+        [weakSelf.viewmodel getDataWithMode:RequestModeRefresh url:post_shunFengChe_shouCang handller:^(NSError *error) {
             if (!error) {
                 [weakSelf.collectionView reloadData];
                 [weakSelf.collectionView endHeaderRefresh];
@@ -40,7 +40,7 @@ static NSString * const reuseIdentifier = @"Cell";
         
     }];
     [self.collectionView addFooterRefresh:^{
-        [weakSelf.viewmodel postDataWithTokenandMode:RequestModeRefresh url:post_shunFengChe_shouCang handller:^(NSError *error) {
+        [weakSelf.viewmodel getDataWithMode:RequestModeMore url:post_shunFengChe_shouCang handller:^(NSError *error) {
             if (!error) {
                 [weakSelf.collectionView reloadData];
                 [weakSelf.collectionView endFooterRefresh];

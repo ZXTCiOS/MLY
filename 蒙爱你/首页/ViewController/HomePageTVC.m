@@ -338,7 +338,7 @@ static BOOL ok = YES;
             return 240;
             break;
         case 1:
-            return 160;
+            return 165;
             break;
         case 2:
             return 220;

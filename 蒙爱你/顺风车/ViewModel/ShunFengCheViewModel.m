@@ -20,13 +20,18 @@
     }
     
     [DNNetworking getWithURLString:[NSString stringWithFormat:url, self.page] success:^(id obj) {
-        ShunFengCheModel *model = [ShunFengCheModel parse:obj];
-        if (!model) {
-            [self.datalist removeAllObjects];
+        NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];
+        if ( [code isEqualToString:@"200"]) {
+            ShunFengCheModel *model = [ShunFengCheModel parse:obj];
+            if (mode == RequestModeRefresh) {
+                [self.datalist removeAllObjects];
+            }
+            [self.datalist addObjectsFromArray:model.data];
+            self.page++;
+            !handller ?: handller(nil);
+        } else {
         }
-        [self.datalist addObjectsFromArray:model.data];
-        self.page++;
-        !handller ?: handller(nil);
+        
     } failure:^(NSError *error) {
         !handller ?: handller(error);
     }];
@@ -40,6 +45,7 @@
 }
 
 
+/*
 - (void)postDataWithTokenandMode:(RequestMode)mode url:(NSString *)url handller:(void (^)(NSError *))handller{
     if (!mode) {
         self.page = 0;
@@ -60,6 +66,6 @@
     }];
 }
 
-
+*/
 
 @end
