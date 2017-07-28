@@ -85,6 +85,8 @@
 		113CBB051F1F274D00C6A766 /* DiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113CBB031F1F274D00C6A766 /* DiscountCell.m */; };
 		113CBB061F1F274D00C6A766 /* DiscountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113CBB041F1F274D00C6A766 /* DiscountCell.xib */; };
 		113CBB091F1F336600C6A766 /* LiJiYuDingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 113CBB081F1F336600C6A766 /* LiJiYuDingTVC.m */; };
+		113F37251F2ADA5600F56628 /* MoreActivityCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F37241F2ADA5600F56628 /* MoreActivityCVC.m */; };
+		113F37281F2ADA7C00F56628 /* MoreActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F37271F2ADA7C00F56628 /* MoreActivityCell.m */; };
 		11405FBD1F0DFD9D00B5CBAE /* ShunFengCheCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 11405FBC1F0DFD9D00B5CBAE /* ShunFengCheCVC.m */; };
 		11405FC11F0DFF6200B5CBAE /* HomeTravelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 11405FBF1F0DFF6200B5CBAE /* HomeTravelVC.m */; };
 		11405FC21F0DFF6200B5CBAE /* HomeTravelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11405FC01F0DFF6200B5CBAE /* HomeTravelVC.xib */; };
@@ -324,6 +326,10 @@
 		113CBB041F1F274D00C6A766 /* DiscountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCell.xib; sourceTree = "<group>"; };
 		113CBB071F1F336600C6A766 /* LiJiYuDingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiJiYuDingTVC.h; sourceTree = "<group>"; };
 		113CBB081F1F336600C6A766 /* LiJiYuDingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiJiYuDingTVC.m; sourceTree = "<group>"; };
+		113F37231F2ADA5600F56628 /* MoreActivityCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreActivityCVC.h; sourceTree = "<group>"; };
+		113F37241F2ADA5600F56628 /* MoreActivityCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreActivityCVC.m; sourceTree = "<group>"; };
+		113F37261F2ADA7C00F56628 /* MoreActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreActivityCell.h; sourceTree = "<group>"; };
+		113F37271F2ADA7C00F56628 /* MoreActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreActivityCell.m; sourceTree = "<group>"; };
 		11405FBB1F0DFD9D00B5CBAE /* ShunFengCheCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShunFengCheCVC.h; sourceTree = "<group>"; };
 		11405FBC1F0DFD9D00B5CBAE /* ShunFengCheCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShunFengCheCVC.m; sourceTree = "<group>"; };
 		11405FBE1F0DFF6200B5CBAE /* HomeTravelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTravelVC.h; sourceTree = "<group>"; };
@@ -1096,6 +1102,8 @@
 				115502281F189B6B00977217 /* StarBtn.m */,
 				11585AD81F1CABB800061734 /* BedDetailCell.h */,
 				11585AD91F1CABB800061734 /* BedDetailCell.m */,
+				113F37261F2ADA7C00F56628 /* MoreActivityCell.h */,
+				113F37271F2ADA7C00F56628 /* MoreActivityCell.m */,
 				114315791F29EEC0003705D2 /* FoodListHeaderView.h */,
 				1143157A1F29EEC0003705D2 /* FoodListHeaderView.m */,
 				1143157C1F29EF47003705D2 /* FoodListHeaderView.xib */,
@@ -1110,6 +1118,8 @@
 				1144164A1F1370900079B1E2 /* FoodCollectionVC.m */,
 				11585AD11F1C6AD500061734 /* BedDetailTVC.h */,
 				11585AD21F1C6AD500061734 /* BedDetailTVC.m */,
+				113F37231F2ADA5600F56628 /* MoreActivityCVC.h */,
+				113F37241F2ADA5600F56628 /* MoreActivityCVC.m */,
 				114315761F29EDB4003705D2 /* FoodListCVC.h */,
 				114315771F29EDB4003705D2 /* FoodListCVC.m */,
 				11585AD61F1C6AF900061734 /* BedDetailTVC.storyboard */,
@@ -1737,6 +1747,7 @@
 				536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */,
 				117105791F14EEF8008A2F25 /* ScenicTVC.m in Sources */,
 				11585ADA1F1CABB800061734 /* BedDetailCell.m in Sources */,
+				113F37251F2ADA5600F56628 /* MoreActivityCVC.m in Sources */,
 				113CBB091F1F336600C6A766 /* LiJiYuDingTVC.m in Sources */,
 				11093C001F0B3A8C00AFCB20 /* UIView+HUD.m in Sources */,
 				1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */,
@@ -1788,6 +1799,7 @@
 				1143DC7F1F208330005E73FD /* NaviBar.m in Sources */,
 				11093C291F0B3DC100AFCB20 /* UzysGroupViewCell.m in Sources */,
 				113CBB001F1F0A8500C6A766 /* TouSuVC.m in Sources */,
+				113F37281F2ADA7C00F56628 /* MoreActivityCell.m in Sources */,
 				11093BFD1F0B3A8C00AFCB20 /* NSString+myUrl.m in Sources */,
 				11353E911F15F7E100B34D7C /* HomeTravelModel.m in Sources */,
 				1171055F1F14D744008A2F25 /* UITextView+Placeholder.m in Sources */,
