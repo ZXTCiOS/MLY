@@ -179,7 +179,7 @@
     if(!_orderImg)
     {
         _orderImg = [[UIImageView alloc] init];
-        _orderImg.backgroundColor = [UIColor orangeColor];
+        //_orderImg.backgroundColor = [UIColor orangeColor];
     }
     return _orderImg;
 }
@@ -429,7 +429,7 @@
 -(void)setdata:(myOrderModel *)model
 {
     self.omodel = model;
-    [self.orderImg sd_setImageWithURL:[NSURL URLWithString:model.orderimgstr] placeholderImage:nil];
+    [self.orderImg sd_setImageWithURL:[NSURL URLWithString:model.orderimgstr] placeholderImage:[UIImage imageNamed:@"111501227576_.pic_hd"]];
     self.nameLab.text = model.namestr;
     self.priceLab.text = [NSString stringWithFormat:@"%@%@",model.pricestr,@"/天"];
     if (model.contentstr.length!=0) {
