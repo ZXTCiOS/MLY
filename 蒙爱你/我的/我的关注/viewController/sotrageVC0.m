@@ -10,7 +10,7 @@
 #import "attractionsCell.h"
 #import "attractionModel.h"
 
-@interface sotrageVC0 ()<UITableViewDataSource,UITableViewDelegate>
+@interface sotrageVC0 ()<UITableViewDataSource,UITableViewDelegate,mycellVdelegate>
 {
     int pn;
 }
@@ -153,6 +153,7 @@ static NSString *attractionidentfid = @"attractionidentfid";
     cell = [[attractionsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:attractionidentfid];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setdata:self.dataSource[indexPath.row]];
+    cell.delegate = self;
     return cell;
 }
 
@@ -161,4 +162,19 @@ static NSString *attractionidentfid = @"attractionidentfid";
     return 150*HEIGHT_SCALE;
 }
 
+//取消收藏
+-(void)myTabVClick1:(UITableViewCell *)cell
+{
+    NSIndexPath *index = [self.attractionsTableView indexPathForCell:cell];
+    attractionModel *model = self.dataSource[index.row];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *recommend_id = model.recommend_id;
+    
+    NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        [self.attractionsTableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 @end

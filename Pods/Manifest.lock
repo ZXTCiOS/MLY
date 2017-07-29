@@ -29,6 +29,9 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - DZNEmptyDataSet (1.8.1)
+  - FORScrollViewEmptyAssistant (1.1.0):
+    - DZNEmptyDataSet
   - HYBLoopScrollView (3.2.1)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
@@ -48,6 +51,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BlocksKit
+  - FORScrollViewEmptyAssistant
   - HYBLoopScrollView
   - Masonry
   - MBProgressHUD
@@ -63,6 +67,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FORScrollViewEmptyAssistant: 56ff25908965212f328d1bd78e98bc36f44bbff5
   HYBLoopScrollView: 12ff9f5764cdd76f34171164c6517d5e01ee6766
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -75,6 +81,6 @@ SPEC CHECKSUMS:
   WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: d661a2515e3f7d6b07803576ddc7899ee4badd4a
+PODFILE CHECKSUM: 1846a59a456b44757bc4e6936dfbe42d24a26277
 
 COCOAPODS: 1.2.1

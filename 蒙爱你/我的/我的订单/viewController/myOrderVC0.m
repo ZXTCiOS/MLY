@@ -26,7 +26,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
     [self.view addSubview:self.ordertableView];
     self.dataSource = [NSMutableArray array];
     
-    
+    [self empty];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"order" ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:nil];
@@ -48,7 +48,22 @@ static NSString *myordercell0 = @"myordercell0identfid";
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)empty
+{
+    // method one 配置方法1
+    typeof(self) weakSelf = self;
+    [self.ordertableView emptyViewConfigerBlock:^(FOREmptyAssistantConfiger *configer) {
+        configer.emptyTitle = @"暂无此类订单信息";
+        configer.emptyTitleFont = [UIFont boldSystemFontOfSize:14];
+        configer.emptyTitleColor = [UIColor colorWithHexString:@"d5d5d5"];
+        configer.emptyImage = [UIImage imageNamed:@"dd-kby"];
+        configer.emptySpaceHeight = 20;
+        configer.emptyViewTapBlock = ^{
+            [weakSelf.ordertableView.mj_header beginRefreshing];
+            //[self addHeader];
+        };
+    }];
+}
 #pragma mark - 刷新控件
 
 - (void)addHeader

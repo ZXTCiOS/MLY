@@ -32,7 +32,7 @@
         [self addSubview:self.demolab];
         _starView = [[WTKStarView alloc]initWithFrame:CGRectMake(75 / 2.0, 100, 80, 30) starSize:CGSizeZero withStyle:WTKStarTypeFloat];
         _starView.isTouch = NO;
-        _starView.star = [@"3" floatValue];
+      
         
         [self addSubview:_starView];
         
@@ -102,7 +102,7 @@
         _contentLab = [[UILabel alloc] init];
 
         _contentLab.numberOfLines = 2;
-        _contentLab.text = @"请在Info.plist文件中配置你的MOBAppKey和MOBAppSecret.请在Info.plist文件中配置你的MOBAppKey和MOBAppSecret.";
+        
     }
     return _contentLab;
 }
@@ -131,6 +131,11 @@
     return _cancleBtn;
 }
 
+-(void)canclebtnclick
+{
+    [self.delegate myTabVClick1:self];
+}
+
 #pragma mark - 数据源
 
 -(void)setdata:(shoucanghomeModel *)model
@@ -140,10 +145,12 @@
     NSString *str1 = model.home_name;
     NSString *str2 = model.home_description;
     NSString *newestr = [NSString stringWithFormat:@"%@%@",model.home_name,model.home_description];
-    
+    self.starView.star = [model.home_star floatValue];
     NSMutableAttributedString *attstr = [[NSMutableAttributedString alloc] initWithString:newestr];
     [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"0076b3"] range:NSMakeRange(0,str1.length)];
     [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"333333"] range:NSMakeRange(str1.length,str2.length)];
+    [attstr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, str1.length)];//设置所有的字体
+    [attstr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(str1.length, str2.length)];//设置所有的字体
     self.contentLab.attributedText = attstr;
 }
 

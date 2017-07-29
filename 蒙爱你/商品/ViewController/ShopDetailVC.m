@@ -7,7 +7,7 @@
 //
 
 #import "ShopDetailVC.h"
-
+#import "submitorderVC.h"
 @interface ShopDetailVC ()<UITextViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollV;
@@ -309,6 +309,8 @@
             [alert addAction:act];
             [self.navigationController presentViewController:alert animated:YES completion:nil];
         } else {
+            submitorderVC *subvc = [[submitorderVC alloc] init];
+            [self.navigationController pushViewController:subvc animated:YES];
             [self.view endEditing:YES];
         }
     } forControlEvents:UIControlEventTouchUpInside];

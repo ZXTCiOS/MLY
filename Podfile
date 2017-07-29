@@ -21,4 +21,5 @@ pod 'HYBLoopScrollView'
 pod 'WMPageController'
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'NinaPagerView'
+pod 'FORScrollViewEmptyAssistant'
 end

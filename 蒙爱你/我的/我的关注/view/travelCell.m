@@ -89,8 +89,15 @@
         [_cancelBtn setTitle:@"取消收藏" forState:normal];
         [_cancelBtn setTitleColor:[UIColor colorWithHexString:@"df0842"] forState:normal];
         _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_cancelBtn addTarget:self action:@selector(cancelbtnclick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelBtn;
+}
+
+
+-(void)cancelbtnclick
+{
+    [self.delegate myTabVClick1:self];
 }
 
 -(void)setdata:(travelModel *)model

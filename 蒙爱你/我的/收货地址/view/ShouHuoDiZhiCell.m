@@ -7,6 +7,12 @@
 //
 
 #import "ShouHuoDiZhiCell.h"
+#import "addressModel.h"
+
+@interface ShouHuoDiZhiCell()
+@property (nonatomic,strong) addressModel *amodel;
+
+@end
 
 @implementation ShouHuoDiZhiCell
 
@@ -26,4 +32,11 @@
     // Configure the view for the selected state
 }
 
+-(void)setdata:(addressModel *)model
+{
+    self.amodel = model;
+    self.nameL.text = model.address_name;
+    self.tele.text = model.address_phone;
+    self.addressL.text = model.address_adds;
+}
 @end

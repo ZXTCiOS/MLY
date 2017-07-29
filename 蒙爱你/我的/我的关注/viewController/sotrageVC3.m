@@ -68,6 +68,7 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
 {
     pn = 1;
     NSString *userid = [userDefault objectForKey:user_key_user_id];
+    userid = @"1";
     NSString *url = [NSString stringWithFormat:get_shoucang,userid,@"4",@"1"];
     [self.dataSource removeAllObjects];
     [DNNetworking getWithURLString:url success:^(id obj) {
@@ -216,9 +217,18 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
 
 -(void)myTabVClick1:(UITableViewCell *)cell
 {
-    NSLog(@"取消收藏");
+    NSIndexPath *index = [self.goodstableView indexPathForCell:cell];
+    shoucanggoodsModel *model = self.dataSource[index.section];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *recommend_id = model.recommend_id;
+    
+    NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        [self.goodstableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
-
 -(void)myTabVClick2:(UITableViewCell *)cell
 {
     NSLog(@"购买");

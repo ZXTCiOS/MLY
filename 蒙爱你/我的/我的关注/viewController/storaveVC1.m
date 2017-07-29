@@ -9,7 +9,7 @@
 #import "storaveVC1.h"
 #import "travelCell.h"
 #import "travelModel.h"
-@interface storaveVC1 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface storaveVC1 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,mycellVdelegate>
 {
     int pn;
 }
@@ -186,6 +186,7 @@ static NSString *indentify = @"indentify";
     //初始化每个单元格
     travelCell *cell = (travelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:indentify forIndexPath:indexPath];
     [cell setdata:self.dataSource[indexPath.item]];
+    cell.delegate = self;
 //    cell.backgroundColor = [UIColor lightGrayColor];
     return cell;
     
@@ -198,4 +199,19 @@ static NSString *indentify = @"indentify";
     
 }
 
+//取消收藏
+-(void)myTabVClick1:(UICollectionViewCell *)cell
+{
+    NSIndexPath *index = [self.myCollectionV indexPathForCell:cell];
+    travelModel *model = self.dataSource[index.item];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *recommend_id = model.recommend_id;
+    
+    NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        [self.myCollectionV reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 @end

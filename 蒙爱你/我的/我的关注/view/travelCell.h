@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @class travelModel;
+//创建一个代理
+@protocol mycellVdelegate <NSObject>
+-(void)myTabVClick1:(UICollectionViewCell *)cell;
 
+@end
 @interface travelCell : UICollectionViewCell
 -(void)setdata:(travelModel *)model;
+@property(assign,nonatomic)id<mycellVdelegate>delegate;
 @end

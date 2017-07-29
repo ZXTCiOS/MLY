@@ -8,7 +8,7 @@
 
 #import "AddAddressTVC.h"
 #import "UITextView+Placeholder.h"
-
+#import "MBProgressHUD+XMG.h"
 @interface AddAddressTVC ()<UITextViewDelegate>
 
 
@@ -40,15 +40,46 @@
 
 - (IBAction)finish:(UIButton *)sender {
     
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *token = [userDefault objectForKey:user_key_token];
+    NSString *user_id=userid;
+    NSString *address_name=self.nameL.text;
+    NSString *address_phone=self.telephone.text;
+    NSString *address_adds = self.textView.text;
+    NSString *api_token = token;
+    
+    NSDictionary *para = @{@"user_id":user_id,@"address_name":address_name,@"address_phone":address_phone,@"address_adds":address_adds,@"api_token":api_token};
     
     
-    
-    
-    
-    
-    
-    
-    
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager POST:post_addaddress parameters:para progress:^(NSProgress * _Nonnull uploadProgress)
+     {
+         
+     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+         NSLog(@"dic-----%@",dic);
+         
+         if ([[dic objectForKey:@"code"] intValue]==200) {
+             [MBProgressHUD showSuccess:@"添加成功"];
+             [self.navigationController popViewControllerAnimated:YES];
+         }
+         else
+         {
+             [MBProgressHUD showSuccess:@"请检查输入"];
+         }
+         
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         NSLog(@"=====/n%@",error);
+         [self.view showWarning:@"网络错误"];
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+     }];
     
 }
 

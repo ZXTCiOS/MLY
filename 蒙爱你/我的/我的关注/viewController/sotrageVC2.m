@@ -10,7 +10,7 @@
 #import "hotelCell.h"
 #import "shoucanghomeModel.h"
 
-@interface sotrageVC2 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface sotrageVC2 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,mycellVdelegate>
 {
     int pn;
 }
@@ -176,10 +176,24 @@ static NSString *hotelcellidentfid = @"hotelcellidentfid";
     //初始化每个单元格
     hotelCell *cell = (hotelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:hotelcellidentfid forIndexPath:indexPath];
     [cell setdata:self.dataSource[indexPath.item]];
+    cell.delegate = self;
     return cell;
-    
 }
 
+-(void)myTabVClick1:(UICollectionViewCell *)cell
+{
+    NSIndexPath *index = [self.myCollectionV indexPathForCell:cell];
+    shoucanghomeModel *model = self.dataSource[index.item];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *recommend_id = model.recommend_id;
+    
+    NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        [self.myCollectionV reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 //点击单元格
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

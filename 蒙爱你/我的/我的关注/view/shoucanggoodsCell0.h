@@ -12,4 +12,5 @@
 @interface shoucanggoodsCell0 : UITableViewCell
 
 -(void)setdata:(shoucanggoodsModel *)model;
+
 @end

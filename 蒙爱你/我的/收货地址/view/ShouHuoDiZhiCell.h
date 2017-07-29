@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class addressModel;
+
 @interface ShouHuoDiZhiCell : UITableViewCell
 
 
@@ -26,6 +28,6 @@
 @property (nonatomic, strong) void(^edit)();
 
 
-
+-(void)setdata:(addressModel *)model;
 
 @end
