@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class shoucanghomeModel;
+//创建一个代理
+@protocol mycellVdelegate <NSObject>
+-(void)myTabVClick1:(UICollectionViewCell *)cell;
 
+@end
 @interface hotelCell : UICollectionViewCell
 
+-(void)setdata:(shoucanghomeModel *)model;
+@property(assign,nonatomic)id<mycellVdelegate>delegate;
 @end

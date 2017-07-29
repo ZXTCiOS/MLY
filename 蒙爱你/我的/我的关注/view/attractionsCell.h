@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
+@class attractionModel;
+
 //创建一个代理
 @protocol mycellVdelegate <NSObject>
 -(void)myTabVClick1:(UITableViewCell *)cell;
@@ -14,4 +17,5 @@
 @end
 @interface attractionsCell : UITableViewCell
 @property(assign,nonatomic)id<mycellVdelegate>delegate;
+-(void)setdata:(attractionModel *)model;
 @end

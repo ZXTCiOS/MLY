@@ -97,10 +97,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 
-
-
-
-
 #pragma mark - lazy Loading
 
 - (ShunFengCheViewModel *)viewmodel{

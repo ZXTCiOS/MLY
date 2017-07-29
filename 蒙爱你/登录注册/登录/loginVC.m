@@ -83,34 +83,67 @@
         return;
     }
     
-    NSDictionary *dic = @{@"user_phone":self.teleNum.text, @"user_pwd":self.password.text, @"type": @(1)};
-    [DNNetworking postWithURLString:post_login parameters:dic success:^(id obj) {
-        
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        // 为userdefaults 赋值
-        NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];
-        NSString *message = [NSString stringWithFormat:@"%@", [obj valueForKey:@"message"]];
-        //success.intValue
-        if ([code isEqualToString:@"200"]) {
-            NSDictionary *data = [obj valueForKey:@"data"];
-            NSString *token = [data objectForKey:@"api_token"];
-            NSString *user_id = [NSString stringWithFormat:@"%@", [data objectForKey:@"user_id"]];
-            [user setValue:token forKey:user_key_token];
-            [user setValue:user_id forKey:user_key_user_id];
-            TabBarController *tab = [[TabBarController alloc] init];
-            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            delegate.window.rootViewController = tab;
-        } else {
-            
-            [self.view showWarning:message];
-            [self.teleNum becomeFirstResponder];
-            self.teleNum.text = @"";
-            self.password.text = @"";
-        }
-        
-    } failure:^(NSError *error) {
-        [self.view showWarning:@"网络错误"];
-    }];
+    NSDictionary *dict = @{@"user_phone":self.teleNum.text, @"user_pwd":self.password.text, @"type": @(1)};
+    
+    NSString *url = denglucaozuo;
+    
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager POST:url parameters:dict progress:^(NSProgress * _Nonnull uploadProgress)
+     {
+         
+     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         
+         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+         NSLog(@"dic----%@",dic);
+         
+         
+         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+         // 为userdefaults 赋值
+         NSString *code = [NSString stringWithFormat:@"%@", [dic valueForKey:@"code"]];
+         NSString *message = [NSString stringWithFormat:@"%@", [dic valueForKey:@"message"]];
+         //success.intValue
+         if ([code isEqualToString:@"200"]) {
+             NSDictionary *data = [dic valueForKey:@"data"];
+             NSString *token = [data objectForKey:@"api_token"];
+             NSString *user_id = [NSString stringWithFormat:@"%@", [data objectForKey:@"user_id"]];
+             [user setValue:token forKey:user_key_token];
+             [user setValue:user_id forKey:user_key_user_id];
+             
+             
+             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+             NSDictionary *allHeaders = response.allHeaderFields;
+             NSLog(@"allhead-----%@",allHeaders);
+             NSString *session = [allHeaders objectForKey:@"Set-Cookie"];
+             [user setValue:session forKey:sessionID];
+             
+             TabBarController *tab = [[TabBarController alloc] init];
+             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+             delegate.window.rootViewController = tab;
+             
+             
+         } else {
+             
+             [self.view showWarning:message];
+             [self.teleNum becomeFirstResponder];
+             self.teleNum.text = @"";
+             self.password.text = @"";
+         }
+         
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         NSLog(@"=====/n%@",error);
+         [self.view showWarning:@"网络错误"];
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+     }];
+
+    
+
     
 }
 

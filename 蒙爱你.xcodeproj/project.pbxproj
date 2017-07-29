@@ -191,8 +191,22 @@
 		534C17C21F29F89C0067C3E4 /* w_star_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17BA1F29F89C0067C3E4 /* w_star_white@2x.png */; };
 		534C17C31F29F89C0067C3E4 /* w_star_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 534C17BB1F29F89C0067C3E4 /* w_star_white@3x.png */; };
 		534C17C41F29F89C0067C3E4 /* WTKStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17BD1F29F89C0067C3E4 /* WTKStarView.m */; };
+		534C17C71F2AE0860067C3E4 /* attractionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17C61F2AE0860067C3E4 /* attractionModel.m */; };
+		534C17CA1F2B081B0067C3E4 /* travelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17C91F2B081B0067C3E4 /* travelModel.m */; };
+		534C17CD1F2B092F0067C3E4 /* shoucanggoodsCell0.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17CC1F2B092F0067C3E4 /* shoucanggoodsCell0.m */; };
+		534C17D01F2B093E0067C3E4 /* shoucanggoodsCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17CF1F2B093E0067C3E4 /* shoucanggoodsCell1.m */; };
+		534C17D31F2B148F0067C3E4 /* shoucanggoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17D21F2B148F0067C3E4 /* shoucanggoodsModel.m */; };
+		534C17D61F2B28470067C3E4 /* evaluationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17D51F2B28470067C3E4 /* evaluationVC.m */; };
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
+		53BCDA881F2B4846007977D9 /* shoucanghomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BCDA871F2B4846007977D9 /* shoucanghomeModel.m */; };
+		53E9BD1C1F2C2FB9000BFA60 /* foodCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD1B1F2C2FB9000BFA60 /* foodCollectionViewCell.m */; };
+		53E9BD1F1F2C47D3000BFA60 /* shoucangfoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD1E1F2C47D3000BFA60 /* shoucangfoodModel.m */; };
+		53E9BD221F2C62B0000BFA60 /* submitorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD211F2C62B0000BFA60 /* submitorderVC.m */; };
+		53E9BD251F2C672B000BFA60 /* submitorderCell0.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD241F2C672B000BFA60 /* submitorderCell0.m */; };
+		53E9BD281F2C673B000BFA60 /* submitorderCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD271F2C673B000BFA60 /* submitorderCell1.m */; };
+		53E9BD2B1F2C6749000BFA60 /* submitorderCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD2A1F2C6749000BFA60 /* submitorderCell2.m */; };
+		53E9BD2F1F2C6F94000BFA60 /* addressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD2E1F2C6F94000BFA60 /* addressModel.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
 /* End PBXBuildFile section */
 
@@ -521,10 +535,38 @@
 		534C17BB1F29F89C0067C3E4 /* w_star_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_star_white@3x.png"; sourceTree = "<group>"; };
 		534C17BC1F29F89C0067C3E4 /* WTKStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTKStarView.h; sourceTree = "<group>"; };
 		534C17BD1F29F89C0067C3E4 /* WTKStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTKStarView.m; sourceTree = "<group>"; };
+		534C17C51F2AE0860067C3E4 /* attractionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attractionModel.h; sourceTree = "<group>"; };
+		534C17C61F2AE0860067C3E4 /* attractionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = attractionModel.m; sourceTree = "<group>"; };
+		534C17C81F2B081B0067C3E4 /* travelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = travelModel.h; sourceTree = "<group>"; };
+		534C17C91F2B081B0067C3E4 /* travelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = travelModel.m; sourceTree = "<group>"; };
+		534C17CB1F2B092F0067C3E4 /* shoucanggoodsCell0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucanggoodsCell0.h; sourceTree = "<group>"; };
+		534C17CC1F2B092F0067C3E4 /* shoucanggoodsCell0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoucanggoodsCell0.m; sourceTree = "<group>"; };
+		534C17CE1F2B093E0067C3E4 /* shoucanggoodsCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucanggoodsCell1.h; sourceTree = "<group>"; };
+		534C17CF1F2B093E0067C3E4 /* shoucanggoodsCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoucanggoodsCell1.m; sourceTree = "<group>"; };
+		534C17D11F2B148F0067C3E4 /* shoucanggoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucanggoodsModel.h; sourceTree = "<group>"; };
+		534C17D21F2B148F0067C3E4 /* shoucanggoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoucanggoodsModel.m; sourceTree = "<group>"; };
+		534C17D41F2B28470067C3E4 /* evaluationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evaluationVC.h; sourceTree = "<group>"; };
+		534C17D51F2B28470067C3E4 /* evaluationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = evaluationVC.m; sourceTree = "<group>"; };
 		536022B61F25F49300364CDD /* wangHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wangHeader.h; sourceTree = "<group>"; };
 		536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XMG.h"; sourceTree = "<group>"; };
 		536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XMG.m"; sourceTree = "<group>"; };
 		536022BB1F26EABE00364CDD /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		53BCDA861F2B4846007977D9 /* shoucanghomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucanghomeModel.h; sourceTree = "<group>"; };
+		53BCDA871F2B4846007977D9 /* shoucanghomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoucanghomeModel.m; sourceTree = "<group>"; };
+		53E9BD1A1F2C2FB9000BFA60 /* foodCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foodCollectionViewCell.h; sourceTree = "<group>"; };
+		53E9BD1B1F2C2FB9000BFA60 /* foodCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foodCollectionViewCell.m; sourceTree = "<group>"; };
+		53E9BD1D1F2C47D3000BFA60 /* shoucangfoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucangfoodModel.h; sourceTree = "<group>"; };
+		53E9BD1E1F2C47D3000BFA60 /* shoucangfoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoucangfoodModel.m; sourceTree = "<group>"; };
+		53E9BD201F2C62B0000BFA60 /* submitorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitorderVC.h; sourceTree = "<group>"; };
+		53E9BD211F2C62B0000BFA60 /* submitorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitorderVC.m; sourceTree = "<group>"; };
+		53E9BD231F2C672B000BFA60 /* submitorderCell0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitorderCell0.h; sourceTree = "<group>"; };
+		53E9BD241F2C672B000BFA60 /* submitorderCell0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitorderCell0.m; sourceTree = "<group>"; };
+		53E9BD261F2C673B000BFA60 /* submitorderCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitorderCell1.h; sourceTree = "<group>"; };
+		53E9BD271F2C673B000BFA60 /* submitorderCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitorderCell1.m; sourceTree = "<group>"; };
+		53E9BD291F2C6749000BFA60 /* submitorderCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitorderCell2.h; sourceTree = "<group>"; };
+		53E9BD2A1F2C6749000BFA60 /* submitorderCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitorderCell2.m; sourceTree = "<group>"; };
+		53E9BD2D1F2C6F94000BFA60 /* addressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressModel.h; sourceTree = "<group>"; };
+		53E9BD2E1F2C6F94000BFA60 /* addressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1176,6 +1218,12 @@
 				1144162E1F131E920079B1E2 /* commodityCell.h */,
 				1144162F1F131E920079B1E2 /* commodityCell.m */,
 				114416301F131E920079B1E2 /* commodityCell.xib */,
+				53E9BD231F2C672B000BFA60 /* submitorderCell0.h */,
+				53E9BD241F2C672B000BFA60 /* submitorderCell0.m */,
+				53E9BD261F2C673B000BFA60 /* submitorderCell1.h */,
+				53E9BD271F2C673B000BFA60 /* submitorderCell1.m */,
+				53E9BD291F2C6749000BFA60 /* submitorderCell2.h */,
+				53E9BD2A1F2C6749000BFA60 /* submitorderCell2.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1189,6 +1237,8 @@
 				1144E4831F1DB7AA0015B5EE /* ShopDetailVC.m */,
 				114416331F132AA60079B1E2 /* ShopPageController.h */,
 				114416341F132AA60079B1E2 /* ShopPageController.m */,
+				53E9BD201F2C62B0000BFA60 /* submitorderVC.h */,
+				53E9BD211F2C62B0000BFA60 /* submitorderVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1312,18 +1362,11 @@
 		1146E5D51F0F894A0066B37F /* 收货地址 */ = {
 			isa = PBXGroup;
 			children = (
-				1146E5D61F0F894A0066B37F /* model */,
+				53E9BD2C1F2C6F88000BFA60 /* model */,
 				1146E5D71F0F894A0066B37F /* view */,
 				1146E5D81F0F894A0066B37F /* viewController */,
 			);
 			path = "收货地址";
-			sourceTree = "<group>";
-		};
-		1146E5D61F0F894A0066B37F /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		1146E5D71F0F894A0066B37F /* view */ = {
@@ -1381,6 +1424,8 @@
 				534C17621F28398B0067C3E4 /* myOrderVC5.m */,
 				534C176D1F28889E0067C3E4 /* detailedOrderVC.h */,
 				534C176E1F28889E0067C3E4 /* detailedOrderVC.m */,
+				534C17D41F2B28470067C3E4 /* evaluationVC.h */,
+				534C17D51F2B28470067C3E4 /* evaluationVC.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1512,6 +1557,16 @@
 		534C17AA1F29D61F0067C3E4 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				534C17C51F2AE0860067C3E4 /* attractionModel.h */,
+				534C17C61F2AE0860067C3E4 /* attractionModel.m */,
+				534C17C81F2B081B0067C3E4 /* travelModel.h */,
+				534C17C91F2B081B0067C3E4 /* travelModel.m */,
+				534C17D11F2B148F0067C3E4 /* shoucanggoodsModel.h */,
+				534C17D21F2B148F0067C3E4 /* shoucanggoodsModel.m */,
+				53BCDA861F2B4846007977D9 /* shoucanghomeModel.h */,
+				53BCDA871F2B4846007977D9 /* shoucanghomeModel.m */,
+				53E9BD1D1F2C47D3000BFA60 /* shoucangfoodModel.h */,
+				53E9BD1E1F2C47D3000BFA60 /* shoucangfoodModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1526,6 +1581,12 @@
 				534C17B01F29EEC60067C3E4 /* travelCell.m */,
 				534C17B21F29F4620067C3E4 /* hotelCell.h */,
 				534C17B31F29F4620067C3E4 /* hotelCell.m */,
+				534C17CB1F2B092F0067C3E4 /* shoucanggoodsCell0.h */,
+				534C17CC1F2B092F0067C3E4 /* shoucanggoodsCell0.m */,
+				534C17CE1F2B093E0067C3E4 /* shoucanggoodsCell1.h */,
+				534C17CF1F2B093E0067C3E4 /* shoucanggoodsCell1.m */,
+				53E9BD1A1F2C2FB9000BFA60 /* foodCollectionViewCell.h */,
+				53E9BD1B1F2C2FB9000BFA60 /* foodCollectionViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1553,6 +1614,15 @@
 				536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */,
 			);
 			name = utlis;
+			sourceTree = "<group>";
+		};
+		53E9BD2C1F2C6F88000BFA60 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				53E9BD2D1F2C6F94000BFA60 /* addressModel.h */,
+				53E9BD2E1F2C6F94000BFA60 /* addressModel.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		BF92CEBB9E10DCBBBDCF8502 /* Frameworks */ = {
@@ -1613,7 +1683,7 @@
 				TargetAttributes = {
 					11093B5C1F0B361C00AFCB20 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 693CCUSTEP;
+						DevelopmentTeam = GZJLNU22Y5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1761,8 +1831,10 @@
 				534C17B41F29F4620067C3E4 /* hotelCell.m in Sources */,
 				114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */,
 				1143DC771F206090005E73FD /* MSSCalendarHeaderModel.m in Sources */,
+				53E9BD281F2C673B000BFA60 /* submitorderCell1.m in Sources */,
 				11093C021F0B3A8C00AFCB20 /* TabBarController.m in Sources */,
 				11093BEC1F0B3A8C00AFCB20 /* BindTeleNumVC.m in Sources */,
+				534C17D01F2B093E0067C3E4 /* shoucanggoodsCell1.m in Sources */,
 				534C17B11F29EEC60067C3E4 /* travelCell.m in Sources */,
 				11093BFA1F0B3A8C00AFCB20 /* ModifyInfoVC.m in Sources */,
 				11093C011F0B3A8C00AFCB20 /* DNNetworking.m in Sources */,
@@ -1771,11 +1843,13 @@
 				534C17631F28398B0067C3E4 /* myOrderVC5.m in Sources */,
 				11093C201F0B3DC100AFCB20 /* CorePhoto.m in Sources */,
 				1146E5D11F0F616B0066B37F /* MyStorageVC.m in Sources */,
+				53BCDA881F2B4846007977D9 /* shoucanghomeModel.m in Sources */,
 				114625131F0C9B090005D61C /* HomeBannerModel.m in Sources */,
 				534C17A01F29CC480067C3E4 /* sotrageVC2.m in Sources */,
 				11353E8A1F15F3EB00B34D7C /* ScenicCell.m in Sources */,
 				11353E951F15F83000B34D7C /* ScenicViewModel.m in Sources */,
 				11093BE61F0B3A8C00AFCB20 /* ZXTCNavigationViewController.m in Sources */,
+				53E9BD1F1F2C47D3000BFA60 /* shoucangfoodModel.m in Sources */,
 				534C17601F2839740067C3E4 /* myOrderVC4.m in Sources */,
 				11093BE71F0B3A8C00AFCB20 /* VerifiedVC.m in Sources */,
 				1146E5DB1F0F96A00066B37F /* ShouHuoDiZhiTVC.m in Sources */,
@@ -1784,6 +1858,7 @@
 				11093BF01F0B3A8C00AFCB20 /* MineTVC.m in Sources */,
 				11093C881F0B775F00AFCB20 /* FoodAndHotelCell.m in Sources */,
 				1146250D1F0C96790005D61C /* HomeFoodModel.m in Sources */,
+				534C17C71F2AE0860067C3E4 /* attractionModel.m in Sources */,
 				117105831F14EF3A008A2F25 /* Home12Cell.m in Sources */,
 				113F37341F2B57D500F56628 /* FoodInfoVC.m in Sources */,
 				11405FC91F0E0D3C00B5CBAE /* ShunFengCheModel.m in Sources */,
@@ -1792,8 +1867,10 @@
 				11093BEB1F0B3A8C00AFCB20 /* loginVC.m in Sources */,
 				11353E981F15F8BF00B34D7C /* Scenic12Model.m in Sources */,
 				1143DC761F206090005E73FD /* MSSCalendarCollectionViewCell.m in Sources */,
+				53E9BD2F1F2C6F94000BFA60 /* addressModel.m in Sources */,
 				11093C051F0B3A8C00AFCB20 /* XD_textField.m in Sources */,
 				11405FBD1F0DFD9D00B5CBAE /* ShunFengCheCVC.m in Sources */,
+				534C17D61F2B28470067C3E4 /* evaluationVC.m in Sources */,
 				11093B651F0B361C00AFCB20 /* AppDelegate.m in Sources */,
 				1143DC7B1F206090005E73FD /* MSSChineseCalendarManager.m in Sources */,
 				1146E5D41F0F71890066B37F /* MyStorageTravelVC.m in Sources */,
@@ -1815,6 +1892,7 @@
 				1146E5E31F0F9DC70066B37F /* NewAddressCell.m in Sources */,
 				1144E4871F1E1F190015B5EE /* EditSHDZVC.m in Sources */,
 				11093B621F0B361C00AFCB20 /* main.m in Sources */,
+				53E9BD221F2C62B0000BFA60 /* submitorderVC.m in Sources */,
 				1143DC781F206090005E73FD /* MSSCalendarManager.m in Sources */,
 				534C17A31F29CC530067C3E4 /* sotrageVC3.m in Sources */,
 				534C17C41F29F89C0067C3E4 /* WTKStarView.m in Sources */,
@@ -1827,12 +1905,15 @@
 				534C17831F289BFC0067C3E4 /* myorderCell.m in Sources */,
 				11353E9F1F16040700B34D7C /* ScenicVC.m in Sources */,
 				11353EA51F16243400B34D7C /* ScenicHeaderV.m in Sources */,
+				534C17CA1F2B081B0067C3E4 /* travelModel.m in Sources */,
 				11093C751F0B591A00AFCB20 /* HomeTableCell.m in Sources */,
 				11093C221F0B3DC100AFCB20 /* UIImage+UzysExtension.m in Sources */,
+				53E9BD2B1F2C6749000BFA60 /* submitorderCell2.m in Sources */,
 				114416381F132ADF0079B1E2 /* ShopVC.m in Sources */,
 				534C176F1F28889E0067C3E4 /* detailedOrderVC.m in Sources */,
 				11093C281F0B3DC100AFCB20 /* UzysGroupPickerView.m in Sources */,
 				1173B7001F26109000AB4287 /* SearchViewController.m in Sources */,
+				53E9BD1C1F2C2FB9000BFA60 /* foodCollectionViewCell.m in Sources */,
 				114416311F131E920079B1E2 /* commodityCell.m in Sources */,
 				534C17A61F29CC620067C3E4 /* sotrageVC4.m in Sources */,
 				11093C231F0B3DC100AFCB20 /* UzysAppearanceConfig.m in Sources */,
@@ -1842,6 +1923,7 @@
 				113F37301F2B20E200F56628 /* FoodDataModel.m in Sources */,
 				1143DC7C1F206090005E73FD /* MSSCircleLabel.m in Sources */,
 				11093C271F0B3DC100AFCB20 /* UzysAssetsViewCell.m in Sources */,
+				534C17CD1F2B092F0067C3E4 /* shoucanggoodsCell0.m in Sources */,
 				1144E4841F1DB7AA0015B5EE /* ShopDetailVC.m in Sources */,
 				11093C211F0B3DC100AFCB20 /* CorePhotoPickerVCManager.m in Sources */,
 				1171058C1F14EF7D008A2F25 /* TravelAdviseCell.m in Sources */,
@@ -1850,6 +1932,7 @@
 				1170161E1F2C5CA800E1AF74 /* GouWCCell.m in Sources */,
 				114416531F13716F0079B1E2 /* FoodViewModel.m in Sources */,
 				11585AD41F1C6AD500061734 /* BedDetailTVC.m in Sources */,
+				534C17D31F2B148F0067C3E4 /* shoucanggoodsModel.m in Sources */,
 				114416351F132AA60079B1E2 /* ShopPageController.m in Sources */,
 				114625101F0C9A790005D61C /* HomeModel.m in Sources */,
 				534C17531F2839060067C3E4 /* myOrderVC0.m in Sources */,
@@ -1864,6 +1947,7 @@
 				116AE5F41F21DEF500CD76F1 /* MinsuDetailModel.m in Sources */,
 				11093C251F0B3DC100AFCB20 /* UzysAssetsPickerController.m in Sources */,
 				534C175D1F2839470067C3E4 /* myOrderVC3.m in Sources */,
+				53E9BD251F2C672B000BFA60 /* submitorderCell0.m in Sources */,
 				534C178C1F289C800067C3E4 /* detailCell0.m in Sources */,
 				534C17AE1F29D6280067C3E4 /* attractionsCell.m in Sources */,
 				113CBB051F1F274D00C6A766 /* DiscountCell.m in Sources */,
@@ -1933,7 +2017,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1974,7 +2058,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1986,7 +2070,7 @@
 			baseConfigurationReference = 48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",
@@ -2014,7 +2098,7 @@
 			baseConfigurationReference = 429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",

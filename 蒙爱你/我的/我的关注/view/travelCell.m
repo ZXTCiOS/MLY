@@ -7,11 +7,13 @@
 //
 
 #import "travelCell.h"
+#import "travelModel.h"
 
 @interface travelCell()
 @property (nonatomic,strong) UIImageView *traveImg;
 @property (nonatomic,strong) UILabel *addressLab;
 @property (nonatomic,strong) UIButton *cancelBtn;
+@property (nonatomic,strong) travelModel *tmodel;
 
 @end
 
@@ -87,12 +89,24 @@
         [_cancelBtn setTitle:@"取消收藏" forState:normal];
         [_cancelBtn setTitleColor:[UIColor colorWithHexString:@"df0842"] forState:normal];
         _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_cancelBtn addTarget:self action:@selector(cancelbtnclick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelBtn;
 }
 
 
+-(void)cancelbtnclick
+{
+    [self.delegate myTabVClick1:self];
+}
 
+-(void)setdata:(travelModel *)model
+{
+    self.tmodel = model;
+    [self.traveImg sd_setImageWithURL:[NSURL URLWithString:model.trip_pic] placeholderImage:nil];
+    self.addressLab.text = model.trip_line;
+    
+}
 
 
 @end

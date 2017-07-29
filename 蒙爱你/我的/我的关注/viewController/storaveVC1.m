@@ -8,9 +8,14 @@
 
 #import "storaveVC1.h"
 #import "travelCell.h"
-
-@interface storaveVC1 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+#import "travelModel.h"
+@interface storaveVC1 ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,mycellVdelegate>
+{
+    int pn;
+}
 @property (strong,nonatomic) UICollectionView *myCollectionV;
+@property (nonatomic,strong) NSMutableArray *dataSource;
+
 @end
 
 static NSString *indentify = @"indentify";
@@ -21,13 +26,112 @@ static NSString *indentify = @"indentify";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+
     [self addTheCollectionView];
-    
+    self.dataSource = [NSMutableArray array];
+    pn = 1;
+    [self addHeader];
+    [self addFooter];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - 刷新控件
+
+- (void)addHeader
+{
+    // 头部刷新控件
+    self.myCollectionV.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    [self.myCollectionV.mj_header beginRefreshing];
+}
+
+- (void)addFooter
+{
+    self.myCollectionV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshLoadMore)];
+}
+
+- (void)refreshAction {
+    [self headerRefreshEndAction];
+}
+
+- (void)refreshLoadMore {
+    
+    [self footerRefreshEndAction];
+}
+
+-(void)headerRefreshEndAction
+{
+    pn = 1;
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *url = [NSString stringWithFormat:get_shoucang,userid,@"2",@"1"];
+    [self.dataSource removeAllObjects];
+    [DNNetworking getWithURLString:url success:^(id obj) {
+        if ([[obj objectForKey:@"code"] intValue]==200) {
+            NSArray *dataarr = [obj objectForKey:@"data"];
+            for (int i = 0; i<dataarr.count; i++) {
+                NSDictionary *dic = [dataarr objectAtIndex:i];
+                travelModel *model = [[travelModel alloc] init];
+                model.recommend_id = [dic objectForKey:@"recommend_id"];
+                model.trip_id = [dic objectForKey:@"trip_id"];
+                model.trip_pic = [dic objectForKey:@"trip_pic"];
+                model.trip_time = [dic objectForKey:@"trip_time"];
+                model.trip_address = [dic objectForKey:@"trip_address"];
+                model.trip_people = [dic objectForKey:@"trip_people"];
+                model.trip_driver = [dic objectForKey:@"trip_driver"];
+                model.trip_driver_pic = [dic objectForKey:@"trip_driver_pic"];
+                model.trip_line = [dic objectForKey:@"trip_line"];
+                model.trip_phone = [dic objectForKey:@"trip_phone"];
+                [self.dataSource addObject:model];
+            }
+            [self.myCollectionV reloadData];
+        }else
+        {
+            
+        }
+        [self.myCollectionV.mj_header endRefreshing];
+    } failure:^(NSError *error) {
+        [self.myCollectionV.mj_header endRefreshing];
+    }];
+}
+
+-(void)footerRefreshEndAction
+{
+    pn++;
+    NSString *pnstr = [NSString stringWithFormat:@"%d",pn];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *url = [NSString stringWithFormat:get_shoucang,userid,@"2",pnstr];
+    
+    [DNNetworking getWithURLString:url success:^(id obj) {
+        if ([[obj objectForKey:@"code"] intValue]==200) {
+            NSArray *dataarr = [obj objectForKey:@"data"];
+            for (int i = 0; i<dataarr.count; i++) {
+                NSDictionary *dic = [dataarr objectAtIndex:i];
+                travelModel *model = [[travelModel alloc] init];
+                model.recommend_id = [dic objectForKey:@"recommend_id"];
+                model.trip_id = [dic objectForKey:@"trip_id"];
+                model.trip_pic = [dic objectForKey:@"trip_pic"];
+                model.trip_time = [dic objectForKey:@"trip_time"];
+                model.trip_address = [dic objectForKey:@"trip_address"];
+                model.trip_people = [dic objectForKey:@"trip_people"];
+                model.trip_driver = [dic objectForKey:@"trip_driver"];
+                model.trip_driver_pic = [dic objectForKey:@"trip_driver_pic"];
+                model.trip_line = [dic objectForKey:@"trip_line"];
+                model.trip_phone = [dic objectForKey:@"trip_phone"];
+                [self.dataSource addObject:model];
+            }
+            [self.myCollectionV reloadData];
+        }else
+        {
+            
+        }
+        [self.myCollectionV.mj_footer endRefreshing];
+    } failure:^(NSError *error) {
+        [self.myCollectionV.mj_footer endRefreshing];
+    }];
 }
 
 #pragma mark - getters
@@ -73,7 +177,7 @@ static NSString *indentify = @"indentify";
 //每个section有多少个元素
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataSource.count;
 }
 
 //每个单元格的数据
@@ -81,8 +185,9 @@ static NSString *indentify = @"indentify";
 {
     //初始化每个单元格
     travelCell *cell = (travelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:indentify forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor lightGrayColor];
+    [cell setdata:self.dataSource[indexPath.item]];
+    cell.delegate = self;
+//    cell.backgroundColor = [UIColor lightGrayColor];
     return cell;
     
 }
@@ -92,7 +197,21 @@ static NSString *indentify = @"indentify";
 {
     NSLog(@"%ld",indexPath.row);
     
-
 }
 
+//取消收藏
+-(void)myTabVClick1:(UICollectionViewCell *)cell
+{
+    NSIndexPath *index = [self.myCollectionV indexPathForCell:cell];
+    travelModel *model = self.dataSource[index.item];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *recommend_id = model.recommend_id;
+    
+    NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        [self.myCollectionV reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 @end

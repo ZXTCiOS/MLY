@@ -9,7 +9,7 @@
 #import "EditSHDZVC.h"
 #import <UITableView+FDTemplateLayoutCell.h>
 
-
+#import "MBProgressHUD+XMG.h"
 @interface EditSHDZVC ()
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
@@ -25,18 +25,95 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.name.text = @"";
-    self.tele.text = @"";
-    self.address.text = @"sadijfsladkj flksa;dgdf gjo eri ljdk fds mlc sdlkfjsdklfj sdlkfjdkslfj slkdfjsdk sdlkjfsdlk sfj fdsfds sdf ";
+//    self.name.text = @"";
+//    self.tele.text = @"";
+//    self.address.text = @"";
     
     self.title = @"编辑收货地址";
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [XDFactory addBackItemForVC:self];
+    
+    [self loaddata];
 }
 
 
 - (IBAction)deleteBtnClicked:(id)sender {
+    
+    NSString *user_id = [userDefault objectForKey:user_key_user_id];
+    NSString *api_token = [userDefault objectForKey:user_key_token];
+    NSString *address_id = self.addressidstr;
+    NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"address_id":address_id};
+    
+    
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager POST:post_addressDelete parameters:para progress:^(NSProgress * _Nonnull uploadProgress)
+     {
+         
+     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+         NSLog(@"dic-----%@",dic);
+         
+         if ([[dic objectForKey:@"code"] intValue]==200) {
+             [MBProgressHUD showSuccess:@"删除成功"];
+             [self.navigationController popViewControllerAnimated:YES];
+         }
+         else
+         {
+             [MBProgressHUD showSuccess:@"请检查输入"];
+         }
+         
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         NSLog(@"=====/n%@",error);
+         [self.view showWarning:@"网络错误"];
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+     }];
+    
+}
+
+
+-(void)loaddata
+{
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *token = [userDefault objectForKey:user_key_token];
+    NSString *url = [NSString stringWithFormat:get_address,userid,token,self.addressidstr];
+    
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res-----%@",responseObject);
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+        if ([[responseObject objectForKey:@"code"] intValue]==200) {
+            NSArray *ditarr = [responseObject objectForKey:@"data"];
+            NSDictionary *dit = [ditarr objectAtIndex:0];
+            NSString *namestr = [dit objectForKey:@"address_name"];
+            self.name.text = namestr;
+            self.tele.text = [dit objectForKey:@"address_phone"];
+            self.address.text = [dit objectForKey:@"address_adds"];
+            [self.tableView reloadData];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"=====/n%@",error);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    }];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -59,10 +136,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 1 && indexPath.row == 2) {
-        NSString *str = @"sadijfsladkj flksa;dgdf gjo eri ljdk fds mlc sdlkfjsdklfj sdlkfjdkslfj slkdfjsdk sdlkjfsdlk sfj fdsfds sdf ";
+        NSString *str =  @"15013212661501321266150132126615013212661501321266150132126615013212661501321266";
+        
         CGSize size = [str sizeForFont:[UIFont systemFontOfSize:14] size:CGSizeMake(self.address.size.width, 300) mode:NSLineBreakByCharWrapping];
         return size.height;
-        
     }
     return 44;
 }
@@ -74,8 +151,45 @@
         
         // 点击保存按钮
         
+        NSString *user_id = [userDefault objectForKey:user_key_user_id];
+        NSString *api_token = [userDefault objectForKey:user_key_token];
+        NSString *address_name=self.name.text;
+        NSString *address_phone=self.tele.text;
+        NSString *address_adds = self.address.text;
+        NSString *address_id = self.addressidstr;
+        NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"address_name":address_name,@"address_phone":address_phone,@"address_adds":address_adds,@"address_id":address_id};
         
         
+        AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+        [manager POST:post_addressEdit parameters:para progress:^(NSProgress * _Nonnull uploadProgress)
+         {
+             
+         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+         {
+             id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+             NSLog(@"dic-----%@",dic);
+             
+             if ([[dic objectForKey:@"code"] intValue]==200) {
+                 [MBProgressHUD showSuccess:@"修改成功"];
+                 [self.navigationController popViewControllerAnimated:YES];
+             }
+             else
+             {
+                 [MBProgressHUD showSuccess:@"请检查输入"];
+             }
+             
+             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"=====/n%@",error);
+             [self.view showWarning:@"网络错误"];
+             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+         }];
+
     }
 }
 

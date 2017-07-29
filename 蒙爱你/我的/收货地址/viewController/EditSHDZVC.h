@@ -12,7 +12,7 @@
 
 
 
-
+@property (nonatomic,strong) NSString *addressidstr;
 //- (instancetype)initWithaddressModel(
 
 @end

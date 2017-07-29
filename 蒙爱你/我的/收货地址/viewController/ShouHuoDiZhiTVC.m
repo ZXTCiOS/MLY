@@ -13,9 +13,10 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import "EditSHDZVC.h"
 
+#import "addressModel.h"
 
 @interface ShouHuoDiZhiTVC ()
-
+@property (nonatomic,strong) NSMutableArray *dataSource;
 @end
 
 @implementation ShouHuoDiZhiTVC
@@ -25,15 +26,77 @@
     
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"dh-fh.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithHexString:@"333333"];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     [self.tableView registerNib:[UINib nibWithNibName:@"ShouHuoDiZhiCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.tableView registerClass:[NewAddressCell class] forCellReuseIdentifier:@"new"];
-    
+    self.title = @"收获地址";
+    self.dataSource = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self loaddata];
+}
+
+#pragma mark - lodaddata
+
+-(void)loaddata
+{
+    [self.dataSource removeAllObjects];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *token = [userDefault objectForKey:user_key_token];
+    NSString *url = [NSString stringWithFormat:get_address,userid,token,@""];
+
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res-----%@",responseObject);
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+                if ([[responseObject objectForKey:@"code"] intValue]==200) {
+                    NSArray *data = [responseObject objectForKey:@"data"];
+                    for (int i = 0; i<data.count; i++) {
+                        NSDictionary *dic = [data objectAtIndex:i];
+                        addressModel *model = [[addressModel alloc] init];
+                        model.address_adds = [dic objectForKey:@"address_adds"];
+                        model.address_id = [dic objectForKey:@"address_id"];
+                        model.address_phone = [dic objectForKey:@"address_phone"];
+                        model.address_pid = [dic objectForKey:@"address_pid"];
+                        model.address_name = [dic objectForKey:@"address_name"];
+                        model.time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
+                        [self.dataSource addObject:model];
+                        
+                    }
+                    [self.tableView reloadData];
+                }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+        NSLog(@"=====/n%@",error);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    }];
+    
 }
 
 #pragma mark - Table view data source
@@ -43,29 +106,40 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section ? 1 : 5;
+    if (section==0) {
+        return self.dataSource.count;
+    }else
+    {
+        return 1;
+    }
+
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section) {
+    if (indexPath.section==0) {
+        ShouHuoDiZhiCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        
+        //    cell.nameL.text = @"啦啊啊啊啊";
+        //    cell.tele.text = @"0216543521";
+        [cell setdata:self.dataSource[indexPath.row]];
+        [cell.isDefault setBackgroundImage:[UIImage imageNamed:@"dd-fkcg"] forState:UIControlStateNormal];
+        //    cell.addressL.text = @"l 类似大幅度开发工具数量的看法法律手段会计法发斯蒂芬斯蒂芬;lfkjsd";
+        cell.edit = ^(){
+            UIStoryboard *stb = [UIStoryboard storyboardWithName:@"SHDZ" bundle:nil];
+            EditSHDZVC *vc = [stb instantiateViewControllerWithIdentifier:@"edit"];
+            addressModel *model = self.dataSource[indexPath.row];
+            vc.addressidstr = model.address_id;
+            [self.navigationController pushViewController:vc animated:YES];
+        };
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    if (indexPath.section==1) {
         NewAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"new" forIndexPath:indexPath];
         return cell;
     }
-    
-    ShouHuoDiZhiCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    cell.nameL.text = @"啦啊啊啊啊";
-    cell.tele.text = @"0216543521";
-    [cell.isDefault setBackgroundImage:[UIImage imageNamed:@"dd-fkcg"] forState:UIControlStateNormal];
-    cell.addressL.text = @"l 类似大幅度开发工具数量的看法法律手段会计法发斯蒂芬斯蒂芬;lfkjsd";
-    cell.edit = ^(){
-        UIStoryboard *stb = [UIStoryboard storyboardWithName:@"SHDZ" bundle:nil];
-        EditSHDZVC *vc = [stb instantiateViewControllerWithIdentifier:@"edit"];
-        [self.navigationController pushViewController:vc animated:YES];
-    };
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    return nil;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -87,22 +161,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    
     if (indexPath.section) {
         
         UIStoryboard *st = [UIStoryboard storyboardWithName:@"SHDZ" bundle:nil];
         AddAddressTVC *vc = [st instantiateViewControllerWithIdentifier:@"add"];
+      
         [self.navigationController pushViewController:vc animated:YES];
     }
     
-    
-    
-    
-    
-    
-    
 }
 
+#pragma mark - 实现方法
 
+-(void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

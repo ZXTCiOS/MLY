@@ -17,16 +17,37 @@
  *  网址
  */
 
+#import <FORScrollViewEmptyAssistant/FORScrollViewEmptyAssistant.h>
+
+
 //#define baseURL                 @"http://192.168.1.142"         // baseurl
+
+#define sessionID  @"sessionID"
 
 #define get_shop_sovenir           @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=1?page=%@"      // 商城 纪念品
 #define get_shop_art               @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=2?page=%@"      // 商城 工艺品
 #define get_shop_food              @""baseURL"/MLY/api.php/Good/goodList?user_id=%@&type=3?page=%@"      // 商城 特色食品
 
+
+//登录
+
+#define denglucaozuo @""baseURL"/MLY/api.php/Login/login"
 //我的订单
 #define get_myorder  @""baseURL"/MLY/api.php/User/myOrder?user_id=%@&user_token=%@&order_type=%@"
 
 //详细订单
 #define get_detalorder @""baseURL"/MLY/api.php/User/myOrderDetail?user_id=%@&user_token=%@&order_sn=%@"
+//收藏
+#define get_shoucang @""baseURL"/MLY/api.php/Index/myLike?user_id=%@&type=%@&page=%@"
+//取消收藏
+#define get_quxiaoshoucang @""baseURL"/MLY/api.php/Index/noLike?user_id=%@&recommend_id=%@"
+//收货地址添加
+#define post_addaddress @""baseURL"/MLY/api.php/Address/addressAdd"
+//收货地址
+#define get_address @""baseURL"/MLY/api.php/Address/addressLook?user_id=%@&api_token=%@&address_id=%@"
 
+//修改收货地址
+#define post_addressEdit @""baseURL"/MLY/api.php/Address/addressEdit"
+//删除收货地址
+#define post_addressDelete @""baseURL"/MLY/api.php/Address/del"
 #endif /* wangHeader_h */

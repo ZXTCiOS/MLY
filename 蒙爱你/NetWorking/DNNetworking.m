@@ -24,6 +24,7 @@ static NSString *privateNetworkBaseUrl = @"http://192.168.1.142/";
 
 @implementation DNNetworking
 
+
 + (void)netWorkReachability{
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
@@ -126,6 +127,7 @@ static NSString *privateNetworkBaseUrl = @"http://192.168.1.142/";
 + (void)postWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters success:(DNSuccessBlock)success failure:(DNFailureBlock)failure {
     [self postWithURLString:urlString parameters:parameters data:nil mimeType:nil progress:^(NSProgress *progress) {
         
+        
     } success:success failure:failure];
 }
 
@@ -204,6 +206,7 @@ static NSString *privateNetworkBaseUrl = @"http://192.168.1.142/";
         progress(uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        
 //        DNNetLog(@"POST请求到的数据===>%@",responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);

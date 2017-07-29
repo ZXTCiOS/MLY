@@ -39,6 +39,8 @@
 //退款状态
 @property (nonatomic,strong) UIButton *refundstateBtn;
 
+//退款原因
+@property (nonatomic,strong) UILabel *refundlab;
 
 @property (nonatomic,strong) myOrderModel *omodel;
 @end
@@ -66,6 +68,9 @@
         
         [self.contentView addSubview:self.evaluationBtn];
         [self.contentView addSubview:self.refundstateBtn];
+        
+        [self.contentView addSubview:self.refundlab];
+        
         [self setuplayout];
     }
     return self;
@@ -158,6 +163,13 @@
         make.height.mas_equalTo(25*HEIGHT_SCALE);
         make.right.mas_equalTo(weakSelf).with.offset(-14);
     }];
+    
+    [self.refundlab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.totalLab.mas_bottom).with.offset(5*HEIGHT_SCALE);
+        make.left.equalTo(weakSelf.totalLab.mas_left);
+        make.width.mas_equalTo(kScreenW-28*WIDTH_SCALE);
+        
+    }];
 }
 
 #pragma mark - getters
@@ -167,7 +179,7 @@
     if(!_orderImg)
     {
         _orderImg = [[UIImageView alloc] init];
-        _orderImg.backgroundColor = [UIColor orangeColor];
+        //_orderImg.backgroundColor = [UIColor orangeColor];
     }
     return _orderImg;
 }
@@ -356,6 +368,20 @@
     return _refundstateBtn;
 }
 
+-(UILabel *)refundlab
+{
+    if(!_refundlab)
+    {
+        _refundlab = [[UILabel alloc] init];
+        _refundlab.textColor = [UIColor colorWithHexString:@"333333"];
+        _refundlab.font = [UIFont systemFontOfSize:13];
+        _refundlab.text = @"退款原因:";
+        [_refundlab setHidden:YES];
+    }
+    return _refundlab;
+}
+
+
 #pragma mark -点击方法
 
 -(void)cancelBtnclick
@@ -403,7 +429,7 @@
 -(void)setdata:(myOrderModel *)model
 {
     self.omodel = model;
-    [self.orderImg sd_setImageWithURL:[NSURL URLWithString:model.orderimgstr] placeholderImage:nil];
+    [self.orderImg sd_setImageWithURL:[NSURL URLWithString:model.orderimgstr] placeholderImage:[UIImage imageNamed:@"111501227576_.pic_hd"]];
     self.nameLab.text = model.namestr;
     self.priceLab.text = [NSString stringWithFormat:@"%@%@",model.pricestr,@"/天"];
     if (model.contentstr.length!=0) {
@@ -437,11 +463,31 @@
         [self.evaluationBtn setHidden:NO];
     }
     if ([model.ordertype isEqualToString:@"5"]) {
-        //退款／售后
+        //退款／售后  审批中
         [self.refundstateBtn setHidden:NO];
+        [self.refundstateBtn setTitle:@"审批中" forState:normal];
     }
-    
-    self.totalLab.text = [NSString stringWithFormat:@"%@%@",@"合计:",model.totalpricestr];
+    if ([model.ordertype isEqualToString:@"6"]) {
+        //未退款
+        [self.refundstateBtn setHidden:NO];
+        [self.refundstateBtn setTitle:@"未退款" forState:normal];
+        [self.refundlab setHidden:NO];
+        self.refundlab.text = [NSString stringWithFormat:@"%@%@",@"退款原因:",model.refundstr];
+    }
+    if ([model.ordertype isEqualToString:@"7"]) {
+        //已退款
+        [self.refundstateBtn setHidden:NO];
+        [self.refundstateBtn setTitle:@"已退款" forState:normal];
+    }
+    NSString *str1 = @"合计：";
+    NSString *str2 = model.totalpricestr;
+    NSString *str3 = [NSString stringWithFormat:@"%@%@%@",@" (已优惠¥",model.discountprice,@")"];
+    NSString *newstr = [NSString stringWithFormat:@"%@%@%@",str1,str2,str3];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:newstr];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"333333"] range:NSMakeRange(0,str1.length)];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"df0842"] range:NSMakeRange(str1.length,str2.length)];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"b3b3b3"] range:NSMakeRange(str1.length+str2.length,str3.length)];
+    self.totalLab.attributedText = str;
     self.numLab.text = [NSString stringWithFormat:@"%@%@",@"X",model.numstr];
     [super layoutIfNeeded];
 }
