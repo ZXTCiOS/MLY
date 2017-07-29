@@ -15,13 +15,13 @@
  *  网址
  */
 
-#define baseURL                 @"http://192.168.1.142/"            // baseurl
+#define baseURL                 @"http://192.168.1.142/"                    // baseurl
 
 
-#define post_register           @"/MLY/api.php/Login/register"      //注册
-#define get_yanzhengma          @"/MLY/api.php/Login/getVerify"     //获取验证码
-#define post_login              @"/MLY/api.php/Login/login"         //登录
-#define get_change_pwd          @"/MLY/api.php/Forget/userChange"   // 修改密码
+#define post_register           @"/MLY/api.php/Login/register"              //注册
+#define get_yanzhengma          @"/MLY/api.php/Login/getVerify"             //获取验证码
+#define post_login              @"/MLY/api.php/Login/login"                 //登录
+#define get_change_pwd          @"/MLY/api.php/Forget/userChange"           // 修改密码
 
 
 #define get_Home_zhuye          @"MLY/api.php/Index/index"                  //首页主页
@@ -40,8 +40,13 @@
 
 
 
-#define get_shunFengChe_zhuye       @"/MLY/api.php/Trip/tripList"   // 顺风车主页
-#define post_shunFengChe_shouCang   @"%ld"   // 顺风车收藏
+#define get_shunFengChe_zhuye       @"/MLY/api.php/Trip/tripList"           // 顺风车主页
+#define post_shunFengChe_shouCang   @"%ld"                                  // 顺风车收藏
+#define post_tousu                  @"/MLY/api.php/Trip/tripComplaint"      // 投诉
+
+
+
+
 
 
 
@@ -53,6 +58,31 @@
 
 #define get_food_main               @"/MLY/api.php/Food/foodList"       // 餐饮民宿_没事列表 
 #define get_bed_main                @"/MLY/api.php/Home/minsuList"      // 餐饮民宿_民宿列表
+#define get_more_judge              @"/MLY/api.php/Home/evalMore"       // 更多评价
+
+
+#define post_jiaGouWuChe            @"/MLY/api.php/Food/addCart"        // 美食加入购物车
+#define get_checkGWC                @"/MLY/api.php/Food/seeCart"        // 查看购物车
+#define get_gouwuche_delete         @"/MLY/api.php/Food/delCart"        // 删除购物车
+
+
+#define get_shaixuan                @"/MLY/api.php/Home/filtrate"       // 民宿筛选
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

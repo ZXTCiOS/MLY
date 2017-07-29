@@ -10,4 +10,6 @@
 
 @interface TouSuVC : UIViewController
 
+@property (nonatomic, assign) NSInteger trip_id;
+
 @end

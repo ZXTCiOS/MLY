@@ -7,8 +7,18 @@
 //
 
 #import "FoodListCVC.h"
+#import "FoodCell.h"
+#import "FoodListHeaderView.h"
+#import "FoodDataModel.h"
+#import "FoodInfoVC.h"
 
-@interface FoodListCVC ()
+
+@interface FoodListCVC ()<UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, assign) NSInteger shop_id;
+
+@property (nonatomic, strong) NSArray<FoodModel *> *foodlist;
+@property (nonatomic, strong) FoodHeadModel *head;
 
 @end
 
@@ -19,11 +29,28 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
+    [XDFactory addBackItemForVC:self];
     
     
+    
+    NSString *path = [NSString stringWithFormat:@"/MLY/api.php/Food/foodDetail?id=%ld", self.shop_id];
+    [DNNetworking getWithURLString:path success:^(id obj) {
+        NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];
+        if ([code isEqualToString:@"200"]) {
+            FoodDataModel *model = [FoodDataModel parse:obj];
+            self.foodlist = [NSArray arrayWithArray:model.data.food];
+            self.head = model.data.home;
+            self.title = model.data.home.home_name;
+            [self.collectionView reloadData];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FoodCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FoodListHeaderView" bundle:nil]  forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,66 +58,100 @@ static NSString * const reuseIdentifier = @"Cell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return self.foodlist.count ? 1 : 0;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    return self.foodlist.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    FoodCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
     
+    [cell.imageV sd_setImageWithURL:self.foodlist[indexPath.row].bedeat_pic.xd_URL placeholderImage:[UIImage imageNamed:@"1"]];
+    cell.nameL.text = self.foodlist[indexPath.row].bedeat_name;
+    cell.priceL.text = [NSString stringWithFormat:@"¥%.2f", self.foodlist[indexPath.row].bedeat_price];
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FoodModel *model = self.foodlist[indexPath.row];
+    FoodInfoVC *vc = [[FoodInfoVC alloc] initWithFoodModel:model home_id:self.shop_id];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    FoodListHeaderView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head" forIndexPath:indexPath];
+    if (!self.head) {
+        view.frame = CGRectMake(0, 0, kScreenW, 392 + 20 + 20);
+        return view;
+    }
+    
+    CGSize s1 = [self.head.home_description sizeForFont:[UIFont systemFontOfSize:15] size:CGSizeMake(kScreenW - 20, 1000) mode:NSLineBreakByCharWrapping];
+    CGSize s2 = [self.head.home_address sizeForFont:[UIFont systemFontOfSize:15] size:CGSizeMake(kScreenW - 100, 1000) mode:NSLineBreakByCharWrapping];
+    view .frame = CGRectMake(0, 0, kScreenW, 392 + s1.height + s2.height + 20);
+    [view.imgV sd_setImageWithURL:self.head.home_pic.xd_URL placeholderImage:[UIImage imageNamed:@"33"]];
+    view. shop_name.text = self.head.home_name;
+    view.phone.text = self.head.home_phone;
+    view.addres.text = self.head.home_address;
+    [self starsView:view With:self.head.home_star];
+    
+    return view;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    if (!self.head) {
+        return CGSizeMake( kScreenW, 392 + 20);
+    } else {
+        CGSize s1 = [self.head.home_description sizeForFont:[UIFont systemFontOfSize:15] size:CGSizeMake(kScreenW - 20, 1000) mode:NSLineBreakByCharWrapping];
+        CGSize s2 = [self.head.home_address sizeForFont:[UIFont systemFontOfSize:15] size:CGSizeMake(kScreenW - 100, 1000) mode:NSLineBreakByCharWrapping];
+        
+        return CGSizeMake(kScreenW, 392 + s1.height + s2.height);
+    }
 }
-*/
+
+
+- (void)starsView:(FoodListHeaderView *)view With:(NSInteger) star{
+    if (star < 1) return;
+    view.star1.image = [UIImage imageNamed:@"xj-s-b"];
+    if (star < 2) return;
+    view.star2.image = [UIImage imageNamed:@"xj-s-b"];
+    if (star < 3) return;
+    view.star3.image = [UIImage imageNamed:@"xj-s-b"];
+    if (star < 4) return;
+    view.star4.image = [UIImage imageNamed:@"xj-s-b"];
+    if (star < 5) return;
+    view.star5.image = [UIImage imageNamed:@"xj-s-b"];
+    
+}
+
+- (instancetype)initWithShop_ID:(NSInteger)shop_id{
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 10;
+    CGFloat width = (kScreenW - 80)/2;
+    layout.itemSize = CGSizeMake(width, width + 30);
+    layout.sectionInset = UIEdgeInsetsMake(0, 30, 30, 30);
+    self = [super initWithCollectionViewLayout:layout];
+    if (self) {
+        self.shop_id = shop_id;
+    }
+    return self;
+}
+
+
+
+
+
 
 @end

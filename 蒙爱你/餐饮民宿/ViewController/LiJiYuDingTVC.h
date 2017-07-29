@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, BedOreEat) {
+    Bed,
+    Eat,
+};
+
 @interface LiJiYuDingTVC : UITableViewController
 
-@property (nonatomic, assign) NSInteger room_id;
 
-@property (nonatomic, assign) NSInteger minsu_id;
+
+- (instancetype)initWithBedEat:(BedOreEat) typt room_id:(NSInteger) room_id bedeat_id:(NSInteger) eadbed_id;
 
 @end

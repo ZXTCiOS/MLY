@@ -10,4 +10,10 @@
 
 @interface FoodListCVC : UICollectionViewController
 
+
+
+
+- (instancetype)initWithShop_ID:(NSInteger) shop_id;
+
+
 @end

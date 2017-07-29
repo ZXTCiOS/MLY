@@ -14,6 +14,8 @@
 #import "MinsuDetailModel.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "MoreActivityCVC.h"
+#import "MorePingJiaVC.h"
 
 
 
@@ -224,6 +226,13 @@
    }];
 }
 
+- (IBAction)morePingjia:(id)sender {
+   MorePingJiaVC *vc = [[MorePingJiaVC alloc] initWithMinsu_id:self.minsu_id];
+   [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+
 #pragma Map  delegate
 
 - (void)configMap{
@@ -288,33 +297,32 @@
    self.pingjia_star5.image = [UIImage imageNamed:@"xj-s-b"];
 }
 - (void)configArtWitharray:(NSArray<MinsuArtModel *> *) array{
+   
    if (array.count < 1) return;
-   [self.action1_img sd_setImageWithURL:array[0].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@""]];
+   [self.action1_img sd_setImageWithURL:array[0].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@"action"]];
    self.action1_L.text = array[0].art_name;
    if (array.count < 2) return;
-   [self.action2_img sd_setImageWithURL:array[1].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@""]];
+   [self.action2_img sd_setImageWithURL:array[1].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@"action"]];
    self.action2_L.text = array[1].art_name;
    if (array.count < 3) return;
-   [self.action3_img sd_setImageWithURL:array[2].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@""]];
+   [self.action3_img sd_setImageWithURL:array[2].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@"action"]];
    self.action3_L.text = array[2].art_name;
    if (array.count < 4) return;
-   [self.action4_img sd_setImageWithURL:array[3].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@""]];
+   [self.action4_img sd_setImageWithURL:array[3].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@"action"]];
    self.action4_L.text = array[3].art_name;
    if (array.count < 5) return;
-   [self.action5_img sd_setImageWithURL:array[4].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@""]];
+   [self.action5_img sd_setImageWithURL:array[4].art_logo.xd_URL placeholderImage:[UIImage imageNamed:@"action"]];
    self.action4_L.text = array[4].art_name;
    if (array.count > 5) {
       [self.actionContrl bk_addEventHandler:^(id sender) {
-         
-         
          // 弹出 活动窗口
-         
-#warning 添加 弹出活动窗口
-         
-         
-         
-         
-         
+         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+         layout.minimumLineSpacing = 40;
+         layout.minimumInteritemSpacing = 50;
+         layout.itemSize = CGSizeMake(110, 33);
+         layout.sectionInset = UIEdgeInsetsMake(20, 30, 20, 30);
+         MoreActivityCVC *vc = [[MoreActivityCVC alloc] initWithCollectionViewLayout:layout andActionList:array];
+         [self.navigationController presentViewController:vc animated:YES completion:nil];
       } forControlEvents: UIControlEventTouchUpInside];
    }
 }
@@ -553,6 +561,7 @@ static UIView *view;
       self.titleL.textColor = [UIColor whiteColor];
       self.popBtn.tintColor = [UIColor whiteColor];
    } else if (p.y > 150) {
+      self.naviBar.backgroundColor = krgb(225, 225, 225, 1);
       self.titleL.textColor = [UIColor colorWithHexString:@"#333333"];
       self.popBtn.tintColor = krgb(38, 38, 38, 1);
    }
@@ -568,6 +577,7 @@ static UIView *view;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+   
    [super viewWillAppear:animated];
    [self.navigationController.navigationBar setHidden:YES];
    

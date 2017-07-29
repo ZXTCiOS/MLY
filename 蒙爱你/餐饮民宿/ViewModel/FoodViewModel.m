@@ -23,7 +23,7 @@
 
 
 
-- (void)getDataWithRequestMode:(RequestMode)mode type:(NSInteger)type stars:(NSArray *)stars price:(NSInteger)price handller:(void (^)(NSError *))handller{
+- (void)getDataWithRequestMode:(RequestMode)mode type:(NSInteger)type stars:(NSString *)stars price:(NSInteger)price handller:(void (^)(NSError *))handller{
     
     // 筛选
     NSString *path = nil;
@@ -37,6 +37,11 @@
         self.page = 1;
     }
     
+    if (price || stars) {
+        path = get_shaixuan;  // 筛选
+    }
+    
+    
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:@(self.page) forKey:@"page"];
     NSString *user_id = [userDefault valueForKey:user_key_user_id];
@@ -44,7 +49,10 @@
         [dic setValue:user_id forKey:@"user_id"];
     }
     //  添加  星级数组   价格
-    
+    if (price) {
+        [dic setObject:@(price) forKey:@"price"];
+        [dic setObject:stars forKey:@"star"];
+    }
     
     [DNNetworking getWithURLString:path parameters:dic success:^(id obj) {
         NSString *code = [NSString stringWithFormat:@"%@", [obj valueForKey:@"code"]];

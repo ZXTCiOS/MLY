@@ -10,6 +10,7 @@
 #import "FoodViewModel.h"
 #import "FoodAndHotelCell.h"
 #import "BedDetailTVC.h"
+#import "FoodListCVC.h"
 
 
 @interface FoodCollectionVC ()<UICollectionViewDelegateFlowLayout>
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) FoodViewModel *viewmodel;
 
 
-@property (nonatomic, strong) NSMutableArray *stars;
+@property (nonatomic, copy) NSString *stars;
 
 @property (nonatomic, assign) NSInteger price;
 
@@ -30,7 +31,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.stars = [NSMutableArray arrayWithArray:@[@(1),@(2),@(3),@(4),@(5)]];
+    
     self.price = 0;
     MJWeakSelf
     [self.collectionView addHeaderRefresh:^{
@@ -64,9 +65,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 
-- (void)reloadDataWithStars:(NSArray *)arr andPrice:(NSInteger)price{
-    [self.stars removeAllObjects];
-    [self.stars addObjectsFromArray:arr];
+- (void)reloadDataWithStars:(NSString *)arr andPrice:(NSInteger)price{
+    
+    self.stars = arr;
     self.price = price;
     [self.collectionView beginHeaderRefresh];
 }
@@ -111,12 +112,16 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
-    UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
-    BedDetailTVC *vc = [stb instantiateInitialViewController];
-    vc.minsu_id = self.viewmodel.datalist[indexPath.row].home_id;
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.type == VCTypeOfBed) {
+        UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
+        BedDetailTVC *vc = [stb instantiateInitialViewController];
+        vc.minsu_id = self.viewmodel.datalist[indexPath.row].home_id;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        FoodListCVC *v = [[FoodListCVC alloc] initWithShop_ID:self.viewmodel.datalist[indexPath.row].home_id];
+        [self.navigationController pushViewController:v animated:YES];
+    }
 }
 
 #pragma mark <UICollectionViewFlowLayout>

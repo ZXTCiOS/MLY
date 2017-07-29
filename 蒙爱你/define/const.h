@@ -32,6 +32,27 @@ cell.preservesSuperviewLayoutMargins = NO;\
 
 #define userDefault [NSUserDefaults standardUserDefaults]
 
+
+
+#define check_user_id \
+if (![userDefault valueForKey:user_key_user_id]) {\
+UIStoryboard *stb = [UIStoryboard storyboardWithName:@"main" bundle:nil]\
+loginVC *vc = [stb instantiateInitialViewController];\
+[self.navigationController presentViewController:vc animated:YES completion:nil];\
+}\
+NSString *user_id = [userDefault valueForKey:user_key_user_id];\
+
+
+
+#define PresentLoginVC \
+UIStoryboard *stb = [UIStoryboard storyboardWithName:@"main" bundle:nil];\
+loginVC *vc = [stb instantiateInitialViewController];\
+[self.navigationController presentViewController:vc animated:YES completion:nil];\
+
+
+#define kget_userID NSString *user_id = [userDefault valueForKey:user_key_user_id];
+#define kget_token  NSString *token = [userDefault valueForKey:user_key_token];
+
 /*
  *  debug ?  release?
  */

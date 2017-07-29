@@ -16,6 +16,8 @@
 @property (nonatomic, strong) ChooseView *chooseV;
 @property (nonatomic, strong) UIView *bgV;
 
+@property (nonatomic, strong) UIButton *chostBtn;
+
 @end
 
 @implementation FoodandBedPageVC
@@ -23,8 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.menuHeight = 44;
-    //self.menuBGColor = krgb(247, 247, 247, 1);
+    
     self.menuItemWidth = 60;
     self.titleColorSelected = [UIColor colorWithHexString:@"aa1010"];
     self.titleColorNormal = [UIColor colorWithHexString:@"333333"];
@@ -43,14 +44,14 @@
 }
 
 - (void)addChooseBtn{
-    UIButton *chostBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [chostBtn setTitle:@"筛选" forState: UIControlStateNormal];
-    [chostBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    chostBtn.frame = CGRectMake(0, 0, 60, 40);
-    UIBarButtonItem *chose = [[UIBarButtonItem alloc] initWithCustomView:chostBtn];
+    self.chostBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_chostBtn setTitle:@"筛选" forState: UIControlStateNormal];
+    [_chostBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _chostBtn.frame = CGRectMake(0, 0, 60, 40);
+    UIBarButtonItem *chose = [[UIBarButtonItem alloc] initWithCustomView:_chostBtn];
     self.navigationItem.leftBarButtonItem = chose;
     
-    [chostBtn bk_addEventHandler:^(id sender) {
+    [_chostBtn bk_addEventHandler:^(id sender) {
         if (!self.type) {
             [UIView animateWithDuration:0.5 animations:^{
                 [self.view layoutIfNeeded];
@@ -91,6 +92,7 @@
 - (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
     VCType type = ((FoodCollectionVC *)viewController).type;
     self.type = type;
+    self.chostBtn.hidden = type;
 }
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
@@ -131,27 +133,47 @@
                 }];
             }];
             
-            
+            NSMutableString *str;
             if (weakSelf.chooseV.star1.isSelect) {
+                
+                str = [NSMutableString stringWithFormat:@"1,"];
                 
             }
             if (weakSelf.chooseV.star2.isSelect) {
-                
+                if (!str) {
+                    str = [NSMutableString stringWithFormat:@"2,"];
+                } else {
+                    [str appendString:[NSString stringWithFormat:@"2,"]];
+                    NSLog(@"%@", str);
+                }
             }
             if (weakSelf.chooseV.star3.isSelect) {
-                
+                if (!str) {
+                    str = [NSMutableString stringWithFormat:@"3,"];
+                } else {
+                    [str appendString:[NSString stringWithFormat:@"3,"]];
+                    NSLog(@"%@", str);
+                }
             }
             if (weakSelf.chooseV.star4.isSelect) {
-                
+                if (!str) {
+                    str = [NSMutableString stringWithFormat:@"4,"];
+                } else {
+                    [str appendString:[NSString stringWithFormat:@"4,"]];
+                    NSLog(@"%@", str);
+                }
             }
             if (weakSelf.chooseV.star5.isSelect) {
-                
+                if (!str) {
+                    str = [NSMutableString stringWithFormat:@"5,"];
+                } else {
+                    [str appendString:[NSString stringWithFormat:@"5,"]];
+                    NSLog(@"%@", str);
+                }
             }
             
             NSInteger price = weakSelf.chooseV.slider.value;
-            
-            
-            // [((FoodCollectionVC *)weakSelf.currentViewController) reloadDataWithStars:<#(NSArray *)#> andPrice:price];
+            [((FoodCollectionVC *)weakSelf.currentViewController) reloadDataWithStars:str andPrice:price];
             
         };
         

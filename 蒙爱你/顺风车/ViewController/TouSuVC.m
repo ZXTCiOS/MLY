@@ -47,7 +47,18 @@
 
 - (IBAction)submitBtnClicked:(id)sender {
     
+    kget_userID
     
+    
+    [DNNetworking postWithURLString:post_tousu parameters:@{@"user_id": user_id, @"trip_id": @(self.trip_id), @"com_description": self.textView.text} success:^(id obj) {
+        
+        [self.view showWarning:@"投诉成功"];
+        sleep(0.5);
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    } failure:^(NSError *error) {
+        [self.view showWarning:@"网络错误"];
+    }];
     
     
 }

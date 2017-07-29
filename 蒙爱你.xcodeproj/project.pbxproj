@@ -87,6 +87,11 @@
 		113CBB091F1F336600C6A766 /* LiJiYuDingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 113CBB081F1F336600C6A766 /* LiJiYuDingTVC.m */; };
 		113F37251F2ADA5600F56628 /* MoreActivityCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F37241F2ADA5600F56628 /* MoreActivityCVC.m */; };
 		113F37281F2ADA7C00F56628 /* MoreActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F37271F2ADA7C00F56628 /* MoreActivityCell.m */; };
+		113F372C1F2B1C9700F56628 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F372A1F2B1C9700F56628 /* FoodCell.m */; };
+		113F372D1F2B1C9700F56628 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113F372B1F2B1C9700F56628 /* FoodCell.xib */; };
+		113F37301F2B20E200F56628 /* FoodDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F372F1F2B20E200F56628 /* FoodDataModel.m */; };
+		113F37341F2B57D500F56628 /* FoodInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F37321F2B57D500F56628 /* FoodInfoVC.m */; };
+		113F37351F2B57D500F56628 /* FoodInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113F37331F2B57D500F56628 /* FoodInfoVC.xib */; };
 		11405FBD1F0DFD9D00B5CBAE /* ShunFengCheCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 11405FBC1F0DFD9D00B5CBAE /* ShunFengCheCVC.m */; };
 		11405FC11F0DFF6200B5CBAE /* HomeTravelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 11405FBF1F0DFF6200B5CBAE /* HomeTravelVC.m */; };
 		11405FC21F0DFF6200B5CBAE /* HomeTravelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11405FC01F0DFF6200B5CBAE /* HomeTravelVC.xib */; };
@@ -135,6 +140,10 @@
 		11585ADA1F1CABB800061734 /* BedDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11585AD91F1CABB800061734 /* BedDetailCell.m */; };
 		116AE5F11F21DE6D00CD76F1 /* MinsuListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AE5F01F21DE6D00CD76F1 /* MinsuListModel.m */; };
 		116AE5F41F21DEF500CD76F1 /* MinsuDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AE5F31F21DEF500CD76F1 /* MinsuDetailModel.m */; };
+		1170161A1F2C5C9300E1AF74 /* GouWCTVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 117016191F2C5C9300E1AF74 /* GouWCTVc.m */; };
+		1170161E1F2C5CA800E1AF74 /* GouWCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170161C1F2C5CA800E1AF74 /* GouWCCell.m */; };
+		1170161F1F2C5CA800E1AF74 /* GouWCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1170161D1F2C5CA800E1AF74 /* GouWCCell.xib */; };
+		117016251F2C999700E1AF74 /* MorePingJiaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 117016241F2C999700E1AF74 /* MorePingJiaVC.m */; };
 		1171054F1F14B380008A2F25 /* discountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171054E1F14B380008A2F25 /* discountTVC.m */; };
 		117105521F14B3A5008A2F25 /* MyListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 117105511F14B3A5008A2F25 /* MyListVC.m */; };
 		117105561F14B3E8008A2F25 /* AboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 117105541F14B3E8008A2F25 /* AboutUsVC.m */; };
@@ -323,6 +332,14 @@
 		113F37241F2ADA5600F56628 /* MoreActivityCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreActivityCVC.m; sourceTree = "<group>"; };
 		113F37261F2ADA7C00F56628 /* MoreActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreActivityCell.h; sourceTree = "<group>"; };
 		113F37271F2ADA7C00F56628 /* MoreActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreActivityCell.m; sourceTree = "<group>"; };
+		113F37291F2B1C9700F56628 /* FoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodCell.h; sourceTree = "<group>"; };
+		113F372A1F2B1C9700F56628 /* FoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodCell.m; sourceTree = "<group>"; };
+		113F372B1F2B1C9700F56628 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodCell.xib; sourceTree = "<group>"; };
+		113F372E1F2B20E200F56628 /* FoodDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDataModel.h; sourceTree = "<group>"; };
+		113F372F1F2B20E200F56628 /* FoodDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDataModel.m; sourceTree = "<group>"; };
+		113F37311F2B57D500F56628 /* FoodInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodInfoVC.h; sourceTree = "<group>"; };
+		113F37321F2B57D500F56628 /* FoodInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodInfoVC.m; sourceTree = "<group>"; };
+		113F37331F2B57D500F56628 /* FoodInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodInfoVC.xib; sourceTree = "<group>"; };
 		11405FBB1F0DFD9D00B5CBAE /* ShunFengCheCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShunFengCheCVC.h; sourceTree = "<group>"; };
 		11405FBC1F0DFD9D00B5CBAE /* ShunFengCheCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShunFengCheCVC.m; sourceTree = "<group>"; };
 		11405FBE1F0DFF6200B5CBAE /* HomeTravelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTravelVC.h; sourceTree = "<group>"; };
@@ -413,6 +430,13 @@
 		116AE5F01F21DE6D00CD76F1 /* MinsuListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinsuListModel.m; sourceTree = "<group>"; };
 		116AE5F21F21DEF500CD76F1 /* MinsuDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinsuDetailModel.h; sourceTree = "<group>"; };
 		116AE5F31F21DEF500CD76F1 /* MinsuDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinsuDetailModel.m; sourceTree = "<group>"; };
+		117016181F2C5C9300E1AF74 /* GouWCTVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GouWCTVc.h; sourceTree = "<group>"; };
+		117016191F2C5C9300E1AF74 /* GouWCTVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GouWCTVc.m; sourceTree = "<group>"; };
+		1170161B1F2C5CA800E1AF74 /* GouWCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GouWCCell.h; sourceTree = "<group>"; };
+		1170161C1F2C5CA800E1AF74 /* GouWCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GouWCCell.m; sourceTree = "<group>"; };
+		1170161D1F2C5CA800E1AF74 /* GouWCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GouWCCell.xib; sourceTree = "<group>"; };
+		117016231F2C999700E1AF74 /* MorePingJiaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorePingJiaVC.h; sourceTree = "<group>"; };
+		117016241F2C999700E1AF74 /* MorePingJiaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorePingJiaVC.m; sourceTree = "<group>"; };
 		1171054D1F14B380008A2F25 /* discountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discountTVC.h; sourceTree = "<group>"; };
 		1171054E1F14B380008A2F25 /* discountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = discountTVC.m; sourceTree = "<group>"; };
 		117105501F14B3A5008A2F25 /* MyListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyListVC.h; sourceTree = "<group>"; };
@@ -1064,6 +1088,8 @@
 				116AE5F01F21DE6D00CD76F1 /* MinsuListModel.m */,
 				116AE5F21F21DEF500CD76F1 /* MinsuDetailModel.h */,
 				116AE5F31F21DEF500CD76F1 /* MinsuDetailModel.m */,
+				113F372E1F2B20E200F56628 /* FoodDataModel.h */,
+				113F372F1F2B20E200F56628 /* FoodDataModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1086,6 +1112,12 @@
 				114315791F29EEC0003705D2 /* FoodListHeaderView.h */,
 				1143157A1F29EEC0003705D2 /* FoodListHeaderView.m */,
 				1143157C1F29EF47003705D2 /* FoodListHeaderView.xib */,
+				113F37291F2B1C9700F56628 /* FoodCell.h */,
+				113F372A1F2B1C9700F56628 /* FoodCell.m */,
+				113F372B1F2B1C9700F56628 /* FoodCell.xib */,
+				1170161B1F2C5CA800E1AF74 /* GouWCCell.h */,
+				1170161C1F2C5CA800E1AF74 /* GouWCCell.m */,
+				1170161D1F2C5CA800E1AF74 /* GouWCCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1101,9 +1133,16 @@
 				113F37241F2ADA5600F56628 /* MoreActivityCVC.m */,
 				114315761F29EDB4003705D2 /* FoodListCVC.h */,
 				114315771F29EDB4003705D2 /* FoodListCVC.m */,
+				113F37311F2B57D500F56628 /* FoodInfoVC.h */,
+				113F37321F2B57D500F56628 /* FoodInfoVC.m */,
+				113F37331F2B57D500F56628 /* FoodInfoVC.xib */,
+				117016181F2C5C9300E1AF74 /* GouWCTVc.h */,
+				117016191F2C5C9300E1AF74 /* GouWCTVc.m */,
 				11585AD61F1C6AF900061734 /* BedDetailTVC.storyboard */,
 				113CBB071F1F336600C6A766 /* LiJiYuDingTVC.h */,
 				113CBB081F1F336600C6A766 /* LiJiYuDingTVC.m */,
+				117016231F2C999700E1AF74 /* MorePingJiaVC.h */,
+				117016241F2C999700E1AF74 /* MorePingJiaVC.m */,
 				1155021F1F186AEC00977217 /* FoodandBedPageVC.h */,
 				115502201F186AEC00977217 /* FoodandBedPageVC.m */,
 			);
@@ -1613,12 +1652,14 @@
 				11093BEF1F0B3A8C00AFCB20 /* Mine.storyboard in Resources */,
 				534C17971F29AF000067C3E4 /* order.json in Resources */,
 				11093BE81F0B3A8C00AFCB20 /* VerifiedVC.xib in Resources */,
+				1170161F1F2C5CA800E1AF74 /* GouWCCell.xib in Resources */,
 				117105881F14EF3A008A2F25 /* ScenicSpotAdviseCell.xib in Resources */,
 				11093C241F0B3DC100AFCB20 /* UzysAssetPickerController.bundle in Resources */,
 				534C17C11F29F89C0067C3E4 /* w_star_white.png in Resources */,
 				11353E8B1F15F3EB00B34D7C /* ScenicCell.xib in Resources */,
 				117105841F14EF3A008A2F25 /* Home12Cell.xib in Resources */,
 				1143157D1F29EF47003705D2 /* FoodListHeaderView.xib in Resources */,
+				113F372D1F2B1C9700F56628 /* FoodCell.xib in Resources */,
 				11093BFB1F0B3A8C00AFCB20 /* ModifyInfoVC.xib in Resources */,
 				113CBB061F1F274D00C6A766 /* DiscountCell.xib in Resources */,
 				534C17C21F29F89C0067C3E4 /* w_star_white@2x.png in Resources */,
@@ -1638,6 +1679,7 @@
 				115502261F189A6E00977217 /* ChooseView.xib in Resources */,
 				117823361F275FBF008B4973 /* Assets.xcassets in Resources */,
 				117105861F14EF3A008A2F25 /* HomeCityCell.xib in Resources */,
+				113F37351F2B57D500F56628 /* FoodInfoVC.xib in Resources */,
 				11093B6B1F0B361C00AFCB20 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1743,6 +1785,7 @@
 				11093C881F0B775F00AFCB20 /* FoodAndHotelCell.m in Sources */,
 				1146250D1F0C96790005D61C /* HomeFoodModel.m in Sources */,
 				117105831F14EF3A008A2F25 /* Home12Cell.m in Sources */,
+				113F37341F2B57D500F56628 /* FoodInfoVC.m in Sources */,
 				11405FC91F0E0D3C00B5CBAE /* ShunFengCheModel.m in Sources */,
 				117105521F14B3A5008A2F25 /* MyListVC.m in Sources */,
 				1143157B1F29EEC0003705D2 /* FoodListHeaderView.m in Sources */,
@@ -1759,7 +1802,9 @@
 				1146E5DF1F0F96E80066B37F /* ShouHuoDiZhiCell.m in Sources */,
 				1143DC7F1F208330005E73FD /* NaviBar.m in Sources */,
 				11093C291F0B3DC100AFCB20 /* UzysGroupViewCell.m in Sources */,
+				117016251F2C999700E1AF74 /* MorePingJiaVC.m in Sources */,
 				113CBB001F1F0A8500C6A766 /* TouSuVC.m in Sources */,
+				1170161A1F2C5C9300E1AF74 /* GouWCTVc.m in Sources */,
 				113F37281F2ADA7C00F56628 /* MoreActivityCell.m in Sources */,
 				11093BFD1F0B3A8C00AFCB20 /* NSString+myUrl.m in Sources */,
 				11353E911F15F7E100B34D7C /* HomeTravelModel.m in Sources */,
@@ -1794,6 +1839,7 @@
 				117105751F14EEF8008A2F25 /* HomeCityCVC.m in Sources */,
 				1143DC791F206090005E73FD /* MSSCalendarPopView.m in Sources */,
 				11093BFF1F0B3A8C00AFCB20 /* UIScrollView+Refresh.m in Sources */,
+				113F37301F2B20E200F56628 /* FoodDataModel.m in Sources */,
 				1143DC7C1F206090005E73FD /* MSSCircleLabel.m in Sources */,
 				11093C271F0B3DC100AFCB20 /* UzysAssetsViewCell.m in Sources */,
 				1144E4841F1DB7AA0015B5EE /* ShopDetailVC.m in Sources */,
@@ -1801,6 +1847,7 @@
 				1171058C1F14EF7D008A2F25 /* TravelAdviseCell.m in Sources */,
 				11093C041F0B3A8C00AFCB20 /* WKWedViewController.m in Sources */,
 				534C179D1F29CC3D0067C3E4 /* storaveVC1.m in Sources */,
+				1170161E1F2C5CA800E1AF74 /* GouWCCell.m in Sources */,
 				114416531F13716F0079B1E2 /* FoodViewModel.m in Sources */,
 				11585AD41F1C6AD500061734 /* BedDetailTVC.m in Sources */,
 				114416351F132AA60079B1E2 /* ShopPageController.m in Sources */,
@@ -1810,6 +1857,7 @@
 				114625181F0CA82D0005D61C /* HomeViewModel.m in Sources */,
 				1171055B1F14C30A008A2F25 /* AddAddressTVC.m in Sources */,
 				115502211F186AEC00977217 /* FoodandBedPageVC.m in Sources */,
+				113F372C1F2B1C9700F56628 /* FoodCell.m in Sources */,
 				11353EA81F16244C00B34D7C /* TicketCell.m in Sources */,
 				11093C2A1F0B3DC100AFCB20 /* UzysWrapperPickerController.m in Sources */,
 				114416421F134A9B0079B1E2 /* ShopViewModel.m in Sources */,

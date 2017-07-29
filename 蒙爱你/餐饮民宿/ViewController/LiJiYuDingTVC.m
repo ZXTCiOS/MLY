@@ -13,6 +13,11 @@
 
 @interface LiJiYuDingTVC ()<MSSCalendarViewControllerDelegate>
 
+
+@property (nonatomic, assign) NSInteger room_id;
+
+@property (nonatomic, assign) NSInteger minsu_id;
+
 @property (weak, nonatomic) IBOutlet UITextField *name;
 
 @property (weak, nonatomic) IBOutlet UITextField *tele;
@@ -113,6 +118,15 @@
     NSString *endDateString = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:_endDate]];
     self.date.text = [NSString stringWithFormat:@"%@ ~ %@",startDateString, endDateString];
     
+}
+
+- (instancetype)initWithBedEat:(BedOreEat)typt room_id:(NSInteger)room_id bedeat_id:(NSInteger)eadbed_id{
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    if (self) {
+        self.room_id = room_id;
+        self.minsu_id = eadbed_id;
+    }
+    return self;
 }
 
 

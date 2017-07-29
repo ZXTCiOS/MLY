@@ -70,6 +70,7 @@
 - (IBAction)tousu:(id)sender {
     
     TouSuVC *vc = [[TouSuVC alloc] initWithNibName:@"TouSuVC" bundle:nil];
+    vc.trip_id = self.model.trip_id;
     [self.navigationController pushViewController:vc animated:YES];
     
 }

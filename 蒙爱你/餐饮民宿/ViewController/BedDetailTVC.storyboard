@@ -322,6 +322,9 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="更多评价"/>
+                                    <connections>
+                                        <action selector="morePingjia:" destination="6Rh-Yd-JWs" eventType="touchUpInside" id="RG1-79-i5S"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="蒙爱你" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhE-hC-aq8">
                                     <rect key="frame" x="50" y="621.5" width="49" height="19.5"/>
@@ -705,6 +708,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="5bV-IW-0bW"/>
                                     </constraints>
+                                    <state key="normal" title="立即预定" backgroundImage="msxx-btn-ljyd">
+                                        <color key="titleColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                     <connections>
                                         <action selector="yudingClicked:" destination="zln-B0-bBa" eventType="touchUpInside" id="eeL-ez-Aua"/>
                                     </connections>

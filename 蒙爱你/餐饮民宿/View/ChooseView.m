@@ -24,7 +24,7 @@
             sender.isSelect = !sender.isSelect;
             
         } forControlEvents:UIControlEventTouchUpInside];
-        btn.tag = i;
+        btn.tag = i+1;
         btn.star.text = [NSString stringWithFormat:@"%d", i];
         [self addSubview:btn];
         btn.isSelect = NO;

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, RequestMode) {
 
 
 
-- (void)getDataWithRequestMode:(RequestMode) mode type:(NSInteger)type stars:(NSArray *)stars price:(NSInteger)price handller:(void(^)(NSError *error)) handller;
+- (void)getDataWithRequestMode:(RequestMode) mode type:(NSInteger)type stars:(NSString *)stars price:(NSInteger)price handller:(void(^)(NSError *error)) handller;
 
 
 

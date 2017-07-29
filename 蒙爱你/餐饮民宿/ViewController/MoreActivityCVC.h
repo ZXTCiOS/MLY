@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MinsuDetailModel.h"
 
-@interface MoreActivityCVC : UICollectionViewController
+
+@interface MoreActivityCVC : UIViewController
+
+
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout andActionList:(NSArray<MinsuArtModel *> *) datalist;
+
+
 
 @end

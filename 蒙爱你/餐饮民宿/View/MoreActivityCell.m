@@ -8,11 +8,13 @@
 
 #import "MoreActivityCell.h"
 
+
 @implementation MoreActivityCell
 
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
     if (self) {
         [self img];
         [self title];
@@ -20,11 +22,10 @@
     return self;
 }
 
-
 - (UIImageView *)img{
     if (!_img) {
         _img = [[UIImageView alloc] init];
-        [self addSubview:_img];
+        [self.contentView addSubview:_img];
         [_img mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(0);
             make.size.equalTo(CGSizeMake(33, 33));
@@ -39,7 +40,7 @@
 - (UILabel *)title{
     if (!_title) {
         _title = [[UILabel alloc] init];
-        [self addSubview:_title];
+        [self.contentView addSubview:_title];
         _title.font = [UIFont systemFontOfSize:16];
         _title.textAlignment = NSTextAlignmentLeft;
         _title.textColor = krgb(50, 53, 55, 1);
