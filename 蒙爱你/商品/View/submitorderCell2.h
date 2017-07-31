@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface submitorderCell2 : UITableViewCell
-
+@property (nonatomic,strong) UILabel *numlab;
 @end

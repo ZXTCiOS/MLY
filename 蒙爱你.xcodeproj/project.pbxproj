@@ -798,25 +798,11 @@
 		11093B9B1F0B3A8C00AFCB20 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				11093B9C1F0B3A8C00AFCB20 /* model */,
-				11093B9D1F0B3A8C00AFCB20 /* view */,
+				53E9BD431F2F2CCC000BFA60 /* model */,
+				53E9BD441F2F2CCC000BFA60 /* view */,
 				11093B9E1F0B3A8C00AFCB20 /* viewController */,
 			);
 			path = "我的";
-			sourceTree = "<group>";
-		};
-		11093B9C1F0B3A8C00AFCB20 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		11093B9D1F0B3A8C00AFCB20 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		11093B9E1F0B3A8C00AFCB20 /* viewController */ = {
@@ -1648,6 +1634,20 @@
 				53E9BD3B1F2E1E62000BFA60 /* discountModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		53E9BD431F2F2CCC000BFA60 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		53E9BD441F2F2CCC000BFA60 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		BF92CEBB9E10DCBBBDCF8502 /* Frameworks */ = {

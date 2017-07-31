@@ -35,6 +35,39 @@
     
     [self makeCornerRadius];
     [self contentInit];
+    [self loaddata];
+    
+}
+
+-(void)loaddata
+{
+    
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *token = [userDefault objectForKey:user_key_token];
+    NSString *url = [NSString stringWithFormat:get_info,userid,token];
+    
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        if ([[dic objectForKey:@"code"] intValue]==200) {
+            NSDictionary *datadic = [dic objectForKey:@"data"];
+            self.nameTextLabel.text = [datadic objectForKey:@"user_nickname"];
+            [self.iconView sd_setImageWithURL:[NSURL URLWithString:[datadic objectForKey:@"user_picture"]]];
+            
+        }
+    
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
     
 }
 
@@ -94,11 +127,24 @@
 - (IBAction)finishModifyInfo:(id)sender {
     
     if (!(self.MaleBtn.isSelected || self.FemaleBtn.isSelected)) {
-        [UIAlertView bk_showAlertViewWithTitle:@"错误" message:@"请选择性别" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:nil];
+//        [UIAlertView bk_showAlertViewWithTitle:@"错误" message:@"请选择性别" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:nil];
+        
+        UIAlertController *control = [UIAlertController alertControllerWithTitle:@"错误" message:@"请选择性别" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [control addAction:action];
+        [self presentViewController:control animated:YES completion:nil];
         return;
     }
     if (!self.nameTextLabel.text) {
-        [UIAlertView bk_showAlertViewWithTitle:@"错误" message:@"请输入昵称" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:nil];
+//        [UIAlertView bk_showAlertViewWithTitle:@"错误" message:@"请输入昵称" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:nil];
+        UIAlertController *control = [UIAlertController alertControllerWithTitle:@"错误" message:@"请输入昵称" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [control addAction:action];
+        [self presentViewController:control animated:YES completion:nil];
         return;
     }
     

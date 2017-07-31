@@ -9,6 +9,8 @@
 #import "detailedOrderVC.h"
 #import "detailCell0.h"
 #import "detailCell1.h"
+#import "strisNull.h"
+#import "myOrderModel.h"
 
 @interface detailedOrderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *detailtableView;
@@ -18,6 +20,8 @@
 @property (nonatomic,strong) NSString *orderidstr;
 @property (nonatomic,strong) NSString *firsttimestr;
 @property (nonatomic,strong) NSString *lasttimestr;
+@property (nonatomic,strong) NSString *ordertimestr;
+
 @property (nonatomic,strong) NSString *addresssstr;
 @property (nonatomic,strong) NSString *pricestr;
 
@@ -66,7 +70,29 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         NSLog(@"res-----%@",responseObject);
-
+        if ([[responseObject objectForKey:@"code"] intValue]==200) {
+            //NSDictionary *datadic = [responseObject objectForKey:@"data"];
+            
+            NSArray *dataarr = [responseObject objectForKey:@"data"];
+            NSDictionary *datadit = [dataarr objectAtIndex:0];
+            NSString *timestr = [datadit objectForKey:@"create_time"];
+            self.pricestr = [datadit objectForKey:@"order_money"];
+            for (int i = 0; i<dataarr.count; i++) {
+                NSDictionary *dit = [dataarr objectAtIndex:i];
+                NSDictionary *goodsdit = [dit objectForKey:@"goods"];
+                myOrderModel *model = [[myOrderModel alloc] init];
+                model.namestr = [goodsdit objectForKey:@"goods_name"];
+                model.orderimgstr = [goodsdit objectForKey:@"goods_pic"];
+                model.pricestr = [goodsdit objectForKey:@"goods_price"];
+                model.contentstr = [goodsdit objectForKey:@"goods_intro"];
+                model.numstr = [NSString stringWithFormat:@"%lu",(unsigned long)dataarr.count];
+                [self.dataSource addObject:model];
+            }
+            
+            self.ordertimestr = [strisNull timeWithTimeIntervalString:timestr];
+            
+            [self.detailtableView reloadData];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
@@ -95,10 +121,10 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section==0) {
-        return 1;
+        return self.dataSource.count;
     }else
     {
-        return 5;
+        return 3;
     }
 }
 
@@ -107,30 +133,44 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
     if (indexPath.section==0) {
         detailCell0 *cell = [tableView dequeueReusableCellWithIdentifier:detalcellidentfid0];
         cell = [[detailCell0 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detalcellidentfid0];
+        [cell setdata:self.dataSource[indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     if (indexPath.section==1) {
         detailCell1 *cell = [tableView dequeueReusableCellWithIdentifier:detalcellidentfid1];
         cell = [[detailCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detalcellidentfid1];
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"text";
         if (indexPath.row==0) {
-            cell.textLabel.text = @"订单编号：";
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"订单编号：",self.order_snstr];
             
         }
         if (indexPath.row==1) {
             
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"下单时间：",self.ordertimestr];
+            
         }
         if (indexPath.row==2) {
+            NSString *str1 = @"合计：";
+            NSString *str2 = self.pricestr;
+            
+            NSString *newstr = [NSString stringWithFormat:@"%@%@",str1,str2];
+            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:newstr];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"333333"] range:NSMakeRange(0,str1.length)];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"df0842"] range:NSMakeRange(str1.length,str2.length)];
+
+             cell.textLabel.attributedText = str;
+            
             
         }
-        if (indexPath.row==3) {
-            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        }
-        if (indexPath.row==4) {
-            
-        }
+//        if (indexPath.row==3) {
+//            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+//        }
+//        if (indexPath.row==4) {
+//            
+//        }
         return cell;
     }
     return nil;

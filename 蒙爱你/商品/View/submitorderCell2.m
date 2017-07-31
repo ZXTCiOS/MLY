@@ -10,7 +10,7 @@
 
 @interface submitorderCell2()
 @property (nonatomic,strong) UILabel *typelab;
-@property (nonatomic,strong) UILabel *numlab;
+
 
 @end
 
@@ -66,7 +66,7 @@
         _numlab = [[UILabel alloc] init];
         _numlab.textAlignment = NSTextAlignmentRight;
         _numlab.font = [UIFont systemFontOfSize:14];
-        _numlab.text = @"20元";
+
         _numlab.textColor = [UIColor colorWithHexString:@"df0842"];
     }
     return _numlab;

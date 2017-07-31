@@ -23,6 +23,7 @@
 @interface submitorderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *submittableView;
 @property (nonatomic,strong) NSDictionary *addressdit;
+@property (nonatomic,strong) NSDictionary *discountdit;
 @property (nonatomic,strong) subbuttomView *btnView;
 
 @property (nonatomic,strong) NSString *order_snstr;
@@ -42,7 +43,7 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     self.view.backgroundColor = [UIColor whiteColor];
     self.addressdit = [NSDictionary dictionary];
-    
+    self.discountdit = [NSDictionary dictionary];
     [self.view addSubview:self.submittableView];
     [self.view addSubview:self.btnView];
     [self loaddata];
@@ -80,7 +81,7 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *token = [userDefault objectForKey:user_key_token];
-    NSString *urlstr = [NSString stringWithFormat:get_confirmOrder,userid,token,self.goods_type];
+    NSString *urlstr = [NSString stringWithFormat:get_confirmOrder,userid,token,self.goods_typestr];
     
     AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
@@ -96,9 +97,10 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"dic-----%@",dic);
         if ([[dic objectForKey:@"code"] intValue]==200) {
-//            self.addressdit = [NSDictionary dictionary];
+
             NSDictionary *datadit = [dic objectForKey:@"data"];
             self.addressdit = [datadit objectForKey:@"address"];
+//            self.discountdit = [datadit objectForKey:@"discount"];
             [self.submittableView reloadData];
         }
         
@@ -176,6 +178,13 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     if (indexPath.section==2) {
         submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid2];
         cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid2];
+        if ([strisNull isNullToString:[self.discountdit objectForKey:@"discount_jian"]]) {
+            cell.numlab.text = @"选择优惠券";
+        }
+        else
+        {
+            cell.numlab.text = [NSString stringWithFormat:@"%@%@",[self.discountdit objectForKey:@"discount_jian"],@"元"];
+        }
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -206,6 +215,7 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
 {
     return 0.01f;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
@@ -253,12 +263,14 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     NSString *user_id = [userDefault objectForKey:user_key_user_id];
     NSString *api_token = [userDefault objectForKey:user_key_token];
     NSString *goods_id = [goods_idarr componentsJoinedByString:@","];;
-    NSString *goods_type = @"1";
+    NSString *goods_type = self.goods_typestr;
     NSString *number = @"1";
     
     NSString *address_id = @"";
     NSString *order_userphone = @"";
     NSString *order_username = @"";
+    
+    
     
     //addressid
     if ([strisNull isNullToString:[self.addressdit objectForKey:@"addid"]]&&[strisNull isNullToString:[self.addressdit objectForKey:@"address_id"]]) {
@@ -305,17 +317,9 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     appoint_time = [strisNull getNowTimeTimestamp];
     
     
-    NSString *discount_id = @"";
+    NSString *discount_id = [self.discountdit objectForKey:@"discount_id"];
     
     NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"goods_id":goods_id,@"goods_type":goods_type,@"number":number,@"address_id":address_id,@"appoint_time":appoint_time,@"discount_id":discount_id,@"order_userphone":order_userphone,@"order_username":order_username};
-    
-//    [DNNetworking postWithURLString:post_placeOrder parameters:para success:^(id obj) {
-//        
-//    } failure:^(NSError *error) {
-//        
-//    }];
-    
-    
     AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
@@ -349,8 +353,6 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
 
     }];
     
-
-
 }
 
 -(void)kvc01:(NSNotification *)notifocation
@@ -365,6 +367,24 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
 {
     NSDictionary *dic = [notifocation object];
     NSLog(@"kvc2dic---------%@",dic);
+    
+    NSMutableArray *sumarr = [NSMutableArray array];
+    
+    for (int i = 0; i<self.orderDatasource.count; i++) {
+        submitorderModel *model = [self.orderDatasource objectAtIndex:i];
+        CGFloat numfloat = [model.ordernumber floatValue];
+        CGFloat pricefloat = [model.orderprice floatValue];
+        CGFloat sums = numfloat*pricefloat;
+        NSString *sunstr = [NSString stringWithFormat:@"%f",sums];
+        [sumarr addObject:sunstr];
+    }
+    CGFloat sum = 0.0;
+    sum = [[sumarr valueForKeyPath:@"@sum.floatValue"] floatValue];
+    CGFloat manfloat = [[dic objectForKey:@"discount_man"] floatValue];
+    if (sum>manfloat||sum==manfloat) {
+        self.discountdit = dic;
+    }
+    [self.submittableView reloadData];
 }
 
 - (void)dealloc{

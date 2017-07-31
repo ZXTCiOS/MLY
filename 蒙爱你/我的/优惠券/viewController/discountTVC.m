@@ -63,7 +63,7 @@
                 model.discount_man = [dit objectForKey:@"discount_man"];
                 [self.discountArray addObject:model];
             }
-  
+            
             //self.headL.text = @"您有3张优惠券";
         }else
         {
@@ -137,7 +137,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     discountModel *model = self.discountArray[indexPath.row];
-    NSDictionary *dic = @{@"contentid":model.discount_id};
+    NSDictionary *dic = @{@"discount_id":model.discount_id,@"discount_jian":model.discount_jian,@"discount_man":model.discount_man};
     [[NSNotificationCenter defaultCenter]postNotificationName:@"discountkvc" object:dic];
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -11,4 +11,5 @@
 @interface strisNull : NSObject
 + (BOOL )isNullToString:(id)string;
 +(NSString *)getNowTimeTimestamp;
++ (NSString *)timeWithTimeIntervalString:(NSString *)timeString;
 @end

@@ -322,6 +322,8 @@
             model.ordernumber = self.textView.text;
             model.goods_id = [self.infodic objectForKey:@"id"];
             model.goods_type = [self.infodic objectForKey:@"type"];
+            //商品
+            subvc.goods_typestr = @"1";
             [subvc.orderDatasource addObject:model];
             [self.view endEditing:YES];
         }

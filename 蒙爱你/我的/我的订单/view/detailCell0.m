@@ -7,13 +7,14 @@
 //
 
 #import "detailCell0.h"
-
+#import "myOrderModel.h"
 @interface detailCell0()
 @property (nonatomic,strong) UIImageView *detalimg;
 @property (nonatomic,strong) UILabel *nameLab;
 @property (nonatomic,strong) UILabel *priceLab;
 @property (nonatomic,strong) UILabel *contentLab;
 @property (nonatomic,strong) UILabel *numLab;
+@property (nonatomic,strong) myOrderModel *omodel;
 
 @end
 
@@ -79,7 +80,7 @@
     if(!_detalimg)
     {
         _detalimg = [[UIImageView alloc] init];
-        _detalimg.backgroundColor = [UIColor orangeColor];
+
     }
     return _detalimg;
 }
@@ -91,7 +92,7 @@
         _nameLab = [[UILabel alloc] init];
         _nameLab.textColor = [UIColor colorWithHexString:@"0b79b6"];
         _nameLab.font  = [UIFont systemFontOfSize:18];
-        _nameLab.text = @"大床房";
+
         
     }
     return _nameLab;
@@ -105,7 +106,7 @@
         _contentLab.textColor = [UIColor colorWithHexString:@"333333"];
         _contentLab.font = [UIFont systemFontOfSize:13];
         _contentLab.numberOfLines = 2;
-        _contentLab.text = @"接下来还需要您在服务器上绑定您的域名（主机域名绑定），同时将域名指向您的网站（就是通过域名解析将域名与服务器 IP 地址绑定）接下来还需要您在服务器上绑定您的域名（主机域名绑定），同时将域名指向您的网站（就是通过域名解析将域名与服务器 IP 地址绑定）接下来还需要您在服务器上绑定您的域名（主机域名绑定），同时将域名指向您的网站（就是通过域名解析将域名与服务器 IP 地址绑定）";
+        
     }
     return _contentLab;
 }
@@ -119,7 +120,7 @@
         _priceLab.textColor = [UIColor colorWithHexString:@"df0842"];
         _priceLab.font = [UIFont systemFontOfSize:15];
         _priceLab.textAlignment = NSTextAlignmentRight;
-        _priceLab.text = @"90/天";
+
     }
     return _priceLab;
 }
@@ -132,12 +133,20 @@
         _numLab.textColor = [UIColor colorWithHexString:@"999999"];
         _numLab.textAlignment = NSTextAlignmentRight;
         _numLab.font = [UIFont systemFontOfSize:14];
-        _numLab.text = @"X2";
+        
     }
     return _numLab;
 }
 
-
+-(void)setdata:(myOrderModel *)model
+{
+    self.omodel = model;
+    [self.detalimg sd_setImageWithURL:[NSURL URLWithString:model.orderimgstr] placeholderImage:[UIImage imageNamed:@"1"]];
+    self.nameLab.text = model.namestr;
+    self.priceLab.text = model.pricestr;
+    self.numLab.text = [NSString stringWithFormat:@"%@%@",@"X",model.numstr];
+    self.contentLab.text = model.contentstr;
+}
 
 
 

@@ -58,4 +58,6 @@
 #define get_discount   @""baseURL"/MLY/api.php/Index/discount?user_id=%@"
 //确认下单
 #define post_placeOrder  @""baseURL"/MLY/api.php/Order/placeOrder"
+//用户个人信息查看
+#define get_info @""baseURL"/MLY/api.php/User/detail?user_id=%@&api_token=%@"
 #endif /* wangHeader_h */
