@@ -10,6 +10,8 @@
 #import "GouWCCell.h"
 #import "FoodDataModel.h"
 #import "loginVC.h"
+#import "submitorderVC.h"
+#import "submitorderModel.h"
 
 @interface GouWCTVc ()
 
@@ -216,12 +218,27 @@ static BOOL allSel = NO;
     delete.tintColor = [UIColor blackColor];
     [delete bk_addEventHandler:^(id sender) {
         
-        
+        NSMutableArray<submitorderModel *> *arr = [NSMutableArray<submitorderModel *> array];
         
         for (int i = 0; i < self.datalist.count; i++) {
             if (self.datalist[i].isselected) {
-#warning  添加 提交订单页面....................
-                NSLog(@"........");
+                
+                FoodModel *model = self.datalist[i];
+                submitorderModel *m = [submitorderModel new];
+                m.orderimg = model.bedeat_pic;
+                m.ordername = model.bedeat_name;
+                m.orderinter = model.bedeat_intro;
+                m.orderprice = [NSString stringWithFormat:@"%f", model.bedeat_price];
+                m.ordernumber = [NSString stringWithFormat:@"%ld", (long)model.bedeat_count];
+                m.ordercontent = model.bedeat_des;
+                [arr addObject:m];
+                
+                if ( i == self.datalist.count -1) {
+                    submitorderVC *vc = [[submitorderVC alloc] init];
+                    vc.goods_typestr = @"5";
+                    vc.orderDatasource = arr;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
             }
         }
         
