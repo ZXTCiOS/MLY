@@ -67,6 +67,9 @@
 		11093C751F0B591A00AFCB20 /* HomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11093C741F0B591A00AFCB20 /* HomeTableCell.m */; };
 		11093C881F0B775F00AFCB20 /* FoodAndHotelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11093C861F0B775F00AFCB20 /* FoodAndHotelCell.m */; };
 		11093C891F0B775F00AFCB20 /* FoodAndHotelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11093C871F0B775F00AFCB20 /* FoodAndHotelCell.xib */; };
+		111D18E31F2F3607004F0CE2 /* PingJiaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 111D18E11F2F3607004F0CE2 /* PingJiaCell.m */; };
+		111D18E41F2F3607004F0CE2 /* PingJiaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 111D18E21F2F3607004F0CE2 /* PingJiaCell.xib */; };
+		111D18E71F2F3940004F0CE2 /* PingJiaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 111D18E61F2F3940004F0CE2 /* PingJiaModel.m */; };
 		11353E8A1F15F3EB00B34D7C /* ScenicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11353E881F15F3EB00B34D7C /* ScenicCell.m */; };
 		11353E8B1F15F3EB00B34D7C /* ScenicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11353E891F15F3EB00B34D7C /* ScenicCell.xib */; };
 		11353E8E1F15F7A900B34D7C /* HomeScenicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 11353E8D1F15F7A900B34D7C /* HomeScenicModel.m */; };
@@ -317,6 +320,11 @@
 		11093C851F0B775F00AFCB20 /* FoodAndHotelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodAndHotelCell.h; path = "../../首页/View/FoodAndHotelCell.h"; sourceTree = "<group>"; };
 		11093C861F0B775F00AFCB20 /* FoodAndHotelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodAndHotelCell.m; path = "../../首页/View/FoodAndHotelCell.m"; sourceTree = "<group>"; };
 		11093C871F0B775F00AFCB20 /* FoodAndHotelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoodAndHotelCell.xib; path = "../../首页/View/FoodAndHotelCell.xib"; sourceTree = "<group>"; };
+		111D18E01F2F3607004F0CE2 /* PingJiaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingJiaCell.h; sourceTree = "<group>"; };
+		111D18E11F2F3607004F0CE2 /* PingJiaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingJiaCell.m; sourceTree = "<group>"; };
+		111D18E21F2F3607004F0CE2 /* PingJiaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PingJiaCell.xib; sourceTree = "<group>"; };
+		111D18E51F2F3940004F0CE2 /* PingJiaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingJiaModel.h; sourceTree = "<group>"; };
+		111D18E61F2F3940004F0CE2 /* PingJiaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingJiaModel.m; sourceTree = "<group>"; };
 		11353E871F15F3EB00B34D7C /* ScenicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicCell.h; sourceTree = "<group>"; };
 		11353E881F15F3EB00B34D7C /* ScenicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicCell.m; sourceTree = "<group>"; };
 		11353E891F15F3EB00B34D7C /* ScenicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicCell.xib; sourceTree = "<group>"; };
@@ -1133,6 +1141,8 @@
 				116AE5F31F21DEF500CD76F1 /* MinsuDetailModel.m */,
 				113F372E1F2B20E200F56628 /* FoodDataModel.h */,
 				113F372F1F2B20E200F56628 /* FoodDataModel.m */,
+				111D18E51F2F3940004F0CE2 /* PingJiaModel.h */,
+				111D18E61F2F3940004F0CE2 /* PingJiaModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1161,6 +1171,9 @@
 				1170161B1F2C5CA800E1AF74 /* GouWCCell.h */,
 				1170161C1F2C5CA800E1AF74 /* GouWCCell.m */,
 				1170161D1F2C5CA800E1AF74 /* GouWCCell.xib */,
+				111D18E01F2F3607004F0CE2 /* PingJiaCell.h */,
+				111D18E11F2F3607004F0CE2 /* PingJiaCell.m */,
+				111D18E21F2F3607004F0CE2 /* PingJiaCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1759,6 +1772,7 @@
 				113CBB061F1F274D00C6A766 /* DiscountCell.xib in Resources */,
 				534C17C21F29F89C0067C3E4 /* w_star_white@2x.png in Resources */,
 				114416321F131E920079B1E2 /* commodityCell.xib in Resources */,
+				111D18E41F2F3607004F0CE2 /* PingJiaCell.xib in Resources */,
 				11405FC21F0DFF6200B5CBAE /* HomeTravelVC.xib in Resources */,
 				11093C491F0B3DFF00AFCB20 /* ShareSDKConfigFile.bundle in Resources */,
 				11093C541F0B3DFF00AFCB20 /* ShareSDK.bundle in Resources */,
@@ -1845,7 +1859,11 @@
 				534C17571F2839280067C3E4 /* myOrderVC1.m in Sources */,
 				115502291F189B6B00977217 /* StarBtn.m in Sources */,
 				11405FC61F0E0C8800B5CBAE /* ShunFengCheViewModel.m in Sources */,
+
+				111D18E31F2F3607004F0CE2 /* PingJiaCell.m in Sources */,
+ 
 				53E9BD351F2E175F000BFA60 /* subbuttomView.m in Sources */,
+
 				11353E9B1F15F8EE00B34D7C /* ScenicModel.m in Sources */,
 				115502241F189A5F00977217 /* ChooseView.m in Sources */,
 				536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */,
@@ -1867,6 +1885,7 @@
 				11093C011F0B3A8C00AFCB20 /* DNNetworking.m in Sources */,
 				114315781F29EDB4003705D2 /* FoodListCVC.m in Sources */,
 				11405FC11F0DFF6200B5CBAE /* HomeTravelVC.m in Sources */,
+				111D18E71F2F3940004F0CE2 /* PingJiaModel.m in Sources */,
 				534C17631F28398B0067C3E4 /* myOrderVC5.m in Sources */,
 				11093C201F0B3DC100AFCB20 /* CorePhoto.m in Sources */,
 				1146E5D11F0F616B0066B37F /* MyStorageVC.m in Sources */,

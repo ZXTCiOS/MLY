@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchViewController.h"
+
 
 @interface ScenicTVC : UITableViewController
 
@@ -14,5 +16,6 @@
 
 - (instancetype)initWithArea_id:(NSInteger) area_id area_name:(NSString *)area_name;
 
+- (instancetype)initWithSearchType:(SearchType) type Searchtext:(NSString*) text;
 
 @end

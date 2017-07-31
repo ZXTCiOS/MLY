@@ -7,7 +7,7 @@
 //
 
 #import "FoodViewModel.h"
-
+#import "HomeFoodModel.h"
 
 @interface FoodViewModel ()
 
@@ -19,7 +19,27 @@
 
 
 
-
+- (void)getDataWithRequestMode:(RequestMode)mode type:(NSInteger)type searchText:(NSString *)text handller:(void (^)(NSError *))handller{
+    if (mode == RequestModeRefresh) {
+        self.page = 1;
+    }
+    NSDictionary *dic;
+    NSInteger user_id = [[NSUserDefaults standardUserDefaults] integerForKey:user_key_user_id];
+    if ([userDefault integerForKey:user_key_user_id]) {
+        dic = @{@"page":@(self.page), @"user_id": @(user_id), @"type": @(3), @"search": text};
+    }
+    dic = @{@"page":@(self.page), @"user_id": @(user_id), @"type": @(type), @"search": text};
+    [DNNetworking getWithURLString:get_search_other parameters:dic success:^(id obj) {
+        if (mode == RequestModeRefresh) {
+            [self.datalist removeAllObjects];
+        }
+        NSArray *arr = [NSArray modelArrayWithClass:[HomeFoodModel class] json:[[obj valueForKey:@"data"] valueForKey:@"minsu"]];
+        [self.datalist addObjectsFromArray:arr];
+        !handller ?: handller(nil);
+    } failure:^(NSError *error) {
+        !handller ?: handller(error);
+    }];
+}
 
 
 

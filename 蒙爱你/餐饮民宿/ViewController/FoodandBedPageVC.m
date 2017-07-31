@@ -8,7 +8,7 @@
 
 #import "FoodandBedPageVC.h"
 #import "ChooseView.h"
-
+#import "SearchViewController.h"
 
 
 @interface FoodandBedPageVC ()
@@ -75,7 +75,9 @@
     self.navigationItem.rightBarButtonItem = search;
     
     [searchBtn bk_addEventHandler:^(id sender) {
-        
+        SearchType t = self.type ? SearchTypeFood : SearchTypeMinsu;
+        SearchViewController *search = [[SearchViewController alloc] initWithSearchType:t];
+        [self.navigationController pushViewController:search animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -101,7 +103,7 @@
     layout.minimumInteritemSpacing = 10;
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     CGFloat width = (kScreenW - 30) / 2;
-    layout.itemSize = CGSizeMake(width, width * 4 / 3.0);
+    layout.itemSize = CGSizeMake(width, width + 95);
     FoodCollectionVC *food = [[FoodCollectionVC alloc] initWithCollectionViewLayout:layout andType:index];
     return food;
 }
@@ -173,7 +175,7 @@
             }
             
             NSInteger price = weakSelf.chooseV.slider.value;
-            [((FoodCollectionVC *)weakSelf.currentViewController) reloadDataWithStars:str andPrice:price];
+            [((FoodCollectionVC *)weakSelf.currentViewController) reloadDataWithStars:str andPrice:@(price)];
             
         };
         

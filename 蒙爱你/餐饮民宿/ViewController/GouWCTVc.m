@@ -34,7 +34,8 @@
     self.tableView.backgroundColor = krgb(241, 241, 241, 1);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GouWCCell class]) bundle:nil] forCellReuseIdentifier:@"cell"];
-    
+    [XDFactory addBackItemForVC:self];
+    self.title = @"购物车";
     
 }
 
@@ -104,7 +105,7 @@
         cell.isSel = self.datalist[indexPath.row].isselected;
         [self changetotal];
     } forControlEvents:UIControlEventTouchUpInside];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -119,6 +120,10 @@
         }
     }
 }
+
+
+
+
 
 static BOOL allSel = NO;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

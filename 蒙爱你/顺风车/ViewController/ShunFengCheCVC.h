@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchViewController.h"
 
 @interface ShunFengCheCVC : UICollectionViewController
 
@@ -14,6 +15,6 @@
 
 
 
-
+- (instancetype)initWithSearchText:(NSString *) text searchType:(SearchType) searchType;
 
 @end
