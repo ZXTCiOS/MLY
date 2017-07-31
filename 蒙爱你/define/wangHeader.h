@@ -58,6 +58,8 @@
 #define get_discount   @""baseURL"/MLY/api.php/Index/discount?user_id=%@"
 //确认下单
 #define post_placeOrder  @""baseURL"/MLY/api.php/Order/placeOrder"
+//订单状态修改
+#define post_changStatus  @""baseURL"/MLY/api.php/Order/changStatus"
 //用户个人信息查看
 #define get_info @""baseURL"/MLY/api.php/User/detail?user_id=%@&api_token=%@"
 

@@ -47,9 +47,14 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
     self.tableView.tableFooterView = [UIView new];
     self.icon.image = [UIImage imageNamed:@"touxiang"];
-    [self loaddata];
+
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self loaddata];
+}
 
 -(void)loaddata
 {
