@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, RequestMode) {
 @property (nonatomic, strong) NSMutableArray<HomeTravelModel *> *datalist;
 
 
+- (void)getDataWithMode:(RequestMode) mode SearchText:(NSString *) text handller:(void(^)(NSError *error)) handller;
 
 - (void)getDataWithMode:(RequestMode) mode url:(NSString *)url handller:(void(^)(NSError *error)) handller;
 

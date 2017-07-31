@@ -12,11 +12,35 @@
 
 
 
+- (void)getDataWithMode:(RequestMode)mode SearchText:(NSString *)text handller:(void (^)(NSError *))handller{
+    
+    if (mode == RequestModeRefresh) {
+        self.page = 1;
+    }
+    NSDictionary *dic;
+    NSInteger user_id = [[NSUserDefaults standardUserDefaults] integerForKey:user_key_user_id];
+    if ([userDefault integerForKey:user_key_user_id]) {
+        dic = @{@"page":@(self.page), @"user_id": @(user_id), @"type": @(2), @"search": text};
+    }
+    dic = @{@"page":@(self.page), @"user_id": @(user_id), @"type": @(2), @"search": text};
+    [DNNetworking getWithURLString:get_search_other parameters:dic success:^(id obj) {
+        if (mode == RequestModeRefresh) {
+            [self.datalist removeAllObjects];
+        }
+        NSArray *arr = [NSArray modelArrayWithClass:[HomeTravelModel class] json:[[obj valueForKey:@"data"] valueForKey:@"chuxing"]];
+        [self.datalist addObjectsFromArray:arr];
+        !handller ?: handller(nil);
+    } failure:^(NSError *error) {
+        !handller ?: handller(error);
+    }];
+    
+}
+
 
 - (void)getDataWithMode:(RequestMode)mode url:(NSString *)url handller:(void (^)(NSError *))handller{
     
     if (!mode) {
-        self.page = 0;
+        self.page = 1;
     }
     
     [DNNetworking getWithURLString:[NSString stringWithFormat:url, self.page] success:^(id obj) {

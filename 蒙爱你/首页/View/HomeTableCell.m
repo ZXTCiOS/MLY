@@ -13,7 +13,7 @@
 - (UICollectionView *)collectV{
     if (!_collectV) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.minimumLineSpacing = 15;
+        layout.minimumLineSpacing = 20;
         layout.minimumInteritemSpacing = 2;
         layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -23,7 +23,7 @@
         [_collectV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.left.right.equalTo(0);
         }];
-        
+        _collectV.pagingEnabled = YES;
         _collectV.backgroundColor = [UIColor whiteColor];
         _collectV.showsHorizontalScrollIndicator = NO;
         UINib *scenicNib = [UINib nibWithNibName:NSStringFromClass([ScenicSpotAdviseCell class]) bundle:nil];

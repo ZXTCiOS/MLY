@@ -82,7 +82,9 @@
         make.height.equalTo(34);
     }];
     [bgV bk_addEventHandler:^(id sender) {
-        SearchViewController *vc = [[SearchViewController alloc] initWithSearchType:SearchTypeScenic];
+        SearchViewController *vc = [[SearchViewController alloc] initWithSearchType:SearchTypeHome];
+        vc.hidesBottomBarWhenPushed = YES;
+        
         [self.navigationController pushViewController:vc animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -338,10 +340,10 @@ static BOOL ok = YES;
             return 240;
             break;
         case 1:
-            return 165;
+            return 190;
             break;
         case 2:
-            return 220;
+            return 270;
             break;
         default:
             break;
@@ -431,15 +433,16 @@ static BOOL ok = YES;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    float width = (kScreenW - 40)/2;
     switch (collectionView.tag) {
         case 0:
-            return CGSizeMake(150, 222);
+            return CGSizeMake(width, 222);
             break;
         case 1:
-            return CGSizeMake(150, 140);
+            return CGSizeMake(width, 160);
             break;
         case 2:
-            return CGSizeMake(150, 200);
+            return CGSizeMake(width, 250);
             break;
         default:
             break;

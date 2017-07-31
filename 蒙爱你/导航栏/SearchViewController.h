@@ -10,15 +10,16 @@
 
 
 typedef NS_ENUM(NSUInteger, SearchType) {
+    SearchTypeHome,         // 首页搜索
     SearchTypeScenic,
+    SearchTypeChuxing,
     SearchTypeMinsu,
-    SearchTypeShunFC,
-    SearchTypeFood,
+    SearchTypeFood      = 6,
     
 };
 
 
-@interface SearchViewController : UISearchController
+@interface SearchViewController : UIViewController
 
 
 

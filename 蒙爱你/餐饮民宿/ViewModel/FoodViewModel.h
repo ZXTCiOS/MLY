@@ -25,9 +25,7 @@ typedef NS_ENUM(NSUInteger, RequestMode) {
 
 
 
-
-
-
+- (void)getDataWithRequestMode:(RequestMode) mode type:(NSInteger)type searchText:(NSString *) text handller:(void(^)(NSError *error)) handller;
 
 
 

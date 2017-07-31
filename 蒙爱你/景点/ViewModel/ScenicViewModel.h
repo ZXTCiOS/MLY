@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, RequestMode) {
 
 - (void)getScenicDetailDataWithScenic_id:(NSInteger) scenic_id handller:(void(^)(NSError *error))handller;
 
-
+- (void)getDataWithSearchText:(NSString *) text RequestMode:(RequestMode)mode handller:(void(^)(NSError *error))handller;
 
 
 @end

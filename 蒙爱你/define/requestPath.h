@@ -28,6 +28,9 @@
 #define post_home_scenic_more   @"/MLY/api.php/Index/jingdianMore"          //首页景点推荐 更多
 #define post_home_travel_more   @"/MLY/api.php/Index/chuxingMore"           //首页出行推荐 更多
 #define post_home_food_more     @"/MLY/api.php/Index/minsuMore"             //首页餐饮民宿 更多
+#define get_home_search         @"/MLY/api.php/Index/search"                //首页搜索
+
+#define get_search_other        @"/MLY/api.php/Index/searchList"            //其他搜索
 
 
 

@@ -10,11 +10,13 @@
 #import "TravelAdviseCell.h"
 #import "HomeTravelVC.h"
 #import "ShunFengCheViewModel.h"
+#import "SearchViewController.h"
 
 @interface ShunFengCheCVC ()
 
-
-@property(nonatomic, strong) ShunFengCheViewModel *viewmodel;
+@property (nonatomic, copy) NSString *searchtext;
+@property (nonatomic, assign) SearchType searchType;
+@property (nonatomic, strong) ShunFengCheViewModel *viewmodel;
 
 @end
 
@@ -28,35 +30,78 @@ static NSString * const reuseIdentifier = @"Cell";
     
     MJWeakSelf
     [self.collectionView addHeaderRefresh:^{
-        [weakSelf.viewmodel getDataWithMode:RequestModeRefresh url:get_shunFengChe_zhuye handller:^(NSError *error) {
-            if (!error) {
-                [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView endHeaderRefresh];
-            }else{
-                [weakSelf.view.superview showWarning:@"网络错误"];
-                [weakSelf.collectionView endHeaderRefresh];
-            }
-        }];
-        
-    
+        [weakSelf HeadRefresh];
     }];
     [self.collectionView addFooterRefresh:^{
-        [weakSelf.viewmodel getDataWithMode:RequestModeMore url:get_shunFengChe_zhuye handller:^(NSError *error) {
-            if (!error) {
-                [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView endFooterRefresh];
-            }else{
-                [weakSelf.view.superview showWarning:@"网络错误"];
-                [weakSelf.collectionView endFooterRefresh];
-            }
-        }];
+        [weakSelf FoodRefresh];
     }];
     [self.collectionView beginHeaderRefresh];
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([TravelAdviseCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    if (self.searchType == SearchTypeChuxing) {
+        [XDFactory addBackItemForVC:self];
+        self.title = @"搜索结果";
+    } else {
+        [XDFactory addSearchItemForVC:self clickedHandler:^{
+            SearchViewController *vc = [[SearchViewController alloc] initWithSearchType:SearchTypeChuxing];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
 }
+
+
+- (void)HeadRefresh{
+    if (self.searchType == SearchTypeChuxing) {
+        [self.viewmodel getDataWithMode:RequestModeRefresh SearchText:self.searchtext handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView reloadData];
+                [self.collectionView endHeaderRefresh];
+            }else{
+                [self.view.superview showWarning:@"网络错误"];
+                [self.collectionView endHeaderRefresh];
+            }
+        }];
+    } else {
+        [self.viewmodel getDataWithMode:RequestModeRefresh url:get_shunFengChe_zhuye handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView reloadData];
+                [self.collectionView endHeaderRefresh];
+            }else{
+                [self.view.superview showWarning:@"网络错误"];
+                [self.collectionView endHeaderRefresh];
+            }
+        }];
+    }
+}
+
+- (void)FoodRefresh{
+    if (self.searchType == SearchTypeChuxing) {
+        [self.viewmodel getDataWithMode:RequestModeMore SearchText:self.searchtext handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView reloadData];
+                [self.collectionView endHeaderRefresh];
+            }else{
+                [self.view.superview showWarning:@"网络错误"];
+                [self.collectionView endHeaderRefresh];
+            }
+        }];
+    } else {
+        [self.viewmodel getDataWithMode:RequestModeMore url:get_shunFengChe_zhuye handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView reloadData];
+                [self.collectionView endHeaderRefresh];
+            }else{
+                [self.view.superview showWarning:@"网络错误"];
+                [self.collectionView endHeaderRefresh];
+            }
+        }];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -104,12 +149,12 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = NO;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    //self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = YES;
     //self.tabBarController.tabBar.hidden = YES;
 }
 
@@ -124,7 +169,20 @@ static NSString * const reuseIdentifier = @"Cell";
     return _viewmodel;
 }
 
-
+- (instancetype)initWithSearchText:(NSString *)text searchType:(SearchType)searchType{
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 10;
+    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    CGFloat width = (kScreenW - 30) / 2;
+    layout.itemSize = CGSizeMake(width, width * 14 / 15.0);
+    self = [super initWithCollectionViewLayout:layout];
+    if (self) {
+        self.searchType = searchType;
+        self.searchtext = text;
+    }
+    return self;
+}
 
 
 

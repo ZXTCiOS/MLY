@@ -22,7 +22,27 @@
 
 
 
-
+- (void)getDataWithSearchText:(NSString *)text RequestMode:(RequestMode)mode handller:(void (^)(NSError *))handller{
+    if (mode == RequestModeRefresh) {
+        self.page = 1;
+    }
+    NSDictionary *dic;
+    NSInteger user_id = [[NSUserDefaults standardUserDefaults] integerForKey:user_key_user_id];
+    if ([userDefault integerForKey:user_key_user_id]) {
+        dic = @{@"page":@(self.page), @"user_id": @(user_id), @"type": @(1), @"search": text};
+    }
+    dic = @{@"page":@(self.page), @"user_id": @(user_id), @"type": @(1), @"search": text};
+    [DNNetworking getWithURLString:get_search_other parameters:dic success:^(id obj) {
+        if (mode == RequestModeRefresh) {
+            [self.datalist removeAllObjects];
+        }
+        NSArray *arr = [NSArray modelArrayWithClass:[ScenicelEmentModel class] json:[[obj valueForKey:@"data"] valueForKey:@"jingdian"]];
+        [self.datalist addObjectsFromArray:arr];
+        !handller ?: handller(nil);
+    } failure:^(NSError *error) {
+        !handller ?: handller(error);
+    }];
+}
 
 
 - (void)getScenicDetailDataWithScenic_id:(NSInteger)scenic_id handller:(void (^)(NSError *))handller{

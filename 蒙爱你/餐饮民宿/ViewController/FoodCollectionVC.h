@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SearchViewController.h"
 typedef NS_ENUM(NSUInteger, VCType) {
     VCTypeOfBed,
     VCTypeOfFood,
@@ -24,6 +24,8 @@ typedef NS_ENUM(NSUInteger, VCType) {
 
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout andType:(VCType)type;
+
+- (instancetype)initWithSearchType:(SearchType)type Searchtext:(NSString *)text;
 
 
 @end

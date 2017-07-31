@@ -16,6 +16,9 @@
 
 @property (nonatomic, assign) NSInteger area_id;
 
+@property (nonatomic, copy) NSString *searchtext;
+@property (nonatomic, assign) SearchType type;
+
 @end
 
 @implementation ScenicTVC
@@ -25,28 +28,10 @@
     
     MJWeakSelf
     [self.tableView addHeaderRefresh:^{
-        [weakSelf.viewmodel getDataWithRequestMode:RequestModeRefresh withID:weakSelf.area_id handller:^(NSError *error) {
-            if (!error) {
-                
-                [weakSelf.tableView reloadData];
-                [weakSelf.tableView endHeaderRefresh];
-            } else {
-                [weakSelf.tableView showWarning:@"网络错误"];
-                [weakSelf.tableView endHeaderRefresh];
-            }
-        }];
+        [weakSelf HeadRefresh];
     }];
     [self.tableView addFooterRefresh:^{
-        [weakSelf.viewmodel getDataWithRequestMode:RequestModeMore withID:weakSelf.area_id handller:^(NSError *error) {
-            if (!error) {
-                
-                [weakSelf.tableView reloadData];
-                [weakSelf.tableView endFooterRefresh];
-            } else {
-                [weakSelf.tableView showWarning:@"网络错误"];
-                [weakSelf.tableView endFooterRefresh];
-            }
-        }];
+        [weakSelf FoodRefresh];
     }];
     [self.tableView beginHeaderRefresh];
     
@@ -57,6 +42,60 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ScenicCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
 }
+
+- (void)HeadRefresh{
+    if (self.type == SearchTypeScenic) {
+        [self.viewmodel getDataWithSearchText:self.searchtext RequestMode:RequestModeRefresh handller:^(NSError *error) {
+            if (!error) {
+                
+                [self.tableView reloadData];
+                [self.tableView endHeaderRefresh];
+            } else {
+                [self.tableView showWarning:@"网络错误"];
+                [self.tableView endHeaderRefresh];
+            }
+        }];
+    } else {
+        [self.viewmodel getDataWithRequestMode:RequestModeRefresh withID:self.area_id handller:^(NSError *error) {
+            if (!error) {
+                
+                [self.tableView reloadData];
+                [self.tableView endHeaderRefresh];
+            } else {
+                [self.tableView showWarning:@"网络错误"];
+                [self.tableView endHeaderRefresh];
+            }
+        }];
+    }
+}
+
+- (void)FoodRefresh{
+    if (self.type == SearchTypeScenic) {
+        [self.viewmodel getDataWithSearchText:self.searchtext RequestMode:RequestModeMore handller:^(NSError *error) {
+            if (!error) {
+                
+                [self.tableView reloadData];
+                [self.tableView endHeaderRefresh];
+            } else {
+                [self.tableView showWarning:@"网络错误"];
+                [self.tableView endHeaderRefresh];
+            }
+        }];
+    } else {
+        [self.viewmodel getDataWithRequestMode:RequestModeMore withID:self.area_id handller:^(NSError *error) {
+            if (!error) {
+                
+                [self.tableView reloadData];
+                [self.tableView endHeaderRefresh];
+            } else {
+                [self.tableView showWarning:@"网络错误"];
+                [self.tableView endHeaderRefresh];
+            }
+        }];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -121,5 +160,17 @@
     }
     return self;
 }
+
+- (instancetype)initWithSearchType:(SearchType)type Searchtext:(NSString *)text{
+    self = [super initWithStyle:UITableViewStylePlain];
+    if (self) {
+        self.searchtext = text;
+        self.type = type;
+    }
+    return self;
+}
+
+
+
 
 @end

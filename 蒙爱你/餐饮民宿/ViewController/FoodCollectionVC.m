@@ -22,6 +22,9 @@
 
 @property (nonatomic, assign) NSInteger price;
 
+@property (nonatomic, copy) NSString *searchText;
+@property (nonatomic, assign) SearchType searchType;
+
 @end
 
 @implementation FoodCollectionVC
@@ -35,26 +38,10 @@ static NSString * const reuseIdentifier = @"Cell";
     self.price = 0;
     MJWeakSelf
     [self.collectionView addHeaderRefresh:^{
-        [weakSelf.viewmodel getDataWithRequestMode:RequestModeRefresh type:weakSelf.type stars:weakSelf.stars price:weakSelf.price handller:^(NSError *error) {
-            if (!error) {
-                [weakSelf.collectionView endHeaderRefresh];
-                [weakSelf.collectionView reloadData];
-            } else {
-                [weakSelf.collectionView endHeaderRefresh];
-                [weakSelf.view.superview showWarning:@"网络错误"];
-            }
-        }];
+        [weakSelf HeadRefresh];
     }];
     [self.collectionView addFooterRefresh:^{
-        [weakSelf.viewmodel getDataWithRequestMode:RequestModeMore type:weakSelf.type stars:weakSelf.stars price:weakSelf.price handller:^(NSError *error) {
-            if (!error) {
-                [weakSelf.collectionView endFooterRefresh];
-                [weakSelf.collectionView reloadData];
-            } else {
-                [weakSelf.collectionView endFooterRefresh];
-                [weakSelf.view.superview showWarning:@"网络错误"];
-            }
-        }];
+        [weakSelf FoodRefresh];
     }];
     [self.collectionView beginHeaderRefresh];
     
@@ -64,6 +51,59 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
+- (void)HeadRefresh{
+    if (self.searchType == SearchTypeMinsu | self.searchType == SearchTypeFood) {
+        [self.viewmodel getDataWithRequestMode:RequestModeRefresh type:self.searchType searchText:self.searchText handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView endHeaderRefresh];
+                [self.collectionView reloadData];
+            } else {
+                [self.collectionView endHeaderRefresh];
+                [self.view.superview showWarning:@"网络错误"];
+            }
+        }];
+    } else {
+        [self.viewmodel getDataWithRequestMode:RequestModeRefresh type:self.type stars:self.stars price:self.price handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView endHeaderRefresh];
+                [self.collectionView reloadData];
+            } else {
+                [self.collectionView endHeaderRefresh];
+                [self.view.superview showWarning:@"网络错误"];
+            }
+        }];
+    }
+}
+
+- (void)FoodRefresh{
+    if (self.searchType == SearchTypeMinsu | self.searchType == SearchTypeFood) {
+        [self.viewmodel getDataWithRequestMode:RequestModeMore type:self.searchType searchText:self.searchText handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView endHeaderRefresh];
+                [self.collectionView reloadData];
+            } else {
+                [self.collectionView endHeaderRefresh];
+                [self.view.superview showWarning:@"网络错误"];
+            }
+        }];
+    } else {
+        [self.viewmodel getDataWithRequestMode:RequestModeMore type:self.type stars:self.stars price:self.price handller:^(NSError *error) {
+            if (!error) {
+                [self.collectionView endHeaderRefresh];
+                [self.collectionView reloadData];
+            } else {
+                [self.collectionView endHeaderRefresh];
+                [self.view.superview showWarning:@"网络错误"];
+            }
+        }];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setHidden:NO];
+    self.title = @"搜索";
+}
 
 - (void)reloadDataWithStars:(NSString *)arr andPrice:(NSInteger)price{
     
@@ -154,6 +194,20 @@ static NSString * const reuseIdentifier = @"Cell";
     return self;
 }
 
-
+- (instancetype)initWithSearchType:(SearchType)type Searchtext:(NSString *)text{
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 10;
+    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    CGFloat width = (kScreenW - 30) / 2;
+    layout.itemSize = CGSizeMake(width, width * 4 / 3.0);
+    self = [super initWithCollectionViewLayout:layout];
+    if (self) {
+        self.searchType = type;
+        self.searchText = text;
+        //self.type = VCTypeOfBed;
+    }
+    return self;
+}
 
 @end
