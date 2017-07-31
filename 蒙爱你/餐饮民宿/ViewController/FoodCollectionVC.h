@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, VCType) {
 
 @property (nonatomic, assign) VCType type;
 
-- (void)reloadDataWithStars:(NSArray *) arr andPrice:(NSInteger) price;
+- (void)reloadDataWithStars:(NSString *) arr andPrice:(NSInteger) price;
 
 
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout andType:(VCType)type;

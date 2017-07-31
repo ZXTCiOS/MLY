@@ -175,7 +175,7 @@
             }
             
             NSInteger price = weakSelf.chooseV.slider.value;
-            [((FoodCollectionVC *)weakSelf.currentViewController) reloadDataWithStars:str andPrice:@(price)];
+            [((FoodCollectionVC *)weakSelf.currentViewController) reloadDataWithStars:str andPrice:price];
             
         };
         

@@ -20,7 +20,7 @@ return [self modelInitWithCoder:aDecoder];\
 return [self modelDescription];\
 }\
 
-@interface NSObject (Parse)<YYModel, NSCoding>
+@interface NSObject (Parse)<YYModel>
 
 + (id)parse:(id)JSON;
 
