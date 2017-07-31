@@ -7,6 +7,11 @@
 //
 
 #import "DiscountCell.h"
+#import "discountModel.h"
+@interface DiscountCell()
+@property (nonatomic,strong) discountModel *dmodel;
+
+@end
 
 @implementation DiscountCell
 
@@ -19,6 +24,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)setdata:(discountModel *)model
+{
+    self.dmodel = model;
+    self.youhui.text = model.discount_jian;
+    self.youhuiman.text = model.discount_man;
 }
 
 @end

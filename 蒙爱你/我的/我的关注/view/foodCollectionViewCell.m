@@ -100,7 +100,7 @@
 -(void)setdata:(shoucangfoodModel *)model
 {
     self.fmodel = model;
-    [self.foodimg sd_setImageWithURL:[NSURL URLWithString:model.home_pic]];
+    [self.foodimg sd_setImageWithURL:[NSURL URLWithString:model.home_pic] placeholderImage:[UIImage imageNamed:@"1"]];
     NSString *str1 = model.home_name;
     NSString *str2 = model.home_description;
     NSString *newstr = [NSString stringWithFormat:@"%@%@",str1,str2];
@@ -111,4 +111,5 @@
     [attstr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(str1.length, str2.length)];//设置所有的字体
     self.contentlab.attributedText = attstr;
 }
+
 @end

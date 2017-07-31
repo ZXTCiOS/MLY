@@ -96,7 +96,6 @@
         _nameLab = [[UILabel alloc] init];
         _nameLab.textColor = [UIColor colorWithHexString:@"0b79b6"];
         _nameLab.font  = [UIFont systemFontOfSize:18];
-        _nameLab.text = @"杭锦旗蒙古包";
         
     }
     return _nameLab;
@@ -110,7 +109,6 @@
         _contentLab.textColor = [UIColor colorWithHexString:@"333333"];
         _contentLab.numberOfLines = 2;
         _contentLab.font = [UIFont systemFontOfSize:14];
-        _contentLab.text = @"杭锦旗蒙古包杭锦旗蒙古包杭锦旗蒙古包杭锦旗蒙古包杭锦旗蒙古包杭锦旗蒙古包杭锦旗蒙古包";
     }
     return _contentLab;
 }
@@ -120,7 +118,6 @@
     if(!_priceLab)
     {
         _priceLab = [[UILabel alloc] init];
-        _priceLab.text = @"总价：120";
         _priceLab.font = [UIFont systemFontOfSize:18];
         
     }
@@ -153,7 +150,7 @@
 -(void)setdata:(attractionModel *)model
 {
     self.amodel = model;
-    [self.attraImg sd_setImageWithURL:[NSURL URLWithString:model.scenic_pic] placeholderImage:nil];
+    [self.attraImg sd_setImageWithURL:[NSURL URLWithString:model.scenic_pic] placeholderImage:[UIImage imageNamed:@"1"]];
     self.nameLab.text = model.scenic_name;
     self.contentLab.text = model.scenic_intro;
     

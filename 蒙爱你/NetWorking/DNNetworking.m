@@ -20,7 +20,7 @@
 #define timeout 10          // 超时http://20.irapidtech.net/  @"http://192.168.1.142/"
 
 
-static NSString *privateNetworkBaseUrl = @"http://192.168.1.142/";
+static NSString *privateNetworkBaseUrl = @"http://20.irapidtech.net/";
 
 @implementation DNNetworking
 

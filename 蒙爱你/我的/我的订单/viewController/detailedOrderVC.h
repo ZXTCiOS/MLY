@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface detailedOrderVC : UIViewController
-
+@property (nonatomic,strong) NSString *order_snstr;
 @end

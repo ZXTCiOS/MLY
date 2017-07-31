@@ -55,6 +55,8 @@
 }
 
 - (IBAction)WeChatLogin:(id)sender {
+    
+  
 }
 
 - (IBAction)QQLogin:(id)sender {
@@ -63,6 +65,10 @@
 
 
 - (IBAction)loginBtnClicked:(UIButton *)sender {
+    
+//    TabBarController *tab = [[TabBarController alloc] init];
+//    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    delegate.window.rootViewController = tab;
     
     if (self.teleNum.text.length != 11) {
         UIAlertController *a = [UIAlertController alertControllerWithTitle:@"错误" message:@"请输入正确的手机号" preferredStyle: UIAlertControllerStyleAlert];
@@ -82,6 +88,8 @@
         [self.navigationController presentViewController:a animated:YES completion:nil];
         return;
     }
+    
+    
     
     NSDictionary *dict = @{@"user_phone":self.teleNum.text, @"user_pwd":self.password.text, @"type": @(1)};
     
@@ -140,6 +148,7 @@
          NSLog(@"=====/n%@",error);
          [self.view showWarning:@"网络错误"];
          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+ 
      }];
 
     

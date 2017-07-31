@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class submitorderModel;
 @interface submitorderCell1 : UITableViewCell
-
+-(void)setdata:(submitorderModel *)model;
 @end

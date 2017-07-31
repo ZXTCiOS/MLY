@@ -28,7 +28,6 @@
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     [self.view addSubview:self.ninaPagerView];
- 
     
 }
 

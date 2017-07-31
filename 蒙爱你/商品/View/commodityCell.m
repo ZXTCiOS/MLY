@@ -29,28 +29,21 @@
     // Configure the view for the selected state
 }
 
-
-
-
-
 - (void)setIsStored:(BOOL)isStored{
     
     UIImage *image = [UIImage imageNamed:isStored ? @"" : @""];
     self.storedV.image = image;
 }
 
-
-
 -(void)setData:(ShopGoodsModel *)model
 {
     self.smodel = model;
-    [self.imageV sd_setImageWithURL:[NSURL URLWithString:model.goods_img] placeholderImage:nil];
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:model.goods_img] placeholderImage:[UIImage imageNamed:@"1"]];
     self.nameL.text = model.goods_name;
     self.detailL.text = model.goods_detail;
     self.describeL.text = model.goods_description;
     self.priceL.text = [NSString stringWithFormat:@"%@%ld",@"¥",(long)model.goods_price];
     self.discountL.text = [NSString stringWithFormat:@"满%ld件批发单价%ld",(long)model.goods_lownum,(long)model.goods_lowprice];
 }
-
 
 @end

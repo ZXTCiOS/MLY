@@ -13,13 +13,15 @@
 @interface detailedOrderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *detailtableView;
 
-@property (nonatomic,strong) NSDictionary *detaldic;
+
 
 @property (nonatomic,strong) NSString *orderidstr;
 @property (nonatomic,strong) NSString *firsttimestr;
 @property (nonatomic,strong) NSString *lasttimestr;
 @property (nonatomic,strong) NSString *addresssstr;
 @property (nonatomic,strong) NSString *pricestr;
+
+@property (nonatomic,strong) NSMutableArray *dataSource;
 
 @end
 
@@ -36,14 +38,39 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithHexString:@"333333"];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-    self.detaldic = [NSDictionary dictionary];
+    self.dataSource = [NSMutableArray array];
     self.detailtableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.detailtableView];
+    
+    [self loaddata];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)loaddata
+{
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *token = [userDefault objectForKey:user_key_token];
+    NSString *urlstr = [NSString stringWithFormat:get_detalorder,userid,token,self.order_snstr];
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];// 开启状态来网络请求指示
+    [manager GET:urlstr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        NSLog(@"res-----%@",responseObject);
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    }];
 }
 
 #pragma mark - getters

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol mycellVdelegate <NSObject>
+-(void)myTabVClick1:(UITableViewCell *)cell;//选择按钮
+
+@end
+
 @class addressModel;
 
 @interface ShouHuoDiZhiCell : UITableViewCell
@@ -27,7 +33,7 @@
 
 @property (nonatomic, strong) void(^edit)();
 
-
+@property(assign,nonatomic)id<mycellVdelegate>delegate;
 -(void)setdata:(addressModel *)model;
 
 @end

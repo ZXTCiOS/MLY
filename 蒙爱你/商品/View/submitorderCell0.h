@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface submitorderCell0 : UITableViewCell
-
+-(void)setdata:(NSDictionary *)dic;
 @end

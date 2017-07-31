@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class discountModel;
 @interface DiscountCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *youhui;
@@ -16,4 +16,5 @@
 
 @property (nonatomic, assign) BOOL enabled;
 
+-(void)setdata:(discountModel *)model;
 @end

@@ -207,6 +207,11 @@
 		53E9BD281F2C673B000BFA60 /* submitorderCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD271F2C673B000BFA60 /* submitorderCell1.m */; };
 		53E9BD2B1F2C6749000BFA60 /* submitorderCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD2A1F2C6749000BFA60 /* submitorderCell2.m */; };
 		53E9BD2F1F2C6F94000BFA60 /* addressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD2E1F2C6F94000BFA60 /* addressModel.m */; };
+		53E9BD351F2E175F000BFA60 /* subbuttomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD341F2E175F000BFA60 /* subbuttomView.m */; };
+		53E9BD381F2E1B46000BFA60 /* submitorderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD371F2E1B46000BFA60 /* submitorderModel.m */; };
+		53E9BD3C1F2E1E62000BFA60 /* discountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD3B1F2E1E62000BFA60 /* discountModel.m */; };
+		53E9BD3F1F2EC7AD000BFA60 /* confirmorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD3E1F2EC7AD000BFA60 /* confirmorderVC.m */; };
+		53E9BD421F2ED897000BFA60 /* strisNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD411F2ED897000BFA60 /* strisNull.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
 /* End PBXBuildFile section */
 
@@ -567,6 +572,16 @@
 		53E9BD2A1F2C6749000BFA60 /* submitorderCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitorderCell2.m; sourceTree = "<group>"; };
 		53E9BD2D1F2C6F94000BFA60 /* addressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressModel.h; sourceTree = "<group>"; };
 		53E9BD2E1F2C6F94000BFA60 /* addressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressModel.m; sourceTree = "<group>"; };
+		53E9BD331F2E175F000BFA60 /* subbuttomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subbuttomView.h; sourceTree = "<group>"; };
+		53E9BD341F2E175F000BFA60 /* subbuttomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subbuttomView.m; sourceTree = "<group>"; };
+		53E9BD361F2E1B46000BFA60 /* submitorderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitorderModel.h; sourceTree = "<group>"; };
+		53E9BD371F2E1B46000BFA60 /* submitorderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitorderModel.m; sourceTree = "<group>"; };
+		53E9BD3A1F2E1E62000BFA60 /* discountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discountModel.h; sourceTree = "<group>"; };
+		53E9BD3B1F2E1E62000BFA60 /* discountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = discountModel.m; sourceTree = "<group>"; };
+		53E9BD3D1F2EC7AD000BFA60 /* confirmorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = confirmorderVC.h; sourceTree = "<group>"; };
+		53E9BD3E1F2EC7AD000BFA60 /* confirmorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = confirmorderVC.m; sourceTree = "<group>"; };
+		53E9BD401F2ED897000BFA60 /* strisNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strisNull.h; sourceTree = "<group>"; };
+		53E9BD411F2ED897000BFA60 /* strisNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = strisNull.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1208,6 +1223,8 @@
 			children = (
 				114416431F134AB70079B1E2 /* ShopGoodsModel.h */,
 				114416441F134AB70079B1E2 /* ShopGoodsModel.m */,
+				53E9BD361F2E1B46000BFA60 /* submitorderModel.h */,
+				53E9BD371F2E1B46000BFA60 /* submitorderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1224,6 +1241,8 @@
 				53E9BD271F2C673B000BFA60 /* submitorderCell1.m */,
 				53E9BD291F2C6749000BFA60 /* submitorderCell2.h */,
 				53E9BD2A1F2C6749000BFA60 /* submitorderCell2.m */,
+				53E9BD331F2E175F000BFA60 /* subbuttomView.h */,
+				53E9BD341F2E175F000BFA60 /* subbuttomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1239,6 +1258,8 @@
 				114416341F132AA60079B1E2 /* ShopPageController.m */,
 				53E9BD201F2C62B0000BFA60 /* submitorderVC.h */,
 				53E9BD211F2C62B0000BFA60 /* submitorderVC.m */,
+				53E9BD3D1F2EC7AD000BFA60 /* confirmorderVC.h */,
+				53E9BD3E1F2EC7AD000BFA60 /* confirmorderVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1433,18 +1454,11 @@
 		117105491F14B338008A2F25 /* 优惠券 */ = {
 			isa = PBXGroup;
 			children = (
-				1171054A1F14B338008A2F25 /* model */,
+				53E9BD391F2E1E55000BFA60 /* model */,
 				1171054B1F14B338008A2F25 /* view */,
 				1171054C1F14B338008A2F25 /* viewController */,
 			);
 			path = "优惠券";
-			sourceTree = "<group>";
-		};
-		1171054A1F14B338008A2F25 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		1171054B1F14B338008A2F25 /* view */ = {
@@ -1612,6 +1626,8 @@
 				536022BB1F26EABE00364CDD /* NullSafe.m */,
 				536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */,
 				536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */,
+				53E9BD401F2ED897000BFA60 /* strisNull.h */,
+				53E9BD411F2ED897000BFA60 /* strisNull.m */,
 			);
 			name = utlis;
 			sourceTree = "<group>";
@@ -1621,6 +1637,15 @@
 			children = (
 				53E9BD2D1F2C6F94000BFA60 /* addressModel.h */,
 				53E9BD2E1F2C6F94000BFA60 /* addressModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		53E9BD391F2E1E55000BFA60 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				53E9BD3A1F2E1E62000BFA60 /* discountModel.h */,
+				53E9BD3B1F2E1E62000BFA60 /* discountModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1809,6 +1834,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E9BD3C1F2E1E62000BFA60 /* discountModel.m in Sources */,
 				11093BFC1F0B3A8C00AFCB20 /* NSObject+Parse.m in Sources */,
 				534C178F1F289C900067C3E4 /* detailCell1.m in Sources */,
 				11093C721F0B58D900AFCB20 /* HomePageTVC.m in Sources */,
@@ -1819,6 +1845,7 @@
 				534C17571F2839280067C3E4 /* myOrderVC1.m in Sources */,
 				115502291F189B6B00977217 /* StarBtn.m in Sources */,
 				11405FC61F0E0C8800B5CBAE /* ShunFengCheViewModel.m in Sources */,
+				53E9BD351F2E175F000BFA60 /* subbuttomView.m in Sources */,
 				11353E9B1F15F8EE00B34D7C /* ScenicModel.m in Sources */,
 				115502241F189A5F00977217 /* ChooseView.m in Sources */,
 				536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */,
@@ -1873,12 +1900,14 @@
 				534C17D61F2B28470067C3E4 /* evaluationVC.m in Sources */,
 				11093B651F0B361C00AFCB20 /* AppDelegate.m in Sources */,
 				1143DC7B1F206090005E73FD /* MSSChineseCalendarManager.m in Sources */,
+				53E9BD421F2ED897000BFA60 /* strisNull.m in Sources */,
 				1146E5D41F0F71890066B37F /* MyStorageTravelVC.m in Sources */,
 				534C175A1F2839360067C3E4 /* myOrderVC2.m in Sources */,
 				11093BE91F0B3A8C00AFCB20 /* FogetPwdViewController.m in Sources */,
 				1146E5DF1F0F96E80066B37F /* ShouHuoDiZhiCell.m in Sources */,
 				1143DC7F1F208330005E73FD /* NaviBar.m in Sources */,
 				11093C291F0B3DC100AFCB20 /* UzysGroupViewCell.m in Sources */,
+				53E9BD381F2E1B46000BFA60 /* submitorderModel.m in Sources */,
 				117016251F2C999700E1AF74 /* MorePingJiaVC.m in Sources */,
 				113CBB001F1F0A8500C6A766 /* TouSuVC.m in Sources */,
 				1170161A1F2C5C9300E1AF74 /* GouWCTVc.m in Sources */,
@@ -1903,6 +1932,7 @@
 				1143DC7A1F206090005E73FD /* MSSCalendarViewController.m in Sources */,
 				1144164B1F1370900079B1E2 /* FoodCollectionVC.m in Sources */,
 				534C17831F289BFC0067C3E4 /* myorderCell.m in Sources */,
+				53E9BD3F1F2EC7AD000BFA60 /* confirmorderVC.m in Sources */,
 				11353E9F1F16040700B34D7C /* ScenicVC.m in Sources */,
 				11353EA51F16243400B34D7C /* ScenicHeaderV.m in Sources */,
 				534C17CA1F2B081B0067C3E4 /* travelModel.m in Sources */,
