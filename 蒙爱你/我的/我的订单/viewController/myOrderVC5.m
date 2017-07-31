@@ -111,6 +111,8 @@ static NSString *myordercell5 = @"myordercell0identfid5";
                 model.numstr = [dit objectForKey:@"order_count"];
                 model.totalpricestr = [dit objectForKey:@"order_money"];
                 model.discountprice = [dit objectForKey:@"discount"];
+                model.addressid = [dit objectForKey:@"address_id"];
+                model.discount_id = [dit objectForKey:@"discount_id"];
                 //退款原因
                 model.refundstr = [dit objectForKey:@"order_invoice"];
                 
@@ -119,19 +121,24 @@ static NSString *myordercell5 = @"myordercell0identfid5";
                     model.namestr = [gooddit objectForKey:@"goods_name"];
                     model.orderimgstr = [gooddit objectForKey:@"goods_pic"];
                     model.contentstr = [gooddit objectForKey:@"goods_intro"];
-                    
+                    model.goods_description = [gooddit objectForKey:@"goods_description"];
+                    model.goods_id = [gooddit objectForKey:@"goods_id"];
                 }
                 if ([gooddit objectForKey:@"goods_id"]==nil&&[gooddit objectForKey:@"ticket_id"]==nil) {
                     //bedeat_id
                     model.namestr = [gooddit objectForKey:@"bedeat_name"];
                     model.orderimgstr = [gooddit objectForKey:@"bedeat_pic"];
                     model.contentstr = [gooddit objectForKey:@"bedeat_intro"];
+                    model.goods_description = [gooddit objectForKey:@"bedeat_description"];
+                    model.goods_id = [gooddit objectForKey:@"bedeat_id"];
                 }
                 if ([gooddit objectForKey:@"goods_id"]==nil&&[gooddit objectForKey:@"bedeat_id"]==nil) {
                     //ticket_id
                     model.namestr = [gooddit objectForKey:@"ticket_name"];
                     model.orderimgstr = [gooddit objectForKey:@"bedeat_pic"];
                     model.contentstr = [gooddit objectForKey:@"ticket_intro"];
+                    model.goods_description = [gooddit objectForKey:@"ticket_description"];
+                    model.goods_id = [gooddit objectForKey:@"ticket_id"];
                 }
                 
                 [self.dataSource addObject:model];
@@ -215,6 +222,32 @@ static NSString *myordercell5 = @"myordercell0identfid5";
 {
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
     NSLog(@"333===%ld   取消",index.section);
+    
+    myOrderModel *model = self.dataSource[index.section];
+    
+    
+    NSString *user_id = [userDefault objectForKey:user_key_user_id];
+    NSString *api_token = [userDefault objectForKey:user_key_token];
+    NSString *order_sn = model.ordersn;
+    NSString *order_status = @"0";
+    NSString *address_id = model.addressid;
+    NSString *discount_id = model.discount_id;
+    NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"order_sn":order_sn,@"order_status":order_status,@"address_id":address_id,@"discount_id":discount_id};
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager POST:post_changStatus parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         NSLog(@"res-----%@",responseObject);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+
+    }];
 }
 
 //支付
@@ -223,11 +256,58 @@ static NSString *myordercell5 = @"myordercell0identfid5";
 {
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
     NSLog(@"222===%ld   付款",index.section);
+    myOrderModel *model = self.dataSource[index.section];
+    NSString *user_id = [userDefault objectForKey:user_key_user_id];
+    NSString *api_token = [userDefault objectForKey:user_key_token];
+    NSString *order_sn = model.ordersn;
+    NSString *order_status = @"2";
+    NSString *address_id = model.addressid;
+    NSString *discount_id = model.discount_id;
+    NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"order_sn":order_sn,@"order_status":order_status,@"address_id":address_id,@"discount_id":discount_id};
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager POST:post_changStatus parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res-----%@",responseObject);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    }];
 }
 
 -(void)myTabVClick3:(UITableViewCell *)cell//退款
 {
-    
+    NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
+    NSLog(@"222===%ld   付款",index.section);
+    myOrderModel *model = self.dataSource[index.section];
+    NSString *user_id = [userDefault objectForKey:user_key_user_id];
+    NSString *api_token = [userDefault objectForKey:user_key_token];
+    NSString *order_sn = model.ordersn;
+    NSString *order_status = @"5";
+    NSString *address_id = model.addressid;
+    NSString *discount_id = model.discount_id;
+    NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"order_sn":order_sn,@"order_status":order_status,@"address_id":address_id,@"discount_id":discount_id};
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager POST:post_changStatus parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res-----%@",responseObject);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    }];
 }
 
 -(void)myTabVClick4:(UITableViewCell *)cell//修改
@@ -237,7 +317,31 @@ static NSString *myordercell5 = @"myordercell0identfid5";
 
 -(void)myTabVClick5:(UITableViewCell *)cell//物流
 {
-    
+    NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
+    NSLog(@"222===%ld   付款",index.section);
+    myOrderModel *model = self.dataSource[index.section];
+    NSString *user_id = [userDefault objectForKey:user_key_user_id];
+    NSString *api_token = [userDefault objectForKey:user_key_token];
+    NSString *order_sn = model.ordersn;
+    NSString *order_status = @"4";
+    NSString *address_id = model.addressid;
+    NSString *discount_id = model.discount_id;
+    NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"order_sn":order_sn,@"order_status":order_status,@"address_id":address_id,@"discount_id":discount_id};
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager POST:post_changStatus parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res-----%@",responseObject);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    }];
 }
 
 -(void)myTabVClick6:(UITableViewCell *)cell//评价

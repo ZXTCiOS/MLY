@@ -62,7 +62,8 @@
 #define post_changStatus  @""baseURL"/MLY/api.php/Order/changStatus"
 //用户个人信息查看
 #define get_info @""baseURL"/MLY/api.php/User/detail?user_id=%@&api_token=%@"
-
 //信息修改
 #define post_infoedit  @""baseURL"/MLY/api.php/User/edit"
+//订单状态修改
+#define post_changStatus @""baseURL"/MLY/api.php/Order/changStatus"
 #endif /* wangHeader_h */
