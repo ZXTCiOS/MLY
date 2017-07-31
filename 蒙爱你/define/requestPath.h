@@ -15,8 +15,8 @@
  *  网址
  */
 
-#define baseURL                 @"http://192.168.1.142/"                    // baseurl
-
+//#define baseURL                @"http://192.168.1.142/"                    // baseurl
+#define baseURL                  @"http://20.irapidtech.net"
 
 #define post_register           @"/MLY/api.php/Login/register"              //注册
 #define get_yanzhengma          @"/MLY/api.php/Login/getVerify"             //获取验证码

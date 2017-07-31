@@ -82,7 +82,6 @@
     if(!_goodsimg)
     {
         _goodsimg = [[UIImageView alloc] init];
-        _goodsimg.backgroundColor = [UIColor orangeColor];
         
     }
     return _goodsimg;
@@ -144,7 +143,7 @@
 -(void)setdata:(shoucanggoodsModel *)model
 {
     self.smodel = model;
-    [self.goodsimg sd_setImageWithURL:[NSURL URLWithString:model.goods_pic] placeholderImage:nil];
+    [self.goodsimg sd_setImageWithURL:[NSURL URLWithString:model.goods_pic] placeholderImage:[UIImage imageNamed:@"1"]];
     self.namelab.text = model.goods_name;
     self.contentlab.text = model.goods_intro;
     self.pricelab.text = [NSString stringWithFormat:@"%@%@",model.goods_price,@"／天"];

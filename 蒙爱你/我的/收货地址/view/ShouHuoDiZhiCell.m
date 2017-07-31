@@ -24,6 +24,8 @@
     [self.editBtn bk_addEventHandler:^(id sender) {
         !_edit ?: _edit();
     } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.isDefault addTarget:self action:@selector(isDefaultclick) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,9 +34,22 @@
     // Configure the view for the selected state
 }
 
+
+-(void)isDefaultclick
+{
+    [self.delegate myTabVClick1:self];
+}
+
 -(void)setdata:(addressModel *)model
 {
     self.amodel = model;
+    if ([model.isDefaultstr isEqualToString:@"0"]) {
+        [self.isDefault setImage:[UIImage imageNamed:@"shdz-s"] forState:normal];
+    }
+    else
+    {
+        [self.isDefault setImage:[UIImage imageNamed:@"shdi-ns"] forState:normal];
+    }
     self.nameL.text = model.address_name;
     self.tele.text = model.address_phone;
     self.addressL.text = model.address_adds;

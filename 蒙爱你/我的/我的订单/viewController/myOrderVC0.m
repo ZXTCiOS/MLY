@@ -82,16 +82,21 @@ static NSString *myordercell0 = @"myordercell0identfid";
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *token = [userDefault objectForKey:user_key_token];
     NSString *urlstr = [NSString stringWithFormat:get_myorder,userid,token,@"1"];
-    
     self.dataSource = [NSMutableArray array];
     
-    [DNNetworking getWithURLString:urlstr success:^(id obj) {
-        NSLog(@"obj=%@",obj);
+    
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    
+    [manager GET:urlstr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
-        obj = self.copydic;
-        if ([[obj objectForKey:@"code"] intValue]==200) {
-            NSArray *data = [obj objectForKey:@"data"];
-            
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res-----%@",responseObject);
+        if ([[responseObject objectForKey:@"code"] intValue]==200&&[[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+            NSArray *data = [responseObject objectForKey:@"data"];
             for (int i = 0; i<data.count; i++) {
                 NSDictionary *dit = [data objectAtIndex:i];
                 NSDictionary *gooddit = [dit objectForKey:@"goods"];
@@ -106,7 +111,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
                 //退款原因
                 model.refundstr = [dit objectForKey:@"order_invoice"];
                 
-                model.ordertype = @"6";
+                model.ordertype = @"1";
                 
                 if ([gooddit objectForKey:@"bedeat_id"]==nil&&[gooddit objectForKey:@"ticket_id"]==nil) {
                     //goods_id
@@ -133,13 +138,18 @@ static NSString *myordercell0 = @"myordercell0identfid";
             [self.ordertableView reloadData];
         }else
         {
-            NSString *hud = [obj objectForKey:@"message"];
+            NSString *hud = [responseObject objectForKey:@"message"];
             [MBProgressHUD showSuccess:hud];
         }
+
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         [self.ordertableView.mj_header endRefreshing];
-    } failure:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         [self.ordertableView.mj_header endRefreshing];
+
     }];
+    
 }
 
 #pragma mark - getters
@@ -195,6 +205,8 @@ static NSString *myordercell0 = @"myordercell0identfid";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     detailedOrderVC *detalvc = [[detailedOrderVC alloc] init];
+    myOrderModel *model = self.dataSource[indexPath.section];
+    detalvc.order_snstr = model.ordersn;
     [self.navigationController pushViewController:detalvc animated:YES];
     
 }
@@ -213,6 +225,29 @@ static NSString *myordercell0 = @"myordercell0identfid";
 {
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
     NSLog(@"222===%ld   付款",index.section);
+}
+
+-(void)myTabVClick3:(UITableViewCell *)cell//退款
+{
+    
+}
+
+-(void)myTabVClick4:(UITableViewCell *)cell//修改
+{
+    
+}
+-(void)myTabVClick5:(UITableViewCell *)cell//物流
+{
+    
+}
+-(void)myTabVClick6:(UITableViewCell *)cell//评价
+{
+    
+}
+
+-(void)myTabVClick7:(UITableViewCell *)cell//退款原因展示
+{
+    
 }
 
 @end

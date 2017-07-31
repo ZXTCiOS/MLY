@@ -64,7 +64,6 @@
     if(!_traveImg)
     {
         _traveImg = [[UIImageView alloc] init];
-        _traveImg.backgroundColor = [UIColor orangeColor];
         
     }
     return _traveImg;
@@ -75,7 +74,7 @@
     if(!_addressLab)
     {
         _addressLab = [[UILabel alloc] init];
-        _addressLab.text = @"包头->鄂尔多斯";
+        
     }
     return _addressLab;
 }
@@ -103,7 +102,7 @@
 -(void)setdata:(travelModel *)model
 {
     self.tmodel = model;
-    [self.traveImg sd_setImageWithURL:[NSURL URLWithString:model.trip_pic] placeholderImage:nil];
+    [self.traveImg sd_setImageWithURL:[NSURL URLWithString:model.trip_pic] placeholderImage:[UIImage imageNamed:@"5"]];
     self.addressLab.text = model.trip_line;
     
 }

@@ -141,7 +141,7 @@
 -(void)setdata:(shoucanghomeModel *)model
 {
     self.hmodel = model;
-    [self.hotelImg sd_setImageWithURL:[NSURL URLWithString:model.home_pic]];
+    [self.hotelImg sd_setImageWithURL:[NSURL URLWithString:model.home_pic] placeholderImage:[UIImage imageNamed:@"1"]];
     NSString *str1 = model.home_name;
     NSString *str2 = model.home_description;
     NSString *newestr = [NSString stringWithFormat:@"%@%@",model.home_name,model.home_description];

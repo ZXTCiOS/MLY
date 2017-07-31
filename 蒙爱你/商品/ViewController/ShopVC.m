@@ -336,6 +336,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
+    //return 3;
     return self.dataSource.count;
 }
 
@@ -351,9 +352,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (self.dataSource.count==0) {
         return;
     }
+    
     ShopGoodsModel *model = self.dataSource[indexPath.row];
     
     NSString *idstr = [NSString stringWithFormat:@"%ld",(long)model.goods_id];

@@ -8,6 +8,7 @@
 
 #import "ShopDetailVC.h"
 #import "submitorderVC.h"
+#import "submitorderModel.h"
 @interface ShopDetailVC ()<UITextViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollV;
@@ -77,10 +78,9 @@
     if (num < 1) {
         self.textView.text = @"0";
     }
-    self.priceL.text = [NSString stringWithFormat:@"¥%.2f", num * 33.1];
+    CGFloat pricefloat = [[self.infodic objectForKey:@"price"] floatValue];
+    self.priceL.text = [NSString stringWithFormat:@"¥%.2f", num * pricefloat];
 }
-
-
 
 #pragma  mark - 键盘 监听
 
@@ -184,7 +184,7 @@
         make.height.equalTo(200);
     }];
     
-    [self.imgV sd_setImageWithURL:[NSURL URLWithString:[self.infodic objectForKey:@"img"]] placeholderImage:nil];
+    [self.imgV sd_setImageWithURL:[NSURL URLWithString:[self.infodic objectForKey:@"img"]] placeholderImage:[UIImage imageNamed:@"33"]];
     
     self.nameL = [UILabel new];
     [self.scrollV addSubview:self.nameL];
@@ -309,8 +309,22 @@
             [alert addAction:act];
             [self.navigationController presentViewController:alert animated:YES completion:nil];
         } else {
+            //订单确认界面跳转
             submitorderVC *subvc = [[submitorderVC alloc] init];
             [self.navigationController pushViewController:subvc animated:YES];
+            subvc.orderDatasource = [NSMutableArray array];
+            submitorderModel *model = [[submitorderModel alloc] init];
+            model.orderimg = [self.infodic objectForKey:@"img"];
+            model.ordername = [self.infodic objectForKey:@"name"];
+            model.orderprice = [self.infodic objectForKey:@"price"];
+            model.orderinter = [self.infodic objectForKey:@"intro"];
+            model.ordercontent = [self.infodic objectForKey:@"descrip"];
+            model.ordernumber = self.textView.text;
+            model.goods_id = [self.infodic objectForKey:@"id"];
+            model.goods_type = [self.infodic objectForKey:@"type"];
+            //商品
+            subvc.goods_typestr = @"1";
+            [subvc.orderDatasource addObject:model];
             [self.view endEditing:YES];
         }
     } forControlEvents:UIControlEventTouchUpInside];
@@ -329,7 +343,8 @@
         int num = [str intValue];
         num++;
         self.textView.text = [NSString stringWithFormat:@"%d", num];
-        self.priceL.text = [NSString stringWithFormat:@"¥%.2f", num * 33.1];
+        CGFloat pricefloat = [[self.infodic objectForKey:@"price"] floatValue];
+        self.priceL.text = [NSString stringWithFormat:@"¥%.2f", num * pricefloat];
     } forControlEvents:UIControlEventTouchUpInside];
     
     self.jianBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -345,7 +360,8 @@
         if (num > 1) {
             num--;
         }
-        self.priceL.text = [NSString stringWithFormat:@"¥%.2f", num * 33.1];
+        CGFloat pricefloat = [[self.infodic objectForKey:@"price"] floatValue];
+        self.priceL.text = [NSString stringWithFormat:@"¥%.2f", num * pricefloat];
         self.textView.text = [NSString stringWithFormat:@"%d", num];
     } forControlEvents:UIControlEventTouchUpInside];
     

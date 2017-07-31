@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class myOrderModel;
 
 @interface detailCell0 : UITableViewCell
-
+-(void)setdata:(myOrderModel *)model;
 @end

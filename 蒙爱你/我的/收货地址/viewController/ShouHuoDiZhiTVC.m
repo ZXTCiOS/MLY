@@ -15,7 +15,7 @@
 
 #import "addressModel.h"
 
-@interface ShouHuoDiZhiTVC ()
+@interface ShouHuoDiZhiTVC ()<mycellVdelegate>
 @property (nonatomic,strong) NSMutableArray *dataSource;
 @end
 
@@ -75,19 +75,23 @@
         
                 if ([[responseObject objectForKey:@"code"] intValue]==200) {
                     NSArray *data = [responseObject objectForKey:@"data"];
-                    for (int i = 0; i<data.count; i++) {
-                        NSDictionary *dic = [data objectAtIndex:i];
-                        addressModel *model = [[addressModel alloc] init];
-                        model.address_adds = [dic objectForKey:@"address_adds"];
-                        model.address_id = [dic objectForKey:@"address_id"];
-                        model.address_phone = [dic objectForKey:@"address_phone"];
-                        model.address_pid = [dic objectForKey:@"address_pid"];
-                        model.address_name = [dic objectForKey:@"address_name"];
-                        model.time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
-                        [self.dataSource addObject:model];
-                        
+                    
+                    if ([data isKindOfClass:[NSArray class]]) {
+                        for (int i = 0; i<data.count; i++) {
+                            NSDictionary *dic = [data objectAtIndex:i];
+                            addressModel *model = [[addressModel alloc] init];
+                            model.address_adds = [dic objectForKey:@"address_adds"];
+                            model.address_id = [dic objectForKey:@"address_id"];
+                            model.address_phone = [dic objectForKey:@"address_phone"];
+                            model.address_pid = [dic objectForKey:@"address_pid"];
+                            model.address_name = [dic objectForKey:@"address_name"];
+                            model.isDefaultstr = @"0";
+                            model.time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
+                            [self.dataSource addObject:model];
+                        }
+                        [self.tableView reloadData];
                     }
-                    [self.tableView reloadData];
+                   
                 }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -123,6 +127,7 @@
         //    cell.tele.text = @"0216543521";
         [cell setdata:self.dataSource[indexPath.row]];
         [cell.isDefault setBackgroundImage:[UIImage imageNamed:@"dd-fkcg"] forState:UIControlStateNormal];
+        cell.delegate = self;
         //    cell.addressL.text = @"l 类似大幅度开发工具数量的看法法律手段会计法发斯蒂芬斯蒂芬;lfkjsd";
         cell.edit = ^(){
             UIStoryboard *stb = [UIStoryboard storyboardWithName:@"SHDZ" bundle:nil];
@@ -162,13 +167,32 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
-    if (indexPath.section) {
+    if (indexPath.section==1) {
         
         UIStoryboard *st = [UIStoryboard storyboardWithName:@"SHDZ" bundle:nil];
         AddAddressTVC *vc = [st instantiateViewControllerWithIdentifier:@"add"];
-      
+        
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (indexPath.section==0) {
+
+    }
+    
+}
+
+#pragma mark - 选择按钮
+
+-(void)myTabVClick1:(UITableViewCell *)cell
+{
+    NSIndexPath *index = [self.tableView indexPathForCell:cell];
+    NSLog(@"选择按钮");
+    addressModel *model = self.dataSource[index.row];
+    model.isDefaultstr = @"1";
+    [self.tableView reloadData];
+    
+    NSDictionary *dic = @{@"name":model.address_name,@"phone":model.address_phone,@"addid":model.address_id,@"addressass":model.address_adds};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"addresskvc" object:dic];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

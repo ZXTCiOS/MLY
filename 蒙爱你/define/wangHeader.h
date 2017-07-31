@@ -33,10 +33,10 @@
 
 #define denglucaozuo @""baseURL"/MLY/api.php/Login/login"
 //我的订单
-#define get_myorder  @""baseURL"/MLY/api.php/User/myOrder?user_id=%@&user_token=%@&order_type=%@"
+#define get_myorder  @""baseURL"/MLY/api.php/User/myOrder?user_id=%@&api_token=%@&order_type=%@"
 
 //详细订单
-#define get_detalorder @""baseURL"/MLY/api.php/User/myOrderDetail?user_id=%@&user_token=%@&order_sn=%@"
+#define get_detalorder @""baseURL"/MLY/api.php/User/myOrderDetail?user_id=%@&api_token=%@&order_sn=%@"
 //收藏
 #define get_shoucang @""baseURL"/MLY/api.php/Index/myLike?user_id=%@&type=%@&page=%@"
 //取消收藏
@@ -50,4 +50,14 @@
 #define post_addressEdit @""baseURL"/MLY/api.php/Address/addressEdit"
 //删除收货地址
 #define post_addressDelete @""baseURL"/MLY/api.php/Address/del"
+
+//确认订单
+
+#define get_confirmOrder @""baseURL"/MLY/api.php/Order/confirmOrder?user_id=%@&api_token=%@&goods_type=%@"
+//我的优惠券
+#define get_discount   @""baseURL"/MLY/api.php/Index/discount?user_id=%@"
+//确认下单
+#define post_placeOrder  @""baseURL"/MLY/api.php/Order/placeOrder"
+//用户个人信息查看
+#define get_info @""baseURL"/MLY/api.php/User/detail?user_id=%@&api_token=%@"
 #endif /* wangHeader_h */
