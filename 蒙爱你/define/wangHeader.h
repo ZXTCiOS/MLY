@@ -60,4 +60,7 @@
 #define post_placeOrder  @""baseURL"/MLY/api.php/Order/placeOrder"
 //用户个人信息查看
 #define get_info @""baseURL"/MLY/api.php/User/detail?user_id=%@&api_token=%@"
+
+//信息修改
+#define post_infoedit  @""baseURL"/MLY/api.php/User/edit"
 #endif /* wangHeader_h */
