@@ -38,7 +38,10 @@
     [self loaddata];
     
 }
-
+ - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.nameTextLabel resignFirstResponder];
+}
 -(void)loaddata
 {
     
@@ -148,21 +151,37 @@
         return;
     }
     
-    NSDictionary *dic = @{@"name": self.nameTextLabel.text, @"gender": self.MaleBtn.isSelected ? @"1" : @"0"};
-    [DNNetworking postWithURLString:@"wwwwwwwwwwwwwwwwwwww" parameters:dic image:self.iconView.image progress:^(NSProgress *progress) {
+    UIImage *img = self.iconView.image;
+    NSData *imageData = UIImageJPEGRepresentation(img, 1.0);
+    NSString *encodedImageStr = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    
+    
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *token = [userDefault objectForKey:user_key_token];
+    
+    NSDictionary *para = @{@"user_id":userid,@"api_token":token,@"user_picture":encodedImageStr,@"suffix":@"png",@"user_nickname":self.nameTextLabel.text};
+    
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    
+    
+    [manager POST:post_infoedit parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
         
-    } success:^(id obj) {
-        NSLog(@"sucess");
-        // 写入 NSUserDefault
-        
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"fail");
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
+    
     NSLog(@"finish btn clicked");
 }
-
 
 - (IBAction)male:(UIButton *)sender {
     self.MaleBtn.selected = YES;
