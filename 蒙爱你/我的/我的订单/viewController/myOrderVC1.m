@@ -110,6 +110,9 @@ static NSString *myordercell1 = @"myordercell0identfid1";
                 model.numstr = [dit objectForKey:@"order_count"];
                 model.totalpricestr = [dit objectForKey:@"order_money"];
                 model.discountprice = [dit objectForKey:@"discount"];
+                model.addressid = [dit objectForKey:@"address_id"];
+                model.discountprice = [gooddit objectForKey:@"goods_lowprice"];
+                model.discount_id = [dit objectForKey:@"discount_id"];
                 //退款原因
                 model.refundstr = [dit objectForKey:@"order_invoice"];
                 
@@ -120,19 +123,24 @@ static NSString *myordercell1 = @"myordercell0identfid1";
                     model.namestr = [gooddit objectForKey:@"goods_name"];
                     model.orderimgstr = [gooddit objectForKey:@"goods_pic"];
                     model.contentstr = [gooddit objectForKey:@"goods_intro"];
-                    
+                    model.goods_description = [gooddit objectForKey:@"goods_description"];
+                    model.goods_id = [gooddit objectForKey:@"goods_id"];
                 }
                 if ([gooddit objectForKey:@"goods_id"]==nil&&[gooddit objectForKey:@"ticket_id"]==nil) {
                     //bedeat_id
                     model.namestr = [gooddit objectForKey:@"bedeat_name"];
                     model.orderimgstr = [gooddit objectForKey:@"bedeat_pic"];
                     model.contentstr = [gooddit objectForKey:@"bedeat_intro"];
+                    model.goods_description = [gooddit objectForKey:@"bedeat_description"];
+                    model.goods_id = [gooddit objectForKey:@"bedeat_id"];
                 }
                 if ([gooddit objectForKey:@"goods_id"]==nil&&[gooddit objectForKey:@"bedeat_id"]==nil) {
                     //ticket_id
                     model.namestr = [gooddit objectForKey:@"ticket_name"];
                     model.orderimgstr = [gooddit objectForKey:@"bedeat_pic"];
                     model.contentstr = [gooddit objectForKey:@"ticket_intro"];
+                    model.goods_description = [gooddit objectForKey:@"ticket_description"];
+                    model.goods_id = [gooddit objectForKey:@"ticket_id"];
                 }
                 
                 [self.dataSource addObject:model];

@@ -13,11 +13,16 @@
 @property (nonatomic,strong) NSString *namestr;
 @property (nonatomic,strong) NSString *pricestr;
 @property (nonatomic,strong) NSString *contentstr;
+@property (nonatomic,strong) NSString *goods_description;
+@property (nonatomic,strong) NSString *goods_id;
 @property (nonatomic,strong) NSString *numstr;
 @property (nonatomic,strong) NSString *totalpricestr;
 @property (nonatomic,strong) NSString *preferentialstr;
 @property (nonatomic,strong) NSString *orderidstr;
 @property (nonatomic,strong) NSString *ordersn;
+
+@property (nonatomic,strong) NSString *addressid;
+@property (nonatomic,strong) NSString *discount_id;
 
 @property (nonatomic,strong) NSString *discountprice;
 
