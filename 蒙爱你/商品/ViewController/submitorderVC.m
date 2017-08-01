@@ -74,10 +74,40 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
         [sumarr addObject:sunstr];
     }
     
+    NSString *jianstr = [self.discountdit objectForKey:@"discount_jian"];
+    NSString *man = [self.discountdit objectForKey:@"discount_man"];
+    CGFloat manfloat = [man floatValue];
+    if ([strisNull isNullToString:man]) {
+        jianstr = @"0";
+    }
+    else
+    {
+        jianstr = [self.discountdit objectForKey:@"discount_jian"];
+    }
+    
+    
     sum = [[sumarr valueForKeyPath:@"@sum.floatValue"] floatValue];
     NSString *strsum = [NSString stringWithFormat:@"%.2f",sum];
-    self.btnView.pricelab.text = [NSString stringWithFormat:@"%@%@",@"合计：",strsum];
+//    if (sum>manfloat|sum==manfloat) {
+//        self.btnView.pricelab.text = [NSString stringWithFormat:@"%@%@%@%@",@"合计：",strsum,@"已优惠",jianstr];
+//    }
+//    else
+//    {
+//        self.btnView.pricelab.text = [NSString stringWithFormat:@"%@%@",@"合计：",strsum];
+//    }
+//
     
+    NSString *str1 = @"合计：";
+    NSString *str2 = strsum;
+    NSString *str3 = [NSString stringWithFormat:@"%@%@%@",@" (已优惠¥",jianstr,@")"];
+    NSString *newstr = [NSString stringWithFormat:@"%@%@%@",str1,str2,str3];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:newstr];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"333333"] range:NSMakeRange(0,str1.length)];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"df0842"] range:NSMakeRange(str1.length,str2.length)];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"b3b3b3"] range:NSMakeRange(str1.length+str2.length,str3.length)];
+    self.btnView.pricelab.attributedText = str;
+
+
     
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *token = [userDefault objectForKey:user_key_token];
@@ -384,7 +414,9 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     if (sum>manfloat||sum==manfloat) {
         self.discountdit = dic;
     }
+    [self loaddata];
     [self.submittableView reloadData];
+    
 }
 
 - (void)dealloc{
