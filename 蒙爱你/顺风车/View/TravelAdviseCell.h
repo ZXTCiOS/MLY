@@ -10,6 +10,7 @@
 
 @interface TravelAdviseCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *shoucangImg;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 
@@ -22,7 +23,7 @@
 
 
 
-
+@property (nonatomic, assign) BOOL isStored;
 
 
 

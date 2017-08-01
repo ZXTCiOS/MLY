@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,7 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-5E-Sy2">
-                        <rect key="frame" x="127" y="77" width="18" height="18"/>
+                        <rect key="frame" x="127" y="5" width="18" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="18" id="ZC8-46-rWw"/>
                             <constraint firstAttribute="height" constant="18" id="ejb-a0-Sa9"/>
@@ -55,7 +55,7 @@
                 <constraint firstAttribute="trailing" secondItem="Yqw-ZA-IYl" secondAttribute="trailing" id="B9i-gF-uc3"/>
                 <constraint firstAttribute="trailing" secondItem="pDA-5E-Sy2" secondAttribute="trailing" constant="5" id="Bqi-PH-uQD"/>
                 <constraint firstItem="lR1-nH-3uL" firstAttribute="top" secondItem="FAk-Y3-CLC" secondAttribute="bottom" constant="7" id="SNV-AM-dJD"/>
-                <constraint firstItem="pDA-5E-Sy2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="77" id="TGa-Y5-Tb2"/>
+                <constraint firstItem="pDA-5E-Sy2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="TGa-Y5-Tb2"/>
                 <constraint firstItem="FAk-Y3-CLC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="l6I-Xs-izx"/>
                 <constraint firstItem="lR1-nH-3uL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qhe-zx-60M"/>
                 <constraint firstAttribute="bottom" secondItem="Yqw-ZA-IYl" secondAttribute="bottom" id="reY-B8-ldA"/>
@@ -70,6 +70,7 @@
                 <outlet property="addressL" destination="Yqw-ZA-IYl" id="bNF-fd-FTz"/>
                 <outlet property="imageV" destination="FAk-Y3-CLC" id="o0u-cb-KHn"/>
                 <outlet property="nameL" destination="lR1-nH-3uL" id="VZF-et-RDH"/>
+                <outlet property="shoucangImg" destination="pDA-5E-Sy2" id="jLh-we-EbO"/>
             </connections>
             <point key="canvasLocation" x="60" y="70"/>
         </collectionViewCell>
