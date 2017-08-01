@@ -10,6 +10,10 @@
 #import "shoucanggoodsCell0.h"
 #import "shoucanggoodsCell1.h"
 #import "shoucanggoodsModel.h"
+
+#import "submitorderVC.h"
+#import "submitorderModel.h"
+
 @interface sotrageVC3 ()<UITableViewDataSource,UITableViewDelegate,mycellVdelegate>
 {
     int pn;
@@ -232,6 +236,30 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
 -(void)myTabVClick2:(UITableViewCell *)cell
 {
     NSLog(@"购买");
+    NSIndexPath *index = [self.goodstableView indexPathForCell:cell];
+    shoucanggoodsModel *model = self.dataSource[index.section];
+//    NSString *user_id = [userDefault objectForKey:user_key_user_id];
+//    NSString *api_token = [userDefault objectForKey:user_key_token];
+    
+    
+    //订单确认界面跳转
+    submitorderVC *subvc = [[submitorderVC alloc] init];
+ 
+    subvc.orderDatasource = [NSMutableArray array];
+    submitorderModel *smodel = [[submitorderModel alloc] init];
+    smodel.orderimg = model.goods_pic;
+    smodel.ordername = model.goods_name;
+    smodel.orderprice = model.goods_price;
+    smodel.orderinter = model.goods_intro;
+    smodel.ordercontent = model.goods_description;
+    smodel.ordernumber = model.goods_lownum;
+    smodel.goods_id = model.goods_id;
+    smodel.goods_type = model.goods_type;
+    //商品
+    subvc.goods_typestr = @"1";
+    [subvc.orderDatasource addObject:model];
+    [self.navigationController pushViewController:subvc animated:YES];
+    
 }
 
 @end
