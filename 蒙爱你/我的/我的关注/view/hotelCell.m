@@ -127,6 +127,7 @@
         [_cancleBtn setTitle:@"取消收藏" forState:normal];
         [_cancleBtn setTitleColor:[UIColor colorWithHexString:@"df0842"] forState:normal];
         _cancleBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_cancleBtn addTarget:self action:@selector(canclebtnclick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancleBtn;
 }

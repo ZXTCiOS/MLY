@@ -38,8 +38,16 @@
     _isStored = isStored;
     NSString *img = isStored ? @"sc-s": @"sc-ns";
     self.shoucang.image = [UIImage imageNamed:img];
+    self.shoucang.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.shoucang addGestureRecognizer:singleTap];
 }
 
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+    [self.delegate myTabVClick1:self];
+    //do something....
+    NSLog(@"do something......");
+}
 
 - (void)setStar:(NSInteger)star{
     _star = star;

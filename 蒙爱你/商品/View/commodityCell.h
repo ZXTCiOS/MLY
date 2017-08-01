@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @class ShopGoodsModel;
+@protocol mycellVdelegate <NSObject>
+-(void)myTabVClick1:(UITableViewCell *)cell;//收藏
+
+@end
+
 @interface commodityCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
@@ -24,4 +29,5 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *discountL;
 -(void)setData:(ShopGoodsModel *)model;
+@property(assign,nonatomic)id<mycellVdelegate>delegate;
 @end

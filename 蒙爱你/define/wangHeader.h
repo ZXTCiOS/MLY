@@ -66,4 +66,7 @@
 #define post_infoedit  @""baseURL"/MLY/api.php/User/edit"
 //订单状态修改
 #define post_changStatus @""baseURL"/MLY/api.php/Order/changStatus"
+
+//收藏
+#define get_recommend   @""baseURL"/MLY/api.php/Index/recommend?user_id=%@&id=%@&type=%@&is_shoucang=%@"
 #endif /* wangHeader_h */

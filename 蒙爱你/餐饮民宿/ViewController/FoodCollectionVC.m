@@ -11,9 +11,9 @@
 #import "FoodAndHotelCell.h"
 #import "BedDetailTVC.h"
 #import "FoodListCVC.h"
+#import "MBProgressHUD+XMG.h"
 
-
-@interface FoodCollectionVC ()<UICollectionViewDelegateFlowLayout>
+@interface FoodCollectionVC ()<UICollectionViewDelegateFlowLayout,mycellVdelegate>
 
 @property (nonatomic, strong) FoodViewModel *viewmodel;
 
@@ -141,11 +141,79 @@ static NSString * const reuseIdentifier = @"Cell";
     cell.desc.text = self.viewmodel.datalist[indexPath.row].home_description;
     cell.star = self.viewmodel.datalist[indexPath.row].home_star;
     cell.detailL.text = self.viewmodel.datalist[indexPath.row].home_description;
-    
+    cell.delegate = self;
     return cell;
 }
 
+-(void)myTabVClick1:(UICollectionViewCell *)cell
+{
+    NSIndexPath *index = [self.collectionView indexPathForCell:cell];
+    //收藏的类型 1景点 2出行 3民宿 4商品 6美食
+//    NSDictionary *dic = self.viewmodel.datalist[index.item];
+    
+    if (self.type == VCTypeOfBed) {
+        
+        NSLog(@"民宿");
+        HomeFoodModel *model = self.viewmodel.datalist[index.item];
 
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSString *type = @"3";
+        NSString *isstr = [NSString stringWithFormat:@"%ld",(long)model.home_id];
+        NSString *is_shoucang  = @"";
+        if (model.is_shoucang==1) {
+            is_shoucang = @"0";
+        }else
+        {
+            is_shoucang = @"1";
+        }
+        NSString *urlstr = [NSString stringWithFormat:get_recommend,userid,isstr,type,is_shoucang];
+        
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
+            if ([[obj objectForKey:@"code"]intValue]==200) {
+                [self.collectionView.mj_header beginRefreshing];
+                [MBProgressHUD showSuccess:@"操作成功"];
+            }
+            else
+            {
+                NSString *hud = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:hud];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    }else
+    {
+        
+        NSLog(@"美食");
+        HomeFoodModel *model = self.viewmodel.datalist[index.item];
+        NSString *userid = [userDefault objectForKey:user_key_user_id];
+        NSString *type = @"6";
+        NSString *isstr = [NSString stringWithFormat:@"%ld",(long)model.home_id];
+        NSString *is_shoucang  = @"";
+        if (model.is_shoucang==1) {
+            is_shoucang = @"0";
+        }else
+        {
+            is_shoucang = @"1";
+        }
+        NSString *urlstr = [NSString stringWithFormat:get_recommend,userid,isstr,type,is_shoucang];
+        
+        [DNNetworking getWithURLString:urlstr success:^(id obj) {
+            
+            if ([[obj objectForKey:@"code"]intValue]==200) {
+                [self.collectionView.mj_header beginRefreshing];
+                [MBProgressHUD showSuccess:@"操作成功"];
+            }
+            else
+            {
+                NSString *hud = [obj objectForKey:@"message"];
+                [MBProgressHUD showSuccess:hud];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+}
 
 
 #pragma mark <UICollectionViewDelegate>

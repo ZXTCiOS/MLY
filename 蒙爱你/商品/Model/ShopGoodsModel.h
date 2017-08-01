@@ -32,4 +32,5 @@
 
 @property (nonatomic, assign) BOOL isStored;
 
+@property (nonatomic,strong) NSString *is_shoucang;
 @end
