@@ -19,14 +19,14 @@
 #import "BedDetailTVC.h"
 #import "HomeTravelVC.h"
 #import "SearchViewController.h"
-
+#import "ZXTC_Transition.h"
 
 
 #define delayTime 1.5               //  延时请求
 #define distanceToRight  (-50)       //  右滑距离右边的最远刷新距离
 
 
-@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>//, UINavigationControllerDelegate, UIViewControllerInteractiveTransitioning>
 
 @property (nonatomic, strong) HYBLoopScrollView *loopView;
 
@@ -39,6 +39,27 @@
 @end
 
 @implementation HomePageTVC
+
+
+//- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+//    if (operation == UINavigationControllerOperationPush) {
+//        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
+//        return tran;
+//    } else {
+//        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
+//        return tran;
+//    }
+//}
+//
+//- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+//    
+//}
+
+
+
+
+
+
 
 - (void)viewDidLoad {
     

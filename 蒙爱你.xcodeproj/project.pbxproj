@@ -133,6 +133,7 @@
 		1146E5DF1F0F96E80066B37F /* ShouHuoDiZhiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1146E5DD1F0F96E80066B37F /* ShouHuoDiZhiCell.m */; };
 		1146E5E01F0F96E80066B37F /* ShouHuoDiZhiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1146E5DE1F0F96E80066B37F /* ShouHuoDiZhiCell.xib */; };
 		1146E5E31F0F9DC70066B37F /* NewAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1146E5E21F0F9DC70066B37F /* NewAddressCell.m */; };
+		114A7F401F301E8E00CFC485 /* ZXTC_Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A7F3F1F301E8E00CFC485 /* ZXTC_Transition.m */; };
 		114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BCBE01F173DFD00705C9B /* UIImage+alphaImage.m */; };
 		115502211F186AEC00977217 /* FoodandBedPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 115502201F186AEC00977217 /* FoodandBedPageVC.m */; };
 		115502241F189A5F00977217 /* ChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 115502231F189A5F00977217 /* ChooseView.m */; };
@@ -439,6 +440,8 @@
 		1146E5DE1F0F96E80066B37F /* ShouHuoDiZhiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShouHuoDiZhiCell.xib; sourceTree = "<group>"; };
 		1146E5E11F0F9DC70066B37F /* NewAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddressCell.h; sourceTree = "<group>"; };
 		1146E5E21F0F9DC70066B37F /* NewAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAddressCell.m; sourceTree = "<group>"; };
+		114A7F3E1F301E8E00CFC485 /* ZXTC_Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXTC_Transition.h; sourceTree = "<group>"; };
+		114A7F3F1F301E8E00CFC485 /* ZXTC_Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXTC_Transition.m; sourceTree = "<group>"; };
 		114BCBDF1F173DFD00705C9B /* UIImage+alphaImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+alphaImage.h"; sourceTree = "<group>"; };
 		114BCBE01F173DFD00705C9B /* UIImage+alphaImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+alphaImage.m"; sourceTree = "<group>"; };
 		1155021F1F186AEC00977217 /* FoodandBedPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodandBedPageVC.h; sourceTree = "<group>"; };
@@ -685,6 +688,8 @@
 				1143DC7E1F208330005E73FD /* NaviBar.m */,
 				1173B6FE1F26109000AB4287 /* SearchViewController.h */,
 				1173B6FF1F26109000AB4287 /* SearchViewController.m */,
+				114A7F3E1F301E8E00CFC485 /* ZXTC_Transition.h */,
+				114A7F3F1F301E8E00CFC485 /* ZXTC_Transition.m */,
 			);
 			path = "导航栏";
 			sourceTree = "<group>";
@@ -1859,11 +1864,8 @@
 				534C17571F2839280067C3E4 /* myOrderVC1.m in Sources */,
 				115502291F189B6B00977217 /* StarBtn.m in Sources */,
 				11405FC61F0E0C8800B5CBAE /* ShunFengCheViewModel.m in Sources */,
-
 				111D18E31F2F3607004F0CE2 /* PingJiaCell.m in Sources */,
- 
 				53E9BD351F2E175F000BFA60 /* subbuttomView.m in Sources */,
-
 				11353E9B1F15F8EE00B34D7C /* ScenicModel.m in Sources */,
 				115502241F189A5F00977217 /* ChooseView.m in Sources */,
 				536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */,
@@ -1956,6 +1958,7 @@
 				11353EA51F16243400B34D7C /* ScenicHeaderV.m in Sources */,
 				534C17CA1F2B081B0067C3E4 /* travelModel.m in Sources */,
 				11093C751F0B591A00AFCB20 /* HomeTableCell.m in Sources */,
+				114A7F401F301E8E00CFC485 /* ZXTC_Transition.m in Sources */,
 				11093C221F0B3DC100AFCB20 /* UIImage+UzysExtension.m in Sources */,
 				53E9BD2B1F2C6749000BFA60 /* submitorderCell2.m in Sources */,
 				114416381F132ADF0079B1E2 /* ShopVC.m in Sources */,
