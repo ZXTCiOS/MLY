@@ -192,12 +192,12 @@ static NSString *indentify = @"indentify";
     
 }
 
-//点击单元格
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"%ld",indexPath.row);
-    
-}
+////点击单元格
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"%ld",indexPath.row);
+//    
+//}
 
 //取消收藏
 -(void)myTabVClick1:(UICollectionViewCell *)cell
@@ -209,7 +209,8 @@ static NSString *indentify = @"indentify";
     
     NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
-        [self.myCollectionV reloadData];
+        
+        [self.myCollectionV.mj_header beginRefreshing];
     } failure:^(NSError *error) {
         
     }];

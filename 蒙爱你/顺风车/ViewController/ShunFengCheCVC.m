@@ -127,6 +127,17 @@ static NSString * const reuseIdentifier = @"Cell";
     HomeTravelModel *model = self.viewmodel.datalist[indexPath.row];
     [cell.imageV sd_setImageWithURL:model.trip_pic.xd_URL placeholderImage:img_shunFengChe_default];
     cell.nameL.text = model.trip_driver;
+//    NSDictionary *dic = (NSDictionary*)model;
+//    [dic objectForKey:@"trip_address"];
+//    
+//    
+//    if (model.is_shoucang) {
+//        cell.shoucangImg.image = [UIImage imageNamed:@"sc-ns"];
+//    }
+//    else
+//    {
+//        cell.shoucangImg.image = [UIImage imageNamed:@"sc-s"];
+//    }
     cell.addressL.text = [NSString stringWithFormat:@"%@", model.trip_address];
     
     return cell;
@@ -138,7 +149,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     NSLog(@"%ld", indexPath.row);
     
-    
+
     HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row]];
     
     vc.hidesBottomBarWhenPushed = YES;

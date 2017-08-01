@@ -173,7 +173,7 @@ static NSString *attractionidentfid = @"attractionidentfid";
     
     NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
-        [self.attractionsTableView reloadData];
+        [self.attractionsTableView.mj_header beginRefreshing];
     } failure:^(NSError *error) {
         
     }];

@@ -13,7 +13,7 @@
 #import "MBProgressHUD+XMG.h"
 #import "ShopGoodsModel.h"
 
-@interface ShopVC ()
+@interface ShopVC ()<mycellVdelegate>
 {
     int pn1;
     int pn2;
@@ -78,7 +78,7 @@
         NSString *userid = [userDefault objectForKey:user_key_user_id];
         NSString *urlstr = [NSString stringWithFormat:get_shop_sovenir,userid,@"1"];
         [DNNetworking getWithURLString:urlstr success:^(id obj) {
-            NSLog(@"obj-----%@",obj);
+
             [self.dataSource removeAllObjects];
             if ([[obj objectForKey:@"code"] intValue]==200) {
                 NSArray *dataArr = [obj objectForKey:@"data"];
@@ -90,6 +90,7 @@
                     model.goods_name = [dit objectForKey:@"goods_name"];
                     model.goods_type = [[dit objectForKey:@"goods_type"] intValue];
                     model.goods_price = [[dit objectForKey:@"goods_price"] intValue];
+                    
                     if ([[dit objectForKey:@"is_shoucang"] intValue]==0) {
                         model.isStored = NO;
                     }else
@@ -119,7 +120,7 @@
         NSString *userid = [userDefault objectForKey:user_key_user_id];
         NSString *urlstr = [NSString stringWithFormat:get_shop_art,userid,@"1"];
         [DNNetworking getWithURLString:urlstr success:^(id obj) {
-            NSLog(@"obj-----%@",obj);
+
             [self.dataSource removeAllObjects];
             if ([[obj objectForKey:@"code"] intValue]==200) {
                 NSArray *dataArr = [obj objectForKey:@"data"];
@@ -161,7 +162,7 @@
         NSString *userid = [userDefault objectForKey:user_key_user_id];
         NSString *urlstr = [NSString stringWithFormat:get_shop_food,userid,@"1"];
         [DNNetworking getWithURLString:urlstr success:^(id obj) {
-            NSLog(@"obj-----%@",obj);
+
             [self.dataSource removeAllObjects];
             if ([[obj objectForKey:@"code"] intValue]==200) {
                 NSArray *dataArr = [obj objectForKey:@"data"];
@@ -209,7 +210,7 @@
         NSString *pnstr = [NSString stringWithFormat:@"%d",pn1];
         NSString *urlstr = [NSString stringWithFormat:get_shop_sovenir,userid,pnstr];
         [DNNetworking getWithURLString:urlstr success:^(id obj) {
-            NSLog(@"obj-----%@",obj);
+
             if ([[obj objectForKey:@"code"] intValue]==200) {
                 NSArray *dataArr = [obj objectForKey:@"data"];
                 for (int i = 0; i<dataArr.count; i++) {
@@ -252,7 +253,7 @@
         NSString *urlstr = [NSString stringWithFormat:get_shop_art,userid,pnstr];
         
         [DNNetworking getWithURLString:urlstr success:^(id obj) {
-            NSLog(@"obj-----%@",obj);
+
             if ([[obj objectForKey:@"code"] intValue]==200) {
                 NSArray *dataArr = [obj objectForKey:@"data"];
                 for (int i = 0; i<dataArr.count; i++) {
@@ -295,7 +296,7 @@
         NSString *urlstr = [NSString stringWithFormat:get_shop_food,userid,pnstr];
         
         [DNNetworking getWithURLString:urlstr success:^(id obj) {
-            NSLog(@"obj-----%@",obj);
+
             if ([[obj objectForKey:@"code"] intValue]==200) {
                 NSArray *dataArr = [obj objectForKey:@"data"];
                 for (int i = 0; i<dataArr.count; i++) {
@@ -343,6 +344,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     commodityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     [cell setData:self.dataSource[indexPath.row]];
+    cell.delegate = self;
     return cell;
 }
 
@@ -352,13 +354,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     if (self.dataSource.count==0) {
         return;
     }
-    
     ShopGoodsModel *model = self.dataSource[indexPath.row];
-    
     NSString *idstr = [NSString stringWithFormat:@"%ld",(long)model.goods_id];
     NSString *imgstr = model.goods_img;
     NSString *namestr = model.goods_name;
@@ -371,9 +370,7 @@
     vc.infodic = [NSDictionary dictionary];
     vc.infodic = @{@"id":idstr,@"img":imgstr,@"name":namestr,@"type":typestr,@"price":pricestr,@"descrip":descripstr,@"intro":introstr};
     [self.navigationController pushViewController:vc animated:YES];
-    
 }
-
 
 - (ShopViewModel *)viewmodel{
     if(!_viewmodel) {
@@ -390,4 +387,39 @@
     return self;
 }
 
+-(void)myTabVClick1:(UITableViewCell *)cell
+{
+//    ShopTypeSovenir, // 纪念品
+//    ShopTypeArt,    // 艺术品
+//    ShopTypeFood,    // 食品
+    
+    NSIndexPath *index = [self.tableView indexPathForCell:cell];
+    
+    ShopGoodsModel *model = self.dataSource[index.row];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *type = @"4";
+    NSString *idstr = [NSString stringWithFormat:@"%ld",(long)model.goods_id];
+    NSString *is_shoucang = @"";
+    if (model.isStored) {
+        is_shoucang = @"0";
+    }else
+    {
+        is_shoucang = @"1";
+    }
+    NSString *urlstr = [NSString stringWithFormat:get_recommend,userid,idstr,type,is_shoucang];
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        if ([[obj objectForKey:@"code"]intValue]==200) {
+            [self.tableView.mj_header beginRefreshing];
+            [MBProgressHUD showSuccess:@"操作成功"];
+        }
+        else
+        {
+            NSString *hud = [obj objectForKey:@"message"];
+            [MBProgressHUD showSuccess:hud];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
 @end

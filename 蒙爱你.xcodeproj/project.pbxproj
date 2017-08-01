@@ -216,6 +216,16 @@
 		53E9BD3C1F2E1E62000BFA60 /* discountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD3B1F2E1E62000BFA60 /* discountModel.m */; };
 		53E9BD3F1F2EC7AD000BFA60 /* confirmorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD3E1F2EC7AD000BFA60 /* confirmorderVC.m */; };
 		53E9BD421F2ED897000BFA60 /* strisNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD411F2ED897000BFA60 /* strisNull.m */; };
+		53E9BD5A1F305F42000BFA60 /* AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD471F305F42000BFA60 /* AvoidCrash.m */; };
+		53E9BD5B1F305F42000BFA60 /* NSArray+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD491F305F42000BFA60 /* NSArray+AvoidCrash.m */; };
+		53E9BD5C1F305F42000BFA60 /* NSAttributedString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD4B1F305F42000BFA60 /* NSAttributedString+AvoidCrash.m */; };
+		53E9BD5D1F305F42000BFA60 /* NSDictionary+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD4D1F305F42000BFA60 /* NSDictionary+AvoidCrash.m */; };
+		53E9BD5E1F305F42000BFA60 /* NSMutableArray+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD4F1F305F42000BFA60 /* NSMutableArray+AvoidCrash.m */; };
+		53E9BD5F1F305F42000BFA60 /* NSMutableAttributedString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD511F305F42000BFA60 /* NSMutableAttributedString+AvoidCrash.m */; };
+		53E9BD601F305F42000BFA60 /* NSMutableDictionary+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD531F305F42000BFA60 /* NSMutableDictionary+AvoidCrash.m */; };
+		53E9BD611F305F42000BFA60 /* NSMutableString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD551F305F42000BFA60 /* NSMutableString+AvoidCrash.m */; };
+		53E9BD621F305F42000BFA60 /* NSObject+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD571F305F42000BFA60 /* NSObject+AvoidCrash.m */; };
+		53E9BD631F305F42000BFA60 /* NSString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD591F305F42000BFA60 /* NSString+AvoidCrash.m */; };
 		787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */; };
 /* End PBXBuildFile section */
 
@@ -593,6 +603,26 @@
 		53E9BD3E1F2EC7AD000BFA60 /* confirmorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = confirmorderVC.m; sourceTree = "<group>"; };
 		53E9BD401F2ED897000BFA60 /* strisNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strisNull.h; sourceTree = "<group>"; };
 		53E9BD411F2ED897000BFA60 /* strisNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = strisNull.m; sourceTree = "<group>"; };
+		53E9BD461F305F42000BFA60 /* AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvoidCrash.h; sourceTree = "<group>"; };
+		53E9BD471F305F42000BFA60 /* AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvoidCrash.m; sourceTree = "<group>"; };
+		53E9BD481F305F42000BFA60 /* NSArray+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD491F305F42000BFA60 /* NSArray+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD4A1F305F42000BFA60 /* NSAttributedString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD4B1F305F42000BFA60 /* NSAttributedString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD4C1F305F42000BFA60 /* NSDictionary+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD4D1F305F42000BFA60 /* NSDictionary+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD4E1F305F42000BFA60 /* NSMutableArray+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD4F1F305F42000BFA60 /* NSMutableArray+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD501F305F42000BFA60 /* NSMutableAttributedString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD511F305F42000BFA60 /* NSMutableAttributedString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD521F305F42000BFA60 /* NSMutableDictionary+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD531F305F42000BFA60 /* NSMutableDictionary+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD541F305F42000BFA60 /* NSMutableString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD551F305F42000BFA60 /* NSMutableString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD561F305F42000BFA60 /* NSObject+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD571F305F42000BFA60 /* NSObject+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AvoidCrash.m"; sourceTree = "<group>"; };
+		53E9BD581F305F42000BFA60 /* NSString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AvoidCrash.h"; sourceTree = "<group>"; };
+		53E9BD591F305F42000BFA60 /* NSString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AvoidCrash.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -928,6 +958,7 @@
 		11093BDB1F0B3A8C00AFCB20 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				53E9BD451F305F42000BFA60 /* AvoidCrash */,
 				11093BDC1F0B3A8C00AFCB20 /* ChoosePicture.h */,
 				11093BDD1F0B3A8C00AFCB20 /* ChoosePicture.m */,
 				11093BDE1F0B3A8C00AFCB20 /* WKWedViewController.h */,
@@ -1668,6 +1699,33 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		53E9BD451F305F42000BFA60 /* AvoidCrash */ = {
+			isa = PBXGroup;
+			children = (
+				53E9BD461F305F42000BFA60 /* AvoidCrash.h */,
+				53E9BD471F305F42000BFA60 /* AvoidCrash.m */,
+				53E9BD481F305F42000BFA60 /* NSArray+AvoidCrash.h */,
+				53E9BD491F305F42000BFA60 /* NSArray+AvoidCrash.m */,
+				53E9BD4A1F305F42000BFA60 /* NSAttributedString+AvoidCrash.h */,
+				53E9BD4B1F305F42000BFA60 /* NSAttributedString+AvoidCrash.m */,
+				53E9BD4C1F305F42000BFA60 /* NSDictionary+AvoidCrash.h */,
+				53E9BD4D1F305F42000BFA60 /* NSDictionary+AvoidCrash.m */,
+				53E9BD4E1F305F42000BFA60 /* NSMutableArray+AvoidCrash.h */,
+				53E9BD4F1F305F42000BFA60 /* NSMutableArray+AvoidCrash.m */,
+				53E9BD501F305F42000BFA60 /* NSMutableAttributedString+AvoidCrash.h */,
+				53E9BD511F305F42000BFA60 /* NSMutableAttributedString+AvoidCrash.m */,
+				53E9BD521F305F42000BFA60 /* NSMutableDictionary+AvoidCrash.h */,
+				53E9BD531F305F42000BFA60 /* NSMutableDictionary+AvoidCrash.m */,
+				53E9BD541F305F42000BFA60 /* NSMutableString+AvoidCrash.h */,
+				53E9BD551F305F42000BFA60 /* NSMutableString+AvoidCrash.m */,
+				53E9BD561F305F42000BFA60 /* NSObject+AvoidCrash.h */,
+				53E9BD571F305F42000BFA60 /* NSObject+AvoidCrash.m */,
+				53E9BD581F305F42000BFA60 /* NSString+AvoidCrash.h */,
+				53E9BD591F305F42000BFA60 /* NSString+AvoidCrash.m */,
+			);
+			path = AvoidCrash;
+			sourceTree = "<group>";
+		};
 		BF92CEBB9E10DCBBBDCF8502 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1883,6 +1941,7 @@
 				11093BEC1F0B3A8C00AFCB20 /* BindTeleNumVC.m in Sources */,
 				534C17D01F2B093E0067C3E4 /* shoucanggoodsCell1.m in Sources */,
 				534C17B11F29EEC60067C3E4 /* travelCell.m in Sources */,
+				53E9BD5B1F305F42000BFA60 /* NSArray+AvoidCrash.m in Sources */,
 				11093BFA1F0B3A8C00AFCB20 /* ModifyInfoVC.m in Sources */,
 				11093C011F0B3A8C00AFCB20 /* DNNetworking.m in Sources */,
 				114315781F29EDB4003705D2 /* FoodListCVC.m in Sources */,
@@ -1903,6 +1962,7 @@
 				1146E5DB1F0F96A00066B37F /* ShouHuoDiZhiTVC.m in Sources */,
 				11093C031F0B3A8C00AFCB20 /* ChoosePicture.m in Sources */,
 				11093C061F0B3A8C00AFCB20 /* XDFactory.m in Sources */,
+				53E9BD5A1F305F42000BFA60 /* AvoidCrash.m in Sources */,
 				11093BF01F0B3A8C00AFCB20 /* MineTVC.m in Sources */,
 				11093C881F0B775F00AFCB20 /* FoodAndHotelCell.m in Sources */,
 				1146250D1F0C96790005D61C /* HomeFoodModel.m in Sources */,
@@ -1916,6 +1976,7 @@
 				11353E981F15F8BF00B34D7C /* Scenic12Model.m in Sources */,
 				1143DC761F206090005E73FD /* MSSCalendarCollectionViewCell.m in Sources */,
 				53E9BD2F1F2C6F94000BFA60 /* addressModel.m in Sources */,
+				53E9BD601F305F42000BFA60 /* NSMutableDictionary+AvoidCrash.m in Sources */,
 				11093C051F0B3A8C00AFCB20 /* XD_textField.m in Sources */,
 				11405FBD1F0DFD9D00B5CBAE /* ShunFengCheCVC.m in Sources */,
 				534C17D61F2B28470067C3E4 /* evaluationVC.m in Sources */,
@@ -1939,8 +2000,10 @@
 				536022BC1F26EABE00364CDD /* NullSafe.m in Sources */,
 				117105761F14EEF8008A2F25 /* HomeScenicCVC.m in Sources */,
 				116AE5F11F21DE6D00CD76F1 /* MinsuListModel.m in Sources */,
+				53E9BD5D1F305F42000BFA60 /* NSDictionary+AvoidCrash.m in Sources */,
 				1146E5E31F0F9DC70066B37F /* NewAddressCell.m in Sources */,
 				1144E4871F1E1F190015B5EE /* EditSHDZVC.m in Sources */,
+				53E9BD5C1F305F42000BFA60 /* NSAttributedString+AvoidCrash.m in Sources */,
 				11093B621F0B361C00AFCB20 /* main.m in Sources */,
 				53E9BD221F2C62B0000BFA60 /* submitorderVC.m in Sources */,
 				1143DC781F206090005E73FD /* MSSCalendarManager.m in Sources */,
@@ -1961,9 +2024,11 @@
 				114A7F401F301E8E00CFC485 /* ZXTC_Transition.m in Sources */,
 				11093C221F0B3DC100AFCB20 /* UIImage+UzysExtension.m in Sources */,
 				53E9BD2B1F2C6749000BFA60 /* submitorderCell2.m in Sources */,
+				53E9BD611F305F42000BFA60 /* NSMutableString+AvoidCrash.m in Sources */,
 				114416381F132ADF0079B1E2 /* ShopVC.m in Sources */,
 				534C176F1F28889E0067C3E4 /* detailedOrderVC.m in Sources */,
 				11093C281F0B3DC100AFCB20 /* UzysGroupPickerView.m in Sources */,
+				53E9BD5F1F305F42000BFA60 /* NSMutableAttributedString+AvoidCrash.m in Sources */,
 				1173B7001F26109000AB4287 /* SearchViewController.m in Sources */,
 				53E9BD1C1F2C2FB9000BFA60 /* foodCollectionViewCell.m in Sources */,
 				114416311F131E920079B1E2 /* commodityCell.m in Sources */,
@@ -1987,6 +2052,7 @@
 				534C17D31F2B148F0067C3E4 /* shoucanggoodsModel.m in Sources */,
 				114416351F132AA60079B1E2 /* ShopPageController.m in Sources */,
 				114625101F0C9A790005D61C /* HomeModel.m in Sources */,
+				53E9BD5E1F305F42000BFA60 /* NSMutableArray+AvoidCrash.m in Sources */,
 				534C17531F2839060067C3E4 /* myOrderVC0.m in Sources */,
 				11093BEA1F0B3A8C00AFCB20 /* RegisterViewController.m in Sources */,
 				114625181F0CA82D0005D61C /* HomeViewModel.m in Sources */,
@@ -1997,10 +2063,12 @@
 				11093C2A1F0B3DC100AFCB20 /* UzysWrapperPickerController.m in Sources */,
 				114416421F134A9B0079B1E2 /* ShopViewModel.m in Sources */,
 				116AE5F41F21DEF500CD76F1 /* MinsuDetailModel.m in Sources */,
+				53E9BD631F305F42000BFA60 /* NSString+AvoidCrash.m in Sources */,
 				11093C251F0B3DC100AFCB20 /* UzysAssetsPickerController.m in Sources */,
 				534C175D1F2839470067C3E4 /* myOrderVC3.m in Sources */,
 				53E9BD251F2C672B000BFA60 /* submitorderCell0.m in Sources */,
 				534C178C1F289C800067C3E4 /* detailCell0.m in Sources */,
+				53E9BD621F305F42000BFA60 /* NSObject+AvoidCrash.m in Sources */,
 				534C17AE1F29D6280067C3E4 /* attractionsCell.m in Sources */,
 				113CBB051F1F274D00C6A766 /* DiscountCell.m in Sources */,
 				117105851F14EF3A008A2F25 /* HomeCityCell.m in Sources */,

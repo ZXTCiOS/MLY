@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol mycellVdelegate <NSObject>
+-(void)myTabVClick1:(UICollectionViewCell *)cell;//收藏
+
+@end
+
 @interface FoodAndHotelCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgV;
 
@@ -20,5 +25,5 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *detailL;
 
-
+@property(assign,nonatomic)id<mycellVdelegate>delegate;
 @end

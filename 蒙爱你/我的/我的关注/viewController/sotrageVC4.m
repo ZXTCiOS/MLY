@@ -189,7 +189,7 @@ static NSString *foodcellidentfid = @"foodcellidentfid";
     
     NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
-        [self.myCollectionV reloadData];
+        [self.myCollectionV.mj_header beginRefreshing];
     } failure:^(NSError *error) {
         
     }];
