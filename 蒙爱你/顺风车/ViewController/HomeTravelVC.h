@@ -12,6 +12,7 @@
 @interface HomeTravelVC : UIViewController
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageV_car;
 
 
 - (instancetype)initWithHomeTravelModel:(HomeTravelModel *) model;

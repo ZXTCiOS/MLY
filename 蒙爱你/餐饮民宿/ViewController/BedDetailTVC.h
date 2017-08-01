@@ -17,6 +17,7 @@
 
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgV;
 
 
 

@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScenicSpotAdviseCell.h"
+#import "TravelAdviseCell.h"
+#import "FoodAndHotelCell.h"
+#import "HomeTableCell.h"
+
+
+
 
 @interface HomePageTVC : UIViewController
-
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSIndexPath *currentIndex;
 @end

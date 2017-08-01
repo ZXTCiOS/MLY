@@ -7,10 +7,8 @@
 //
 
 #import "HomePageTVC.h"
-#import "HomeTableCell.h"
-#import "ScenicSpotAdviseCell.h"
-#import "TravelAdviseCell.h"
-#import "FoodAndHotelCell.h"
+
+
 #import <HYBLoopScrollView.h>
 #import "HomeViewModel.h"
 #import "WKWedViewController.h"
@@ -26,46 +24,41 @@
 #define distanceToRight  (-50)       //  右滑距离右边的最远刷新距离
 
 
-@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>//, UINavigationControllerDelegate, UIViewControllerInteractiveTransitioning>
+@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) HYBLoopScrollView *loopView;
 
-@property (nonatomic, strong) UITableView *tableView;
+//@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) HomeViewModel *viewModel;
 
 @property (nonatomic, strong) UIView *naviBar;
+
+
+
 
 @end
 
 @implementation HomePageTVC
 
 
-//- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
-//    if (operation == UINavigationControllerOperationPush) {
-//        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
-//        return tran;
-//    } else {
-//        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
-//        return tran;
-//    }
-//}
-//
-//- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
-//    
-//}
-
-
-
-
-
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPush) {
+        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
+        return tran;
+    } else {
+        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
+        
+        return tran;
+    }
+}
 
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    
+    self.navigationController.delegate = self;
     [self tableView];
     [self configNaviBar];
     MJWeakSelf      // 添加头部刷新
@@ -378,6 +371,7 @@ static BOOL ok = YES;
     switch (collectionView.tag) {
         case 0:
         {
+            self.currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
             ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewModel.scenicList[indexPath.row].scenic_id];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
@@ -385,7 +379,7 @@ static BOOL ok = YES;
             break;
         case 1:
         {
-            
+            self.currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:1];
             HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewModel.travelList[indexPath.row]];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
@@ -393,6 +387,7 @@ static BOOL ok = YES;
             break;
         case 2:
         {
+            self.currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:2];
             UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
             BedDetailTVC *vc = [stb instantiateInitialViewController];
             vc.hidesBottomBarWhenPushed = YES;

@@ -12,6 +12,7 @@
 @interface ScenicVC : UITableViewController
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageV;
 
 - initWithScenic_id:(NSInteger) scenic_id;
 

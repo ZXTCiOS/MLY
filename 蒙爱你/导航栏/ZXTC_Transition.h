@@ -14,11 +14,20 @@ typedef NS_ENUM(NSUInteger, TransitionType) {
     TransitionTypePop,
 };
 
+typedef NS_ENUM(NSUInteger, UIViewControllerType) {
+    UIViewControllerTypeScenic,
+    UIViewControllerTypeTravel,
+    UIViewControllerTypeMinsu,
+};
+
 @interface ZXTC_Transition : NSObject<UIViewControllerAnimatedTransitioning>
 
+@property (nonatomic, assign) UIViewControllerType vctype;
 
 + (instancetype)TransitionWithTransitionType:(TransitionType) type;
 
 - (instancetype)initWithTransitionType:(TransitionType) type;
+
+
 
 @end

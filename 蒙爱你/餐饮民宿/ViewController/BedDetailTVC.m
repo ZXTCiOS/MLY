@@ -16,10 +16,10 @@
 #import <MapKit/MapKit.h>
 #import "MoreActivityCVC.h"
 #import "MorePingJiaVC.h"
+#import "ZXTC_Transition.h"
 
 
-
-@interface BedDetailTVC ()<UIScrollViewDelegate, CLLocationManagerDelegate>
+@interface BedDetailTVC ()<UIScrollViewDelegate, CLLocationManagerDelegate, UINavigationControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIView *headerV;
@@ -106,7 +106,7 @@
 
 
 // 轮播
-@property (nonatomic, strong) HYBLoopScrollView *banner;
+//@property (nonatomic, strong) HYBLoopScrollView *banner;
 
 
 // 存放 cell 状态数组
@@ -125,14 +125,62 @@
 @property (nonatomic, strong) UIButton *popBtn;
 @property (nonatomic, strong) UILabel *titleL;
 
+// animation
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;
+
 @end
 
 @implementation BedDetailTVC
 
+
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+   if (operation == UINavigationControllerOperationPop) {
+      ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
+      tran.vctype = UIViewControllerTypeMinsu;
+      return tran;
+   }else {
+      return [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
+   }
+   return nil;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+   return self.percent;
+}
+
+- (void)addPanGesture{
+   self.pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePan:)];
+   self.pan.edges = UIRectEdgeLeft;
+   [self.view addGestureRecognizer:self.pan];
+   
+}
+
+- (void)edgePan:(UIScreenEdgePanGestureRecognizer *)pan{
+   float progress = [pan translationInView:self.view].x / kScreenW;
+   if (pan.state == UIGestureRecognizerStateBegan) {
+      self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
+      [self.navigationController popViewControllerAnimated:YES];
+   } else if (pan.state == UIGestureRecognizerStateChanged) {
+      [self.percent updateInteractiveTransition:progress];
+   } else if (pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateEnded) {
+      if (progress > 0.5) {
+         [self.percent finishInteractiveTransition];
+      } else {
+         [self.percent cancelInteractiveTransition];
+      }
+      self.percent = nil;
+   }
+}
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
+    [self addPanGesture];
     [self getDataFromNet];
     [XDFactory addBackItemForVC:self];
     self.title = @"民宿信息";
@@ -168,7 +216,8 @@
          
          
          MinsuHomeModel *home = model.data.home;
-         self.banner.imageUrls = @[home.home_pic];
+         //self.banner.imageUrls = @[home.home_pic];
+         [self.imgV sd_setImageWithURL:home.home_pic.xd_URL];
          self.nameL.text = home.home_name;
          self.priceL.text = [NSString stringWithFormat:@"¥%ld起", home.min_price];
          self.nameL_EN.text = home.home_intro;
@@ -573,6 +622,7 @@ static UIView *view;
 
 - (void)viewDidAppear:(BOOL)animated{
    [super viewDidAppear:animated];
+   self.navigationController.delegate = self;
    [self configNaviBar];
 }
 
@@ -590,7 +640,7 @@ static UIView *view;
 }
 
 
-
+/*
 - (HYBLoopScrollView *)banner{
     if (!_banner) {
         _banner = [HYBLoopScrollView loopScrollViewWithFrame:CGRectMake(0, -0, kScreenW, 195) imageUrls:@[] timeInterval:2 didSelect:^(NSInteger atIndex) {
@@ -601,7 +651,7 @@ static UIView *view;
         [self.headerV addSubview:_banner];
     }
     return _banner;
-}
+}*/
 
 
 

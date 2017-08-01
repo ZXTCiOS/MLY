@@ -8,13 +8,13 @@
 
 #import "HomeTravelVC.h"
 #import "TouSuVC.h"
+#import "ZXTC_Transition.h"
 
-
-@interface HomeTravelVC ()
+@interface HomeTravelVC ()<UINavigationControllerDelegate>
 
 @property(nonatomic, strong) HomeTravelModel *model;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageV_car;
+//@property (weak, nonatomic) IBOutlet UIImageView *imageV_car;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 
@@ -29,17 +29,67 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImgV;
 
 
-
+// animation
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;
 
 @end
 
 @implementation HomeTravelVC
 
+
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPop) {
+        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
+        tran.vctype = UIViewControllerTypeTravel;
+        return tran;
+    }else {
+        return [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
+    }
+    return nil;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+    return self.percent;
+}
+
+- (void)addPanGesture{
+    self.pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePan:)];
+    self.pan.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:self.pan];
+    
+}
+
+- (void)edgePan:(UIScreenEdgePanGestureRecognizer *)pan{
+    float progress = [pan translationInView:self.view].x / kScreenW;
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if (pan.state == UIGestureRecognizerStateChanged) {
+        [self.percent updateInteractiveTransition:progress];
+    } else if (pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateEnded) {
+        if (progress > 0.5) {
+            [self.percent finishInteractiveTransition];
+        } else {
+            [self.percent cancelInteractiveTransition];
+        }
+        self.percent = nil;
+    }
+}
+
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.navigationController.delegate = self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
-    
+    [self addPanGesture];
     [self loadInfo];
 }
 

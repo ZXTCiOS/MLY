@@ -43,7 +43,7 @@
 
 @interface ScenicBannerModel : NSObject
 
-@property (nonatomic, copy) NSString *image_url;
+@property (nonatomic, copy) NSString *scenic_pic;
 
 @end
 
