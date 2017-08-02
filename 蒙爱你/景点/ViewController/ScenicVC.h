@@ -12,7 +12,7 @@
 
 @interface ScenicVC : UITableViewController
 
-
+@property (nonatomic, copy) NSString *image_url;
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 
 - initWithScenic_id:(NSInteger) scenic_id pushsource:(PushSource) source;

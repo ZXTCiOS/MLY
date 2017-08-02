@@ -64,6 +64,7 @@
         } completion:^(BOOL finished) {
             snapShotView.hidden = YES;
             toVC.imageV.hidden = NO;
+            [snapShotView removeFromSuperview];
             [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }];
     } else {
@@ -83,6 +84,7 @@
         } completion:^(BOOL finished) {
             animateView.hidden = YES;
             toVC.imageV.hidden = NO;
+            [animateView removeFromSuperview];
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         }];
     }
@@ -98,13 +100,14 @@
         HomePageTVC *toVC = (HomePageTVC *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         HomeTableCell *Tcell = [toVC.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         ScenicSpotAdviseCell *cell = (ScenicSpotAdviseCell *)[Tcell.collectV cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toVC.currentIndex.row inSection:0]];
-        UIView *snapView = container.subviews.lastObject;
-        //UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imageV.image];
-        //snapView.frame = [fromVC.imageV convertRect:fromVC.imageV.frame toView:container];
+        
+        UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imageV.image];
+        snapView.frame = [fromVC.imageV convertRect:fromVC.imageV.frame toView:container];
         cell.imgV.hidden = YES;
         fromVC.imageV.hidden = YES;
         snapView.hidden = NO;
         [container insertSubview:toVC.view atIndex:0];
+        [container addSubview:snapView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             snapView.frame = [cell.imgV convertRect:cell.imgV.frame toView:container];
             fromVC.view.alpha = 0;
@@ -121,14 +124,13 @@
     } else {
         ScenicTVC *toVC = (ScenicTVC *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         ScenicCell *cell = [toVC.tableView cellForRowAtIndexPath:toVC.currentIndex];
-        
-        //UIView *snapView = container.subviews.lastObject;
         UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imageV.image];
         snapView.frame = [fromVC.imageV convertRect:fromVC.imageV.frame toView:container];
         cell.imageV.hidden = YES;
         fromVC.imageV.hidden = YES;
         snapView.hidden = NO;
         [container insertSubview:toVC.view atIndex:0];
+        [container addSubview:snapView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             snapView.frame = [cell.imageV convertRect:cell.imageV.frame toView:container];
             fromVC.view.alpha = 0;

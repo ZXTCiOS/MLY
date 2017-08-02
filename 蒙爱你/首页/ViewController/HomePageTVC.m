@@ -409,6 +409,7 @@ static BOOL ok = YES;
             self.currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
             ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewModel.scenicList[indexPath.row].scenic_id pushsource:PushSourceHome];
             [vc.imageV sd_setImageWithURL: self.viewModel.scenicList[indexPath.row].scenic_pic.xd_URL];
+            vc.image_url = self.viewModel.scenicList[indexPath.row].scenic_pic;
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -429,6 +430,7 @@ static BOOL ok = YES;
             vc.source = PushSourceHome;
             vc.hidesBottomBarWhenPushed = YES;
             [vc.imgV sd_setImageWithURL: self.viewModel.foodList[indexPath.row].home_pic.xd_URL];
+            vc.img_url = self.viewModel.foodList[indexPath.row].home_pic;
             vc.minsu_id = self.viewModel.foodList[indexPath.row].home_id;
             [self.navigationController pushViewController:vc animated:YES];
         }

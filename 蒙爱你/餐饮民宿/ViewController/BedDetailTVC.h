@@ -17,7 +17,7 @@
 
 
 
-
+@property (nonatomic, copy) NSString *img_url;
 @property (weak, nonatomic) IBOutlet UIImageView *imgV;
 
 

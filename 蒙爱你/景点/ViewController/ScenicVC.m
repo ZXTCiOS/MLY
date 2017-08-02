@@ -111,7 +111,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.imageV sd_setImageWithURL:self.image_url.xd_URL];
     [self.viewmodel getScenicDetailDataWithScenic_id:self.scenic_id handller:^(NSError *error) {
         if (!error) {
             [self configHeaderView];
@@ -134,14 +134,10 @@
 }
 
 - (void)configHeaderView{
-    //self.banner.placeholder = img_banner_default;
-    //NSMutableArray *arr = [NSMutableArray array];
-    //for (int i = 0; i < self.viewmodel.model.jingdian_lunbo.count; i++) {
-    //   [arr addObject:self.viewmodel.model.jingdian_lunbo[i].image_url];
-    //}
+    
     
     //self.banner.imageUrls = arr;
-    [self.imageV sd_setImageWithURL:self.viewmodel.model.jingdian_lunbo[0].scenic_pic.xd_URL];
+    //[self.imageV sd_setImageWithURL:self.viewmodel.model.jingdian_lunbo[0].scenic_pic.xd_URL];
     self.headName.text = self.viewmodel.model.jingdian_xiangqing.scenic_name;
     self.headDesc.text = self.viewmodel.model.jingdian_xiangqing.scenic_intro;
     self.address.text = self.viewmodel.model.jingdian_xiangqing.scenic_address;

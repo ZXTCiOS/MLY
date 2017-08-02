@@ -12,7 +12,7 @@
 
 @interface FoodListCVC : UICollectionViewController
 
-
+@property (nonatomic, copy) NSString *img_url;
 @property (nonatomic, strong) FoodListHeaderView *imgV;
 
 - (instancetype)initWithShop_ID:(NSInteger) shop_id pushSource:(PushSource) source;

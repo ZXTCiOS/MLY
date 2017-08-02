@@ -141,12 +141,15 @@
     self.currentIndex = indexPath;
     ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewmodel.datalist[indexPath.row].scenic_id pushsource:PushSourceList];
     [vc.imageV sd_setImageWithURL:self.viewmodel.datalist[indexPath.row].scenic_pic.xd_URL];
-    
+    vc.image_url = self.viewmodel.datalist[indexPath.row].scenic_pic;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.delegate = self;
+}
 
 
 
