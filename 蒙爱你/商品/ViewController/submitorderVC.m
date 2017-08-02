@@ -127,10 +127,10 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"dic-----%@",dic);
         if ([[dic objectForKey:@"code"] intValue]==200) {
-
+            
             NSDictionary *datadit = [dic objectForKey:@"data"];
             self.addressdit = [datadit objectForKey:@"address"];
-//            self.discountdit = [datadit objectForKey:@"discount"];
+           // self.discountdit = [datadit objectForKey:@"discount"];
             [self.submittableView reloadData];
         }
         
@@ -208,7 +208,10 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     if (indexPath.section==2) {
         submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid2];
         cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid2];
-        if ([strisNull isNullToString:[self.discountdit objectForKey:@"discount_jian"]]) {
+        
+        NSString *str = [self.discountdit objectForKey:@"discount_jian"];
+        
+        if ([strisNull isNullToString:str]) {
             cell.numlab.text = @"选择优惠券";
         }
         else
@@ -347,8 +350,16 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     appoint_time = [strisNull getNowTimeTimestamp];
     
     
-    NSString *discount_id = [self.discountdit objectForKey:@"discount_id"];
-    
+    NSString *discount_id = @"";
+    if ([strisNull isNullToString:[self.discountdit objectForKey:@"discount_id"]]) {
+        discount_id = @"";
+    }
+    else
+    {
+        discount_id = [self.discountdit objectForKey:@"discount_id"];
+    }
+
+
     NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"goods_id":goods_id,@"goods_type":goods_type,@"number":number,@"address_id":address_id,@"appoint_time":appoint_time,@"discount_id":discount_id,@"order_userphone":order_userphone,@"order_username":order_username};
     AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];

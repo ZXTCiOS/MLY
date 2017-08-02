@@ -110,9 +110,14 @@ static NSString *myordercell0 = @"myordercell0identfid";
                 model.pricestr = [dit objectForKey:@"order_money"];
                 model.numstr = [dit objectForKey:@"order_count"];
                 model.totalpricestr = [dit objectForKey:@"order_money"];
-                model.discountprice = [gooddit objectForKey:@"goods_lowprice"];
                 model.discount_id = [dit objectForKey:@"discount_id"];
                 
+                if ([strisNull isNullToString:[gooddit objectForKey:@"goods_lowprice"]]) {
+                    model.discountprice = @"0";
+                }else
+                {
+                    model.discountprice = [gooddit objectForKey:@"goods_lowprice"];
+                }
                 //退款原因
                 model.refundstr = [dit objectForKey:@"order_invoice"];
               

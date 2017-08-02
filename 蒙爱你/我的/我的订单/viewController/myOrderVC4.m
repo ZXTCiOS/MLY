@@ -11,6 +11,9 @@
 #import "detailedOrderVC.h"
 #import "MBProgressHUD+XMG.h"
 #import "myOrderModel.h"
+#import "strisNull.h"
+#import "storeevaluationVC.h"
+
 @interface myOrderVC4 ()<UITableViewDataSource,UITableViewDelegate,mycellVdelegate>
 @property (nonatomic,strong) UITableView *ordertableView;
 @property (nonatomic,strong) NSMutableArray *dataSource;
@@ -113,7 +116,14 @@ static NSString *myordercell4 = @"myordercell0identfid4";
                 model.discountprice = [dit objectForKey:@"discount"];
                 model.addressid = [dit objectForKey:@"address_id"];
                 model.discount_id = [dit objectForKey:@"discount_id"];
-                model.discountprice = [gooddit objectForKey:@"goods_lowprice"];
+                
+                if ([strisNull isNullToString:[gooddit objectForKey:@"goods_lowprice"]]) {
+                      model.discountprice = @"0";
+                }else
+                {
+                      model.discountprice = [gooddit objectForKey:@"goods_lowprice"];
+                }
+              
                 //退款原因
                 model.refundstr = [dit objectForKey:@"order_invoice"];
                 
@@ -143,6 +153,8 @@ static NSString *myordercell4 = @"myordercell0identfid4";
                     model.goods_description = [gooddit objectForKey:@"ticket_description"];
                     model.goods_id = [gooddit objectForKey:@"ticket_id"];
                 }
+                
+                model.home_id = [gooddit objectForKey:@"home_id"];
                 [self.dataSource addObject:model];
             }
             [self.ordertableView reloadData];
@@ -248,7 +260,20 @@ static NSString *myordercell4 = @"myordercell0identfid4";
 }
 -(void)myTabVClick6:(UITableViewCell *)cell//评价
 {
+    storeevaluationVC *storevc = [[storeevaluationVC alloc] init];
+     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
     
+    
+    myOrderModel *model = self.dataSource[index.section];
+    if ([strisNull isNullToString:model.home_id]) {
+        model.home_id = @"0";
+        storevc.home_id = model.home_id;
+    }
+    else
+    {
+        storevc.home_id = model.home_id;
+    }
+    [self.navigationController pushViewController:storevc animated:YES];
 }
 
 -(void)myTabVClick7:(UITableViewCell *)cell//退款原因展示

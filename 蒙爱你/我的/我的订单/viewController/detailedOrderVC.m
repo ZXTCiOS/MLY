@@ -70,7 +70,7 @@ static NSString *detalcellidentfid1 = @"detalcellidentfid1";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         NSLog(@"res-----%@",responseObject);
-        if ([[responseObject objectForKey:@"code"] intValue]==200) {
+        if ([[responseObject objectForKey:@"code"] intValue]==200&&[[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
             //NSDictionary *datadic = [responseObject objectForKey:@"data"];
             
             NSArray *dataarr = [responseObject objectForKey:@"data"];

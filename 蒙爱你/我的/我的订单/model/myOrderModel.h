@@ -30,4 +30,7 @@
 
 //退款原因
 @property (nonatomic,strong) NSString *refundstr;
+
+@property (nonatomic,strong) NSString *home_id;
+
 @end
