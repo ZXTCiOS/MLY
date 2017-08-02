@@ -10,8 +10,9 @@
 #import "ScenicCell.h"
 #import "ScenicViewModel.h"
 #import "ScenicVC.h"
+#import "Transition_Scenic.h"   
 
-@interface ScenicTVC ()
+@interface ScenicTVC ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) ScenicViewModel *viewmodel;
 
 @property (nonatomic, assign) NSInteger area_id;
@@ -22,6 +23,14 @@
 @end
 
 @implementation ScenicTVC
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPush) {
+        Transition_Scenic *t = [ Transition_Scenic TransitionWithTransitionType:TransitionTypePush pushsource:PushSourceList];
+        return t;
+    }
+    return nil;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -129,8 +138,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewmodel.datalist[indexPath.row].scenic_id];
+    self.currentIndex = indexPath;
+    ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewmodel.datalist[indexPath.row].scenic_id pushsource:PushSourceList];
+    [vc.imageV sd_setImageWithURL:self.viewmodel.datalist[indexPath.row].scenic_pic.xd_URL];
     
     [self.navigationController pushViewController:vc animated:YES];
 }

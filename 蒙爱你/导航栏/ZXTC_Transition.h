@@ -19,6 +19,11 @@ typedef NS_ENUM(NSUInteger, UIViewControllerType) {
     UIViewControllerTypeTravel,
     UIViewControllerTypeMinsu,
 };
+typedef NS_ENUM(NSUInteger, PushSource) {
+    PushSourceHome,
+    PushSourceList,
+    PushSourceOther,
+};
 
 @interface ZXTC_Transition : NSObject<UIViewControllerAnimatedTransitioning>
 

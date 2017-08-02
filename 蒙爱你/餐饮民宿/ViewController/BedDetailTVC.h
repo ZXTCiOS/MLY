@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Transition_Minsu.h"
 
 @interface BedDetailTVC : UITableViewController
 
@@ -21,7 +22,7 @@
 
 
 
-
+@property (nonatomic, assign) PushSource source;
 
 
 

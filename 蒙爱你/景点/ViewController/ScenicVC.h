@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ScenicModel.h"
+#import "Transition_Scenic.h"
 
 @interface ScenicVC : UITableViewController
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 
-- initWithScenic_id:(NSInteger) scenic_id;
+- initWithScenic_id:(NSInteger) scenic_id pushsource:(PushSource) source;
 
 @end

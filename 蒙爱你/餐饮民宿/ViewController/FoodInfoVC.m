@@ -8,6 +8,7 @@
 
 #import "FoodInfoVC.h"
 #import "GouWCTVc.h"
+#import "Transition_Food.h"
 
 
 @interface FoodInfoVC ()
@@ -16,7 +17,6 @@
 
 @property (nonatomic, strong) FoodModel *model;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageV;
 
 @property (weak, nonatomic) IBOutlet UILabel *foodname;
 
@@ -28,13 +28,16 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *count;
 
+
+
 @end
 
 @implementation FoodInfoVC
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     [self.imageV sd_setImageWithURL:self.model.bedeat_pic.xd_URL placeholderImage:[UIImage imageNamed:@"1"]];
     self.foodname.text = self.model.bedeat_name;
@@ -64,6 +67,7 @@
 
 - (IBAction)gouwuche:(id)sender {
     GouWCTVc *vc = [[GouWCTVc alloc] initWithHome_id:self.home_id];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -98,6 +102,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.delegate = self;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{

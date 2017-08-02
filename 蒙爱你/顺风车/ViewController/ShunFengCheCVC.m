@@ -11,12 +11,17 @@
 #import "HomeTravelVC.h"
 #import "ShunFengCheViewModel.h"
 #import "SearchViewController.h"
+#import "Transition_Travel.h"
 
-@interface ShunFengCheCVC ()
+@interface ShunFengCheCVC ()<UINavigationControllerDelegate>
 
 @property (nonatomic, copy) NSString *searchtext;
 @property (nonatomic, assign) SearchType searchType;
 @property (nonatomic, strong) ShunFengCheViewModel *viewmodel;
+
+
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;
 
 @end
 
@@ -24,10 +29,49 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    
+    if (operation == UINavigationControllerOperationPush) {
+        Transition_Travel *tran = [Transition_Travel TransitionWithTransitionType:TransitionTypePush pushsource:PushSourceList];
+        return tran;
+    }
+    return nil;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+    return self.percent;
+}
+
+- (void)addPanGesture{
+    self.pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePan:)];
+    self.pan.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:self.pan];
+    
+}
+
+- (void)edgePan:(UIScreenEdgePanGestureRecognizer *)pan{
+    float progress = [pan translationInView:self.view].x / kScreenW;
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if (pan.state == UIGestureRecognizerStateChanged) {
+        [self.percent updateInteractiveTransition:progress];
+    } else if (pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateEnded) {
+        if (progress > 0.5) {
+            [self.percent finishInteractiveTransition];
+        } else {
+            [self.percent cancelInteractiveTransition];
+        }
+        self.percent = nil;
+    }
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.navigationController.delegate = self;
     MJWeakSelf
     [self.collectionView addHeaderRefresh:^{
         [weakSelf HeadRefresh];
@@ -82,20 +126,20 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.viewmodel getDataWithMode:RequestModeMore SearchText:self.searchtext handller:^(NSError *error) {
             if (!error) {
                 [self.collectionView reloadData];
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
             }else{
                 [self.view.superview showWarning:@"网络错误"];
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
             }
         }];
     } else {
         [self.viewmodel getDataWithMode:RequestModeMore url:get_shunFengChe_zhuye handller:^(NSError *error) {
             if (!error) {
                 [self.collectionView reloadData];
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
             }else{
                 [self.view.superview showWarning:@"网络错误"];
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
             }
         }];
     }
@@ -149,8 +193,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     NSLog(@"%ld", indexPath.row);
     
-
-    HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row]];
+    self.currentIndex = indexPath;
+    HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row] pushSource:PushSourceList];
     
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
@@ -162,6 +206,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.delegate = self;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

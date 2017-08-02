@@ -91,7 +91,7 @@ static NSString * const reuseIdentifier = @"Cell";
     NSLog(@"%ld", indexPath.row);
     
     
-    HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row]];
+    HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row] pushSource:PushSourceOther];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

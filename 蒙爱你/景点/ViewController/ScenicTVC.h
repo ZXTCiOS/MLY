@@ -14,6 +14,8 @@
 
 @property (nonatomic, assign) NSInteger city_id;
 
+@property (nonatomic, strong) NSIndexPath *currentIndex;
+
 - (instancetype)initWithArea_id:(NSInteger) area_id area_name:(NSString *)area_name;
 
 - (instancetype)initWithSearchType:(SearchType) type Searchtext:(NSString*) text;

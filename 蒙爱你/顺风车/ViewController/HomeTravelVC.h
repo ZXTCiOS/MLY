@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeTravelModel.h"
+#import "Transition_Travel.h"
 
 @interface HomeTravelVC : UIViewController
 
@@ -15,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_car;
 
 
-- (instancetype)initWithHomeTravelModel:(HomeTravelModel *) model;
+- (instancetype)initWithHomeTravelModel:(HomeTravelModel *) model pushSource:(PushSource) source;
 
 
 

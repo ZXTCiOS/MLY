@@ -16,7 +16,7 @@
 #import <MapKit/MapKit.h>
 #import "MoreActivityCVC.h"
 #import "MorePingJiaVC.h"
-#import "ZXTC_Transition.h"
+#import "Transition_Minsu.h"
 
 
 @interface BedDetailTVC ()<UIScrollViewDelegate, CLLocationManagerDelegate, UINavigationControllerDelegate>
@@ -137,11 +137,10 @@
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
    if (operation == UINavigationControllerOperationPop) {
-      ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
-      tran.vctype = UIViewControllerTypeMinsu;
+      Transition_Minsu *tran = [Transition_Minsu TransitionWithTransitionType:TransitionTypePop pushsource:self.source];
       return tran;
    }else {
-      return [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
+      return nil;//[Transition_Minsu TransitionWithTransitionType:TransitionTypePush pushsource:self.source];
    }
    return nil;
 }
@@ -277,6 +276,7 @@
 
 - (IBAction)morePingjia:(id)sender {
    MorePingJiaVC *vc = [[MorePingJiaVC alloc] initWithMinsu_id:self.minsu_id];
+   
    [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -409,10 +409,10 @@
    
     [cell.imgV sd_setImageWithURL:array[indexPath.row].bedeat_pic.xd_URL placeholderImage:[UIImage imageNamed:@"7"]];
     cell.buynow = ^(){
-       UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
-       LiJiYuDingTVC *vc = [stb instantiateViewControllerWithIdentifier:@"lijiyuding"];
-       //vc.room_id =
-       //vc.minsu_id =
+       
+       LiJiYuDingTVC *vc = [[LiJiYuDingTVC alloc] initWithBedEat:!self.isBed room_id:self.minsu_id bedeat_id:array[indexPath.row].bedeat_id];
+       
+       
        [self.navigationController pushViewController:vc animated:YES];
     };
    NSInteger shouqi = [bedeat[indexPath.row] integerValue];
@@ -637,6 +637,7 @@ static UIView *view;
    [super viewWillDisappear:animated];
    self.navigationController.navigationBar.hidden = NO;
    [self.naviBar removeFromSuperview];
+   
 }
 
 

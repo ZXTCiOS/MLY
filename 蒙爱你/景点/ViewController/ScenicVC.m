@@ -15,7 +15,7 @@
 #import "WKWedViewController.h"
 #import "ScenicViewModel.h"
 #import "TicketCell.h"
-#import "ZXTC_Transition.h"
+//#import "ZXTC_Transition.h"
 
 
 @interface ScenicVC ()<CLLocationManagerDelegate, UINavigationControllerDelegate>
@@ -58,7 +58,7 @@
 // animation
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;
-
+@property (nonatomic, assign) PushSource source;
 
 @end
 
@@ -68,12 +68,15 @@
 
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (self.source == PushSourceOther) {
+        return nil;
+    }
     if (operation == UINavigationControllerOperationPop) {
-        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
-        tran.vctype = UIViewControllerTypeScenic;
+        Transition_Scenic *tran = [Transition_Scenic TransitionWithTransitionType:TransitionTypePop pushsource:self.source];
         return tran;
     } else {
-        return [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
+        Transition_Scenic *tran = [Transition_Scenic TransitionWithTransitionType:TransitionTypePush pushsource:self.source];
+        return tran;
     }
     return nil;
 }
@@ -267,11 +270,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self configNaviBar];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.naviBar removeFromSuperview];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.delegate = nil;
 }
 
 
@@ -343,11 +349,13 @@
 }
 
 
-- (id)initWithScenic_id:(NSInteger)scenic_id{
+- (id)initWithScenic_id:(NSInteger)scenic_id pushsource:(PushSource)source{
     UIStoryboard *st = [UIStoryboard storyboardWithName:@"scenic" bundle:nil];
     self = [st instantiateInitialViewController];
     if (self) {
         self.scenic_id = scenic_id;
+        self.source = source;
+        //self.navigationController.delegate = self;
     }
     return self;
 }

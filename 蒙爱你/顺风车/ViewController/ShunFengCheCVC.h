@@ -12,7 +12,7 @@
 @interface ShunFengCheCVC : UICollectionViewController
 
 
-
+@property (nonatomic, strong) NSIndexPath *currentIndex;
 
 
 - (instancetype)initWithSearchText:(NSString *) text searchType:(SearchType) searchType;

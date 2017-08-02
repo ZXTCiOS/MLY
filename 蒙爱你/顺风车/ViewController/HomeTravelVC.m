@@ -32,7 +32,7 @@
 // animation
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;
-
+@property (nonatomic, assign) PushSource source;
 @end
 
 @implementation HomeTravelVC
@@ -40,12 +40,12 @@
 
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (self.source == PushSourceOther) {
+        return nil;
+    }
     if (operation == UINavigationControllerOperationPop) {
-        ZXTC_Transition *tran = [ZXTC_Transition TransitionWithTransitionType:TransitionTypePop];
-        tran.vctype = UIViewControllerTypeTravel;
-        return tran;
-    }else {
-        return [ZXTC_Transition TransitionWithTransitionType:TransitionTypePush];
+        Transition_Travel *t = [Transition_Travel TransitionWithTransitionType:TransitionTypePop pushsource:self.source];
+        return t;
     }
     return nil;
 }
@@ -134,6 +134,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.delegate = nil;
 }
 
 
@@ -151,10 +152,11 @@
 
 
 
-- (instancetype)initWithHomeTravelModel:(HomeTravelModel *)model{
+- (instancetype)initWithHomeTravelModel:(HomeTravelModel *)model pushSource:(PushSource)source{
     self = [super initWithNibName:NSStringFromClass([HomeTravelVC class]) bundle:nil];
     if (self) {
         self.model = model;
+        self.source = source;
     }
     return self;
 }

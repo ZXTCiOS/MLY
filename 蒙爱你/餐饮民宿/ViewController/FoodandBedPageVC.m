@@ -9,9 +9,11 @@
 #import "FoodandBedPageVC.h"
 #import "ChooseView.h"
 #import "SearchViewController.h"
+#import "Transition_Minsu.h"
+#import "Transition_Food.h"
 
 
-@interface FoodandBedPageVC ()
+@interface FoodandBedPageVC ()<UINavigationControllerDelegate>
 
 @property (nonatomic, strong) ChooseView *chooseV;
 @property (nonatomic, strong) UIView *bgV;
@@ -21,6 +23,21 @@
 @end
 
 @implementation FoodandBedPageVC
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPush) {
+        if (self.type == VCTypeOfBed) {
+            Transition_Minsu *t = [Transition_Minsu TransitionWithTransitionType:TransitionTypePush pushsource:PushSourceList];
+            return t;
+        } else {
+            Transition_Food *t = [Transition_Food TransitionWithTransitionType:TransitionTypePush];
+            return t;
+        }
+    }
+    return nil;
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -104,7 +121,7 @@
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     CGFloat width = (kScreenW - 30) / 2;
     layout.itemSize = CGSizeMake(width, width + 95);
-    FoodCollectionVC *food = [[FoodCollectionVC alloc] initWithCollectionViewLayout:layout andType:index];
+    FoodCollectionVC *food = [[FoodCollectionVC alloc] initWithCollectionViewLayout:layout andType:index pushSource:PushSourceList];
     return food;
 }
 
@@ -215,6 +232,7 @@
     [super viewWillAppear:animated];
     //self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.delegate = self;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
