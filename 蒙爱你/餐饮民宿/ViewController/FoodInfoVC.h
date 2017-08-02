@@ -10,6 +10,8 @@
 #import "FoodDataModel.h"
 @interface FoodInfoVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageV;
+
 
 - (instancetype)initWithFoodModel:(FoodModel *) model home_id:(NSInteger) home_id;
 @end

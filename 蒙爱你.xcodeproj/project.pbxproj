@@ -133,6 +133,11 @@
 		1146E5DF1F0F96E80066B37F /* ShouHuoDiZhiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1146E5DD1F0F96E80066B37F /* ShouHuoDiZhiCell.m */; };
 		1146E5E01F0F96E80066B37F /* ShouHuoDiZhiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1146E5DE1F0F96E80066B37F /* ShouHuoDiZhiCell.xib */; };
 		1146E5E31F0F9DC70066B37F /* NewAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1146E5E21F0F9DC70066B37F /* NewAddressCell.m */; };
+		114A7F401F301E8E00CFC485 /* ZXTC_Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A7F3F1F301E8E00CFC485 /* ZXTC_Transition.m */; };
+		114A7F431F308E6700CFC485 /* Transition_Scenic.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A7F421F308E6700CFC485 /* Transition_Scenic.m */; };
+		114A7F461F30919E00CFC485 /* Transition_Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A7F451F30919E00CFC485 /* Transition_Travel.m */; };
+		114A7F491F3092A500CFC485 /* Transition_Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A7F481F3092A500CFC485 /* Transition_Food.m */; };
+		114A7F4C1F3092B800CFC485 /* Transition_Minsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A7F4B1F3092B800CFC485 /* Transition_Minsu.m */; };
 		114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BCBE01F173DFD00705C9B /* UIImage+alphaImage.m */; };
 		115502211F186AEC00977217 /* FoodandBedPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 115502201F186AEC00977217 /* FoodandBedPageVC.m */; };
 		115502241F189A5F00977217 /* ChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 115502231F189A5F00977217 /* ChooseView.m */; };
@@ -455,6 +460,16 @@
 		1146E5DE1F0F96E80066B37F /* ShouHuoDiZhiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShouHuoDiZhiCell.xib; sourceTree = "<group>"; };
 		1146E5E11F0F9DC70066B37F /* NewAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddressCell.h; sourceTree = "<group>"; };
 		1146E5E21F0F9DC70066B37F /* NewAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAddressCell.m; sourceTree = "<group>"; };
+		114A7F3E1F301E8E00CFC485 /* ZXTC_Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXTC_Transition.h; sourceTree = "<group>"; };
+		114A7F3F1F301E8E00CFC485 /* ZXTC_Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXTC_Transition.m; sourceTree = "<group>"; };
+		114A7F411F308E6700CFC485 /* Transition_Scenic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transition_Scenic.h; sourceTree = "<group>"; };
+		114A7F421F308E6700CFC485 /* Transition_Scenic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transition_Scenic.m; sourceTree = "<group>"; };
+		114A7F441F30919E00CFC485 /* Transition_Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transition_Travel.h; sourceTree = "<group>"; };
+		114A7F451F30919E00CFC485 /* Transition_Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transition_Travel.m; sourceTree = "<group>"; };
+		114A7F471F3092A500CFC485 /* Transition_Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transition_Food.h; sourceTree = "<group>"; };
+		114A7F481F3092A500CFC485 /* Transition_Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transition_Food.m; sourceTree = "<group>"; };
+		114A7F4A1F3092B800CFC485 /* Transition_Minsu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transition_Minsu.h; sourceTree = "<group>"; };
+		114A7F4B1F3092B800CFC485 /* Transition_Minsu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transition_Minsu.m; sourceTree = "<group>"; };
 		114BCBDF1F173DFD00705C9B /* UIImage+alphaImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+alphaImage.h"; sourceTree = "<group>"; };
 		114BCBE01F173DFD00705C9B /* UIImage+alphaImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+alphaImage.m"; sourceTree = "<group>"; };
 		1155021F1F186AEC00977217 /* FoodandBedPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodandBedPageVC.h; sourceTree = "<group>"; };
@@ -733,6 +748,16 @@
 				1143DC7E1F208330005E73FD /* NaviBar.m */,
 				1173B6FE1F26109000AB4287 /* SearchViewController.h */,
 				1173B6FF1F26109000AB4287 /* SearchViewController.m */,
+				114A7F3E1F301E8E00CFC485 /* ZXTC_Transition.h */,
+				114A7F3F1F301E8E00CFC485 /* ZXTC_Transition.m */,
+				114A7F411F308E6700CFC485 /* Transition_Scenic.h */,
+				114A7F421F308E6700CFC485 /* Transition_Scenic.m */,
+				114A7F441F30919E00CFC485 /* Transition_Travel.h */,
+				114A7F451F30919E00CFC485 /* Transition_Travel.m */,
+				114A7F4A1F3092B800CFC485 /* Transition_Minsu.h */,
+				114A7F4B1F3092B800CFC485 /* Transition_Minsu.m */,
+				114A7F471F3092A500CFC485 /* Transition_Food.h */,
+				114A7F481F3092A500CFC485 /* Transition_Food.m */,
 			);
 			path = "导航栏";
 			sourceTree = "<group>";
@@ -1809,7 +1834,7 @@
 				TargetAttributes = {
 					11093B5C1F0B361C00AFCB20 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = GZJLNU22Y5;
+						DevelopmentTeam = 693CCUSTEP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1968,6 +1993,7 @@
 				534C17D01F2B093E0067C3E4 /* shoucanggoodsCell1.m in Sources */,
 				534C17B11F29EEC60067C3E4 /* travelCell.m in Sources */,
 				53E9BD5B1F305F42000BFA60 /* NSArray+AvoidCrash.m in Sources */,
+				114A7F431F308E6700CFC485 /* Transition_Scenic.m in Sources */,
 				11093BFA1F0B3A8C00AFCB20 /* ModifyInfoVC.m in Sources */,
 				53E9BD661F30650A000BFA60 /* storeevaluationVC.m in Sources */,
 				11093C011F0B3A8C00AFCB20 /* DNNetworking.m in Sources */,
@@ -2011,6 +2037,7 @@
 				11405FBD1F0DFD9D00B5CBAE /* ShunFengCheCVC.m in Sources */,
 				11093B651F0B361C00AFCB20 /* AppDelegate.m in Sources */,
 				1143DC7B1F206090005E73FD /* MSSChineseCalendarManager.m in Sources */,
+				114A7F4C1F3092B800CFC485 /* Transition_Minsu.m in Sources */,
 				53E9BD421F2ED897000BFA60 /* strisNull.m in Sources */,
 				1146E5D41F0F71890066B37F /* MyStorageTravelVC.m in Sources */,
 				534C175A1F2839360067C3E4 /* myOrderVC2.m in Sources */,
@@ -2018,8 +2045,10 @@
 				1146E5DF1F0F96E80066B37F /* ShouHuoDiZhiCell.m in Sources */,
 				1143DC7F1F208330005E73FD /* NaviBar.m in Sources */,
 				11093C291F0B3DC100AFCB20 /* UzysGroupViewCell.m in Sources */,
+				114A7F461F30919E00CFC485 /* Transition_Travel.m in Sources */,
 				53E9BD381F2E1B46000BFA60 /* submitorderModel.m in Sources */,
 				117016251F2C999700E1AF74 /* MorePingJiaVC.m in Sources */,
+				114A7F491F3092A500CFC485 /* Transition_Food.m in Sources */,
 				113CBB001F1F0A8500C6A766 /* TouSuVC.m in Sources */,
 				1170161A1F2C5C9300E1AF74 /* GouWCTVc.m in Sources */,
 				113F37281F2ADA7C00F56628 /* MoreActivityCell.m in Sources */,
@@ -2050,6 +2079,7 @@
 				11353EA51F16243400B34D7C /* ScenicHeaderV.m in Sources */,
 				534C17CA1F2B081B0067C3E4 /* travelModel.m in Sources */,
 				11093C751F0B591A00AFCB20 /* HomeTableCell.m in Sources */,
+				114A7F401F301E8E00CFC485 /* ZXTC_Transition.m in Sources */,
 				11093C221F0B3DC100AFCB20 /* UIImage+UzysExtension.m in Sources */,
 				53E9BD2B1F2C6749000BFA60 /* submitorderCell2.m in Sources */,
 				53E9BD611F305F42000BFA60 /* NSMutableString+AvoidCrash.m in Sources */,
@@ -2220,7 +2250,7 @@
 			baseConfigurationReference = 48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GZJLNU22Y5;
+				DEVELOPMENT_TEAM = 693CCUSTEP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",
@@ -2248,7 +2278,7 @@
 			baseConfigurationReference = 429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GZJLNU22Y5;
+				DEVELOPMENT_TEAM = 693CCUSTEP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",

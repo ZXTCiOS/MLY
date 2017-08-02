@@ -25,11 +25,14 @@
 @property (nonatomic, copy) NSString *searchText;
 @property (nonatomic, assign) SearchType searchType;
 
+@property (nonatomic, assign) PushSource source;
+
 @end
 
 @implementation FoodCollectionVC
 
 static NSString * const reuseIdentifier = @"Cell";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -220,14 +223,18 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    self.currentIndex = indexPath;
     if (self.type == VCTypeOfBed) {
         UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
         BedDetailTVC *vc = [stb instantiateInitialViewController];
         vc.minsu_id = self.viewmodel.datalist[indexPath.row].home_id;
+        vc.source = PushSourceList;
+        [vc.imgV sd_setImageWithURL:self.viewmodel.datalist[indexPath.row].home_pic.xd_URL];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } else {
-        FoodListCVC *v = [[FoodListCVC alloc] initWithShop_ID:self.viewmodel.datalist[indexPath.row].home_id];
+        FoodListCVC *v = [[FoodListCVC alloc] initWithShop_ID:self.viewmodel.datalist[indexPath.row].home_id pushSource:PushSourceList];
+        [v.imgV.imgV sd_setImageWithURL:self.viewmodel.datalist[indexPath.row].home_pic.xd_URL];
         [self.navigationController pushViewController:v animated:YES];
     }
 }
@@ -254,10 +261,11 @@ static NSString * const reuseIdentifier = @"Cell";
     return _viewmodel;
 }
 
-- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout andType:(VCType)type{
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout andType:(VCType)type pushSource:(PushSource)source{
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
         self.type = type;
+        self.source = PushSourceList;
     }
     return self;
 }
@@ -273,6 +281,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (self) {
         self.searchType = type;
         self.searchText = text;
+        self.source = PushSourceList;
         //self.type = VCTypeOfBed;
     }
     return self;

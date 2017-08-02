@@ -16,10 +16,10 @@
 #import <MapKit/MapKit.h>
 #import "MoreActivityCVC.h"
 #import "MorePingJiaVC.h"
+#import "Transition_Minsu.h"
 
 
-
-@interface BedDetailTVC ()<UIScrollViewDelegate, CLLocationManagerDelegate>
+@interface BedDetailTVC ()<UIScrollViewDelegate, CLLocationManagerDelegate, UINavigationControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIView *headerV;
@@ -106,7 +106,7 @@
 
 
 // 轮播
-@property (nonatomic, strong) HYBLoopScrollView *banner;
+//@property (nonatomic, strong) HYBLoopScrollView *banner;
 
 
 // 存放 cell 状态数组
@@ -125,14 +125,61 @@
 @property (nonatomic, strong) UIButton *popBtn;
 @property (nonatomic, strong) UILabel *titleL;
 
+// animation
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;
+
 @end
 
 @implementation BedDetailTVC
 
+
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+   if (operation == UINavigationControllerOperationPop) {
+      Transition_Minsu *tran = [Transition_Minsu TransitionWithTransitionType:TransitionTypePop pushsource:self.source];
+      return tran;
+   }else {
+      return nil;//[Transition_Minsu TransitionWithTransitionType:TransitionTypePush pushsource:self.source];
+   }
+   return nil;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+   return self.percent;
+}
+
+- (void)addPanGesture{
+   self.pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePan:)];
+   self.pan.edges = UIRectEdgeLeft;
+   [self.view addGestureRecognizer:self.pan];
+   
+}
+
+- (void)edgePan:(UIScreenEdgePanGestureRecognizer *)pan{
+   float progress = [pan translationInView:self.view].x / kScreenW;
+   if (pan.state == UIGestureRecognizerStateBegan) {
+      self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
+      [self.navigationController popViewControllerAnimated:YES];
+   } else if (pan.state == UIGestureRecognizerStateChanged) {
+      [self.percent updateInteractiveTransition:progress];
+   } else if (pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateEnded) {
+      if (progress > 0.5) {
+         [self.percent finishInteractiveTransition];
+      } else {
+         [self.percent cancelInteractiveTransition];
+      }
+      self.percent = nil;
+   }
+}
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
+    [self addPanGesture];
     [self getDataFromNet];
     [XDFactory addBackItemForVC:self];
     self.title = @"民宿信息";
@@ -168,7 +215,8 @@
          
          
          MinsuHomeModel *home = model.data.home;
-         self.banner.imageUrls = @[home.home_pic];
+         //self.banner.imageUrls = @[home.home_pic];
+         [self.imgV sd_setImageWithURL:home.home_pic.xd_URL];
          self.nameL.text = home.home_name;
          self.priceL.text = [NSString stringWithFormat:@"¥%ld起", home.min_price];
          self.nameL_EN.text = home.home_intro;
@@ -228,6 +276,7 @@
 
 - (IBAction)morePingjia:(id)sender {
    MorePingJiaVC *vc = [[MorePingJiaVC alloc] initWithMinsu_id:self.minsu_id];
+   
    [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -360,10 +409,10 @@
    
     [cell.imgV sd_setImageWithURL:array[indexPath.row].bedeat_pic.xd_URL placeholderImage:[UIImage imageNamed:@"7"]];
     cell.buynow = ^(){
-       UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
-       LiJiYuDingTVC *vc = [stb instantiateViewControllerWithIdentifier:@"lijiyuding"];
-       //vc.room_id =
-       //vc.minsu_id =
+       
+       LiJiYuDingTVC *vc = [[LiJiYuDingTVC alloc] initWithBedEat:!self.isBed room_id:self.minsu_id bedeat_id:array[indexPath.row].bedeat_id];
+       
+       
        [self.navigationController pushViewController:vc animated:YES];
     };
    NSInteger shouqi = [bedeat[indexPath.row] integerValue];
@@ -573,6 +622,7 @@ static UIView *view;
 
 - (void)viewDidAppear:(BOOL)animated{
    [super viewDidAppear:animated];
+   self.navigationController.delegate = self;
    [self configNaviBar];
 }
 
@@ -587,10 +637,11 @@ static UIView *view;
    [super viewWillDisappear:animated];
    self.navigationController.navigationBar.hidden = NO;
    [self.naviBar removeFromSuperview];
+   
 }
 
 
-
+/*
 - (HYBLoopScrollView *)banner{
     if (!_banner) {
         _banner = [HYBLoopScrollView loopScrollViewWithFrame:CGRectMake(0, -0, kScreenW, 195) imageUrls:@[] timeInterval:2 didSelect:^(NSInteger atIndex) {
@@ -601,7 +652,7 @@ static UIView *view;
         [self.headerV addSubview:_banner];
     }
     return _banner;
-}
+}*/
 
 
 

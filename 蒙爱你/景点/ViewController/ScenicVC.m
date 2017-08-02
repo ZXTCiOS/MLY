@@ -15,16 +15,16 @@
 #import "WKWedViewController.h"
 #import "ScenicViewModel.h"
 #import "TicketCell.h"
+//#import "ZXTC_Transition.h"
 
 
-
-@interface ScenicVC ()<CLLocationManagerDelegate>
+@interface ScenicVC ()<CLLocationManagerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, assign) NSInteger scenic_id;
 
 @property (weak, nonatomic) IBOutlet UIView *headerV;
 
-@property (nonatomic, strong) HYBLoopScrollView *banner;
+//@property (nonatomic, strong) HYBLoopScrollView *banner;
 
 @property (weak, nonatomic) IBOutlet UILabel *headName;
 
@@ -53,9 +53,61 @@
 @property (nonatomic, strong) UIButton *popBtn;
 @property (nonatomic, strong) UILabel *titleL;
 
+
+
+// animation
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;
+@property (nonatomic, assign) PushSource source;
+
 @end
 
 @implementation ScenicVC
+
+
+
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (self.source == PushSourceOther) {
+        return nil;
+    }
+    if (operation == UINavigationControllerOperationPop) {
+        Transition_Scenic *tran = [Transition_Scenic TransitionWithTransitionType:TransitionTypePop pushsource:self.source];
+        return tran;
+    } else {
+        Transition_Scenic *tran = [Transition_Scenic TransitionWithTransitionType:TransitionTypePush pushsource:self.source];
+        return tran;
+    }
+    return nil;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+    return self.percent;
+}
+
+- (void)addPanGesture{
+    self.pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePan:)];
+    self.pan.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:self.pan];
+    
+}
+
+- (void)edgePan:(UIScreenEdgePanGestureRecognizer *)pan{
+    float progress = [pan translationInView:self.view].x / kScreenW;
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if (pan.state == UIGestureRecognizerStateChanged) {
+        [self.percent updateInteractiveTransition:progress];
+    } else if (pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateEnded) {
+        if (progress > 0.5) {
+            [self.percent finishInteractiveTransition];
+        } else {
+            [self.percent cancelInteractiveTransition];
+        }
+        self.percent = nil;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,19 +124,24 @@
     
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    
+    [self addPanGesture];
     [XDFactory addBackItemForVC:self];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.navigationController.delegate = self;
+}
+
 - (void)configHeaderView{
-    self.banner.placeholder = img_banner_default;
-    NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 0; i < self.viewmodel.model.jingdian_lunbo.count; i++) {
-        [arr addObject:self.viewmodel.model.jingdian_lunbo[i].image_url];
-    }
+    //self.banner.placeholder = img_banner_default;
+    //NSMutableArray *arr = [NSMutableArray array];
+    //for (int i = 0; i < self.viewmodel.model.jingdian_lunbo.count; i++) {
+    //   [arr addObject:self.viewmodel.model.jingdian_lunbo[i].image_url];
+    //}
     
-    self.banner.imageUrls = arr;
+    //self.banner.imageUrls = arr;
+    [self.imageV sd_setImageWithURL:self.viewmodel.model.jingdian_lunbo[0].scenic_pic.xd_URL];
     self.headName.text = self.viewmodel.model.jingdian_xiangqing.scenic_name;
     self.headDesc.text = self.viewmodel.model.jingdian_xiangqing.scenic_intro;
     self.address.text = self.viewmodel.model.jingdian_xiangqing.scenic_address;
@@ -159,7 +216,6 @@
 
 
 
-
 #pragma mark - scrollview delegate
 
 - (void)configNaviBar{
@@ -214,11 +270,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self configNaviBar];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.naviBar removeFromSuperview];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.delegate = nil;
 }
 
 
@@ -266,7 +325,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/*
 - (HYBLoopScrollView *)banner{
     if (!_banner) {
         _banner = [HYBLoopScrollView loopScrollViewWithFrame:CGRectMake(0, 0, kScreenW, 195) imageUrls:@[] timeInterval:2 didSelect:^(NSInteger atIndex) {
@@ -281,7 +340,7 @@
     }
     return _banner;
 }
-
+*/
 - (ScenicViewModel *)viewmodel{
     if (!_viewmodel) {
         _viewmodel = [[ScenicViewModel alloc] init];
@@ -290,11 +349,13 @@
 }
 
 
-- (id)initWithScenic_id:(NSInteger)scenic_id{
+- (id)initWithScenic_id:(NSInteger)scenic_id pushsource:(PushSource)source{
     UIStoryboard *st = [UIStoryboard storyboardWithName:@"scenic" bundle:nil];
     self = [st instantiateInitialViewController];
     if (self) {
         self.scenic_id = scenic_id;
+        self.source = source;
+        //self.navigationController.delegate = self;
     }
     return self;
 }

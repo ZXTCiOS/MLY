@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Transition_Minsu.h"
 
 @interface BedDetailTVC : UITableViewController
 
@@ -17,10 +18,11 @@
 
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgV;
 
 
 
-
+@property (nonatomic, assign) PushSource source;
 
 
 

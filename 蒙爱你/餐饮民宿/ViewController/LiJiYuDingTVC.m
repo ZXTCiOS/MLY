@@ -122,12 +122,11 @@
 }
 
 - (instancetype)initWithBedEat:(BedOreEat)typt room_id:(NSInteger)room_id bedeat_id:(NSInteger)eadbed_id{
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self) {
-        self.room_id = room_id;
-        self.minsu_id = eadbed_id;
-    }
-    return self;
+    UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
+    LiJiYuDingTVC *vc = [stb instantiateViewControllerWithIdentifier:@"lijiyuding"];
+    self.room_id = room_id;
+    self.minsu_id = eadbed_id;
+    return vc;
 }
 
 

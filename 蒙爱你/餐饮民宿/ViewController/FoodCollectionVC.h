@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SearchViewController.h"
+#import "Transition_Minsu.h"
+#import "Transition_Food.h"
+
 typedef NS_ENUM(NSUInteger, VCType) {
     VCTypeOfBed,
     VCTypeOfFood,
@@ -22,8 +25,9 @@ typedef NS_ENUM(NSUInteger, VCType) {
 
 - (void)reloadDataWithStars:(NSString *) arr andPrice:(NSInteger) price;
 
+@property (nonatomic, strong) NSIndexPath *currentIndex;
 
-- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout andType:(VCType)type;
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout andType:(VCType)type pushSource:(PushSource) source;
 
 - (instancetype)initWithSearchType:(SearchType)type Searchtext:(NSString *)text;
 

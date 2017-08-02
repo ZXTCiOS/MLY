@@ -7,10 +7,8 @@
 //
 
 #import "HomePageTVC.h"
-#import "HomeTableCell.h"
-#import "ScenicSpotAdviseCell.h"
-#import "TravelAdviseCell.h"
-#import "FoodAndHotelCell.h"
+
+
 #import <HYBLoopScrollView.h>
 #import "HomeViewModel.h"
 #import "WKWedViewController.h"
@@ -19,26 +17,76 @@
 #import "BedDetailTVC.h"
 #import "HomeTravelVC.h"
 #import "SearchViewController.h"
-
+#import "Transition_Scenic.h"
+#import "Transition_Travel.h"
+#import "Transition_Minsu.h"
 
 
 #define delayTime 1.5               //  延时请求
 #define distanceToRight  (-50)       //  右滑距离右边的最远刷新距离
 
 
-@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) HYBLoopScrollView *loopView;
 
-@property (nonatomic, strong) UITableView *tableView;
+//@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) HomeViewModel *viewModel;
 
 @property (nonatomic, strong) UIView *naviBar;
 
+
+
+
 @end
 
 @implementation HomePageTVC
+
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    
+    switch (self.currentIndex.section) {
+        case 0:
+        {
+            if (operation == UINavigationControllerOperationPush) {
+                Transition_Scenic *s = [Transition_Scenic TransitionWithTransitionType:TransitionTypePush pushsource:PushSourceHome];
+                return s;
+            } else {
+                Transition_Scenic *s = [Transition_Scenic TransitionWithTransitionType:TransitionTypePop pushsource:PushSourceHome];
+                return s;
+            }
+            
+        }
+            break;
+        case 1:
+        {
+            if (operation == UINavigationControllerOperationPush) {
+                Transition_Travel *s = [Transition_Travel TransitionWithTransitionType:TransitionTypePush pushsource:PushSourceHome];
+                return s;
+            } else {
+                Transition_Travel *s = [Transition_Travel TransitionWithTransitionType:TransitionTypePop pushsource:PushSourceHome];
+                return s;
+            }
+        }
+            break;
+        case 2:
+        {
+            if (operation == UINavigationControllerOperationPush) {
+                Transition_Minsu *s = [Transition_Minsu TransitionWithTransitionType:TransitionTypePush pushsource:PushSourceHome];
+                return s;
+            } else {
+                Transition_Minsu *s = [Transition_Minsu TransitionWithTransitionType:TransitionTypePop pushsource:PushSourceHome];
+                return s;
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    return nil;
+}
+
 
 - (void)viewDidLoad {
     
@@ -299,6 +347,7 @@ static BOOL ok = YES;
                 // 景点推荐
                 HomeScenicCVC *vc = [[HomeScenicCVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
+                self.navigationController.delegate = nil;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             }
                 break;
@@ -334,16 +383,16 @@ static BOOL ok = YES;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    float width = (kScreenW - 40)/2.0;
     switch (indexPath.section) {
         case 0:
-            return 240;
+            return width + 40 + 20;
             break;
         case 1:
-            return 190;
+            return width *2 / 3.0 + 40 + 20;
             break;
         case 2:
-            return 270;
+            return width + 95 + 20;
             break;
         default:
             break;
@@ -357,24 +406,29 @@ static BOOL ok = YES;
     switch (collectionView.tag) {
         case 0:
         {
-            ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewModel.scenicList[indexPath.row].scenic_id];
+            self.currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+            ScenicVC *vc = [[ScenicVC alloc] initWithScenic_id:self.viewModel.scenicList[indexPath.row].scenic_id pushsource:PushSourceHome];
+            [vc.imageV sd_setImageWithURL: self.viewModel.scenicList[indexPath.row].scenic_pic.xd_URL];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 1:
         {
-            
-            HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewModel.travelList[indexPath.row]];
+            self.currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:1];
+            HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewModel.travelList[indexPath.row] pushSource:PushSourceHome];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2:
         {
+            self.currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:2];
             UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
             BedDetailTVC *vc = [stb instantiateInitialViewController];
+            vc.source = PushSourceHome;
             vc.hidesBottomBarWhenPushed = YES;
+            [vc.imgV sd_setImageWithURL: self.viewModel.foodList[indexPath.row].home_pic.xd_URL];
             vc.minsu_id = self.viewModel.foodList[indexPath.row].home_id;
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -436,13 +490,13 @@ static BOOL ok = YES;
     float width = (kScreenW - 40)/2;
     switch (collectionView.tag) {
         case 0:
-            return CGSizeMake(width, 222);
+            return CGSizeMake(width, width + 40);
             break;
         case 1:
-            return CGSizeMake(width, 160);
+            return CGSizeMake(width, width *2 / 3.0 + 40);
             break;
         case 2:
-            return CGSizeMake(width, 250);
+            return CGSizeMake(width, width + 95);
             break;
         default:
             break;
@@ -482,6 +536,7 @@ static BOOL ok = YES;
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.delegate = self;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
