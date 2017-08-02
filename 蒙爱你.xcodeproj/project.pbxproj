@@ -210,6 +210,8 @@
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
 		53BCDA881F2B4846007977D9 /* shoucanghomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BCDA871F2B4846007977D9 /* shoucanghomeModel.m */; };
+		53C69EB41F31CFEA00DAFED6 /* myinfoCell0.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C69EB31F31CFEA00DAFED6 /* myinfoCell0.m */; };
+		53C69EB71F31D2BA00DAFED6 /* myinfoCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C69EB61F31D2BA00DAFED6 /* myinfoCell1.m */; };
 		53E9BD1C1F2C2FB9000BFA60 /* foodCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD1B1F2C2FB9000BFA60 /* foodCollectionViewCell.m */; };
 		53E9BD1F1F2C47D3000BFA60 /* shoucangfoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD1E1F2C47D3000BFA60 /* shoucangfoodModel.m */; };
 		53E9BD221F2C62B0000BFA60 /* submitorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD211F2C62B0000BFA60 /* submitorderVC.m */; };
@@ -601,6 +603,10 @@
 		536022BB1F26EABE00364CDD /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		53BCDA861F2B4846007977D9 /* shoucanghomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucanghomeModel.h; sourceTree = "<group>"; };
 		53BCDA871F2B4846007977D9 /* shoucanghomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoucanghomeModel.m; sourceTree = "<group>"; };
+		53C69EB21F31CFEA00DAFED6 /* myinfoCell0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myinfoCell0.h; sourceTree = "<group>"; };
+		53C69EB31F31CFEA00DAFED6 /* myinfoCell0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myinfoCell0.m; sourceTree = "<group>"; };
+		53C69EB51F31D2BA00DAFED6 /* myinfoCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myinfoCell1.h; sourceTree = "<group>"; };
+		53C69EB61F31D2BA00DAFED6 /* myinfoCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myinfoCell1.m; sourceTree = "<group>"; };
 		53E9BD1A1F2C2FB9000BFA60 /* foodCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foodCollectionViewCell.h; sourceTree = "<group>"; };
 		53E9BD1B1F2C2FB9000BFA60 /* foodCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foodCollectionViewCell.m; sourceTree = "<group>"; };
 		53E9BD1D1F2C47D3000BFA60 /* shoucangfoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucangfoodModel.h; sourceTree = "<group>"; };
@@ -935,9 +941,8 @@
 		11093BC21F0B3A8C00AFCB20 /* 资料修改 */ = {
 			isa = PBXGroup;
 			children = (
-				11093BC31F0B3A8C00AFCB20 /* ModifyInfoVC.h */,
-				11093BC41F0B3A8C00AFCB20 /* ModifyInfoVC.m */,
-				11093BC51F0B3A8C00AFCB20 /* ModifyInfoVC.xib */,
+				53C69EB11F31CFD200DAFED6 /* controller */,
+				53C69EB01F31CFCE00DAFED6 /* view */,
 			);
 			path = "资料修改";
 			sourceTree = "<group>";
@@ -1717,6 +1722,27 @@
 			name = utlis;
 			sourceTree = "<group>";
 		};
+		53C69EB01F31CFCE00DAFED6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				53C69EB21F31CFEA00DAFED6 /* myinfoCell0.h */,
+				53C69EB31F31CFEA00DAFED6 /* myinfoCell0.m */,
+				53C69EB51F31D2BA00DAFED6 /* myinfoCell1.h */,
+				53C69EB61F31D2BA00DAFED6 /* myinfoCell1.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		53C69EB11F31CFD200DAFED6 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				11093BC31F0B3A8C00AFCB20 /* ModifyInfoVC.h */,
+				11093BC41F0B3A8C00AFCB20 /* ModifyInfoVC.m */,
+				11093BC51F0B3A8C00AFCB20 /* ModifyInfoVC.xib */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
 		53E9BD2C1F2C6F88000BFA60 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1834,7 +1860,7 @@
 				TargetAttributes = {
 					11093B5C1F0B361C00AFCB20 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 693CCUSTEP;
+						DevelopmentTeam = GZJLNU22Y5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2010,6 +2036,7 @@
 				534C17A01F29CC480067C3E4 /* sotrageVC2.m in Sources */,
 				531FF4671F31C1D000A6A77A /* homereservationVC.m in Sources */,
 				11353E8A1F15F3EB00B34D7C /* ScenicCell.m in Sources */,
+				53C69EB71F31D2BA00DAFED6 /* myinfoCell1.m in Sources */,
 				11353E951F15F83000B34D7C /* ScenicViewModel.m in Sources */,
 				11093BE61F0B3A8C00AFCB20 /* ZXTCNavigationViewController.m in Sources */,
 				53E9BD1F1F2C47D3000BFA60 /* shoucangfoodModel.m in Sources */,
@@ -2055,6 +2082,7 @@
 				11093BFD1F0B3A8C00AFCB20 /* NSString+myUrl.m in Sources */,
 				11353E911F15F7E100B34D7C /* HomeTravelModel.m in Sources */,
 				1171055F1F14D744008A2F25 /* UITextView+Placeholder.m in Sources */,
+				53C69EB41F31CFEA00DAFED6 /* myinfoCell0.m in Sources */,
 				536022BC1F26EABE00364CDD /* NullSafe.m in Sources */,
 				117105761F14EEF8008A2F25 /* HomeScenicCVC.m in Sources */,
 				116AE5F11F21DE6D00CD76F1 /* MinsuListModel.m in Sources */,
@@ -2250,7 +2278,7 @@
 			baseConfigurationReference = 48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",
@@ -2278,7 +2306,7 @@
 			baseConfigurationReference = 429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",

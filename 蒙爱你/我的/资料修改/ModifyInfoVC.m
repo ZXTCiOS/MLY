@@ -8,43 +8,58 @@
 
 #import "ModifyInfoVC.h"
 #import "CorePhotoPickerVCManager.h"
-@interface ModifyInfoVC ()<UIActionSheetDelegate>
-
-@property (weak, nonatomic) IBOutlet UIControl *iconControl;
-@property (weak, nonatomic) IBOutlet UIImageView *iconView;
-
-@property (weak, nonatomic) IBOutlet UITextField *nameTextLabel;
-
-@property (weak, nonatomic) IBOutlet UIButton *MaleBtn;
-
-@property (weak, nonatomic) IBOutlet UIButton *FemaleBtn;
-
-@property (weak, nonatomic) IBOutlet UIButton *finishBtn;
-
-@property (weak, nonatomic) IBOutlet UIView *nameView;
-
-@property (weak, nonatomic) IBOutlet UIView *genderView;
+#import "myinfoCell0.h"
+#import "myinfoCell1.h"
+#import "MBProgressHUD+XMG.h"
+@interface ModifyInfoVC ()<UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 
+
+@property (nonatomic,strong) UITableView *infoTableview;
+@property (nonatomic,strong) UIButton *saveBtn;
 @end
+
+static NSString *infoidentfid0 = @"infoidentfid0";
+static NSString *infoidentfid1 = @"infoidentfid1";
+static NSString *infoidentfid2 = @"infoidentfid2";
 
 @implementation ModifyInfoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self makeCornerRadius];
-    [self contentInit];
+    self.title = @"个人信息";
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"dh-fh.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithHexString:@"333333"];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+
     [self loaddata];
     
+    
+    self.infoTableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.infoTableview];
+    
+    [self.view addSubview:self.saveBtn];
 }
- - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.nameTextLabel resignFirstResponder];
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
 }
+
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    self.navigationController.navigationBar.hidden = NO;
+//    self.tabBarController.tabBar.hidden = YES;
+//
+//}
+
 -(void)loaddata
 {
-    
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *token = [userDefault objectForKey:user_key_token];
     NSString *url = [NSString stringWithFormat:get_info,userid,token];
@@ -63,8 +78,13 @@
         NSLog(@"dic-----%@",dic);
         if ([[dic objectForKey:@"code"] intValue]==200) {
             NSDictionary *datadic = [dic objectForKey:@"data"];
-            self.nameTextLabel.text = [datadic objectForKey:@"user_nickname"];
-            [self.iconView sd_setImageWithURL:[NSURL URLWithString:[datadic objectForKey:@"user_picture"]]];
+            UIImageView *img = [self.infoTableview viewWithTag:201];
+            UITextField *text1 = [self.infoTableview viewWithTag:202];
+            UITextField *text2 = [self.infoTableview viewWithTag:203];
+            text1.text = [datadic objectForKey:@"user_nickname"];
+            text2.text = [datadic objectForKey:@"user_phone"];
+            [img sd_setImageWithURL:[NSURL URLWithString:[datadic objectForKey:@"user_picture"]] placeholderImage:[UIImage imageNamed:@"1"]];
+            [self.infoTableview reloadData];
             
         }
     
@@ -74,93 +94,113 @@
     
 }
 
-- (void)makeCornerRadius{
-    self.iconControl.layer.cornerRadius = self.iconView.frame.size.width / 2.0;
-    self.iconControl.layer.masksToBounds = YES;
-    self.nameView.layer.cornerRadius = 5;
-    self.nameView.layer.masksToBounds = YES;
-    self.genderView.layer.cornerRadius = 5;
-    self.genderView.layer.masksToBounds = YES;
-    self.finishBtn.layer.cornerRadius = 5;
-    self.finishBtn.layer.masksToBounds = YES;
-//    self.iconView.layer.cornerRadius = self.iconView.frame.size.width / 2.0;
-//    self.iconView.layer.masksToBounds = YES;
+#pragma mark - getters
+
+
+-(UITableView *)infoTableview
+{
+    if(!_infoTableview)
+    {
+        _infoTableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH)];
+        _infoTableview.dataSource = self;
+        _infoTableview.delegate = self;
+        _infoTableview.scrollEnabled = NO;
+        UITapGestureRecognizer *TapGestureTecognizer=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide)];
+        TapGestureTecognizer.cancelsTouchesInView=NO;
+        [self.infoTableview addGestureRecognizer:TapGestureTecognizer];
+    }
+    return _infoTableview;
 }
 
-- (void)contentInit{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"]) {
-        NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
-        self.nameTextLabel.text = name;
-        
+
+-(UIButton *)saveBtn
+{
+    if(!_saveBtn)
+    {
+        _saveBtn = [[UIButton alloc] init];
+        [_saveBtn setImage:[UIImage imageNamed:@"dd-btn-bcxg"] forState:normal];
+        _saveBtn.frame = CGRectMake(40, 400*HEIGHT_SCALE, kScreenW-80, 40);
+        [_saveBtn addTarget:self action:@selector(finishModifyInfo) forControlEvents:UIControlEventTouchUpInside];
     }
-    
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"icon"]) {
-        UIImage *img = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
-        self.iconView.image = img;
-    } else {
-        self.iconView.image = [UIImage imageNamed:@"icon_default"];
-    }
-    
-    /*if ([[NSUserDefaults standardUserDefaults] objectForKey:@"gender"]) {
-     NSInteger gender = [[[NSUserDefaults standardUserDefaults] objectForKey:@"gender"] integerValue];
-     if (gender == 1) {
-     self.MaleBtn.selected = YES;
-     self.FemaleBtn.selected = NO;
-     self.MaleBtn.enabled = NO;
-     self.FemaleBtn.enabled = YES;
-     
-     } else if (gender == 2){
-     self.MaleBtn.selected = NO;
-     self.FemaleBtn.selected = YES;
-     self.MaleBtn.enabled = YES;
-     self.FemaleBtn.enabled = NO;
-     }
-     } else {
-     self.MaleBtn.selected = NO;
-     self.FemaleBtn.selected = NO;
-     self.MaleBtn.enabled = YES;
-     self.FemaleBtn.enabled = YES;
-     }*/
-    self.MaleBtn.selected = NO;
-    self.FemaleBtn.selected = NO;
-    self.MaleBtn.enabled = YES;
-    self.FemaleBtn.enabled = YES;
+    return _saveBtn;
 }
 
-- (IBAction)finishModifyInfo:(id)sender {
-    
-    if (!(self.MaleBtn.isSelected || self.FemaleBtn.isSelected)) {
-//        [UIAlertView bk_showAlertViewWithTitle:@"错误" message:@"请选择性别" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:nil];
-        
-        UIAlertController *control = [UIAlertController alertControllerWithTitle:@"错误" message:@"请选择性别" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [control addAction:action];
-        [self presentViewController:control animated:YES completion:nil];
-        return;
+#pragma mark -UITableViewDataSource&&UITableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0) {
+        myinfoCell0 *cell = [tableView dequeueReusableCellWithIdentifier:infoidentfid0];
+        if (!cell) {
+            cell = [[myinfoCell0 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoidentfid0];
+            cell.infoimg.tag = 201;
+            cell.textLabel.text = @"头像";
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"333333"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        return cell;
     }
-    if (!self.nameTextLabel.text) {
-//        [UIAlertView bk_showAlertViewWithTitle:@"错误" message:@"请输入昵称" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:nil];
-        UIAlertController *control = [UIAlertController alertControllerWithTitle:@"错误" message:@"请输入昵称" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [control addAction:action];
-        [self presentViewController:control animated:YES completion:nil];
-        return;
+    if (indexPath.row==1) {
+        myinfoCell1 *cell = [tableView dequeueReusableCellWithIdentifier:infoidentfid1];
+        if (!cell) {
+            cell = [[myinfoCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoidentfid1];
+            cell.infotext.tag = 202;
+            cell.infotext.delegate = self;
+            cell.typelab.text = @"昵称";
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     }
-    
-    UIImage *img = self.iconView.image;
+    if (indexPath.row==2) {
+        myinfoCell1 *cell = [tableView dequeueReusableCellWithIdentifier:infoidentfid2];
+        if (!cell) {
+            cell = [[myinfoCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoidentfid2];
+            cell.infotext.tag = 203;
+            cell.infotext.delegate = self;
+            cell.typelab.text = @"手机号码";
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0) {
+        [self changeIcon];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0) {
+        return 120;
+    }else
+    {
+        return 50;
+    }
+}
+
+- (void)finishModifyInfo {
+
+    UIImageView *imgv = [self.infoTableview viewWithTag:201];
+    UIImage *img = imgv.image;
     NSData *imageData = UIImageJPEGRepresentation(img, 1.0);
     NSString *encodedImageStr = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    
-    
     
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *token = [userDefault objectForKey:user_key_token];
     
-    NSDictionary *para = @{@"user_id":userid,@"api_token":token,@"user_picture":encodedImageStr,@"suffix":@"png",@"user_nickname":self.nameTextLabel.text};
+    UITextField *text1 = [self.infoTableview viewWithTag:202];
+    //UITextField *text2 = [self.infoTableview viewWithTag:203];
+    
+    NSDictionary *para = @{@"user_id":userid,@"api_token":token,@"user_picture":encodedImageStr,@"suffix":@"png",@"user_nickname":text1.text};
     
     AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
@@ -175,6 +215,10 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"dic-----%@",dic);
+        if ([[dic objectForKey:@"code"] intValue]==200) {
+            [self loaddata];
+            [MBProgressHUD showSuccess:@"修改成功"];
+        }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -183,24 +227,8 @@
     NSLog(@"finish btn clicked");
 }
 
-- (IBAction)male:(UIButton *)sender {
-    self.MaleBtn.selected = YES;
-    self.FemaleBtn.selected = NO;
-    self.MaleBtn.enabled = NO;
-    self.FemaleBtn.enabled = YES;
-    
-}
 
-- (IBAction)female:(UIButton *)sender {
-    self.MaleBtn.selected = NO;
-    self.FemaleBtn.selected = YES;
-    self.MaleBtn.enabled = YES;
-    self.FemaleBtn.enabled = NO;
-    
-}
-
-
-- (IBAction)changeIcon:(id)sender {
+- (void)changeIcon{
     //  更换头像  相册、拍照
     UIActionSheet *sheet=[[UIActionSheet alloc] initWithTitle:@"请选取" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍摄" otherButtonTitles:@"相册", nil];
     
@@ -241,7 +269,12 @@
         
         [medias enumerateObjectsUsingBlock:^(CorePhoto *photo, NSUInteger idx, BOOL *stop) {
             NSLog(@"%@",photo.editedImage);
-            self.iconView.image = photo.editedImage;
+
+
+            UIImageView *img = [self.infoTableview viewWithTag:201];
+            img.image = photo.editedImage;
+            [self.infoTableview reloadData];
+            
         }];
     };
     
@@ -252,11 +285,17 @@
 
 
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)keyboardHide
+{
+    UITextField *text1 = [self.infoTableview viewWithTag:202];
+    UITextField *text2 = [self.infoTableview viewWithTag:203];
+    [text1 resignFirstResponder];
+    [text2 resignFirstResponder];
+}
 
 @end
