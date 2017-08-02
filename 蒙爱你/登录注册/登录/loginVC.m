@@ -123,7 +123,7 @@
              [user setValue:token forKey:user_key_token];
              [user setValue:user_id forKey:user_key_user_id];
              
-             
+
              NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
              NSDictionary *allHeaders = response.allHeaderFields;
              NSLog(@"allhead-----%@",allHeaders);

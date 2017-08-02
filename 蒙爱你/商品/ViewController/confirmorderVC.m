@@ -7,6 +7,11 @@
 //
 
 #import "confirmorderVC.h"
+#import "submitorderCell0.h"
+#import "submitorderCell1.h"
+#import "submitorderCell2.h"
+#import "subbuttomView.h"
+#import "submitorderModel.h"
 
 @interface confirmorderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *confirtableView;

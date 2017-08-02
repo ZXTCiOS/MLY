@@ -46,8 +46,7 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
     self.tableView.tableFooterView = [UIView new];
-    self.icon.image = [UIImage imageNamed:@"touxiang"];
-
+//    self.icon.image = [UIImage imageNamed:@"touxiang"];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -78,6 +77,12 @@
         if ([[dic objectForKey:@"code"] intValue]==200) {
             NSDictionary *datadic = [dic objectForKey:@"data"];
             self.name.text = [datadic objectForKey:@"user_nickname"];
+            NSString *user_nickname = [datadic objectForKey:@"user_nickname"];
+            NSString *user_picture = [datadic objectForKey:@"user_picture"];
+            NSUserDefaults *defat = [NSUserDefaults standardUserDefaults];
+            [defat setValue:user_nickname forKey:@"user_nicknamestr"];
+            [defat setValue:user_picture forKey:@"user_picturestr"];
+            [defat synchronize];
             [self.icon sd_setImageWithURL:[NSURL URLWithString:[datadic objectForKey:@"user_picture"]]];
             self.tele.text = [datadic objectForKey:@"user_phone"];
         }

@@ -30,17 +30,12 @@
     
     
     
-    
-    
-
-    
     [self configInfo];
-    //启动防止崩溃功能
-    [AvoidCrash becomeEffective];
-    
-    //监听通知:AvoidCrashNotification, 获取AvoidCrash捕获的崩溃日志的详细信息
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
-
+//    //启动防止崩溃功能
+//    [AvoidCrash becomeEffective];
+//    
+//    //监听通知:AvoidCrashNotification, 获取AvoidCrash捕获的崩溃日志的详细信息
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
     
     return YES;
 }

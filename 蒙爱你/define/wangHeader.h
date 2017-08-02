@@ -19,7 +19,7 @@
 
 #import <FORScrollViewEmptyAssistant/FORScrollViewEmptyAssistant.h>
 
-
+#import "strisNull.h"
 //#define baseURL                 @"http://192.168.1.142"         // baseurl
 
 #define sessionID  @"sessionID"
@@ -69,4 +69,10 @@
 
 //收藏
 #define get_recommend   @""baseURL"/MLY/api.php/Index/recommend?user_id=%@&id=%@&type=%@&is_shoucang=%@"
+
+//店铺评价
+#define post_evaluate  @""baseURL"/api.php/Home/evaluate"
+
+//网站配置
+#define get_config   @""baseURL"/MLY/api.php/Index/config?id=%@"
 #endif /* wangHeader_h */

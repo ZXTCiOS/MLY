@@ -139,7 +139,6 @@ static NSString * const reuseIdentifier = @"Cell";
 //        cell.shoucangImg.image = [UIImage imageNamed:@"sc-s"];
 //    }
     cell.addressL.text = [NSString stringWithFormat:@"%@", model.trip_address];
-    
     return cell;
 }
 

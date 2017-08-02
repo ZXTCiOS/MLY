@@ -9,7 +9,7 @@
 #import "LiJiYuDingTVC.h"
 #import "MSSCalendarViewController.h"
 #import "MSSCalendarDefine.h"
-
+#import "homereservationVC.h"
 
 @interface LiJiYuDingTVC ()<MSSCalendarViewControllerDelegate>
 
@@ -68,7 +68,8 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
-    
+    homereservationVC *homesvc = [[homereservationVC alloc] init];
+    [self.navigationController pushViewController:homesvc animated:YES];
     
 }
 
