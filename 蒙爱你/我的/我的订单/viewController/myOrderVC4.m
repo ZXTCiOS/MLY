@@ -116,7 +116,7 @@ static NSString *myordercell4 = @"myordercell0identfid4";
                 model.discountprice = [dit objectForKey:@"discount"];
                 model.addressid = [dit objectForKey:@"address_id"];
                 model.discount_id = [dit objectForKey:@"discount_id"];
-                
+                model.goods_type = [gooddit objectForKey:@"goods_type"];
                 if ([strisNull isNullToString:[gooddit objectForKey:@"goods_lowprice"]]) {
                       model.discountprice = @"0";
                 }else

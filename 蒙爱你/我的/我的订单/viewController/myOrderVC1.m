@@ -11,6 +11,9 @@
 #import "detailedOrderVC.h"
 #import "MBProgressHUD+XMG.h"
 #import "myOrderModel.h"
+#import "submitorderVC.h"
+#import "submitorderModel.h"
+
 @interface myOrderVC1 ()<UITableViewDataSource,UITableViewDelegate,mycellVdelegate>
 @property (nonatomic,strong) UITableView *ordertableView;
 @property (nonatomic,strong) NSMutableArray *dataSource;
@@ -112,7 +115,7 @@ static NSString *myordercell1 = @"myordercell0identfid1";
                 model.discountprice = [dit objectForKey:@"discount"];
                 model.addressid = [dit objectForKey:@"address_id"];
                 model.discount_id = [dit objectForKey:@"discount_id"];
-                
+                model.goods_type = [gooddit objectForKey:@"goods_type"];
                 
                 if ([strisNull isNullToString:[gooddit objectForKey:@"goods_lowprice"]]) {
                     model.discountprice = @"0";
@@ -244,12 +247,53 @@ static NSString *myordercell1 = @"myordercell0identfid1";
 
 -(void)myTabVClick3:(UITableViewCell *)cell//退款
 {
+    NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
+    myOrderModel *model = self.dataSource[index.section];
+    NSString *user_id = [userDefault objectForKey:user_key_user_id];
+    NSString *api_token = [userDefault objectForKey:user_key_token];
+    NSString *order_sn = model.ordersn;
+    NSString *order_status = @"5";
+    NSString *address_id = model.addressid;
+    NSString *discount_id = model.discount_id;
+    NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"order_sn":order_sn,@"order_status":order_status,@"address_id":address_id,@"discount_id":discount_id};
+    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript", nil];
+    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
+    [manager POST:post_changStatus parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res-----%@",responseObject);
+        [self headerRefreshEndAction];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+    }];
     
 }
 -(void)myTabVClick4:(UITableViewCell *)cell//修改
 {
-    
+    NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
+    submitorderVC *vc = [[submitorderVC alloc] init];
+    myOrderModel *model = self.dataSource[index.section];
+    vc.goods_typestr = model.goods_type;
+    vc.orderDatasource = [NSMutableArray array];
+    submitorderModel *smodel = [[submitorderModel alloc] init];
+    smodel.orderimg = model.orderimgstr;
+    smodel.ordername = model.namestr;
+    smodel.orderprice = model.pricestr;
+    smodel.orderinter = model.contentstr;
+    smodel.ordercontent = model.goods_description;
+    smodel.ordernumber = model.numstr;
+    smodel.goods_id = model.goods_id;
+    smodel.goods_type = model.goods_type;
+    [vc.orderDatasource addObject:smodel];
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
 -(void)myTabVClick5:(UITableViewCell *)cell//物流
 {
     

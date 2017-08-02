@@ -111,7 +111,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
                 model.numstr = [dit objectForKey:@"order_count"];
                 model.totalpricestr = [dit objectForKey:@"order_money"];
                 model.discount_id = [dit objectForKey:@"discount_id"];
-                
+                model.goods_type = [gooddit objectForKey:@"goods_type"];
                 if ([strisNull isNullToString:[gooddit objectForKey:@"goods_lowprice"]]) {
                     model.discountprice = @"0";
                 }else
@@ -252,6 +252,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        [self headerRefreshEndAction];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -300,7 +301,7 @@ static NSString *myordercell0 = @"myordercell0identfid";
         smodel.goods_type = model.ordertype;
         vc.orderDatasource = [NSMutableArray array];
         [vc.orderDatasource addObject:smodel];
-        
+        [self headerRefreshEndAction];
         [self.navigationController pushViewController:vc animated:YES];
         
         

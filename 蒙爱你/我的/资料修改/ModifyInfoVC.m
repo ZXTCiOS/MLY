@@ -51,13 +51,6 @@ static NSString *infoidentfid2 = @"infoidentfid2";
     self.tabBarController.tabBar.hidden = YES;
 }
 
-//- (void)viewWillDisappear:(BOOL)animated{
-//    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBar.hidden = NO;
-//    self.tabBarController.tabBar.hidden = YES;
-//
-//}
-
 -(void)loaddata
 {
     NSString *userid = [userDefault objectForKey:user_key_user_id];
