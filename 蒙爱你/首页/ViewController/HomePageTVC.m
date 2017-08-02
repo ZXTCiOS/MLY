@@ -132,7 +132,7 @@
     [bgV bk_addEventHandler:^(id sender) {
         SearchViewController *vc = [[SearchViewController alloc] initWithSearchType:SearchTypeHome];
         vc.hidesBottomBarWhenPushed = YES;
-        
+        self.navigationController.delegate = nil;
         [self.navigationController pushViewController:vc animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     

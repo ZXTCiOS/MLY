@@ -91,6 +91,7 @@ static NSString * const reuseIdentifier = @"Cell";
     } else {
         [XDFactory addSearchItemForVC:self clickedHandler:^{
             SearchViewController *vc = [[SearchViewController alloc] initWithSearchType:SearchTypeChuxing];
+            self.navigationController.delegate = nil;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     }

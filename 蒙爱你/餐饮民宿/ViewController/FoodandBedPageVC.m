@@ -94,6 +94,7 @@
     [searchBtn bk_addEventHandler:^(id sender) {
         SearchType t = self.type ? SearchTypeFood : SearchTypeMinsu;
         SearchViewController *search = [[SearchViewController alloc] initWithSearchType:t];
+        self.navigationController.delegate = nil;
         [self.navigationController pushViewController:search animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
 }
