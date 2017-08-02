@@ -230,11 +230,13 @@ static NSString * const reuseIdentifier = @"Cell";
         vc.minsu_id = self.viewmodel.datalist[indexPath.row].home_id;
         vc.source = PushSourceList;
         [vc.imgV sd_setImageWithURL:self.viewmodel.datalist[indexPath.row].home_pic.xd_URL];
+        vc.img_url = self.viewmodel.datalist[indexPath.row].home_pic;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         FoodListCVC *v = [[FoodListCVC alloc] initWithShop_ID:self.viewmodel.datalist[indexPath.row].home_id pushSource:PushSourceList];
         [v.imgV.imgV sd_setImageWithURL:self.viewmodel.datalist[indexPath.row].home_pic.xd_URL];
+        v.img_url = self.viewmodel.datalist[indexPath.row].home_pic;
         [self.navigationController pushViewController:v animated:YES];
     }
 }

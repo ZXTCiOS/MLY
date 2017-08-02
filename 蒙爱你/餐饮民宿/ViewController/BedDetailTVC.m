@@ -178,12 +178,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.imgV sd_setImageWithURL:self.img_url.xd_URL];
     [self addPanGesture];
     [self getDataFromNet];
     [XDFactory addBackItemForVC:self];
     self.title = @"民宿信息";
-   
 }
 
 - (void)getDataFromNet{
@@ -216,7 +215,7 @@
          
          MinsuHomeModel *home = model.data.home;
          //self.banner.imageUrls = @[home.home_pic];
-         [self.imgV sd_setImageWithURL:home.home_pic.xd_URL];
+         //[self.imgV sd_setImageWithURL:home.home_pic.xd_URL];
          self.nameL.text = home.home_name;
          self.priceL.text = [NSString stringWithFormat:@"¥%ld起", home.min_price];
          self.nameL_EN.text = home.home_intro;

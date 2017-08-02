@@ -55,12 +55,13 @@
         [container addSubview:toVC.view];
         [container addSubview: snapShotView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            snapShotView.frame = [toVC.imageV_car convertRect:toVC.imageV_car.frame fromView:toVC.view];
+            snapShotView.frame = [toVC.imageV_car convertRect:toVC.imageV_car.frame toView:toVC.view];
             //snapShotView.frame = CGRectMake(0, 0, kScreenW, kScreenW);
             toVC.view.alpha = 1;
         } completion:^(BOOL finished) {
             snapShotView.hidden = YES;
             toVC.imageV_car.hidden = NO;
+            [snapShotView removeFromSuperview];
             [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }];
     } else {
@@ -76,12 +77,13 @@
         [container addSubview:toVC.view];
         [container addSubview: snapShotView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            snapShotView.frame = [toVC.imageV_car convertRect:toVC.imageV_car.frame fromView:toVC.view];
+            snapShotView.frame = [toVC.imageV_car convertRect:toVC.imageV_car.frame toView:toVC.view];
             //snapShotView.frame = CGRectMake(0, 0, kScreenW, kScreenW / 3 * 2);
             toVC.view.alpha = 1;
         } completion:^(BOOL finished) {
             snapShotView.hidden = YES;
             toVC.imageV_car.hidden = NO;
+            [snapShotView removeFromSuperview];
             [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }];
     }
@@ -97,13 +99,14 @@
         HomePageTVC *toVC = (HomePageTVC *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         HomeTableCell *Tcell = [toVC.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
         TravelAdviseCell *cell = (TravelAdviseCell *)[Tcell.collectV cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toVC.currentIndex.row inSection:0]];
-        UIView *snapView = container.subviews.lastObject;
-        //UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imageV_car.image];
-        //snapView.frame = [fromVC.imageV_car convertRect:fromVC.imageV_car.frame toView:container];
+        
+        UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imageV_car.image];
+        snapView.frame = [fromVC.imageV_car convertRect:fromVC.imageV_car.frame toView:container];
         cell.imageV.hidden = YES;
         fromVC.imageV_car.hidden = YES;
         snapView.hidden = NO;
         [container insertSubview:toVC.view atIndex:0];
+        [container addSubview:snapView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             snapView.frame = [cell.imageV convertRect:cell.imageV.frame toView:container];
             fromVC.view.alpha = 0;
@@ -120,13 +123,14 @@
     } else {
         ShunFengCheCVC *toVC = (ShunFengCheCVC *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         TravelAdviseCell *cell = (TravelAdviseCell *)[toVC.collectionView cellForItemAtIndexPath:toVC.currentIndex];
-        UIView *snapView = container.subviews.lastObject;
-        //UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imageV_car.image];
-        //snapView.frame = [fromVC.imageV_car convertRect:fromVC.imageV_car.frame toView:container];
+        //UIView *snapView = container.subviews.lastObject;
+        UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imageV_car.image];
+        snapView.frame = [fromVC.imageV_car convertRect:fromVC.imageV_car.frame toView:container];
         cell.imageV.hidden = YES;
         fromVC.imageV_car.hidden = YES;
         snapView.hidden = NO;
         [container insertSubview:toVC.view atIndex:0];
+        [container addSubview:snapView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             snapView.frame = [cell.imageV convertRect:cell.imageV.frame toView:container];
             fromVC.view.alpha = 0;

@@ -112,7 +112,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.foodlist.count ? 1 : 0;
+    return 1;
 }
 
 
@@ -141,15 +141,17 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     self.imgV = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head" forIndexPath:indexPath];
+    [self.imgV.imgV sd_setImageWithURL:self.img_url.xd_URL];
     if (!self.head) {
         self.imgV.frame = CGRectMake(0, 0, kScreenW, 192 + 20 + 20 + kScreenW);
+        
         return self.imgV;
     }
     
     CGSize s1 = [self.head.home_description sizeForFont:[UIFont systemFontOfSize:15] size:CGSizeMake(kScreenW - 20, 1000) mode:NSLineBreakByCharWrapping];
     CGSize s2 = [self.head.home_address sizeForFont:[UIFont systemFontOfSize:15] size:CGSizeMake(kScreenW - 100, 1000) mode:NSLineBreakByCharWrapping];
     self.imgV .frame = CGRectMake(0, 0, kScreenW, kScreenW + 192 + s1.height + s2.height + 20);
-    [self.imgV.imgV sd_setImageWithURL:self.head.home_pic.xd_URL placeholderImage:[UIImage imageNamed:@"33"]];
+    //[self.imgV.imgV sd_setImageWithURL:self.head.home_pic.xd_URL placeholderImage:[UIImage imageNamed:@"33"]];
     self.imgV. shop_name.text = self.head.home_name;
     self.imgV.phone.text = self.head.home_phone;
     self.imgV.addres.text = self.head.home_address;

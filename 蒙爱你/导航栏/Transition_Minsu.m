@@ -63,6 +63,7 @@
         } completion:^(BOOL finished) {
             snapShotView.hidden = YES;
             toVC.imgV.hidden = NO;
+            [snapShotView removeFromSuperview];
             [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }];
     } else {
@@ -84,6 +85,7 @@
         } completion:^(BOOL finished) {
             snapShotView.hidden = YES;
             toVC.imgV.hidden = NO;
+            [snapShotView removeFromSuperview];
             [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }];
     }
@@ -98,13 +100,14 @@
         HomePageTVC *toVC = (HomePageTVC *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         HomeTableCell *Tcell = [toVC.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
         FoodAndHotelCell *cell = (FoodAndHotelCell *)[Tcell.collectV cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toVC.currentIndex.row inSection:0]];
-        UIView *snapView = container.subviews.lastObject;
-        //UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imgV.image];
-        //snapView.frame = [fromVC.imgV convertRect:fromVC.imgV.frame toView:container];
+        
+        UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imgV.image];
+        snapView.frame = [fromVC.imgV convertRect:fromVC.imgV.frame toView:container];
         cell.imgV.hidden = YES;
         fromVC.imgV.hidden = YES;
         snapView.hidden = NO;
         [container insertSubview:toVC.view atIndex:0];
+        [container addSubview:snapView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             snapView.frame = [cell.imgV convertRect:cell.imgV.frame toView:container];
             fromVC.view.alpha = 0;
@@ -122,13 +125,14 @@
         FoodandBedPageVC *toVC = (FoodandBedPageVC *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         FoodCollectionVC *vc = (FoodCollectionVC *)toVC.childViewControllers.firstObject;
         FoodAndHotelCell *cell = (FoodAndHotelCell *)[vc.collectionView cellForItemAtIndexPath:vc.currentIndex];
-        UIView *snapView = container.subviews.lastObject;
-        //UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imgV.image];
-        //snapView.frame = [fromVC.imgV convertRect:fromVC.imgV.frame toView:container];
+        
+        UIImageView *snapView = [[UIImageView alloc] initWithImage:fromVC.imgV.image];
+        snapView.frame = [fromVC.imgV convertRect:fromVC.imgV.frame toView:container];
         cell.imgV.hidden = YES;
         fromVC.imgV.hidden = YES;
         snapView.hidden = NO;
         [container insertSubview:toVC.view atIndex:0];
+        [container addSubview:snapView];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             snapView.frame = [cell.imgV convertRect:cell.imgV.frame toView:container];
             fromVC.view.alpha = 0;
