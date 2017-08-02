@@ -46,12 +46,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-TZ-Yyo">
-                            <rect key="frame" x="351" y="38" width="14" height="16"/>
+                            <rect key="frame" x="341" y="30" width="24" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="16" id="Hds-lO-4FE"/>
-                                <constraint firstAttribute="width" constant="14" id="POz-rT-fg7"/>
+                                <constraint firstAttribute="height" constant="24" id="Hds-lO-4FE"/>
+                                <constraint firstAttribute="width" constant="24" id="POz-rT-fg7"/>
                             </constraints>
-                            <state key="normal" backgroundImage="touxiang"/>
+                            <state key="normal" backgroundImage="gwc"/>
                             <connections>
                                 <action selector="gouwuche:" destination="-1" eventType="touchUpInside" id="LCT-bx-WiN"/>
                             </connections>
@@ -214,15 +214,15 @@
                 <constraint firstAttribute="trailing" secondItem="CBH-cl-nCN" secondAttribute="trailing" id="xi7-BI-hhI"/>
                 <constraint firstAttribute="bottom" secondItem="CBH-cl-nCN" secondAttribute="bottom" id="xuu-cZ-DHE"/>
             </constraints>
-            <point key="canvasLocation" x="-484" y="-116"/>
+            <point key="canvasLocation" x="-723" y="-107"/>
         </view>
     </objects>
     <resources>
         <image name="1" width="450" height="450"/>
         <image name="dh-fh-w" width="20" height="20"/>
+        <image name="gwc" width="19" height="19"/>
         <image name="msxx-btn-ljyd" width="168" height="42"/>
         <image name="sl-jq" width="24" height="24"/>
         <image name="sl-zj" width="24" height="24"/>
-        <image name="touxiang" width="87" height="82"/>
     </resources>
 </document>
