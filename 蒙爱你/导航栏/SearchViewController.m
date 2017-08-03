@@ -150,6 +150,7 @@
     [super viewWillDisappear:animated];
     //[self.navigationController.navigationBar setHidden:NO];
     self.searchController.searchBar.hidden = YES;
+    [self.searchController.searchBar endEditing:YES];
 }
 
 #pragma mark searchVC resultUpdating

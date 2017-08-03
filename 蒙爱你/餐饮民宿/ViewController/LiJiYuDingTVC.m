@@ -73,6 +73,10 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
+
+
+    
+
     submitorderVC *subvc = [[submitorderVC alloc] init];
     subvc.goods_typestr = @"3";
     
@@ -85,6 +89,7 @@
     NSString *home_id = [NSString stringWithFormat:@"%ld",(long)self.model.home_id];
     
   
+
     NSString *namestr = @"";
     NSString *telephonestr  = @"";
     NSString *datastr = @"";
@@ -117,6 +122,7 @@
     {
         datastr = self.date.text;
     }
+
     
     
     subvc.orderDatasource = [NSMutableArray array];

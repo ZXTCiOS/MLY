@@ -253,7 +253,7 @@
                   MKPlacemark *mark = [[MKPlacemark alloc] initWithCoordinate:coordina addressDictionary:nil];
                   MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:mark];
                   toLocation.name = home.home_name;
-                  [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+                  [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
                   
                } forControlEvents:UIControlEventTouchUpInside];
                
@@ -430,7 +430,9 @@
    [cell.shouqiBtn bk_addEventHandler:^(id sender) {
       int b = [bedeat[indexPath.row] intValue];
       bedeat[indexPath.row] = b ? @(0) : @(1);
-      [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationMiddle];
+      [self.tableView reloadData];
+      
+      //[self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationMiddle];
    } forControlEvents:UIControlEventTouchUpInside];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

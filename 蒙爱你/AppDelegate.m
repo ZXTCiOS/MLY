@@ -12,6 +12,19 @@
 #import <AFNetworking.h>
 
 
+// 三方登录, 分享
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+
+
+
+
+
+
+
 //runime防止崩溃系统
 #import "AvoidCrash.h"
 #import "NSArray+AvoidCrash.h"
@@ -29,7 +42,7 @@
     
     
     
-    
+    [self ShareSDK];
     [self configInfo];
 //    //启动防止崩溃功能
 //    [AvoidCrash becomeEffective];
@@ -58,7 +71,46 @@
     
 }
 
+// 添加 三方登录, 分享
 
+- (void)ShareSDK{
+    [ShareSDK registerActivePlatforms:@[
+                                        @(SSDKPlatformTypeWechat),
+                                        @(SSDKPlatformTypeQQ),
+                                        ]
+                             onImport:^(SSDKPlatformType platformType)
+     {
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
+             default:
+                 break;
+         }
+     }
+                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
+     {
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [appInfo SSDKSetupWeChatByAppId:@"wx6b7c06a04f9f1f04"
+                                       appSecret:@"cae1f69018deb12f1a433a6e5487e44a"];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [appInfo SSDKSetupQQByAppId:@"100371282"
+                                      appKey:@"aed9b0303e3ed1e27bae87c33761161d"
+                                    authType:SSDKAuthTypeBoth];
+                 break;
+             
+             default:
+                 break;
+         }
+     }];
+}
 
 
 
