@@ -10,6 +10,7 @@
 #import "MSSCalendarViewController.h"
 #import "MSSCalendarDefine.h"
 #import "homereservationVC.h"
+#import "strisNull.h"
 
 @interface LiJiYuDingTVC ()<MSSCalendarViewControllerDelegate>
 
@@ -46,6 +47,8 @@
     
     self.number = 1;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.navigationController.navigationBar.hidden = NO;
+    
     // 把要预定的民宿信息  传入此 VC
     [XDFactory addBackItemForVC:self];
 }
@@ -68,8 +71,40 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
-    homereservationVC *homesvc = [[homereservationVC alloc] init];
-    [self.navigationController pushViewController:homesvc animated:YES];
+
+    NSString *namestr = @"";
+    NSString *telephonestr  = @"";
+    NSString *datastr = @"";
+    NSString *contentstr = @"";
+    if ([strisNull isNullToString:self.name.text]) {
+        namestr = @"0";
+    }
+    else
+    {
+        namestr = self.name.text;
+    }
+    if ([strisNull isNullToString:self.tele.text]) {
+        telephonestr = @"0";
+    }
+    else
+    {
+        telephonestr = self.tele.text;
+    }
+    if ([strisNull isNullToString:self.count.text]) {
+        contentstr = @"0";
+    }
+    else
+    {
+        contentstr = self.count.text;
+    }
+    if ([strisNull isNullToString:self.date.text]) {
+        datastr = @"0";
+    }
+    else
+    {
+        datastr = self.date.text;
+    }
+
     
 }
 

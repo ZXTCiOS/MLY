@@ -21,7 +21,6 @@
 
 static NSString *myordercell5 = @"myordercell0identfid5";
 
-
 @implementation myOrderVC5
 
 - (void)viewDidLoad {

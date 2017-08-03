@@ -411,7 +411,6 @@
        
        LiJiYuDingTVC *vc = [[LiJiYuDingTVC alloc] initWithBedEat:!self.isBed room_id:self.minsu_id bedeat_id:array[indexPath.row].bedeat_id];
        
-       
        [self.navigationController pushViewController:vc animated:YES];
     };
    NSInteger shouqi = [bedeat[indexPath.row] integerValue];
