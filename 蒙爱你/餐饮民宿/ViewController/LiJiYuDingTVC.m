@@ -72,11 +72,11 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
-<<<<<<< HEAD
+
     homereservationVC *homesvc = [[homereservationVC alloc] initWithMinsuBedEatModel:self.model];
     [self.navigationController pushViewController:homesvc animated:YES];
-=======
-
+    
+    
     NSString *namestr = @"";
     NSString *telephonestr  = @"";
     NSString *datastr = @"";
@@ -110,7 +110,7 @@
         datastr = self.date.text;
     }
 
->>>>>>> db3a02c0659b6aedd11e3b865077fd486bcc7c16
+
     
 }
 
