@@ -84,10 +84,10 @@
             if (!error) {
                 
                 [self.tableView reloadData];
-                [self.tableView endHeaderRefresh];
+                [self.tableView endFooterRefresh];
             } else {
                 [self.tableView showWarning:@"网络错误"];
-                [self.tableView endHeaderRefresh];
+                [self.tableView endFooterRefresh];
             }
         }];
     } else {
@@ -95,10 +95,10 @@
             if (!error) {
                 
                 [self.tableView reloadData];
-                [self.tableView endHeaderRefresh];
+                [self.tableView endFooterRefresh];
             } else {
                 [self.tableView showWarning:@"网络错误"];
-                [self.tableView endHeaderRefresh];
+                [self.tableView endFooterRefresh];
             }
         }];
     }

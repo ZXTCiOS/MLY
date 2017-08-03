@@ -350,6 +350,7 @@ static BOOL ok = YES;
         make.bottom.equalTo(-12);
         make.left.equalTo(30);
     }];
+    label.textColor = krgb(11, 121, 182, 1);
     label.font = kFont(16);
     switch (section) {
         case 0:

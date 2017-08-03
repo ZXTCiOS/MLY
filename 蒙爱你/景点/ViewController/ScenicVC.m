@@ -163,7 +163,7 @@
                 CLLocationCoordinate2D coordina = CLLocationCoordinate2DMake(latitude, longtitude);
                 MKPlacemark *mark = [[MKPlacemark alloc] initWithCoordinate:coordina addressDictionary:nil];
                 MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:mark];
-                toLocation.name = self.viewmodel.model.jingdian_xiangqing.scenic_name;
+                toLocation.name = self.viewmodel.model.jingdian_xiangqing.scenic_address;
                 [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
                 
             } forControlEvents:UIControlEventTouchUpInside];

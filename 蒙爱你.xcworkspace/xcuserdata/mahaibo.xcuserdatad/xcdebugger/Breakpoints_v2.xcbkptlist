@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x8499;&#x7231;&#x4f60;/&#x9996;&#x9875;/ViewController/HomePageTVC.m"
-            timestampString = "523436397.261152"
+            filePath = "&#x8499;&#x7231;&#x4f60;/&#x9910;&#x996e;&#x6c11;&#x5bbf;/ViewController/BedDetailTVC.m"
+            timestampString = "523443450.095639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "-shareBtnClicked"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-getDataFromNet"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
