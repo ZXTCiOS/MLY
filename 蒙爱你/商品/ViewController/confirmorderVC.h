@@ -16,4 +16,6 @@
 @property (nonatomic,strong) NSMutableArray *orderDatasource;
 
 @property (nonatomic,strong) NSString *ordersn;
+@property (nonatomic,strong) NSString *yudingtime;
+@property (nonatomic,strong) NSString *mingsunamestr;
 @end

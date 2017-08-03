@@ -174,7 +174,6 @@
 		117823361F275FBF008B4973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117823351F275FBF008B4973 /* Assets.xcassets */; };
 		531FF3321F317B7800A6A77A /* companyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 531FF3311F317B7800A6A77A /* companyVC.m */; };
 		531FF3351F317B9500A6A77A /* platformVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 531FF3341F317B9500A6A77A /* platformVC.m */; };
-		531FF4671F31C1D000A6A77A /* homereservationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 531FF4661F31C1D000A6A77A /* homereservationVC.m */; };
 		534C17531F2839060067C3E4 /* myOrderVC0.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17511F2839060067C3E4 /* myOrderVC0.m */; };
 		534C17571F2839280067C3E4 /* myOrderVC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17561F2839280067C3E4 /* myOrderVC1.m */; };
 		534C175A1F2839360067C3E4 /* myOrderVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17591F2839360067C3E4 /* myOrderVC2.m */; };
@@ -538,8 +537,6 @@
 		531FF3311F317B7800A6A77A /* companyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = companyVC.m; sourceTree = "<group>"; };
 		531FF3331F317B9500A6A77A /* platformVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platformVC.h; sourceTree = "<group>"; };
 		531FF3341F317B9500A6A77A /* platformVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = platformVC.m; sourceTree = "<group>"; };
-		531FF4651F31C1D000A6A77A /* homereservationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homereservationVC.h; sourceTree = "<group>"; };
-		531FF4661F31C1D000A6A77A /* homereservationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = homereservationVC.m; sourceTree = "<group>"; };
 		534C17501F2839060067C3E4 /* myOrderVC0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC0.h; sourceTree = "<group>"; };
 		534C17511F2839060067C3E4 /* myOrderVC0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myOrderVC0.m; sourceTree = "<group>"; };
 		534C17551F2839280067C3E4 /* myOrderVC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myOrderVC1.h; sourceTree = "<group>"; };
@@ -1290,8 +1287,6 @@
 				117016241F2C999700E1AF74 /* MorePingJiaVC.m */,
 				1155021F1F186AEC00977217 /* FoodandBedPageVC.h */,
 				115502201F186AEC00977217 /* FoodandBedPageVC.m */,
-				531FF4651F31C1D000A6A77A /* homereservationVC.h */,
-				531FF4661F31C1D000A6A77A /* homereservationVC.m */,
 				53E9BD641F30650A000BFA60 /* storeevaluationVC.h */,
 				53E9BD651F30650A000BFA60 /* storeevaluationVC.m */,
 			);
@@ -1860,7 +1855,7 @@
 				TargetAttributes = {
 					11093B5C1F0B361C00AFCB20 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 693CCUSTEP;
+						DevelopmentTeam = GZJLNU22Y5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2034,7 +2029,6 @@
 				531FF3351F317B9500A6A77A /* platformVC.m in Sources */,
 				114625131F0C9B090005D61C /* HomeBannerModel.m in Sources */,
 				534C17A01F29CC480067C3E4 /* sotrageVC2.m in Sources */,
-				531FF4671F31C1D000A6A77A /* homereservationVC.m in Sources */,
 				11353E8A1F15F3EB00B34D7C /* ScenicCell.m in Sources */,
 				53C69EB71F31D2BA00DAFED6 /* myinfoCell1.m in Sources */,
 				11353E951F15F83000B34D7C /* ScenicViewModel.m in Sources */,
@@ -2278,7 +2272,7 @@
 			baseConfigurationReference = 48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",
@@ -2306,7 +2300,7 @@
 			baseConfigurationReference = 429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 693CCUSTEP;
+				DEVELOPMENT_TEAM = GZJLNU22Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",

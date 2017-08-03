@@ -233,8 +233,8 @@ static NSString *myordercell0 = @"myordercell0identfid";
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
     NSLog(@"333===%ld   取消",index.section);
     
-    myOrderModel *model = self.dataSource[index.section];
     
+    myOrderModel *model = self.dataSource[index.section];
     
     NSString *user_id = [userDefault objectForKey:user_key_user_id];
     NSString *api_token = [userDefault objectForKey:user_key_token];
@@ -253,6 +253,9 @@ static NSString *myordercell0 = @"myordercell0identfid";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
         [self headerRefreshEndAction];
+        if ([[responseObject objectForKey:@"code"] intValue]==200) {
+            [MBProgressHUD showSuccess:@"取消成功"];
+        }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

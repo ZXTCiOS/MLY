@@ -265,7 +265,9 @@ static NSString *myordercell1 = @"myordercell0identfid1";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
-        [self headerRefreshEndAction];
+        [self headerRefreshEndAction];  if ([[responseObject objectForKey:@"code"] intValue]==200) {
+            [MBProgressHUD showSuccess:@"成功"];
+        }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

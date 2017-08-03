@@ -9,8 +9,9 @@
 #import "LiJiYuDingTVC.h"
 #import "MSSCalendarViewController.h"
 #import "MSSCalendarDefine.h"
-#import "homereservationVC.h"
 #import "strisNull.h"
+#import "submitorderModel.h"
+#import "submitorderVC.h"
 
 @interface LiJiYuDingTVC ()<MSSCalendarViewControllerDelegate>
 
@@ -72,11 +73,18 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
-<<<<<<< HEAD
-    homereservationVC *homesvc = [[homereservationVC alloc] initWithMinsuBedEatModel:self.model];
-    [self.navigationController pushViewController:homesvc animated:YES];
-=======
-
+    submitorderVC *subvc = [[submitorderVC alloc] init];
+    subvc.goods_typestr = @"3";
+    
+    NSString *bedeat_pic = [NSString stringWithFormat:@"%@",self.model.bedeat_pic];
+    NSString *bedeat_id = [NSString stringWithFormat:@"%ld",(long)self.model.bedeat_id];
+    NSString *bedeat_name = [NSString stringWithFormat:@"%@",self.model.bedeat_name];
+    NSString *bedeat_intro = [NSString stringWithFormat:@"%@",self.model.bedeat_intro];
+    NSString *bedeat_des = [NSString stringWithFormat:@"%@",self.model.bedeat_des];
+    NSString *bedeat_price = [NSString stringWithFormat:@"%ld",(long)self.model.bedeat_price];
+    NSString *home_id = [NSString stringWithFormat:@"%ld",(long)self.model.home_id];
+    
+  
     NSString *namestr = @"";
     NSString *telephonestr  = @"";
     NSString *datastr = @"";
@@ -109,9 +117,22 @@
     {
         datastr = self.date.text;
     }
-
->>>>>>> db3a02c0659b6aedd11e3b865077fd486bcc7c16
     
+    
+    subvc.orderDatasource = [NSMutableArray array];
+    submitorderModel *smodel = [[submitorderModel alloc] init];
+    smodel.orderimg = bedeat_pic;
+    smodel.ordername = bedeat_name;
+    smodel.orderinter = bedeat_intro;
+    smodel.ordercontent = bedeat_des;
+    smodel.goods_id = bedeat_id;
+    smodel.orderprice = bedeat_price;
+    smodel.ordernumber = contentstr;
+    [subvc.orderDatasource addObject:smodel];
+    subvc.yudingtime = datastr;
+    subvc.yudingname = namestr;
+    subvc.yudingphone = telephonestr;
+    [self.navigationController pushViewController:subvc animated:YES];
 }
 
 
