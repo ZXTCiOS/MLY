@@ -11,6 +11,8 @@
 #import "detailedOrderVC.h"
 #import "MBProgressHUD+XMG.h"
 #import "myOrderModel.h"
+#import "submitorderVC.h"
+#import "submitorderModel.h"
 @interface myOrderVC5 ()<UITableViewDataSource,UITableViewDelegate,mycellVdelegate>
 @property (nonatomic,strong) UITableView *ordertableView;
 @property (nonatomic,strong) NSMutableArray *dataSource;
@@ -18,7 +20,6 @@
 @end
 
 static NSString *myordercell5 = @"myordercell0identfid5";
-
 
 @implementation myOrderVC5
 
@@ -113,7 +114,7 @@ static NSString *myordercell5 = @"myordercell0identfid5";
                 model.discountprice = [dit objectForKey:@"discount"];
                 model.addressid = [dit objectForKey:@"address_id"];
                 model.discount_id = [dit objectForKey:@"discount_id"];
-                
+                model.goods_type = [gooddit objectForKey:@"goods_type"];
                 if ([strisNull isNullToString:[gooddit objectForKey:@"goods_lowprice"]]) {
                     model.discountprice = @"0";
                 }else
@@ -251,6 +252,7 @@ static NSString *myordercell5 = @"myordercell0identfid5";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
          NSLog(@"res-----%@",responseObject);
+        [self headerRefreshEndAction];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -282,6 +284,7 @@ static NSString *myordercell5 = @"myordercell0identfid5";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        [self headerRefreshEndAction];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -311,6 +314,7 @@ static NSString *myordercell5 = @"myordercell0identfid5";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        [self headerRefreshEndAction];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -321,7 +325,22 @@ static NSString *myordercell5 = @"myordercell0identfid5";
 
 -(void)myTabVClick4:(UITableViewCell *)cell//修改
 {
-    
+    NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
+    submitorderVC *vc = [[submitorderVC alloc] init];
+    myOrderModel *model = self.dataSource[index.section];
+    vc.goods_typestr = model.goods_type;
+    vc.orderDatasource = [NSMutableArray array];
+    submitorderModel *smodel = [[submitorderModel alloc] init];
+    smodel.orderimg = model.orderimgstr;
+    smodel.ordername = model.namestr;
+    smodel.orderprice = model.pricestr;
+    smodel.orderinter = model.contentstr;
+    smodel.ordercontent = model.goods_description;
+    smodel.ordernumber = model.numstr;
+    smodel.goods_id = model.goods_id;
+    smodel.goods_type = model.goods_type;
+    [vc.orderDatasource addObject:smodel];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)myTabVClick5:(UITableViewCell *)cell//物流
@@ -345,6 +364,7 @@ static NSString *myordercell5 = @"myordercell0identfid5";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        [self headerRefreshEndAction];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

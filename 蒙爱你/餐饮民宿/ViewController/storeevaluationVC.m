@@ -147,7 +147,7 @@
     if(!_namelab)
     {
         _namelab = [[UILabel alloc] init];
-        _namelab.text = @"店铺店铺店铺店铺店铺店铺";
+        _namelab.text = @"评价";
         _namelab.textColor = [UIColor colorWithHexString:@"0b79b6"];
         _namelab.font = [UIFont systemFontOfSize:18];
     }

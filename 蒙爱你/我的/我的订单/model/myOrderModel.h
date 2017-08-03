@@ -28,6 +28,7 @@
 
 @property (nonatomic,strong) NSString *ordertype;
 
+@property (nonatomic,strong) NSString *goods_type;
 //退款原因
 @property (nonatomic,strong) NSString *refundstr;
 

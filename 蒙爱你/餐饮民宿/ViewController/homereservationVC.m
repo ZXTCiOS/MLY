@@ -8,7 +8,7 @@
 
 #import "homereservationVC.h"
 
-@interface homereservationVC ()
+@interface homereservationVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) MinsuBedModel *model;
 

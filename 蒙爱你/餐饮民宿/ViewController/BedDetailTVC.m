@@ -412,7 +412,6 @@
        model.home_id = self.minsu_id;
        LiJiYuDingTVC *vc = [[LiJiYuDingTVC alloc] initWithBedEat:!self.isBed minsuBedModel:model];
        
-       
        [self.navigationController pushViewController:vc animated:YES];
     };
    NSInteger shouqi = [bedeat[indexPath.row] integerValue];

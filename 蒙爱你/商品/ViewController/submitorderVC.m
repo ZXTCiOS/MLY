@@ -88,14 +88,7 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     
     sum = [[sumarr valueForKeyPath:@"@sum.floatValue"] floatValue];
     NSString *strsum = [NSString stringWithFormat:@"%.2f",sum];
-//    if (sum>manfloat|sum==manfloat) {
-//        self.btnView.pricelab.text = [NSString stringWithFormat:@"%@%@%@%@",@"合计：",strsum,@"已优惠",jianstr];
-//    }
-//    else
-//    {
-//        self.btnView.pricelab.text = [NSString stringWithFormat:@"%@%@",@"合计：",strsum];
-//    }
-//
+
     
     NSString *str1 = @"合计：";
     NSString *str2 = strsum;
@@ -359,6 +352,9 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
         discount_id = [self.discountdit objectForKey:@"discount_id"];
     }
 
+    
+
+    
 
     NSDictionary *para = @{@"user_id":user_id,@"api_token":api_token,@"goods_id":goods_id,@"goods_type":goods_type,@"number":number,@"address_id":address_id,@"appoint_time":appoint_time,@"discount_id":discount_id,@"order_userphone":order_userphone,@"order_username":order_username};
     AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
@@ -379,8 +375,19 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
             self.order_snstr = [data objectForKey:@"order_sn"];
             NSString *hud = [responseObject objectForKey:@"message"];
             [MBProgressHUD showSuccess:hud];
+            
             confirmorderVC *confirVC = [[confirmorderVC alloc] init];
+            confirVC.goods_typestr = self.goods_typestr;
+            confirVC.orderDatasource = [NSMutableArray array];
+            confirVC.orderDatasource = self.orderDatasource;
+            confirVC.addressdit = [NSDictionary dictionary];
+            confirVC.addressdit = self.addressdit;
+            confirVC.discountdit = [NSDictionary dictionary];
+            confirVC.discountdit = self.discountdit;
+            confirVC.ordersn = self.order_snstr;
             [self.navigationController pushViewController:confirVC animated:YES];
+            
+            
         }
         else
         {
