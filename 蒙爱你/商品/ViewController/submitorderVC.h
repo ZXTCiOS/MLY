@@ -13,4 +13,8 @@
 //1商品 2门票 3住宿 4餐饮 5 美食
 
 @property (nonatomic,strong) NSMutableArray *orderDatasource;
+
+@property (nonatomic,strong) NSString *yudingtime;
+@property (nonatomic,strong) NSString *yudingname;
+@property (nonatomic,strong) NSString *yudingphone;
 @end

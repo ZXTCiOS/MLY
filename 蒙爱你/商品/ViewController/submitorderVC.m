@@ -27,10 +27,20 @@
 @property (nonatomic,strong) subbuttomView *btnView;
 
 @property (nonatomic,strong) NSString *order_snstr;
+
+@property (nonatomic,strong) NSString *mingsunamestr;
 @end
 static NSString *submitVCidentfid0 = @"submitVCidentfid0";
 static NSString *submitVCidentfid1 = @"submitVCidentfid1";
 static NSString *submitVCidentfid2 = @"submitVCidentfid2";
+
+static NSString *submitVCidentfid3 = @"submitVCidentfid3";
+static NSString *submitVCidentfid4 = @"submitVCidentfid4";
+static NSString *submitVCidentfid5 = @"submitVCidentfid5";
+static NSString *submitVCidentfid6 = @"submitVCidentfid6";
+static NSString *submitVCidentfid7 = @"submitVCidentfid7";
+static NSString *submitVCidentfid8 = @"submitVCidentfid8";
+
 @implementation submitorderVC
 
 - (void)viewDidLoad {
@@ -70,13 +80,14 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
         CGFloat numfloat = [model.ordernumber floatValue];
         CGFloat pricefloat = [model.orderprice floatValue];
         CGFloat sums = numfloat*pricefloat;
+        self.mingsunamestr = model.ordername;
         NSString *sunstr = [NSString stringWithFormat:@"%f",sums];
         [sumarr addObject:sunstr];
     }
     
     NSString *jianstr = [self.discountdit objectForKey:@"discount_jian"];
     NSString *man = [self.discountdit objectForKey:@"discount_man"];
-    CGFloat manfloat = [man floatValue];
+
     if ([strisNull isNullToString:man]) {
         jianstr = @"0";
     }
@@ -119,11 +130,11 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"dic-----%@",dic);
-        if ([[dic objectForKey:@"code"] intValue]==200) {
+        if ([[dic objectForKey:@"code"] intValue]==200&&[[dic objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
             
             NSDictionary *datadit = [dic objectForKey:@"data"];
             self.addressdit = [datadit objectForKey:@"address"];
-           // self.discountdit = [datadit objectForKey:@"discount"];
+            
             [self.submittableView reloadData];
         }
         
@@ -164,71 +175,168 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        return 2;
+    }
+    else
+    {
+        return 3;
+    }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0) {
-        return 1;
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        if (section==0) {
+             return self.orderDatasource.count;
+        }
+        else
+        {
+            return 4;
+        }
     }
-    if (section==1) {
-        return self.orderDatasource.count;
+    else
+    {
+        if (section==0) {
+            return 1;
+        }
+        if (section==1) {
+            return self.orderDatasource.count;
+        }
+        if (section==2) {
+            return 1;
+        }
     }
-    if (section==2) {
-        return 1;
-    }
+
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        submitorderCell0 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid0];
-        cell = [[submitorderCell0 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid0];
-        [cell setdata:self.addressdit];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
-    }
-    if (indexPath.section==1) {
-        submitorderCell1 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid1];
-        cell = [[submitorderCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid1];
-        [cell setdata:self.orderDatasource[indexPath.row]];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-    if (indexPath.section==2) {
-        submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid2];
-        cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid2];
-        
-        NSString *str = [self.discountdit objectForKey:@"discount_jian"];
-        
-        if ([strisNull isNullToString:str]) {
-            cell.numlab.text = @"选择优惠券";
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        if (indexPath.section==0) {
+            submitorderCell1 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid3];
+            cell = [[submitorderCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid3];
+            [cell setdata:self.orderDatasource[indexPath.row]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
         }
-        else
-        {
-            cell.numlab.text = [NSString stringWithFormat:@"%@%@",[self.discountdit objectForKey:@"discount_jian"],@"元"];
+        if (indexPath.section==1) {
+            
+            if (indexPath.row==0) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid5];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid5];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                NSDateFormatter *formatter = [[NSDateFormatter alloc]init]; //初始化格式器。
+                [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];//定义时间为这种格式： YYYY-MM-dd hh:mm:ss 。
+                NSString *currentTime = [formatter stringFromDate:[NSDate date]];//将NSDate  ＊对象 转化为 NSString ＊对象。
+                cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"下单时间 ",currentTime];
+                cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+                return cell;
+            }
+            if (indexPath.row==1) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid7];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid7];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"预定时间:",self.yudingtime];
+                
+                cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+                return cell;
+            }
+            if (indexPath.row==2) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid8];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid8];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"位置信息 :",self.mingsunamestr];
+                cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+                return cell;
+            }
+            if (indexPath.row==3) {
+                submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid8];
+                cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid8];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                NSString *str = [self.discountdit objectForKey:@"discount_jian"];
+                
+                if ([strisNull isNullToString:str]) {
+                    cell.numlab.text = @"选择优惠券";
+                }
+                else
+                {
+                    cell.numlab.text = [NSString stringWithFormat:@"%@%@",[self.discountdit objectForKey:@"discount_jian"],@"元"];
+                }
+                cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                return cell;
+            }
+            
         }
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        
     }
+    else
+    {
+        if (indexPath.section==0) {
+            submitorderCell0 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid0];
+            cell = [[submitorderCell0 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid0];
+            [cell setdata:self.addressdit];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            return cell;
+        }
+        if (indexPath.section==1) {
+            submitorderCell1 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid1];
+            cell = [[submitorderCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid1];
+            [cell setdata:self.orderDatasource[indexPath.row]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        if (indexPath.section==2) {
+            submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:submitVCidentfid2];
+            cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:submitVCidentfid2];
+            
+            NSString *str = [self.discountdit objectForKey:@"discount_jian"];
+            
+            if ([strisNull isNullToString:str]) {
+                cell.numlab.text = @"选择优惠券";
+            }
+            else
+            {
+                cell.numlab.text = [NSString stringWithFormat:@"%@%@",[self.discountdit objectForKey:@"discount_jian"],@"元"];
+            }
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+
+    }
+    
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        return 60*HEIGHT_SCALE;
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        if (indexPath.section==0) {
+            return 140*HEIGHT_SCALE;
+        }
+        else
+        {
+            return 40*HEIGHT_SCALE;
+        }
     }
-    if (indexPath.section==1) {
-        return 140*HEIGHT_SCALE;
+    else
+    {
+        if (indexPath.section==0) {
+            return 60*HEIGHT_SCALE;
+        }
+        if (indexPath.section==1) {
+            return 140*HEIGHT_SCALE;
+        }
+        if (indexPath.section==2) {
+            return 40*HEIGHT_SCALE;
+        }
     }
-    if (indexPath.section==2) {
-        return 40*HEIGHT_SCALE;
-    }
+    
     return 0;
 }
 
@@ -244,14 +352,25 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        ShouHuoDiZhiTVC *shouhuovc = [[ShouHuoDiZhiTVC alloc] init];
-        [self.navigationController pushViewController:shouhuovc animated:YES];
+
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        if (indexPath.section==1&&indexPath.row==3) {
+            discountTVC *disvc = [[discountTVC alloc] init];
+            [self.navigationController pushViewController:disvc animated:YES];
+        }
     }
-    if (indexPath.section==2) {
-        discountTVC *disvc = [[discountTVC alloc] init];
-        [self.navigationController pushViewController:disvc animated:YES];
+    else
+    {
+        if (indexPath.section==0) {
+            ShouHuoDiZhiTVC *shouhuovc = [[ShouHuoDiZhiTVC alloc] init];
+            [self.navigationController pushViewController:shouhuovc animated:YES];
+        }
+        if (indexPath.section==2) {
+            discountTVC *disvc = [[discountTVC alloc] init];
+            [self.navigationController pushViewController:disvc animated:YES];
+        }
     }
+
 }
 
 #pragma mark - 实现方法
@@ -265,17 +384,7 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
 
 -(void)submitclick
 {
-//    user_id true string 用户id
-//    api_token true string 用户token
-//    goods_id true string 商品id 多商品(,)隔开
-//    goods_type true string 商品类型 1商品 2门票 3住宿 4餐饮 5 美食
-//    number true string 商品数量
-//    address_id false string 收货地址
-//    appoint_time false string 预约时间 (-)号隔开
-//    discount_id false string 优惠券id
-//    order_userphone false string goods_type 为234必填
-//    order_username false string goods_type 为234必填
-//    now false string 是否立即下单
+
     
    
     NSMutableArray *goods_idarr = [NSMutableArray array];
@@ -296,8 +405,6 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     NSString *order_userphone = @"";
     NSString *order_username = @"";
     
-    
-    
     //addressid
     if ([strisNull isNullToString:[self.addressdit objectForKey:@"addid"]]&&[strisNull isNullToString:[self.addressdit objectForKey:@"address_id"]]) {
         address_id = @"";
@@ -312,35 +419,48 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     }
     
     //addressname
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        order_username = self.yudingname;
+        order_userphone = self.yudingphone;
+    }else
+    {
+        if ([strisNull isNullToString:[self.addressdit objectForKey:@"name"]]&&[strisNull isNullToString:[self.addressdit objectForKey:@"address_name"]]) {
+            order_username = @"";
+        }
+        else if([strisNull isNullToString:[self.addressdit objectForKey:@"address_name"]])
+        {
+            order_username = [self.addressdit objectForKey:@"name"];
+        }
+        else
+        {
+            order_username = [self.addressdit objectForKey:@"address_name"];
+        }
+        
+        //addressphone
+        
+        if ([strisNull isNullToString:[self.addressdit objectForKey:@"phone"]]&&[strisNull isNullToString:[self.addressdit objectForKey:@"address_phone"]]) {
+            order_userphone = @"";
+        }
+        else if([strisNull isNullToString:[self.addressdit objectForKey:@"address_phone"]])
+        {
+            order_userphone = [self.addressdit objectForKey:@"phone"];
+        }
+        else
+        {
+            order_userphone = [self.addressdit objectForKey:@"address_phone"];
+        }
+
+    }
     
-    if ([strisNull isNullToString:[self.addressdit objectForKey:@"name"]]&&[strisNull isNullToString:[self.addressdit objectForKey:@"address_name"]]) {
-        order_username = @"";
-    }
-    else if([strisNull isNullToString:[self.addressdit objectForKey:@"address_name"]])
-    {
-         order_username = [self.addressdit objectForKey:@"name"];
-    }
-    else
-    {
-        order_username = [self.addressdit objectForKey:@"address_name"];
-    }
-    
-    //addressphone
-    
-    if ([strisNull isNullToString:[self.addressdit objectForKey:@"phone"]]&&[strisNull isNullToString:[self.addressdit objectForKey:@"address_phone"]]) {
-        order_userphone = @"";
-    }
-    else if([strisNull isNullToString:[self.addressdit objectForKey:@"address_phone"]])
-    {
-        order_userphone = [self.addressdit objectForKey:@"phone"];
-    }
-    else
-    {
-        order_userphone = [self.addressdit objectForKey:@"address_phone"];
-    }
     
     NSString *appoint_time = @"";
-    appoint_time = [strisNull getNowTimeTimestamp];
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        appoint_time = self.yudingtime;
+    }
+    else
+    {
+        appoint_time = [strisNull getNowTimeTimestamp];
+    }
     
     
     NSString *discount_id = @"";
@@ -351,8 +471,6 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
     {
         discount_id = [self.discountdit objectForKey:@"discount_id"];
     }
-
-    
 
     
 
@@ -385,6 +503,8 @@ static NSString *submitVCidentfid2 = @"submitVCidentfid2";
             confirVC.discountdit = [NSDictionary dictionary];
             confirVC.discountdit = self.discountdit;
             confirVC.ordersn = self.order_snstr;
+            confirVC.yudingtime = self.yudingtime;
+            confirVC.mingsunamestr = self.mingsunamestr;
             [self.navigationController pushViewController:confirVC animated:YES];
             
             

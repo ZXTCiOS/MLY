@@ -253,6 +253,9 @@ static NSString *myordercell5 = @"myordercell0identfid5";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
          NSLog(@"res-----%@",responseObject);
         [self headerRefreshEndAction];
+        [self headerRefreshEndAction];  if ([[responseObject objectForKey:@"code"] intValue]==200) {
+            [MBProgressHUD showSuccess:@"成功"];
+        }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -285,6 +288,9 @@ static NSString *myordercell5 = @"myordercell0identfid5";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
         [self headerRefreshEndAction];
+        [self headerRefreshEndAction];  if ([[responseObject objectForKey:@"code"] intValue]==200) {
+            [MBProgressHUD showSuccess:@"成功"];
+        }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -315,6 +321,9 @@ static NSString *myordercell5 = @"myordercell0identfid5";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
         [self headerRefreshEndAction];
+        [self headerRefreshEndAction];  if ([[responseObject objectForKey:@"code"] intValue]==200) {
+            [MBProgressHUD showSuccess:@"成功"];
+        }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -346,7 +355,7 @@ static NSString *myordercell5 = @"myordercell0identfid5";
 -(void)myTabVClick5:(UITableViewCell *)cell//物流
 {
     NSIndexPath *index = [self.ordertableView indexPathForCell:cell];
-    NSLog(@"222===%ld   付款",index.section);
+
     myOrderModel *model = self.dataSource[index.section];
     NSString *user_id = [userDefault objectForKey:user_key_user_id];
     NSString *api_token = [userDefault objectForKey:user_key_token];
@@ -365,6 +374,7 @@ static NSString *myordercell5 = @"myordercell0identfid5";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
         [self headerRefreshEndAction];
+        
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

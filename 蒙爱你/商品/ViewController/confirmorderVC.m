@@ -31,6 +31,14 @@ static NSString *confirmorderidentfid2 = @"confirmorderidentfid2";
 static NSString *confirmorderidentfid3 = @"confirmorderidentfid3";
 static NSString *confirmorderidentfid4 = @"confirmorderidentfid4";
 
+static NSString *confirmorderidentfid5 = @"confirmorderidentfid5";
+static NSString *confirmorderidentfid6 = @"confirmorderidentfid6";
+static NSString *confirmorderidentfid7 = @"confirmorderidentfid7";
+static NSString *confirmorderidentfid8 = @"confirmorderidentfid8";
+static NSString *confirmorderidentfid9 = @"confirmorderidentfid9";
+static NSString *confirmorderidentfid10 = @"confirmorderidentfid10";
+
+
 @implementation confirmorderVC
 
 - (void)viewDidLoad {
@@ -67,7 +75,7 @@ static NSString *confirmorderidentfid4 = @"confirmorderidentfid4";
     
     NSString *jianstr = [self.discountdit objectForKey:@"discount_jian"];
     NSString *man = [self.discountdit objectForKey:@"discount_man"];
-    CGFloat manfloat = [man floatValue];
+
     if ([strisNull isNullToString:man]) {
         jianstr = @"0";
     }
@@ -121,100 +129,201 @@ static NSString *confirmorderidentfid4 = @"confirmorderidentfid4";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+//    if ([self.goods_typestr isEqualToString:@"3"]) {
+//        return 6;
+//    }
+//    else
+//    {
+//        return 6;
+//    }
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0) {
-        return 1;
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        if (section==0) {
+            return self.orderDatasource.count;
+        }
+        else
+        {
+            return 1;
+        }
     }
-    if (section==1) {
-        return self.orderDatasource.count;
-    }
-    if (section==2) {
-        return 1;
-    }
-    if (section==3) {
-        return 1;
-    }
-    if (section==4) {
-        return 1;
+    else
+    {
+        if (section==0) {
+            return 1;
+        }
+        if (section==1) {
+            return self.orderDatasource.count;
+        }
+        if (section==2) {
+            return 1;
+        }
+        if (section==3) {
+            return 1;
+        }
+        if (section==4) {
+            return 1;
+        }
+
     }
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        submitorderCell0 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid0];
-        cell = [[submitorderCell0 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid0];
-        [cell setdata:self.addressdit];
-        return cell;
-    }
-    if (indexPath.section==1) {
-        submitorderCell1 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid1];
-        cell = [[submitorderCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid1];
-        [cell setdata:self.orderDatasource[indexPath.row]];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-    if (indexPath.section==2) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid3];
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid3];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"订单号:",self.ordersn];
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
-        return cell;
-    }
-    if (indexPath.section==3) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid4];
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid4];
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc]init]; //初始化格式器。
-        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];//定义时间为这种格式： YYYY-MM-dd hh:mm:ss 。
-        NSString *currentTime = [formatter stringFromDate:[NSDate date]];//将NSDate  ＊对象 转化为 NSString ＊对象。
-        cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"下单时间 ",currentTime];
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-    if (indexPath.section==4) {
-        submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid2];
-        cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid2];
-        
-        NSString *str = [self.discountdit objectForKey:@"discount_jian"];
-        
-        if ([strisNull isNullToString:str]) {
-            cell.numlab.text = @"选择优惠券";
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        if (indexPath.section==0) {
+            submitorderCell1 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid1];
+            cell = [[submitorderCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid1];
+            [cell setdata:self.orderDatasource[indexPath.row]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
         }
-        else
-        {
-            cell.numlab.text = [NSString stringWithFormat:@"%@%@",[self.discountdit objectForKey:@"discount_jian"],@"元"];
+        if (indexPath.section==1) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid3];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid3];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"订单号:",self.ordersn];
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+            return cell;
         }
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        if (indexPath.section==2) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid4];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid4];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init]; //初始化格式器。
+            [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];//定义时间为这种格式： YYYY-MM-dd hh:mm:ss 。
+            NSString *currentTime = [formatter stringFromDate:[NSDate date]];//将NSDate  ＊对象 转化为 NSString ＊对象。
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"下单时间 ",currentTime];
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        if (indexPath.section==3) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid7];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid7];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"预定时间:",self.yudingtime];
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+            return cell;
+        }
+        if (indexPath.section==4) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid6];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid6];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"位置信息 :",self.mingsunamestr];
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+            return cell;
+        }
+        
+        if (indexPath.section==5) {
+            submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid2];
+            cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid2];
+            
+            NSString *str = [self.discountdit objectForKey:@"discount_jian"];
+            
+            if ([strisNull isNullToString:str]) {
+                cell.numlab.text = @"选择优惠券";
+            }
+            else
+            {
+                cell.numlab.text = [NSString stringWithFormat:@"%@%@",[self.discountdit objectForKey:@"discount_jian"],@"元"];
+            }
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+
+    }
+    else
+    {
+        if (indexPath.section==0) {
+            submitorderCell0 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid0];
+            cell = [[submitorderCell0 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid0];
+            [cell setdata:self.addressdit];
+            return cell;
+        }
+        if (indexPath.section==1) {
+            submitorderCell1 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid1];
+            cell = [[submitorderCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid1];
+            [cell setdata:self.orderDatasource[indexPath.row]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        if (indexPath.section==2) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid3];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid3];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"订单号:",self.ordersn];
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+            return cell;
+        }
+        if (indexPath.section==3) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid4];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid4];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init]; //初始化格式器。
+            [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];//定义时间为这种格式： YYYY-MM-dd hh:mm:ss 。
+            NSString *currentTime = [formatter stringFromDate:[NSDate date]];//将NSDate  ＊对象 转化为 NSString ＊对象。
+            cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@"下单时间 ",currentTime];
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"999999"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        if (indexPath.section==4) {
+            submitorderCell2 *cell = [tableView dequeueReusableCellWithIdentifier:confirmorderidentfid2];
+            cell = [[submitorderCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:confirmorderidentfid2];
+            
+            NSString *str = [self.discountdit objectForKey:@"discount_jian"];
+            
+            if ([strisNull isNullToString:str]) {
+                cell.numlab.text = @"选择优惠券";
+            }
+            else
+            {
+                cell.numlab.text = [NSString stringWithFormat:@"%@%@",[self.discountdit objectForKey:@"discount_jian"],@"元"];
+            }
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+
     }
     return nil;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        return 60*HEIGHT_SCALE;
+    if ([self.goods_typestr isEqualToString:@"3"]) {
+        if (indexPath.section==0) {
+            return 160*HEIGHT_SCALE;
+        }
+        else
+        {
+            return 40*HEIGHT_SCALE;
+        }
     }
-    if (indexPath.section==1) {
-        return 140*HEIGHT_SCALE;
+    else
+    {
+        if (indexPath.section==0) {
+            return 60*HEIGHT_SCALE;
+        }
+        if (indexPath.section==1) {
+            return 140*HEIGHT_SCALE;
+        }
+        if (indexPath.section==2) {
+            return 40*HEIGHT_SCALE;
+        }
+        if (indexPath.section==3) {
+            return 40*HEIGHT_SCALE;
+        }
+        if (indexPath.section==4) {
+            return 40*HEIGHT_SCALE;
+        }
     }
-    if (indexPath.section==2) {
-        return 40*HEIGHT_SCALE;
-    }
-    if (indexPath.section==3) {
-        return 40*HEIGHT_SCALE;
-    }
-    if (indexPath.section==4) {
-        return 40*HEIGHT_SCALE;
-    }
+ 
     return 0;
 }
 
