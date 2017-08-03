@@ -7,16 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MinsuDetailModel.h"
+
 
 typedef NS_ENUM(NSUInteger, BedOreEat) {
     Bed,
     Eat,
 };
 
+
+
 @interface LiJiYuDingTVC : UITableViewController
 
 
 
-- (instancetype)initWithBedEat:(BedOreEat) typt room_id:(NSInteger) room_id bedeat_id:(NSInteger) eadbed_id;
+- (instancetype)initWithBedEat:(BedOreEat) typt minsuBedModel:(MinsuBedModel *) bedeatModel;
 
 @end

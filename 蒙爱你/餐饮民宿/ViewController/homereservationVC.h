@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MinsuDetailModel.h"
 
 @interface homereservationVC : UIViewController
 @property (nonatomic,strong) NSString *namestr;
@@ -15,5 +16,8 @@
 @property (nonatomic,strong) NSString *datastr;
 
 
+
+
+- (instancetype)initWithMinsuBedEatModel:(MinsuBedModel *) model;
 
 @end

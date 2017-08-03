@@ -146,6 +146,7 @@
     MJWeakSelf
     [self.gonglue bk_addEventHandler:^(id sender) {
         WKWedViewController *vc = [[WKWedViewController alloc] initWithTitle:self.viewmodel.model.jingdian_xiangqing.scenic_name Url:self.viewmodel.model.gonglue_href.xd_URL];
+        self.navigationController.delegate = nil;
         [weakSelf.navigationController pushViewController:vc animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     

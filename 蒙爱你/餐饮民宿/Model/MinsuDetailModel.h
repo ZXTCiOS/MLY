@@ -47,6 +47,8 @@
 
 @property (nonatomic, assign) NSInteger *bedeat_price;
 
+@property (nonatomic, assign) NSInteger home_id;
+
 @end
 
 @interface MinsuArtModel : NSObject

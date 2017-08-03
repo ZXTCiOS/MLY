@@ -239,6 +239,7 @@
     [super viewWillDisappear:animated];
     //self.navigationController.navigationBar.hidden = YES;
     //self.tabBarController.tabBar.hidden = YES;
+    self.navigationController.delegate = nil;
 }
 
 

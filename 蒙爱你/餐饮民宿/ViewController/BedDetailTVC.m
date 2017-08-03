@@ -408,8 +408,9 @@
    
     [cell.imgV sd_setImageWithURL:array[indexPath.row].bedeat_pic.xd_URL placeholderImage:[UIImage imageNamed:@"7"]];
     cell.buynow = ^(){
-       
-       LiJiYuDingTVC *vc = [[LiJiYuDingTVC alloc] initWithBedEat:!self.isBed room_id:self.minsu_id bedeat_id:array[indexPath.row].bedeat_id];
+       MinsuBedModel *model = array[indexPath.row];
+       model.home_id = self.minsu_id;
+       LiJiYuDingTVC *vc = [[LiJiYuDingTVC alloc] initWithBedEat:!self.isBed minsuBedModel:model];
        
        [self.navigationController pushViewController:vc animated:YES];
     };
@@ -635,6 +636,7 @@ static UIView *view;
    [super viewWillDisappear:animated];
    self.navigationController.navigationBar.hidden = NO;
    [self.naviBar removeFromSuperview];
+   self.navigationController.delegate = nil;
    
 }
 
