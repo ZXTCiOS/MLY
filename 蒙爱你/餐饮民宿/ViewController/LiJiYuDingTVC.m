@@ -14,9 +14,7 @@
 @interface LiJiYuDingTVC ()<MSSCalendarViewControllerDelegate>
 
 
-@property (nonatomic, assign) NSInteger room_id;
-
-@property (nonatomic, assign) NSInteger minsu_id;
+@property (nonatomic, strong) MinsuBedModel *model;
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 
@@ -50,7 +48,10 @@
     [XDFactory addBackItemForVC:self];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.delegate = nil;
+}
 
 - (IBAction)jiaBtnClicked:(id)sender {
     self.number++;
@@ -68,7 +69,7 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
-    homereservationVC *homesvc = [[homereservationVC alloc] init];
+    homereservationVC *homesvc = [[homereservationVC alloc] initWithMinsuBedEatModel:self.model];
     [self.navigationController pushViewController:homesvc animated:YES];
     
 }
@@ -121,12 +122,13 @@
     
 }
 
-- (instancetype)initWithBedEat:(BedOreEat)typt room_id:(NSInteger)room_id bedeat_id:(NSInteger)eadbed_id{
+- (instancetype)initWithBedEat:(BedOreEat)typt minsuBedModel:(MinsuBedModel *)bedeatModel{
     UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
-    LiJiYuDingTVC *vc = [stb instantiateViewControllerWithIdentifier:@"lijiyuding"];
-    self.room_id = room_id;
-    self.minsu_id = eadbed_id;
-    return vc;
+    self = [stb instantiateViewControllerWithIdentifier:@"lijiyuding"];
+    if (self ) {
+        self.model = bedeatModel;
+    }
+    return self;
 }
 
 

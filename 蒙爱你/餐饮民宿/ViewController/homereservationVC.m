@@ -10,6 +10,8 @@
 
 @interface homereservationVC ()
 
+@property (nonatomic, strong) MinsuBedModel *model;
+
 @end
 
 @implementation homereservationVC
@@ -30,6 +32,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (instancetype)initWithMinsuBedEatModel:(MinsuBedModel *)model{
+    self = [super init];
+    if (self ) {
+        self.model = model;
+    }
+    return self;
 }
 
 #pragma mark - getters

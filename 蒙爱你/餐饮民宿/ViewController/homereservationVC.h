@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MinsuDetailModel.h"
 
 @interface homereservationVC : UIViewController
+
+
+- (instancetype)initWithMinsuBedEatModel:(MinsuBedModel *) model;
 
 @end
