@@ -82,20 +82,20 @@ static NSString * const reuseIdentifier = @"Cell";
     if (self.searchType == SearchTypeMinsu | self.searchType == SearchTypeFood) {
         [self.viewmodel getDataWithRequestMode:RequestModeMore type:self.searchType searchText:self.searchText handller:^(NSError *error) {
             if (!error) {
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
                 [self.collectionView reloadData];
             } else {
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
                 [self.view.superview showWarning:@"网络错误"];
             }
         }];
     } else {
         [self.viewmodel getDataWithRequestMode:RequestModeMore type:self.type stars:self.stars price:self.price handller:^(NSError *error) {
             if (!error) {
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
                 [self.collectionView reloadData];
             } else {
-                [self.collectionView endHeaderRefresh];
+                [self.collectionView endFooterRefresh];
                 [self.view.superview showWarning:@"网络错误"];
             }
         }];

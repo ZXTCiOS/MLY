@@ -177,14 +177,15 @@
     
     [shareBtn bk_addEventHandler:^(id sender) {
         // 分享
-        
+        [self shareBtnClicked];
         
     } forControlEvents:UIControlEventTouchUpInside];
     
 }
 
 - (void)shareBtnClicked{
-    NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
+    UIImage *img = [UIImage imageNamed:@"fenxiang"];
+    NSArray* imageArray = @[img];
     //（注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
     if (imageArray) {
         
@@ -349,6 +350,7 @@ static BOOL ok = YES;
         make.bottom.equalTo(-12);
         make.left.equalTo(30);
     }];
+    label.textColor = krgb(11, 121, 182, 1);
     label.font = kFont(16);
     switch (section) {
         case 0:
