@@ -11,7 +11,6 @@
 #import "TabBarController.h"
 #import "AppDelegate.h"
 #import "WKWedViewController.h"
-#import <ShareSDK/ShareSDK.h>
 
 @interface loginVC ()<UITextViewDelegate>
 
@@ -55,46 +54,14 @@
 }
 
 - (IBAction)WeChatLogin:(id)sender {
-    [ShareSDK getUserInfo:SSDKPlatformTypeWechat
-           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
-     {
-         if (state == SSDKResponseStateSuccess)
-         {
-             
-             NSLog(@"uid=%@",user.uid);
-             NSLog(@"%@",user.credential);
-             NSLog(@"token=%@",user.credential.token);
-             NSLog(@"nickname=%@",user.nickname);
-         }
-         
-         else
-         {
-             NSLog(@"%@",error);
-         }
-         
-     }];
+    
+    
   
 }
 
 - (IBAction)QQLogin:(id)sender {
-    [ShareSDK getUserInfo:SSDKPlatformTypeQQ
-           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
-     {
-         if (state == SSDKResponseStateSuccess)
-         {
-             
-             NSLog(@"uid=%@",user.uid);
-             NSLog(@"%@",user.credential);
-             NSLog(@"token=%@",user.credential.token);
-             NSLog(@"nickname=%@",user.nickname);
-         }
-         
-         else
-         {
-             NSLog(@"%@",error);
-         }
-         
-     }];
+    
+    
 }
 
 
