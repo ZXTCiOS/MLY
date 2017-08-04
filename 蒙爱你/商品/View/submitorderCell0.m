@@ -92,7 +92,6 @@
     }
     else
     {
-        
         NSString *addressass = [dic objectForKey:@"address_adds"];
         NSString *name = [dic objectForKey:@"address_name"];
         NSString *phone = [dic objectForKey:@"address_phone"];
