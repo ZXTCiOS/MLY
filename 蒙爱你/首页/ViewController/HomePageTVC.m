@@ -23,7 +23,7 @@
 
 // 分享
 
-
+#import "WXApi.h"
 
 #import "ActionSheetView.h"
 #define delayTime 1.5               //  延时请求
@@ -191,7 +191,25 @@
     ActionSheetView *actionsheet = [[ActionSheetView alloc] initWithShareHeadOprationWith:titlearr andImageArry:imageArr andProTitle:@"测试" and:ShowTypeIsShareStyle];
     [actionsheet setBtnClick:^(NSInteger btnTag) {
         NSLog(@"\n点击第几个====%ld\n当前选中的按钮title====%@",btnTag,titlearr[btnTag]);
-        
+        if (btnTag==0) {
+            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+            req.text                = @"简单文本分享测试";
+            req.bText               = YES;
+            req.scene               = WXSceneTimeline;
+            [WXApi sendReq:req];
+            // 目标场景
+            // 发送到聊天界面  WXSceneSession
+            // 发送到朋友圈    WXSceneTimeline
+            // 发送到微信收藏  WXSceneFavorite
+            
+        }
+        if (btnTag==1) {
+            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+            req.text                = @"简单文本分享测试";
+            req.bText               = YES;
+            req.scene               = WXSceneSession;
+            [WXApi sendReq:req];
+        }
     }];
     [[UIApplication sharedApplication].keyWindow addSubview:actionsheet];
     
