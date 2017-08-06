@@ -25,7 +25,7 @@
 
 
 
-
+#import "ActionSheetView.h"
 #define delayTime 1.5               //  延时请求
 #define distanceToRight  (-50)       //  右滑距离右边的最远刷新距离
 
@@ -185,7 +185,15 @@
 - (void)shareBtnClicked{
     
     
+    NSArray *titlearr = @[@"微信朋友圈",@"微信好友",@"QQ"];
+    NSArray *imageArr = @[@"wechatquan",@"wechat",@"tcentQQ"];
     
+    ActionSheetView *actionsheet = [[ActionSheetView alloc] initWithShareHeadOprationWith:titlearr andImageArry:imageArr andProTitle:@"测试" and:ShowTypeIsShareStyle];
+    [actionsheet setBtnClick:^(NSInteger btnTag) {
+        NSLog(@"\n点击第几个====%ld\n当前选中的按钮title====%@",btnTag,titlearr[btnTag]);
+        
+    }];
+    [[UIApplication sharedApplication].keyWindow addSubview:actionsheet];
     
     
 }
