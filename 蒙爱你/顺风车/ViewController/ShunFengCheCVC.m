@@ -12,8 +12,9 @@
 #import "ShunFengCheViewModel.h"
 #import "SearchViewController.h"
 #import "Transition_Travel.h"
+#import "MBProgressHUD+XMG.h"
 
-@interface ShunFengCheCVC ()<UINavigationControllerDelegate>
+@interface ShunFengCheCVC ()<UINavigationControllerDelegate,mycellVdelegate>
 
 @property (nonatomic, copy) NSString *searchtext;
 @property (nonatomic, assign) SearchType searchType;
@@ -172,17 +173,14 @@ static NSString * const reuseIdentifier = @"Cell";
     HomeTravelModel *model = self.viewmodel.datalist[indexPath.row];
     [cell.imageV sd_setImageWithURL:model.trip_pic.xd_URL placeholderImage:img_shunFengChe_default];
     cell.nameL.text = model.trip_driver;
-//    NSDictionary *dic = (NSDictionary*)model;
-//    [dic objectForKey:@"trip_address"];
-//    
-//    
-//    if (model.is_shoucang) {
-//        cell.shoucangImg.image = [UIImage imageNamed:@"sc-ns"];
-//    }
-//    else
-//    {
-//        cell.shoucangImg.image = [UIImage imageNamed:@"sc-s"];
-//    }
+    cell.delegate = self;
+    if (model.is_shoucang) {
+        cell.shoucangImg.image = [UIImage imageNamed:@"sc-s"];
+    }
+    else
+    {
+        cell.shoucangImg.image = [UIImage imageNamed:@"sc-ns"];
+    }
     cell.addressL.text = [NSString stringWithFormat:@"%@", model.trip_address];
     return cell;
 }
@@ -201,7 +199,39 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 
+-(void)myTabVClick1:(UICollectionViewCell *)cell
+{
+    NSIndexPath *index = [self.collectionView indexPathForCell:cell];
 
+    HomeTravelModel *model = self.viewmodel.datalist[index.item];
+    
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *type = @"2";
+    NSString *isstr = [NSString stringWithFormat:@"%ld",(long)model.trip_id];
+    NSString *is_shoucang  = @"";
+    if (model.is_shoucang==1) {
+        is_shoucang = @"0";
+    }else
+    {
+        is_shoucang = @"1";
+    }
+    NSString *urlstr = [NSString stringWithFormat:get_recommend,userid,isstr,type,is_shoucang];
+    
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        if ([[obj objectForKey:@"code"]intValue]==200) {
+            [self.collectionView.mj_header beginRefreshing];
+            [MBProgressHUD showSuccess:@"操作成功"];
+        }
+        else
+        {
+            NSString *hud = [obj objectForKey:@"message"];
+            [MBProgressHUD showSuccess:hud];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;

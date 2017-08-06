@@ -38,8 +38,20 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.shoucangImg.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.shoucangImg addGestureRecognizer:singleTap];
     // Initialization code
 }
+
+
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+    [self.delegate myTabVClickticket:self];
+    //do something....
+    NSLog(@"do something......");
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

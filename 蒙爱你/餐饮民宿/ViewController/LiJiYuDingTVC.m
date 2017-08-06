@@ -35,7 +35,7 @@
 
 
 @property (nonatomic, strong) MSSCalendarViewController *datePicker;
-
+@property (nonatomic,strong) NSString *typestr;
 @end
 
 @implementation LiJiYuDingTVC
@@ -73,22 +73,24 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
-
-
     
-
+    
     submitorderVC *subvc = [[submitorderVC alloc] init];
-    subvc.goods_typestr = @"3";
+
     
+    if ([self.typestr isEqualToString:@"1"]) {
+        subvc.goods_typestr = @"3";
+    }
+    if ([self.typestr isEqualToString:@"2"]) {
+        subvc.goods_typestr = @"4";
+    }
+
     NSString *bedeat_pic = [NSString stringWithFormat:@"%@",self.model.bedeat_pic];
     NSString *bedeat_id = [NSString stringWithFormat:@"%ld",(long)self.model.bedeat_id];
     NSString *bedeat_name = [NSString stringWithFormat:@"%@",self.model.bedeat_name];
     NSString *bedeat_intro = [NSString stringWithFormat:@"%@",self.model.bedeat_intro];
     NSString *bedeat_des = [NSString stringWithFormat:@"%@",self.model.bedeat_des];
     NSString *bedeat_price = [NSString stringWithFormat:@"%ld",(long)self.model.bedeat_price];
-    NSString *home_id = [NSString stringWithFormat:@"%ld",(long)self.model.home_id];
-    
-  
 
     NSString *namestr = @"";
     NSString *telephonestr  = @"";
@@ -194,6 +196,12 @@
     self = [stb instantiateViewControllerWithIdentifier:@"lijiyuding"];
     if (self ) {
         self.model = bedeatModel;
+        if (typt==Bed) {
+            self.typestr = @"1";
+        }else
+        {
+            self.typestr = @"2";
+        }
     }
     return self;
 }

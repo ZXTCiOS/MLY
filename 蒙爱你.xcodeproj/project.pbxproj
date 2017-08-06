@@ -193,6 +193,9 @@
 		534C17D31F2B148F0067C3E4 /* shoucanggoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17D21F2B148F0067C3E4 /* shoucanggoodsModel.m */; };
 		536022BA1F25FCC300364CDD /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */; };
 		536022BC1F26EABE00364CDD /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 536022BB1F26EABE00364CDD /* NullSafe.m */; };
+		537D15BD1F36F9AB004592BD /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537D15BB1F36F9AB004592BD /* TencentOpenAPI.framework */; };
+		537D15BE1F36F9AB004592BD /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 537D15BC1F36F9AB004592BD /* TencentOpenApi_IOS_Bundle.bundle */; };
+		537D15C11F3758BA004592BD /* TackettoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 537D15C01F3758BA004592BD /* TackettoVC.m */; };
 		5381C5321F348733009B6233 /* copyUrl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5381C51D1F348733009B6233 /* copyUrl@2x.png */; };
 		5381C5331F348733009B6233 /* copyUrl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5381C51E1F348733009B6233 /* copyUrl@3x.png */; };
 		5381C5341F348733009B6233 /* sinaweibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5381C51F1F348733009B6233 /* sinaweibo@2x.png */; };
@@ -582,6 +585,10 @@
 		536022B81F25FCC300364CDD /* MBProgressHUD+XMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XMG.h"; sourceTree = "<group>"; };
 		536022B91F25FCC300364CDD /* MBProgressHUD+XMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XMG.m"; sourceTree = "<group>"; };
 		536022BB1F26EABE00364CDD /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		537D15BB1F36F9AB004592BD /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		537D15BC1F36F9AB004592BD /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		537D15BF1F3758BA004592BD /* TackettoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TackettoVC.h; sourceTree = "<group>"; };
+		537D15C01F3758BA004592BD /* TackettoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TackettoVC.m; sourceTree = "<group>"; };
 		5381C51D1F348733009B6233 /* copyUrl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copyUrl@2x.png"; sourceTree = "<group>"; };
 		5381C51E1F348733009B6233 /* copyUrl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copyUrl@3x.png"; sourceTree = "<group>"; };
 		5381C51F1F348733009B6233 /* sinaweibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sinaweibo@2x.png"; sourceTree = "<group>"; };
@@ -668,6 +675,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11353EB51F16379300B34D7C /* MapKit.framework in Frameworks */,
+				537D15BD1F36F9AB004592BD /* TencentOpenAPI.framework in Frameworks */,
 				11353EB31F1630A100B34D7C /* CoreLocation.framework in Frameworks */,
 				11093C5F1F0B3F3E00AFCB20 /* libicucore.tbd in Frameworks */,
 				11093C5D1F0B3F3400AFCB20 /* libz.tbd in Frameworks */,
@@ -996,6 +1004,7 @@
 		11093BDB1F0B3A8C00AFCB20 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				537D15BA1F36F9AB004592BD /* Tencent */,
 				53E9BD451F305F42000BFA60 /* AvoidCrash */,
 				11093BDC1F0B3A8C00AFCB20 /* ChoosePicture.h */,
 				11093BDD1F0B3A8C00AFCB20 /* ChoosePicture.m */,
@@ -1523,6 +1532,8 @@
 				117105741F14EEF8008A2F25 /* ScenicTVC.m */,
 				11353E9C1F16040700B34D7C /* ScenicVC.h */,
 				11353E9D1F16040700B34D7C /* ScenicVC.m */,
+				537D15BF1F3758BA004592BD /* TackettoVC.h */,
+				537D15C01F3758BA004592BD /* TackettoVC.m */,
 				11353EA11F16173500B34D7C /* scenic.storyboard */,
 			);
 			path = ViewController;
@@ -1613,6 +1624,15 @@
 				53E9BD411F2ED897000BFA60 /* strisNull.m */,
 			);
 			name = utlis;
+			sourceTree = "<group>";
+		};
+		537D15BA1F36F9AB004592BD /* Tencent */ = {
+			isa = PBXGroup;
+			children = (
+				537D15BB1F36F9AB004592BD /* TencentOpenAPI.framework */,
+				537D15BC1F36F9AB004592BD /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			path = Tencent;
 			sourceTree = "<group>";
 		};
 		5381C51C1F348733009B6233 /* image */ = {
@@ -1815,6 +1835,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				537D15BE1F36F9AB004592BD /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				534C17C01F29F89C0067C3E4 /* w_star_red@3x.png in Resources */,
 				11093B701F0B361C00AFCB20 /* LaunchScreen.storyboard in Resources */,
 				11093C891F0B775F00AFCB20 /* FoodAndHotelCell.xib in Resources */,
@@ -1986,6 +2007,7 @@
 				11093BF01F0B3A8C00AFCB20 /* MineTVC.m in Sources */,
 				11093C881F0B775F00AFCB20 /* FoodAndHotelCell.m in Sources */,
 				1146250D1F0C96790005D61C /* HomeFoodModel.m in Sources */,
+				537D15C11F3758BA004592BD /* TackettoVC.m in Sources */,
 				534C17C71F2AE0860067C3E4 /* attractionModel.m in Sources */,
 				117105831F14EF3A008A2F25 /* Home12Cell.m in Sources */,
 				113F37341F2B57D500F56628 /* FoodInfoVC.m in Sources */,
@@ -2231,6 +2253,7 @@
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/蒙爱你/Tool/Tencent",
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "蒙爱你/Info.plist";
@@ -2266,6 +2289,7 @@
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/蒙爱你/Tool/Tencent",
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "蒙爱你/Info.plist";

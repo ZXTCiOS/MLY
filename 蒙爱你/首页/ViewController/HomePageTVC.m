@@ -24,13 +24,19 @@
 // 分享
 
 #import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/TencentMessageObject.h>
+#import <TencentOpenAPI/TencentApiInterface.h>
+#import <TencentOpenAPI/QQApiInterfaceObject.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+
 
 #import "ActionSheetView.h"
 #define delayTime 1.5               //  延时请求
 #define distanceToRight  (-50)       //  右滑距离右边的最远刷新距离
 
 
-@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate>
+@interface HomePageTVC ()< UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate,TencentLoginDelegate,TencentSessionDelegate>
 
 @property (nonatomic, strong) HYBLoopScrollView *loopView;
 
@@ -41,7 +47,7 @@
 @property (nonatomic, strong) UIView *naviBar;
 
 
-
+@property (nonatomic,strong) TencentOAuth *tencentOAuth;
 
 @end
 
@@ -210,6 +216,23 @@
             req.scene               = WXSceneSession;
             [WXApi sendReq:req];
         }
+        if (btnTag==2) {
+            if (![TencentOAuth iphoneQQInstalled]) {
+                NSLog(@"请移步App Store去下载腾讯QQ客户端");
+            }else {
+                // 这里要先授权，QQ的文档里面貌似没写
+                self.tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1106124714"
+                                                            andDelegate:self];
+                QQApiTextObject *newsObj = [QQApiTextObject objectWithText:@"QQ分享到好友列表的测试！"];
+                SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
+                // PS:好多网友反馈问在这里提示API接口错误是什么原因，检查是否设置白名单，作者就是忘了设置白名单一直提示API接口错误。
+                NSLog(@"haha - %d",[QQApiInterface sendReq:req]);
+            }
+            
+
+            
+        }
+        
     }];
     [[UIApplication sharedApplication].keyWindow addSubview:actionsheet];
     

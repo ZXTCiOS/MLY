@@ -14,13 +14,18 @@
 
 // 三方登录, 分享
 #import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/TencentMessageObject.h>
+#import <TencentOpenAPI/TencentApiInterface.h>
+#import <TencentOpenAPI/QQApiInterfaceObject.h>
+#import <TencentOpenAPI/QQApiInterface.h>
 
 
 //runime防止崩溃系统
 #import "AvoidCrash.h"
 #import "NSArray+AvoidCrash.h"
 
-@interface AppDelegate ()<WXApiDelegate>
+@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
 
 @end
 
@@ -37,6 +42,8 @@
     [WXApi registerApp:APPID];
     
 
+    
+    
     [self configInfo];
 //    //启动防止崩溃功能
 //    [AvoidCrash becomeEffective];
@@ -54,49 +61,94 @@
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
-    return [WXApi handleOpenURL:url delegate:self];
-}
-
-#pragma mark WXApiDelegate 微信分享的相关回调
-
-// onReq是微信终端向第三方程序发起请求，要求第三方程序响应。第三方程序响应完后必须调用sendRsp返回。在调用sendRsp返回时，会切回到微信终端程序界面
-- (void)onReq:(BaseReq *)req
-{
-    NSLog(@"onReq是微信终端向第三方程序发起请求，要求第三方程序响应。第三方程序响应完后必须调用sendRsp返回。在调用sendRsp返回时，会切回到微信终端程序界面");
-}
-
-// 如果第三方程序向微信发送了sendReq的请求，那么onResp会被回调。sendReq请求调用后，会切到微信终端程序界面
-- (void)onResp:(BaseResp *)resp
-{
-    NSLog(@"回调处理");
     
-    // 处理 分享请求 回调
-    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
-        switch (resp.errCode) {
-            case WXSuccess:
-            {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                message:@"分享成功!"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil, nil];
+    if ([url.scheme isEqualToString:@"wx6b7c06a04f9f1f04"]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"tencent%@",@"1106124714"]]) {
+        return [QQApiInterface handleOpenURL:url delegate:self];
+    }else {
+        return YES;
+    }
+    
+
+    
+   // return [WXApi handleOpenURL:url delegate:self];
+}
+#pragma mark -- QQApiInterfaceDelegate
+// 处理来自QQ的请求，调用sendResp
+- (void)onReq:(QQBaseReq *)req {
+    
+}
+
+// 处理来自QQ的响应，调用sendReq
+- (void)onResp:(QQBaseReq *)resp {
+    switch (resp.type)
+    {
+        case ESENDMESSAGETOQQRESPTYPE:
+        {
+            SendMessageToQQResp* sendResp = (SendMessageToQQResp*)resp;
+            if ([sendResp.result isEqualToString:@"0"]) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"成功" message:@"QQ分享成功" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }
-                break;
-                
-            default:
-            {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                message:@"分享失败!"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil, nil];
+            else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失败" message:@"QQ分享失败" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }
-                break;
+            break;
+        }
+        default:
+        {
+            break;
         }
     }
 }
+// 处理QQ在线状态的回调
+- (void)isOnlineResponse:(NSDictionary *)response {
+    
+}
+
+
+#pragma mark WXApiDelegate 微信分享的相关回调
+
+//// onReq是微信终端向第三方程序发起请求，要求第三方程序响应。第三方程序响应完后必须调用sendRsp返回。在调用sendRsp返回时，会切回到微信终端程序界面
+//- (void)onReq:(BaseReq *)req
+//{
+//    NSLog(@"onReq是微信终端向第三方程序发起请求，要求第三方程序响应。第三方程序响应完后必须调用sendRsp返回。在调用sendRsp返回时，会切回到微信终端程序界面");
+//}
+//
+//// 如果第三方程序向微信发送了sendReq的请求，那么onResp会被回调。sendReq请求调用后，会切到微信终端程序界面
+//- (void)onResp:(BaseResp *)resp
+//{
+//    NSLog(@"回调处理");
+//    
+//    // 处理 分享请求 回调
+//    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
+//        switch (resp.errCode) {
+//            case WXSuccess:
+//            {
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                                message:@"分享成功!"
+//                                                               delegate:self
+//                                                      cancelButtonTitle:@"OK"
+//                                                      otherButtonTitles:nil, nil];
+//                [alert show];
+//            }
+//                break;
+//                
+//            default:
+//            {
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                                message:@"分享失败!"
+//                                                               delegate:self
+//                                                      cancelButtonTitle:@"OK"
+//                                                      otherButtonTitles:nil, nil];
+//                [alert show];
+//            }
+//                break;
+//        }
+//    }
+//}
 
 
 

@@ -70,7 +70,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [cell.imgV sd_setImageWithURL:model.area_pic.xd_URL placeholderImage:[UIImage imageNamed:@"7"]];
     cell.name.text = model.area_name;
     
-    
     return cell;
 }
 

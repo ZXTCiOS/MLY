@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol mycellVdelegate <NSObject>
+-(void)myTabVClick1:(UICollectionViewCell *)cell;//收藏
 
+@end
 @interface TravelAdviseCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *shoucangImg;
@@ -27,6 +30,7 @@
 
 
 
+@property(assign,nonatomic)id<mycellVdelegate>delegate;
 
 
 @end
