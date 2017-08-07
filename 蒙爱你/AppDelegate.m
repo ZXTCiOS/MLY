@@ -37,7 +37,7 @@
     
     
     // 从微信开放平台获取
-    NSString *APPID = @"wx6b7c06a04f9f1f04";
+    NSString *APPID = WEIXIAPPID;
     // 向微信注册
     [WXApi registerApp:APPID];
     
@@ -56,100 +56,94 @@
 
 
 
--(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    return [WXApi handleOpenURL:url delegate:self];
-}
 
--(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     
-    if ([url.scheme isEqualToString:@"wx6b7c06a04f9f1f04"]) {
+    if ([url.scheme isEqualToString:WEIXIAPPID]) {
         return [WXApi handleOpenURL:url delegate:self];
-    }else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"tencent%@",@"1106124714"]]) {
-        return [QQApiInterface handleOpenURL:url delegate:self];
+    }else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"tencent%@",QQShareAPPID]]) {
+        return [TencentOAuth HandleOpenURL:url];
     }else {
         return YES;
     }
-    
-
-    
-   // return [WXApi handleOpenURL:url delegate:self];
-}
-#pragma mark -- QQApiInterfaceDelegate
-// 处理来自QQ的请求，调用sendResp
-- (void)onReq:(QQBaseReq *)req {
-    
 }
 
-// 处理来自QQ的响应，调用sendReq
-- (void)onResp:(QQBaseReq *)resp {
-    switch (resp.type)
-    {
-        case ESENDMESSAGETOQQRESPTYPE:
-        {
-            SendMessageToQQResp* sendResp = (SendMessageToQQResp*)resp;
-            if ([sendResp.result isEqualToString:@"0"]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"成功" message:@"QQ分享成功" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            }
-            else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失败" message:@"QQ分享失败" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            }
-            break;
-        }
-        default:
-        {
-            break;
-        }
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    if ([url.scheme isEqualToString:WEIXIAPPID]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"tencent%@",QQShareAPPID]]) {
+       return  [QQApiInterface handleOpenURL:url delegate:self];
+    }else {
+        return YES;
     }
+    return YES;
 }
-// 处理QQ在线状态的回调
-- (void)isOnlineResponse:(NSDictionary *)response {
+
+-(void)onResp:(id)resp
+{
+    if ([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        SendMessageToWXResp *WxResp = (SendMessageToWXResp *)resp;
+        
+        NSString *str ;//= [NSString stringWithFormat:@"%d",resp.errCode];
+        if(WxResp.errCode==0)
+        {
+            str=@"分享成功!";
+        }
+        else{
+            str=@"分享失败!";
+        }
+        
+        //初始化UIAlertController
+        UIAlertController *alertCtl = [UIAlertController alertControllerWithTitle:@"结果反馈" message:str preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        [alertCtl addAction:alertAction];
+        //初始化UIWindows
+        UIWindow *aW = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        aW.rootViewController = [[UIViewController alloc]init];
+        aW.windowLevel = UIWindowLevelAlert + 1;
+        [aW makeKeyAndVisible];
+        [aW.rootViewController presentViewController:alertCtl animated:YES completion:nil];
+        
+        
+    }
+    if ([resp isKindOfClass:[SendMessageToQQResp class]]) {
+        
+        SendMessageToQQResp * QQResp = (SendMessageToQQResp *)resp;
+        if (QQResp.type==ESENDMESSAGETOQQRESPTYPE&&[QQResp.result integerValue]==0)
+        {
+
+            
+            //初始化UIAlertController
+            UIAlertController *alertCtl = [UIAlertController alertControllerWithTitle:@"成功" message:@"QQ分享成功" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+            [alertCtl addAction:alertAction];
+            //初始化UIWindows
+            UIWindow *aW = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            aW.rootViewController = [[UIViewController alloc]init];
+            aW.windowLevel = UIWindowLevelAlert + 1;
+            [aW makeKeyAndVisible];
+            [aW.rootViewController presentViewController:alertCtl animated:YES completion:nil];
+
+        }
+        else
+        {
+            //初始化UIAlertController
+            UIAlertController *alertCtl = [UIAlertController alertControllerWithTitle:@"失败" message:@"QQ分享失败" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+            [alertCtl addAction:alertAction];
+            //初始化UIWindows
+            UIWindow *aW = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            aW.rootViewController = [[UIViewController alloc]init];
+            aW.windowLevel = UIWindowLevelAlert + 1;
+            [aW makeKeyAndVisible];
+            [aW.rootViewController presentViewController:alertCtl animated:YES completion:nil];
+
+        }
+        
+    }
     
 }
-
-
-#pragma mark WXApiDelegate 微信分享的相关回调
-
-//// onReq是微信终端向第三方程序发起请求，要求第三方程序响应。第三方程序响应完后必须调用sendRsp返回。在调用sendRsp返回时，会切回到微信终端程序界面
-//- (void)onReq:(BaseReq *)req
-//{
-//    NSLog(@"onReq是微信终端向第三方程序发起请求，要求第三方程序响应。第三方程序响应完后必须调用sendRsp返回。在调用sendRsp返回时，会切回到微信终端程序界面");
-//}
-//
-//// 如果第三方程序向微信发送了sendReq的请求，那么onResp会被回调。sendReq请求调用后，会切到微信终端程序界面
-//- (void)onResp:(BaseResp *)resp
-//{
-//    NSLog(@"回调处理");
-//    
-//    // 处理 分享请求 回调
-//    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
-//        switch (resp.errCode) {
-//            case WXSuccess:
-//            {
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                                message:@"分享成功!"
-//                                                               delegate:self
-//                                                      cancelButtonTitle:@"OK"
-//                                                      otherButtonTitles:nil, nil];
-//                [alert show];
-//            }
-//                break;
-//                
-//            default:
-//            {
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                                message:@"分享失败!"
-//                                                               delegate:self
-//                                                      cancelButtonTitle:@"OK"
-//                                                      otherButtonTitles:nil, nil];
-//                [alert show];
-//            }
-//                break;
-//        }
-//    }
-//}
-
 
 
 - (void)configInfo{
@@ -196,6 +190,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 - (void)dealwithCrashMessage:(NSNotification *)note {
     //不论在哪个线程中导致的crash，这里都是在主线程
     

@@ -198,11 +198,29 @@
     [actionsheet setBtnClick:^(NSInteger btnTag) {
         NSLog(@"\n点击第几个====%ld\n当前选中的按钮title====%@",btnTag,titlearr[btnTag]);
         if (btnTag==0) {
+//            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+//            req.text                = @"简单文本分享测试";
+//            req.bText               = YES;
+//            req.scene               = WXSceneTimeline;
+//            
+//            [WXApi sendReq:req];
+            
             SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-            req.text                = @"简单文本分享测试";
-            req.bText               = YES;
-            req.scene               = WXSceneTimeline;
+            WXMediaMessage *message = [WXMediaMessage message];
+            message.title = @"Hi - 这里是标题";
+            message.description = @"不给糖就捣蛋,还不快去下载加好评!";
+            [message setThumbImage:[UIImage imageNamed:@"这里是缩略图"]];
+            req.message = message;
+            WXAppExtendObject *ext = [WXAppExtendObject object];
+            ext.url = @"https://itunes.apple.com/us/app/hi-tian-qi/id1146330042?mt=8";
+            ext.extInfo = @"Hi 天气";
+            message.mediaObject = ext;
+            //默认是Session分享给朋友,Timeline是朋友圈,Favorite是收藏
+            req.scene = WXSceneTimeline;
+            
             [WXApi sendReq:req];
+            
+
             // 目标场景
             // 发送到聊天界面  WXSceneSession
             // 发送到朋友圈    WXSceneTimeline
@@ -210,11 +228,27 @@
             
         }
         if (btnTag==1) {
+//            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+//            req.text                = @"简单文本分享测试";
+//            req.bText               = YES;
+//            req.scene               = WXSceneSession;
+//            [WXApi sendReq:req];
+            
             SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-            req.text                = @"简单文本分享测试";
-            req.bText               = YES;
-            req.scene               = WXSceneSession;
+            WXMediaMessage *message = [WXMediaMessage message];
+            message.title = @"Hi - 这里是标题";
+            message.description = @"不给糖就捣蛋,还不快去下载加好评!";
+            [message setThumbImage:[UIImage imageNamed:@"这里是缩略图"]];
+            req.message = message;
+            WXAppExtendObject *ext = [WXAppExtendObject object];
+            ext.url = @"https://itunes.apple.com/us/app/hi-tian-qi/id1146330042?mt=8";
+            ext.extInfo = @"Hi 天气";
+            message.mediaObject = ext;
+            //默认是Session分享给朋友,Timeline是朋友圈,Favorite是收藏
+            req.scene = WXSceneSession;
+            
             [WXApi sendReq:req];
+            
         }
         if (btnTag==2) {
             if (![TencentOAuth iphoneQQInstalled]) {

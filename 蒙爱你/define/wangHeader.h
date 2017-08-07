@@ -75,4 +75,8 @@
 
 //网站配置
 #define get_config   @""baseURL"/MLY/api.php/Index/config?id=%@"
+
+#define QQShareAPPID    @"1106124714"
+#define WEIXIAPPID      @"wx6b7c06a04f9f1f04"
+#define WEIXINAPPSOCKET @"cae1f69018deb12f1a433a6e5487e44a"
 #endif /* wangHeader_h */

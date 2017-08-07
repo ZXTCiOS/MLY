@@ -54,8 +54,7 @@
 }
 
 - (IBAction)WeChatLogin:(id)sender {
-    
-    
+    NSLog(@"WeChatLogin");
   
 }
 
@@ -67,10 +66,6 @@
 
 
 - (IBAction)loginBtnClicked:(UIButton *)sender {
-    
-//    TabBarController *tab = [[TabBarController alloc] init];
-//    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    delegate.window.rootViewController = tab;
     
     if (self.teleNum.text.length != 11) {
         UIAlertController *a = [UIAlertController alertControllerWithTitle:@"错误" message:@"请输入正确的手机号" preferredStyle: UIAlertControllerStyleAlert];
