@@ -12,11 +12,15 @@
 #import "strisNull.h"
 #import "submitorderModel.h"
 #import "submitorderVC.h"
+#import "HZCalendarViewController.h"
+#import "ScenicModel.h"
+
+
 
 @interface LiJiYuDingTVC ()<MSSCalendarViewControllerDelegate>
 
 
-@property (nonatomic, strong) MinsuBedModel *model;
+@property (nonatomic, strong) id model;
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 
@@ -33,7 +37,7 @@
 
 @property (nonatomic,assign)NSInteger endDate;
 
-
+@property (nonatomic, strong) HZCalendarViewController *hzPicker;
 @property (nonatomic, strong) MSSCalendarViewController *datePicker;
 @property (nonatomic,strong) NSString *typestr;
 @end
@@ -73,24 +77,27 @@
 - (IBAction)yudingClicked:(id)sender {
     
     // 预定
-    
+    //1 bed, 2 eat, 3 ticket        typestr
+    //1商品 2门票 3住宿 4餐饮 5 美食    goods_typestr
     
     submitorderVC *subvc = [[submitorderVC alloc] init];
-
     
     if ([self.typestr isEqualToString:@"1"]) {
         subvc.goods_typestr = @"3";
-    }
-    if ([self.typestr isEqualToString:@"2"]) {
+        
+    } else if ([self.typestr isEqualToString:@"2"]) {
         subvc.goods_typestr = @"4";
+    } else if ([self.typestr isEqualToString:@"3"]){
+        [self submitTicketWithTicketModel:self.model];
+        return;
     }
-
-    NSString *bedeat_pic = [NSString stringWithFormat:@"%@",self.model.bedeat_pic];
-    NSString *bedeat_id = [NSString stringWithFormat:@"%ld",(long)self.model.bedeat_id];
-    NSString *bedeat_name = [NSString stringWithFormat:@"%@",self.model.bedeat_name];
-    NSString *bedeat_intro = [NSString stringWithFormat:@"%@",self.model.bedeat_intro];
-    NSString *bedeat_des = [NSString stringWithFormat:@"%@",self.model.bedeat_des];
-    NSString *bedeat_price = [NSString stringWithFormat:@"%ld",(long)self.model.bedeat_price];
+    
+    NSString *bedeat_pic = [NSString stringWithFormat:@"%@",((MinsuBedModel *)self.model).bedeat_pic];
+    NSString *bedeat_id = [NSString stringWithFormat:@"%ld",(long)((MinsuBedModel *)self.model).bedeat_id];
+    NSString *bedeat_name = [NSString stringWithFormat:@"%@",((MinsuBedModel *)self.model).bedeat_name];
+    NSString *bedeat_intro = [NSString stringWithFormat:@"%@",((MinsuBedModel *)self.model).bedeat_intro];
+    NSString *bedeat_des = [NSString stringWithFormat:@"%@",((MinsuBedModel *)self.model).bedeat_des];
+    NSString *bedeat_price = [NSString stringWithFormat:@"%ld",(long)((MinsuBedModel *)self.model).bedeat_price];
 
     NSString *namestr = @"";
     NSString *telephonestr  = @"";
@@ -143,12 +150,74 @@
     [self.navigationController pushViewController:subvc animated:YES];
 }
 
+- (void)submitTicketWithTicketModel:(tickets *) ticket{
+    submitorderVC *subvc = [[submitorderVC alloc] init];
+    subvc.goods_typestr = @"2";
+    
+    NSString *bedeat_id = [NSString stringWithFormat:@"%ld",(long)ticket.ticket_id];
+    NSString *bedeat_name = [NSString stringWithFormat:@"%@",ticket.ticket_name];
+    NSString *bedeat_intro = [NSString stringWithFormat:@"%@",ticket.ticket_intro];
+    NSString *bedeat_price = [NSString stringWithFormat:@"%ld",(long)ticket.ticket_price];
+    
+    NSString *namestr = @"";
+    NSString *telephonestr  = @"";
+    NSString *datastr = @"";
+    NSString *contentstr = @"";
+    if ([strisNull isNullToString:self.name.text]) {
+        namestr = @"0";
+    }
+    else
+    {
+        namestr = self.name.text;
+    }
+    if ([strisNull isNullToString:self.tele.text]) {
+        telephonestr = @"0";
+    }
+    else
+    {
+        telephonestr = self.tele.text;
+    }
+    if ([strisNull isNullToString:self.count.text]) {
+        contentstr = @"0";
+    }
+    else
+    {
+        contentstr = self.count.text;
+    }
+    if ([strisNull isNullToString:self.date.text]) {
+        datastr = @"0";
+    }
+    else
+    {
+        datastr = self.date.text;
+    }
+    
+    subvc.orderDatasource = [NSMutableArray array];
+    submitorderModel *smodel = [[submitorderModel alloc] init];
+    //smodel.orderimg = bedeat_pic;
+    smodel.ordername = bedeat_name;
+    smodel.orderinter = bedeat_intro;
+    //smodel.ordercontent = bedeat_des;
+    smodel.goods_id = bedeat_id;
+    smodel.orderprice = bedeat_price;
+    smodel.ordernumber = contentstr;
+    [subvc.orderDatasource addObject:smodel];
+    subvc.yudingtime = datastr;
+    subvc.yudingname = namestr;
+    subvc.yudingphone = telephonestr;
+    [self.navigationController pushViewController:subvc animated:YES];
+}
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 2) {
-        
-        [self.navigationController presentViewController:self.datePicker animated:YES completion:nil];
+        if ([self.typestr isEqualToString:@"3"]) {
+            [self.navigationController presentViewController:self.hzPicker animated:YES completion:nil];
+        } else {
+            [self.navigationController presentViewController:self.datePicker animated:YES completion:nil];
+        }
     }
 }
 
@@ -178,6 +247,15 @@
     return _datePicker;
 }
 
+- (HZCalendarViewController *)hzPicker{
+    if (!_hzPicker) {
+        _hzPicker = [HZCalendarViewController getVcWithDayNumber:365 FromDateforString:nil Selectdate:nil selectBlock:^(HZCalenderDayModel *goDay, HZCalenderDayModel *backDay) {
+            self.date.text = goDay.toString;
+            [_hzPicker dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
+    return _hzPicker;
+}
 
 - (void)calendarViewConfirmClickWithStartDate:(NSInteger)startDate endDate:(NSInteger)endDate
 {
@@ -191,16 +269,18 @@
     
 }
 
-- (instancetype)initWithBedEat:(BedOreEat)typt minsuBedModel:(MinsuBedModel *)bedeatModel{
+- (instancetype)initWithBedEat:(BedOreEat)typt minsuBedModel:(id)bedeatModel{
     UIStoryboard *stb = [UIStoryboard storyboardWithName:@"BedDetailTVC" bundle:nil];
     self = [stb instantiateViewControllerWithIdentifier:@"lijiyuding"];
     if (self ) {
         self.model = bedeatModel;
         if (typt==Bed) {
             self.typestr = @"1";
-        }else
+        }else if(typt == Eat)
         {
             self.typestr = @"2";
+        }else {
+            self.typestr = @"3";
         }
     }
     return self;

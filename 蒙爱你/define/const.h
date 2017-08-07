@@ -42,6 +42,12 @@ loginVC *vc = [stb instantiateInitialViewController];\
 }\
 NSString *user_id = [userDefault valueForKey:user_key_user_id];\
 
+//设置主题颜色1
+#define COLOR_THEME1 [UIColor redColor];
+
+//设置主题颜色
+#define COLOR_THEME ([UIColor colorWithRed:25/256.0  green:168/256.0 blue:0/256.0 alpha:1])
+
 
 
 #define PresentLoginVC \

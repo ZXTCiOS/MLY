@@ -201,7 +201,9 @@
     
     [cell.buyBtn bk_addEventHandler:^(id sender) {
 #warning 添加 支付接口
-        
+        LiJiYuDingTVC *vc = [[LiJiYuDingTVC alloc] initWithBedEat:Tickets minsuBedModel:self.viewmodel.model.jingdian_ticket[indexPath.row]];
+        self.navigationController.delegate = nil;
+        [self.navigationController pushViewController:vc animated:YES];
         
     } forControlEvents: UIControlEventTouchUpInside];
     return cell;

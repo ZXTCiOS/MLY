@@ -293,6 +293,7 @@
     self.loopView = [HYBLoopScrollView loopScrollViewWithFrame:CGRectMake(0, 0, kScreenW, kScreenW * 0.5) imageUrls:@[] timeInterval:4 didSelect:^(NSInteger atIndex) {
         WKWedViewController *wkWebV = [[WKWedViewController alloc] initWithTitle:nil Url:weakSelf.viewModel.bannerList[atIndex].href.xd_URL];
         wkWebV.hidesBottomBarWhenPushed = YES;
+        weakSelf.navigationController.delegate = nil;
         [weakSelf.navigationController pushViewController:wkWebV animated:YES];
     } didScroll:nil];
     return self.loopView;
