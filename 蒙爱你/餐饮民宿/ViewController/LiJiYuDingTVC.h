@@ -22,6 +22,6 @@ typedef NS_ENUM(NSUInteger, BedOreEat) {
 
 
 
-- (instancetype)initWithBedEat:(BedOreEat) typt minsuBedModel:(MinsuBedModel *) bedeatModel;
+- (instancetype)initWithBedEat:(BedOreEat) typt minsuBedModel:(id) bedeatModel;
 
 @end

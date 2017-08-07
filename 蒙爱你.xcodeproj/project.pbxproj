@@ -157,6 +157,16 @@
 		1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */; };
 		1173B7001F26109000AB4287 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FF1F26109000AB4287 /* SearchViewController.m */; };
 		117823361F275FBF008B4973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117823351F275FBF008B4973 /* Assets.xcassets */; };
+		18F35F151F380CDA00B8152D /* 12306.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F35F031F380CDA00B8152D /* 12306.png */; };
+		18F35F161F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */; };
+		18F35F171F380CDA00B8152D /* CalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F071F380CDA00B8152D /* CalendarMonthHeaderView.m */; };
+		18F35F181F380CDA00B8152D /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F35F081F380CDA00B8152D /* close@2x.png */; };
+		18F35F191F380CDA00B8152D /* HZCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F0A1F380CDA00B8152D /* HZCalendarCell.m */; };
+		18F35F1A1F380CDA00B8152D /* HZCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F0C1F380CDA00B8152D /* HZCalendarLogic.m */; };
+		18F35F1B1F380CDA00B8152D /* HZCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F0E1F380CDA00B8152D /* HZCalendarViewController.m */; };
+		18F35F1C1F380CDA00B8152D /* HZCalenderDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F101F380CDA00B8152D /* HZCalenderDayModel.m */; };
+		18F35F1D1F380CDA00B8152D /* HZCalenderGobackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F121F380CDA00B8152D /* HZCalenderGobackView.m */; };
+		18F35F1E1F380CDA00B8152D /* NSDate+WQCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F141F380CDA00B8152D /* NSDate+WQCalendarLogic.m */; };
 		531FF3321F317B7800A6A77A /* companyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 531FF3311F317B7800A6A77A /* companyVC.m */; };
 		531FF3351F317B9500A6A77A /* platformVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 531FF3341F317B9500A6A77A /* platformVC.m */; };
 		534C17531F2839060067C3E4 /* myOrderVC0.m in Sources */ = {isa = PBXBuildFile; fileRef = 534C17511F2839060067C3E4 /* myOrderVC0.m */; };
@@ -517,6 +527,24 @@
 		1173B6FE1F26109000AB4287 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		1173B6FF1F26109000AB4287 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		117823351F275FBF008B4973 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "蒙爱你/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		18F35F031F380CDA00B8152D /* 12306.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12306.png; sourceTree = "<group>"; };
+		18F35F041F380CDA00B8152D /* CalendarMonthCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarMonthCollectionViewLayout.h; sourceTree = "<group>"; };
+		18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthCollectionViewLayout.m; sourceTree = "<group>"; };
+		18F35F061F380CDA00B8152D /* CalendarMonthHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarMonthHeaderView.h; sourceTree = "<group>"; };
+		18F35F071F380CDA00B8152D /* CalendarMonthHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthHeaderView.m; sourceTree = "<group>"; };
+		18F35F081F380CDA00B8152D /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		18F35F091F380CDA00B8152D /* HZCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZCalendarCell.h; sourceTree = "<group>"; };
+		18F35F0A1F380CDA00B8152D /* HZCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZCalendarCell.m; sourceTree = "<group>"; };
+		18F35F0B1F380CDA00B8152D /* HZCalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZCalendarLogic.h; sourceTree = "<group>"; };
+		18F35F0C1F380CDA00B8152D /* HZCalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZCalendarLogic.m; sourceTree = "<group>"; };
+		18F35F0D1F380CDA00B8152D /* HZCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZCalendarViewController.h; sourceTree = "<group>"; };
+		18F35F0E1F380CDA00B8152D /* HZCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZCalendarViewController.m; sourceTree = "<group>"; };
+		18F35F0F1F380CDA00B8152D /* HZCalenderDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZCalenderDayModel.h; sourceTree = "<group>"; };
+		18F35F101F380CDA00B8152D /* HZCalenderDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZCalenderDayModel.m; sourceTree = "<group>"; };
+		18F35F111F380CDA00B8152D /* HZCalenderGobackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZCalenderGobackView.h; sourceTree = "<group>"; };
+		18F35F121F380CDA00B8152D /* HZCalenderGobackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZCalenderGobackView.m; sourceTree = "<group>"; };
+		18F35F131F380CDA00B8152D /* NSDate+WQCalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WQCalendarLogic.h"; sourceTree = "<group>"; };
+		18F35F141F380CDA00B8152D /* NSDate+WQCalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WQCalendarLogic.m"; sourceTree = "<group>"; };
 		429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.release.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.release.xcconfig"; sourceTree = "<group>"; };
 		4773F966D38B2ACD4E16F5EC /* libPods-蒙爱你.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-蒙爱你.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-蒙爱你.debug.xcconfig"; path = "Pods/Target Support Files/Pods-蒙爱你/Pods-蒙爱你.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1021,6 +1049,7 @@
 		11093BE41F0B3A8C00AFCB20 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				18F35F021F380CDA00B8152D /* HZCalendarKit */,
 				1143DC631F206090005E73FD /* MSSCalendar */,
 				11093C081F0B3DC100AFCB20 /* CorePhotoPickerVCManager */,
 			);
@@ -1539,6 +1568,31 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		18F35F021F380CDA00B8152D /* HZCalendarKit */ = {
+			isa = PBXGroup;
+			children = (
+				18F35F031F380CDA00B8152D /* 12306.png */,
+				18F35F041F380CDA00B8152D /* CalendarMonthCollectionViewLayout.h */,
+				18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */,
+				18F35F061F380CDA00B8152D /* CalendarMonthHeaderView.h */,
+				18F35F071F380CDA00B8152D /* CalendarMonthHeaderView.m */,
+				18F35F081F380CDA00B8152D /* close@2x.png */,
+				18F35F091F380CDA00B8152D /* HZCalendarCell.h */,
+				18F35F0A1F380CDA00B8152D /* HZCalendarCell.m */,
+				18F35F0B1F380CDA00B8152D /* HZCalendarLogic.h */,
+				18F35F0C1F380CDA00B8152D /* HZCalendarLogic.m */,
+				18F35F0D1F380CDA00B8152D /* HZCalendarViewController.h */,
+				18F35F0E1F380CDA00B8152D /* HZCalendarViewController.m */,
+				18F35F0F1F380CDA00B8152D /* HZCalenderDayModel.h */,
+				18F35F101F380CDA00B8152D /* HZCalenderDayModel.m */,
+				18F35F111F380CDA00B8152D /* HZCalenderGobackView.h */,
+				18F35F121F380CDA00B8152D /* HZCalenderGobackView.m */,
+				18F35F131F380CDA00B8152D /* NSDate+WQCalendarLogic.h */,
+				18F35F141F380CDA00B8152D /* NSDate+WQCalendarLogic.m */,
+			);
+			path = HZCalendarKit;
+			sourceTree = "<group>";
+		};
 		534C177F1F289BC30067C3E4 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1875,6 +1929,7 @@
 				534C17BE1F29F89C0067C3E4 /* w_star_red.png in Resources */,
 				534C17C31F29F89C0067C3E4 /* w_star_white@3x.png in Resources */,
 				5381C5361F348733009B6233 /* tcentkongjian@2x.png in Resources */,
+				18F35F151F380CDA00B8152D /* 12306.png in Resources */,
 				11353EA21F16173500B34D7C /* scenic.storyboard in Resources */,
 				115502261F189A6E00977217 /* ChooseView.xib in Resources */,
 				5381C53D1F348733009B6233 /* wechat@3x.png in Resources */,
@@ -1885,6 +1940,7 @@
 				113F37351F2B57D500F56628 /* FoodInfoVC.xib in Resources */,
 				11093B6B1F0B361C00AFCB20 /* Main.storyboard in Resources */,
 				5381C5351F348733009B6233 /* sinaweibo@3x.png in Resources */,
+				18F35F181F380CDA00B8152D /* close@2x.png in Resources */,
 				5381C53B1F348733009B6233 /* tcentWeibo@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1951,6 +2007,7 @@
 				11093C721F0B58D900AFCB20 /* HomePageTVC.m in Sources */,
 				117105561F14B3E8008A2F25 /* AboutUsVC.m in Sources */,
 				1143DC751F206090005E73FD /* MSSCalendarCollectionReusableView.m in Sources */,
+				18F35F1D1F380CDA00B8152D /* HZCalenderGobackView.m in Sources */,
 				114416451F134AB70079B1E2 /* ShopGoodsModel.m in Sources */,
 				1171054F1F14B380008A2F25 /* discountTVC.m in Sources */,
 				5381C5421F348733009B6233 /* VerButton.m in Sources */,
@@ -1969,8 +2026,10 @@
 				113CBB091F1F336600C6A766 /* LiJiYuDingTVC.m in Sources */,
 				11093C001F0B3A8C00AFCB20 /* UIView+HUD.m in Sources */,
 				1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */,
+				18F35F191F380CDA00B8152D /* HZCalendarCell.m in Sources */,
 				534C17B41F29F4620067C3E4 /* hotelCell.m in Sources */,
 				114BCBE11F173DFD00705C9B /* UIImage+alphaImage.m in Sources */,
+				18F35F1E1F380CDA00B8152D /* NSDate+WQCalendarLogic.m in Sources */,
 				1143DC771F206090005E73FD /* MSSCalendarHeaderModel.m in Sources */,
 				53E9BD281F2C673B000BFA60 /* submitorderCell1.m in Sources */,
 				11093C021F0B3A8C00AFCB20 /* TabBarController.m in Sources */,
@@ -1988,6 +2047,7 @@
 				111D18E71F2F3940004F0CE2 /* PingJiaModel.m in Sources */,
 				534C17631F28398B0067C3E4 /* myOrderVC5.m in Sources */,
 				11093C201F0B3DC100AFCB20 /* CorePhoto.m in Sources */,
+				18F35F171F380CDA00B8152D /* CalendarMonthHeaderView.m in Sources */,
 				1146E5D11F0F616B0066B37F /* MyStorageVC.m in Sources */,
 				53BCDA881F2B4846007977D9 /* shoucanghomeModel.m in Sources */,
 				531FF3351F317B9500A6A77A /* platformVC.m in Sources */,
@@ -2010,6 +2070,7 @@
 				537D15C11F3758BA004592BD /* TackettoVC.m in Sources */,
 				534C17C71F2AE0860067C3E4 /* attractionModel.m in Sources */,
 				117105831F14EF3A008A2F25 /* Home12Cell.m in Sources */,
+				18F35F1B1F380CDA00B8152D /* HZCalendarViewController.m in Sources */,
 				113F37341F2B57D500F56628 /* FoodInfoVC.m in Sources */,
 				11405FC91F0E0D3C00B5CBAE /* ShunFengCheModel.m in Sources */,
 				117105521F14B3A5008A2F25 /* MyListVC.m in Sources */,
@@ -2064,6 +2125,7 @@
 				534C17831F289BFC0067C3E4 /* myorderCell.m in Sources */,
 				53E9BD3F1F2EC7AD000BFA60 /* confirmorderVC.m in Sources */,
 				11353E9F1F16040700B34D7C /* ScenicVC.m in Sources */,
+				18F35F1A1F380CDA00B8152D /* HZCalendarLogic.m in Sources */,
 				11353EA51F16243400B34D7C /* ScenicHeaderV.m in Sources */,
 				534C17CA1F2B081B0067C3E4 /* travelModel.m in Sources */,
 				11093C751F0B591A00AFCB20 /* HomeTableCell.m in Sources */,
@@ -2112,6 +2174,7 @@
 				116AE5F41F21DEF500CD76F1 /* MinsuDetailModel.m in Sources */,
 				53E9BD631F305F42000BFA60 /* NSString+AvoidCrash.m in Sources */,
 				11093C251F0B3DC100AFCB20 /* UzysAssetsPickerController.m in Sources */,
+				18F35F1C1F380CDA00B8152D /* HZCalenderDayModel.m in Sources */,
 				53E9BD6F1F3086E9000BFA60 /* WJGtextView.m in Sources */,
 				534C175D1F2839470067C3E4 /* myOrderVC3.m in Sources */,
 				53E9BD251F2C672B000BFA60 /* submitorderCell0.m in Sources */,
@@ -2120,6 +2183,7 @@
 				534C17AE1F29D6280067C3E4 /* attractionsCell.m in Sources */,
 				113CBB051F1F274D00C6A766 /* DiscountCell.m in Sources */,
 				117105851F14EF3A008A2F25 /* HomeCityCell.m in Sources */,
+				18F35F161F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
