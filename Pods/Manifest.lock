@@ -43,6 +43,7 @@ PODS:
   - SDWebImage/Core (4.0.0)
   - TPKeyboardAvoiding (1.3.1)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - WechatOpenSDK (1.7.8)
   - WMPageController (2.4.0)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - SDWebImage
   - TPKeyboardAvoiding
   - UITableView+FDTemplateLayoutCell
+  - WechatOpenSDK
   - WMPageController
   - YYKit
 
@@ -78,9 +80,10 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
   WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 1846a59a456b44757bc4e6936dfbe42d24a26277
+PODFILE CHECKSUM: a4ca379486ede45eb3e0afa583ceaf9ed925bea8
 
 COCOAPODS: 1.2.1

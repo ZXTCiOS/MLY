@@ -17,6 +17,8 @@
 #import "TicketCell.h"
 //#import "ZXTC_Transition.h"
 
+#import "LiJiYuDingTVC.h"
+#import "TackettoVC.h"
 
 @interface ScenicVC ()<CLLocationManagerDelegate, UINavigationControllerDelegate>
 
@@ -199,6 +201,8 @@
     
     [cell.buyBtn bk_addEventHandler:^(id sender) {
 #warning 添加 支付接口
+        
+        
     } forControlEvents: UIControlEventTouchUpInside];
     return cell;
 }

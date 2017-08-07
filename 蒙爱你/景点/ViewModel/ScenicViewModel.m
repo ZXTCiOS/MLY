@@ -59,8 +59,6 @@
     
 }
 
-
-
 - (void)getDataWithRequestMode:(RequestMode)mode withID:(NSInteger)area_id handller:(void (^)(NSError *))handller{
     
     if (mode == RequestModeRefresh) {

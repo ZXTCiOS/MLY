@@ -11,8 +11,8 @@
 #import "ScenicViewModel.h"
 #import "ScenicVC.h"
 #import "Transition_Scenic.h"   
-
-@interface ScenicTVC ()<UINavigationControllerDelegate>
+#import "MBProgressHUD+XMG.h"
+@interface ScenicTVC ()<UINavigationControllerDelegate,mycellticketVdelegate>
 @property (nonatomic, strong) ScenicViewModel *viewmodel;
 
 @property (nonatomic, assign) NSInteger area_id;
@@ -133,6 +133,14 @@
     cell.detail.text = model.scenic_intro;
     cell.price.text = [NSString stringWithFormat:@"¥%0.2f起", model.min_price];
     cell.isLike = model.is_shoucang;
+    if (model.is_shoucang) {
+        cell.shoucangImg.image = [UIImage imageNamed:@"sc-s"];
+    }
+    else
+    {
+        cell.shoucangImg.image = [UIImage imageNamed:@"sc-ns"];
+    }
+    cell.delegate = self;
     return cell;
 }
 
@@ -152,7 +160,37 @@
 }
 
 
+-(void)myTabVClickticket:(UITableViewCell *)cell
+{
+    NSIndexPath *index = [self.tableView indexPathForCell:cell];
+    ScenicelEmentModel *model = self.viewmodel.datalist[index.row];
+    NSString *userid = [userDefault objectForKey:user_key_user_id];
+    NSString *type = @"1";
+    NSString *isstr = [NSString stringWithFormat:@"%ld",(long)model.scenic_id];
+    NSString *is_shoucang  = @"";
+    if (model.is_shoucang==1) {
+        is_shoucang = @"0";
+    }else
+    {
+        is_shoucang = @"1";
+    }
+    NSString *urlstr = [NSString stringWithFormat:get_recommend,userid,isstr,type,is_shoucang];
+    
+    [DNNetworking getWithURLString:urlstr success:^(id obj) {
+        if ([[obj objectForKey:@"code"]intValue]==200) {
+            [self.tableView.mj_header beginRefreshing];
+            [MBProgressHUD showSuccess:@"操作成功"];
+        }
+        else
+        {
+            NSString *hud = [obj objectForKey:@"message"];
+            [MBProgressHUD showSuccess:hud];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 140;

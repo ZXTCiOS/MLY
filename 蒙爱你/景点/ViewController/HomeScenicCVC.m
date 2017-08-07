@@ -81,6 +81,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [cell.imgV sd_setImageWithURL:self.datalist[indexPath.row].area_pic.xd_URL placeholderImage:[UIImage imageNamed:@"7"]];
     cell.name.text = self.datalist[indexPath.row].area_name;
     cell.desc.text = self.datalist[indexPath.row].area_des;
+
     return cell;
 }
 

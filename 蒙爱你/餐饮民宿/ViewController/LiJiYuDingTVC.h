@@ -13,6 +13,7 @@
 typedef NS_ENUM(NSUInteger, BedOreEat) {
     Bed,
     Eat,
+    Tickets,
 };
 
 

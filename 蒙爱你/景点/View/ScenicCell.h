@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol mycellticketVdelegate <NSObject>
+-(void)myTabVClickticket:(UITableViewCell *)cell;//收藏
+
+@end
+
 @interface ScenicCell : UITableViewCell
 
 
@@ -20,11 +25,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *price;
 
+@property (weak, nonatomic) IBOutlet UIImageView *shoucangImg;
 
 @property (nonatomic, assign) BOOL isLike;
 
 
-
+@property(assign,nonatomic)id<mycellticketVdelegate>delegate;
 
 
 

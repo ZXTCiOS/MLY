@@ -71,17 +71,14 @@
     if(!_addresslab)
     {
         _addresslab = [[UILabel alloc] init];
-       // _addresslab.backgroundColor = [UIColor orangeColor];
         _addresslab.textColor = [UIColor colorWithHexString:@"333333"];
         _addresslab.font = [UIFont systemFontOfSize:12];
-        _addresslab.text = @"送至 ：北京市海淀区五道口";
     }
     return _addresslab;
 }
 
 -(void)setdata:(NSDictionary *)dic
 {
-   // NSString *addid = [dic objectForKey:@"addid"];
     if ([strisNull isNullToString:[dic objectForKey:@"address_adds"]]) {
         
         NSString *addressass = [dic objectForKey:@"addressass"];
@@ -99,11 +96,7 @@
         self.addresslab.text = addressass;
     }
     
-//    NSString *addressass = [dic objectForKey:@"addressass"];
-//    NSString *name = [dic objectForKey:@"name"];
-//    NSString *phone = [dic objectForKey:@"phone"];
-//    self.namelab.text = [NSString stringWithFormat:@"%@%@%@",name,@" ",phone];
-//    self.addresslab.text = addressass;
+
 }
 
 @end
