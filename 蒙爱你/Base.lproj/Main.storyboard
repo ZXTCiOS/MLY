@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="height" constant="32" id="vcX-nZ-M8V"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="WeChatLogin:" destination="e1G-Yh-I76" eventType="valueChanged" id="T3A-gq-kd0"/>
+                                    <action selector="WeChatLogin:" destination="e1G-Yh-I76" eventType="touchUpInside" id="mYj-kp-0OF"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cD7-lu-kgM" customClass="UIControl">
