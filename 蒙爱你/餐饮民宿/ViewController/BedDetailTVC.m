@@ -252,7 +252,7 @@
                   CLLocationCoordinate2D coordina = CLLocationCoordinate2DMake(latitude, longtitude);
                   MKPlacemark *mark = [[MKPlacemark alloc] initWithCoordinate:coordina addressDictionary:nil];
                   MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:mark];
-                  toLocation.name = home.home_name;
+                  toLocation.name = home.home_address;
                   [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
                   
                } forControlEvents:UIControlEventTouchUpInside];

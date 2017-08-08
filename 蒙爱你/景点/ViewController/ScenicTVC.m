@@ -159,6 +159,10 @@
     self.navigationController.delegate = self;
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.delegate = nil;
+}
 
 -(void)myTabVClickticket:(UITableViewCell *)cell
 {

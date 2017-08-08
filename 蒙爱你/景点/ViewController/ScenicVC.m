@@ -166,7 +166,7 @@
                 MKPlacemark *mark = [[MKPlacemark alloc] initWithCoordinate:coordina addressDictionary:nil];
                 MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:mark];
                 toLocation.name = self.viewmodel.model.jingdian_xiangqing.scenic_address;
-                [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+                [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
                 
             } forControlEvents:UIControlEventTouchUpInside];
             
