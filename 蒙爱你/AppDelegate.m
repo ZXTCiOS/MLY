@@ -10,17 +10,7 @@
 #import "TabBarController.h"
 #import <MLTransition.h>
 #import <AFNetworking.h>
-
-
-// 三方登录, 分享
-#import "WXApi.h"
-#import <TencentOpenAPI/TencentOAuth.h>
-#import <TencentOpenAPI/TencentMessageObject.h>
-#import <TencentOpenAPI/TencentApiInterface.h>
-#import <TencentOpenAPI/QQApiInterfaceObject.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-
-
+#import "ZTVendorManager.h"
 //runime防止崩溃系统
 #import "AvoidCrash.h"
 #import "NSArray+AvoidCrash.h"
@@ -34,7 +24,7 @@
 #import <AdSupport/AdSupport.h>
 
 
-@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate, JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 
 @end
 
@@ -43,12 +33,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [ZTVendorManager registerVendorSDK];
     
-    
-    // 从微信开放平台获取
-    NSString *APPID = WEIXIAPPID;
-    // 向微信注册
-    [WXApi registerApp:APPID];
+
     
 
     
@@ -105,93 +92,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 
--(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    
-    if ([url.scheme isEqualToString:WEIXIAPPID]) {
-        return [WXApi handleOpenURL:url delegate:self];
-    }else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"tencent%@",QQShareAPPID]]) {
-        return [TencentOAuth HandleOpenURL:url];
-    }else {
-        return YES;
-    }
-}
-
--(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    if ([url.scheme isEqualToString:WEIXIAPPID]) {
-        return [WXApi handleOpenURL:url delegate:self];
-    }else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"tencent%@",QQShareAPPID]]) {
-       return  [QQApiInterface handleOpenURL:url delegate:self];
-    }else {
-        return YES;
-    }
-    return YES;
-}
-
--(void)onResp:(id)resp
-{
-    if ([resp isKindOfClass:[SendMessageToWXResp class]])
-    {
-        SendMessageToWXResp *WxResp = (SendMessageToWXResp *)resp;
-        
-        NSString *str ;//= [NSString stringWithFormat:@"%d",resp.errCode];
-        if(WxResp.errCode==0)
-        {
-            str=@"分享成功!";
-        }
-        else{
-            str=@"分享失败!";
-        }
-        
-        //初始化UIAlertController
-        UIAlertController *alertCtl = [UIAlertController alertControllerWithTitle:@"结果反馈" message:str preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
-        [alertCtl addAction:alertAction];
-        //初始化UIWindows
-        UIWindow *aW = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        aW.rootViewController = [[UIViewController alloc]init];
-        aW.windowLevel = UIWindowLevelAlert + 1;
-        [aW makeKeyAndVisible];
-        [aW.rootViewController presentViewController:alertCtl animated:YES completion:nil];
-        
-        
-    }
-    if ([resp isKindOfClass:[SendMessageToQQResp class]]) {
-        
-        SendMessageToQQResp * QQResp = (SendMessageToQQResp *)resp;
-        if (QQResp.type==ESENDMESSAGETOQQRESPTYPE&&[QQResp.result integerValue]==0)
-        {
-
-            
-            //初始化UIAlertController
-            UIAlertController *alertCtl = [UIAlertController alertControllerWithTitle:@"成功" message:@"QQ分享成功" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
-            [alertCtl addAction:alertAction];
-            //初始化UIWindows
-            UIWindow *aW = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-            aW.rootViewController = [[UIViewController alloc]init];
-            aW.windowLevel = UIWindowLevelAlert + 1;
-            [aW makeKeyAndVisible];
-            [aW.rootViewController presentViewController:alertCtl animated:YES completion:nil];
-
-        }
-        else
-        {
-            //初始化UIAlertController
-            UIAlertController *alertCtl = [UIAlertController alertControllerWithTitle:@"失败" message:@"QQ分享失败" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
-            [alertCtl addAction:alertAction];
-            //初始化UIWindows
-            UIWindow *aW = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-            aW.rootViewController = [[UIViewController alloc]init];
-            aW.windowLevel = UIWindowLevelAlert + 1;
-            [aW makeKeyAndVisible];
-            [aW.rootViewController presentViewController:alertCtl animated:YES completion:nil];
-
-        }
-        
-    }
-    
-}
 
 
 - (void)configInfo{

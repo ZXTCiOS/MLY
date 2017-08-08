@@ -22,5 +22,5 @@ pod 'WMPageController'
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'NinaPagerView'
 pod 'FORScrollViewEmptyAssistant'
-pod 'WechatOpenSDK'
+
 end

@@ -10,7 +10,7 @@
 #import "RegisterViewController.h"
 #import "TabBarController.h"
 #import "AppDelegate.h"
-#import "WKWedViewController.h"
+#import "ZTVendorManager.h"
 
 @interface loginVC ()<UITextViewDelegate>
 
@@ -26,7 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UIControl *WX;
 
-
+@property (nonatomic, strong) ZTVendorPayManager *payManager;
 
 @end
 
@@ -37,7 +37,7 @@
     
     [self setCornerRadius];
     
-    
+    self.payManager = [[ZTVendorPayManager alloc]init];
 }
 
 - (void)setCornerRadius{
@@ -54,13 +54,150 @@
 }
 
 - (IBAction)WeChatLogin:(id)sender {
-    NSLog(@"WeChatLogin");
-  
+    
+    [ZTVendorManager loginWith:ZTVendorPlatformTypeWechat completionHandler:^(ZTVendorAccountModel *model, NSError *error) {
+        NSLog(@"nickname:%@",model.nickname);
+        
+        NSDictionary *dicid = model.originalResponse;
+        NSString *user_wx = [dicid objectForKey:@"unionid"];
+        NSString *user_picture = model.iconurl;
+        NSString *user_nickname = model.nickname;
+        
+        NSDictionary *dict = @{@"user_wx":user_wx, @"user_picture":user_picture, @"type": @(2),@"user_nickname":user_nickname};
+        
+        NSString *url = denglucaozuo;
+    
+        AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+        
+        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+        
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+        [manager POST:url parameters:dict progress:^(NSProgress * _Nonnull uploadProgress)
+         {
+             
+         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+         {
+             
+             id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+             NSLog(@"dic----%@",dic);
+             
+             
+             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+             // 为userdefaults 赋值
+             NSString *code = [NSString stringWithFormat:@"%@", [dic valueForKey:@"code"]];
+             NSString *message = [NSString stringWithFormat:@"%@", [dic valueForKey:@"message"]];
+             //success.intValue
+             if ([code isEqualToString:@"200"]) {
+                 NSDictionary *data = [dic valueForKey:@"data"];
+                 NSString *token = [data objectForKey:@"api_token"];
+                 NSString *user_id = [NSString stringWithFormat:@"%@", [data objectForKey:@"user_id"]];
+                 [user setValue:token forKey:user_key_token];
+                 [user setValue:user_id forKey:user_key_user_id];
+                 
+                 
+                 NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                 NSDictionary *allHeaders = response.allHeaderFields;
+                 NSLog(@"allhead-----%@",allHeaders);
+                 NSString *session = [allHeaders objectForKey:@"Set-Cookie"];
+                 [user setValue:session forKey:sessionID];
+                 
+                 TabBarController *tab = [[TabBarController alloc] init];
+                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                 delegate.window.rootViewController = tab;
+                 
+                 
+             } else {
+                 
+                 [self.view showWarning:message];
+                 [self.teleNum becomeFirstResponder];
+                 self.teleNum.text = @"";
+                 self.password.text = @"";
+             }
+             
+             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"=====/n%@",error);
+             [self.view showWarning:@"网络错误"];
+             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+             
+         }];
+        
+
+        
+    }];
+
 }
 
 - (IBAction)QQLogin:(id)sender {
     
-    
+    [ZTVendorManager loginWith:ZTVendorPlatformTypeQQ completionHandler:^(ZTVendorAccountModel *model, NSError *error) {
+        NSLog(@"nickname:%@",model.nickname);
+        NSString *user_wx = model.nickname;
+        NSString *user_picture = model.iconurl;
+        NSString *user_nickname = model.nickname;
+        NSDictionary *dict = @{@"user_wx":user_wx, @"user_picture":user_picture, @"type": @(2),@"user_nickname":user_nickname};
+        
+        NSString *url = denglucaozuo;
+        
+        AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+        
+        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+        
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+        [manager POST:url parameters:dict progress:^(NSProgress * _Nonnull uploadProgress)
+         {
+             
+         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+         {
+             
+             id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+             NSLog(@"dic----%@",dic);
+             
+             
+             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+             // 为userdefaults 赋值
+             NSString *code = [NSString stringWithFormat:@"%@", [dic valueForKey:@"code"]];
+             NSString *message = [NSString stringWithFormat:@"%@", [dic valueForKey:@"message"]];
+             //success.intValue
+             if ([code isEqualToString:@"200"]) {
+                 NSDictionary *data = [dic valueForKey:@"data"];
+                 NSString *token = [data objectForKey:@"api_token"];
+                 NSString *user_id = [NSString stringWithFormat:@"%@", [data objectForKey:@"user_id"]];
+                 [user setValue:token forKey:user_key_token];
+                 [user setValue:user_id forKey:user_key_user_id];
+                 
+                 
+                 NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+                 NSDictionary *allHeaders = response.allHeaderFields;
+                 NSLog(@"allhead-----%@",allHeaders);
+                 NSString *session = [allHeaders objectForKey:@"Set-Cookie"];
+                 [user setValue:session forKey:sessionID];
+                 
+                 TabBarController *tab = [[TabBarController alloc] init];
+                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                 delegate.window.rootViewController = tab;
+                 
+                 
+             } else {
+                 
+                 [self.view showWarning:message];
+                 [self.teleNum becomeFirstResponder];
+                 self.teleNum.text = @"";
+                 self.password.text = @"";
+             }
+             
+             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"=====/n%@",error);
+             [self.view showWarning:@"网络错误"];
+             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+             
+         }];
+        
+        
+    }];
 }
 
 
