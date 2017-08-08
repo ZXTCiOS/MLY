@@ -29,6 +29,6 @@
 
 @property (nonatomic, copy) NSString *trip_pic;
 
-@property (nonatomic, assign) NSInteger *trip_phone;
+@property (nonatomic, assign) NSInteger trip_phone;
 
 @end

@@ -87,7 +87,7 @@ loginVC *vc = [stb instantiateInitialViewController];\
 #define kefudianhua @"10086"       //  客服电话
 
 
-#define JPushKey @""                // 极光推送appkey
+#define JPushKey @"8b1c06ad2be503306b9f4ed2"                // 极光推送appkey
 
 
 

@@ -44,6 +44,12 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HomeCityCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     [XDFactory addBackItemForVC:self];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning {

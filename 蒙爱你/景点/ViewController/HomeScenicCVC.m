@@ -45,6 +45,12 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.tableView registerNib:[UINib nibWithNibName:@"Home12Cell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [XDFactory addBackItemForVC:self];
     [self headerV];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.delegate = nil;
 }
 
 - (void)headerV{

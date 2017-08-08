@@ -167,7 +167,7 @@
 		1808185B1F39B7BF00B62583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808185A1F39B7BF00B62583 /* Foundation.framework */; };
 		1808185D1F39B7C400B62583 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808185C1F39B7C400B62583 /* UIKit.framework */; };
 		1808185F1F39B7CC00B62583 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808185E1F39B7CC00B62583 /* Security.framework */; };
-		180818611F39B7D600B62583 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818601F39B7D600B62583 /* UserNotifications.framework */; };
+		180818611F39B7D600B62583 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818601F39B7D600B62583 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		180818631F39B7DF00B62583 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818621F39B7DF00B62583 /* libresolv.tbd */; };
 		18F35F151F380CDA00B8152D /* 12306.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F35F031F380CDA00B8152D /* 12306.png */; };
 		18F35F161F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */; };
@@ -2384,6 +2384,7 @@
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/蒙爱你/Tool/Tencent",
+					"$(PROJECT_DIR)/蒙爱你/Vendor/JPush",
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "蒙爱你/Info.plist";
@@ -2422,6 +2423,7 @@
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/蒙爱你/Tool/Tencent",
+					"$(PROJECT_DIR)/蒙爱你/Vendor/JPush",
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "蒙爱你/Info.plist";
