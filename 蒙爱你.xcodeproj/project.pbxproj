@@ -157,6 +157,18 @@
 		1173B6FD1F2602BF00AB4287 /* ScenicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FC1F2602BF00AB4287 /* ScenicListModel.m */; };
 		1173B7001F26109000AB4287 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173B6FF1F26109000AB4287 /* SearchViewController.m */; };
 		117823361F275FBF008B4973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117823351F275FBF008B4973 /* Assets.xcassets */; };
+		1808184E1F39B69600B62583 /* jcore-ios-1.1.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808184B1F39B69600B62583 /* jcore-ios-1.1.5.a */; };
+		1808184F1F39B69600B62583 /* jpush-ios-3.0.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808184C1F39B69600B62583 /* jpush-ios-3.0.6.a */; };
+		180818511F39B79900B62583 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818501F39B79900B62583 /* CFNetwork.framework */; };
+		180818531F39B7A000B62583 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818521F39B7A000B62583 /* CoreFoundation.framework */; };
+		180818551F39B7A600B62583 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818541F39B7A600B62583 /* CoreTelephony.framework */; };
+		180818571F39B7AD00B62583 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818561F39B7AD00B62583 /* SystemConfiguration.framework */; };
+		180818591F39B7B400B62583 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818581F39B7B400B62583 /* CoreGraphics.framework */; };
+		1808185B1F39B7BF00B62583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808185A1F39B7BF00B62583 /* Foundation.framework */; };
+		1808185D1F39B7C400B62583 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808185C1F39B7C400B62583 /* UIKit.framework */; };
+		1808185F1F39B7CC00B62583 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808185E1F39B7CC00B62583 /* Security.framework */; };
+		180818611F39B7D600B62583 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818601F39B7D600B62583 /* UserNotifications.framework */; };
+		180818631F39B7DF00B62583 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818621F39B7DF00B62583 /* libresolv.tbd */; };
 		18F35F151F380CDA00B8152D /* 12306.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F35F031F380CDA00B8152D /* 12306.png */; };
 		18F35F161F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */; };
 		18F35F171F380CDA00B8152D /* CalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F071F380CDA00B8152D /* CalendarMonthHeaderView.m */; };
@@ -527,6 +539,20 @@
 		1173B6FE1F26109000AB4287 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		1173B6FF1F26109000AB4287 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		117823351F275FBF008B4973 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "蒙爱你/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		1808184B1F39B69600B62583 /* jcore-ios-1.1.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.5.a"; sourceTree = "<group>"; };
+		1808184C1F39B69600B62583 /* jpush-ios-3.0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.6.a"; sourceTree = "<group>"; };
+		1808184D1F39B69600B62583 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		180818501F39B79900B62583 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		180818521F39B7A000B62583 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		180818541F39B7A600B62583 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		180818561F39B7AD00B62583 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		180818581F39B7B400B62583 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1808185A1F39B7BF00B62583 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1808185C1F39B7C400B62583 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1808185E1F39B7CC00B62583 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		180818601F39B7D600B62583 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		180818621F39B7DF00B62583 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		180818641F39B9BF00B62583 /* 蒙爱你.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "蒙爱你.entitlements"; sourceTree = "<group>"; };
 		18F35F031F380CDA00B8152D /* 12306.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12306.png; sourceTree = "<group>"; };
 		18F35F041F380CDA00B8152D /* CalendarMonthCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarMonthCollectionViewLayout.h; sourceTree = "<group>"; };
 		18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthCollectionViewLayout.m; sourceTree = "<group>"; };
@@ -702,13 +728,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180818631F39B7DF00B62583 /* libresolv.tbd in Frameworks */,
+				180818611F39B7D600B62583 /* UserNotifications.framework in Frameworks */,
+				1808185F1F39B7CC00B62583 /* Security.framework in Frameworks */,
+				1808185D1F39B7C400B62583 /* UIKit.framework in Frameworks */,
+				1808185B1F39B7BF00B62583 /* Foundation.framework in Frameworks */,
+				180818591F39B7B400B62583 /* CoreGraphics.framework in Frameworks */,
+				180818571F39B7AD00B62583 /* SystemConfiguration.framework in Frameworks */,
+				180818551F39B7A600B62583 /* CoreTelephony.framework in Frameworks */,
+				180818531F39B7A000B62583 /* CoreFoundation.framework in Frameworks */,
+				180818511F39B79900B62583 /* CFNetwork.framework in Frameworks */,
 				11353EB51F16379300B34D7C /* MapKit.framework in Frameworks */,
 				537D15BD1F36F9AB004592BD /* TencentOpenAPI.framework in Frameworks */,
 				11353EB31F1630A100B34D7C /* CoreLocation.framework in Frameworks */,
+				1808184E1F39B69600B62583 /* jcore-ios-1.1.5.a in Frameworks */,
 				11093C5F1F0B3F3E00AFCB20 /* libicucore.tbd in Frameworks */,
 				11093C5D1F0B3F3400AFCB20 /* libz.tbd in Frameworks */,
 				11093C5B1F0B3F2800AFCB20 /* libstdc++.tbd in Frameworks */,
 				11093C591F0B3F1700AFCB20 /* JavaScriptCore.framework in Frameworks */,
+				1808184F1F39B69600B62583 /* jpush-ios-3.0.6.a in Frameworks */,
 				11093C571F0B3F0400AFCB20 /* libsqlite3.tbd in Frameworks */,
 				787236055845B11A9C8B2B25 /* libPods-蒙爱你.a in Frameworks */,
 			);
@@ -738,6 +776,7 @@
 		11093B5F1F0B361C00AFCB20 /* 蒙爱你 */ = {
 			isa = PBXGroup;
 			children = (
+				180818641F39B9BF00B62583 /* 蒙爱你.entitlements */,
 				11093B631F0B361C00AFCB20 /* AppDelegate.h */,
 				11093B641F0B361C00AFCB20 /* AppDelegate.m */,
 				11093B771F0B3A8C00AFCB20 /* 导航栏 */,
@@ -1049,6 +1088,7 @@
 		11093BE41F0B3A8C00AFCB20 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1808184A1F39B69600B62583 /* JPush */,
 				18F35F021F380CDA00B8152D /* HZCalendarKit */,
 				1143DC631F206090005E73FD /* MSSCalendar */,
 				11093C081F0B3DC100AFCB20 /* CorePhotoPickerVCManager */,
@@ -1568,6 +1608,16 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		1808184A1F39B69600B62583 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				1808184B1F39B69600B62583 /* jcore-ios-1.1.5.a */,
+				1808184C1F39B69600B62583 /* jpush-ios-3.0.6.a */,
+				1808184D1F39B69600B62583 /* JPUSHService.h */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
 		18F35F021F380CDA00B8152D /* HZCalendarKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1806,6 +1856,16 @@
 		BF92CEBB9E10DCBBBDCF8502 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				180818621F39B7DF00B62583 /* libresolv.tbd */,
+				180818601F39B7D600B62583 /* UserNotifications.framework */,
+				1808185E1F39B7CC00B62583 /* Security.framework */,
+				1808185C1F39B7C400B62583 /* UIKit.framework */,
+				1808185A1F39B7BF00B62583 /* Foundation.framework */,
+				180818581F39B7B400B62583 /* CoreGraphics.framework */,
+				180818561F39B7AD00B62583 /* SystemConfiguration.framework */,
+				180818541F39B7A600B62583 /* CoreTelephony.framework */,
+				180818521F39B7A000B62583 /* CoreFoundation.framework */,
+				180818501F39B79900B62583 /* CFNetwork.framework */,
 				11353EB41F16379300B34D7C /* MapKit.framework */,
 				11353EB21F1630A100B34D7C /* CoreLocation.framework */,
 				11093C5E1F0B3F3E00AFCB20 /* libicucore.tbd */,
@@ -1861,8 +1921,13 @@
 				TargetAttributes = {
 					11093B5C1F0B361C00AFCB20 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = GZJLNU22Y5;
+						DevelopmentTeam = 22Y9Y734K3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2302,7 +2367,8 @@
 			baseConfigurationReference = 48B1E7DC99BA5F90FA356C64 /* Pods-蒙爱你.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GZJLNU22Y5;
+				CODE_SIGN_ENTITLEMENTS = "蒙爱你/蒙爱你.entitlements";
+				DEVELOPMENT_TEAM = 22Y9Y734K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",
@@ -2327,8 +2393,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/蒙爱你/Vendor/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ZX.mengaini;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borite.mengaini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2338,7 +2405,8 @@
 			baseConfigurationReference = 429867BB77FCC9BFA0B2C858 /* Pods-蒙爱你.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GZJLNU22Y5;
+				CODE_SIGN_ENTITLEMENTS = "蒙爱你/蒙爱你.entitlements";
+				DEVELOPMENT_TEAM = 22Y9Y734K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/Required",
@@ -2363,8 +2431,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/SDK_share/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/share_SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/蒙爱你/Vendor/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ZX.mengaini;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borite.mengaini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

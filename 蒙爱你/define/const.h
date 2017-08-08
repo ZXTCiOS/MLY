@@ -87,6 +87,12 @@ loginVC *vc = [stb instantiateInitialViewController];\
 #define kefudianhua @"10086"       //  客服电话
 
 
+#define JPushKey @""                // 极光推送appkey
+
+
+
+
+
 
 #endif /* const_h */
 

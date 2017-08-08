@@ -24,8 +24,17 @@
 //runime防止崩溃系统
 #import "AvoidCrash.h"
 #import "NSArray+AvoidCrash.h"
+// 引入JPush功能所需头文件
+#import "JPUSHService.h"
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+// 如果需要使用idfa功能所需要引入的头文件（可选）
+#import <AdSupport/AdSupport.h>
 
-@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
+
+@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate, JPUSHRegisterDelegate>
 
 @end
 
@@ -54,6 +63,36 @@
     return YES;
 }
 
+#pragma mark 极光推送
+
+- (void)configJPushoptions:(NSDictionary *)launchOptions{
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    
+    [JPUSHService setupWithOption:launchOptions appKey:JPushKey
+                          channel:@"app store"
+                 apsForProduction:NO
+            advertisingIdentifier:nil];
+    
+}
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
 
 
 
