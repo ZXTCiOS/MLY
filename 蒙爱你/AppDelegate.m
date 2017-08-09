@@ -54,6 +54,7 @@
     
     
     [self configInfo];
+    [self configJPushoptions:launchOptions];
 //    //启动防止崩溃功能
 //    [AvoidCrash becomeEffective];
 //    
@@ -76,7 +77,7 @@
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     
     [JPUSHService setupWithOption:launchOptions appKey:JPushKey
-                          channel:@"app store"
+                          channel:nil
                  apsForProduction:NO
             advertisingIdentifier:nil];
     

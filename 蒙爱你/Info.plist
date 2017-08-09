@@ -34,6 +34,14 @@
 				<string>wxwx6b7c06a04f9f1f04</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.borite.mengaini</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>mengaini</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -86,9 +94,9 @@
 		<dict>
 			<key>jpush.cn</key>
 			<dict>
-				<key>NSExceptionDomains</key>
-				<true/>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionDomains</key>
 				<true/>
 			</dict>
 		</dict>
@@ -99,6 +107,10 @@
 	<string>需要定位功能</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要您的同意,才能访问相册</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
