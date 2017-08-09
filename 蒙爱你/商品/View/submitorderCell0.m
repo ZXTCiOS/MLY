@@ -79,24 +79,25 @@
 
 -(void)setdata:(NSDictionary *)dic
 {
-    if ([strisNull isNullToString:[dic objectForKey:@"address_adds"]]) {
+    if ([strisNull isNullToString:[dic objectForKey:@"addressass"]]) {
         
+        NSString *addressass = [dic objectForKey:@"addressass"];
+        NSString *name = [dic objectForKey:@"name"];
+        NSString *phone = [dic objectForKey:@"phone"];
+        name = @"请选择地址";
+        phone = @"";
+        self.namelab.text = [NSString stringWithFormat:@"%@%@%@",name,@" ",phone];
+        self.addresslab.text = addressass;
+    }
+    else
+    {
         NSString *addressass = [dic objectForKey:@"addressass"];
         NSString *name = [dic objectForKey:@"name"];
         NSString *phone = [dic objectForKey:@"phone"];
         self.namelab.text = [NSString stringWithFormat:@"%@%@%@",name,@" ",phone];
         self.addresslab.text = addressass;
     }
-    else
-    {
-        NSString *addressass = [dic objectForKey:@"address_adds"];
-        NSString *name = [dic objectForKey:@"address_name"];
-        NSString *phone = [dic objectForKey:@"address_phone"];
-        self.namelab.text = [NSString stringWithFormat:@"%@%@%@",name,@" ",phone];
-        self.addresslab.text = addressass;
-    }
     
-
 }
 
 @end

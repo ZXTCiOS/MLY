@@ -34,19 +34,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [ZTVendorManager registerVendorSDK];
-    
-
-    
-
-    
-    
     [self configInfo];
 //    //启动防止崩溃功能
 //    [AvoidCrash becomeEffective];
 //    
 //    //监听通知:AvoidCrashNotification, 获取AvoidCrash捕获的崩溃日志的详细信息
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
-    
     return YES;
 }
 
@@ -88,11 +81,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
     
 }
-
-
-
-
-
 
 - (void)configInfo{
     

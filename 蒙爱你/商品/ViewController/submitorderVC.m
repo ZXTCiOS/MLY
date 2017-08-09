@@ -25,9 +25,7 @@
 @property (nonatomic,strong) NSDictionary *addressdit;
 @property (nonatomic,strong) NSDictionary *discountdit;
 @property (nonatomic,strong) subbuttomView *btnView;
-
 @property (nonatomic,strong) NSString *order_snstr;
-
 @property (nonatomic,strong) NSString *mingsunamestr;
 @end
 static NSString *submitVCidentfid0 = @"submitVCidentfid0";
@@ -95,12 +93,8 @@ static NSString *submitVCidentfid8 = @"submitVCidentfid8";
     {
         jianstr = [self.discountdit objectForKey:@"discount_jian"];
     }
-    
-    
     sum = [[sumarr valueForKeyPath:@"@sum.floatValue"] floatValue];
     NSString *strsum = [NSString stringWithFormat:@"%.2f",sum];
-
-    
     NSString *str1 = @"合计：";
     NSString *str2 = strsum;
     NSString *str3 = [NSString stringWithFormat:@"%@%@%@",@" (已优惠¥",jianstr,@")"];
@@ -110,8 +104,6 @@ static NSString *submitVCidentfid8 = @"submitVCidentfid8";
     [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"df0842"] range:NSMakeRange(str1.length,str2.length)];
     [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"b3b3b3"] range:NSMakeRange(str1.length+str2.length,str3.length)];
     self.btnView.pricelab.attributedText = str;
-
-
     
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *token = [userDefault objectForKey:user_key_token];
@@ -124,16 +116,22 @@ static NSString *submitVCidentfid8 = @"submitVCidentfid8";
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
     
-    
     [manager GET:urlstr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"dic-----%@",dic);
-        if ([[dic objectForKey:@"code"] intValue]==200&&[[dic objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
-            
+        if ([[dic objectForKey:@"code"] intValue]==200&&[[dic objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
+
             NSDictionary *datadit = [dic objectForKey:@"data"];
-            self.addressdit = [datadit objectForKey:@"address"];
+            NSDictionary *adddit = [datadit objectForKey:@"address"];
+            
+            NSString *addressass = [adddit objectForKey:@"address_adds"];
+            NSString *name = [adddit objectForKey:@"address_name"];
+            NSString *phone = [adddit objectForKey:@"address_phone"];
+            NSString *address_id = [adddit objectForKey:@"address_id"];
+            
+            self.addressdit = @{@"address_id":address_id,@"addressass":addressass,@"name":name,@"phone":phone};
             
             [self.submittableView reloadData];
         }
@@ -506,7 +504,6 @@ static NSString *submitVCidentfid8 = @"submitVCidentfid8";
             confirVC.yudingtime = self.yudingtime;
             confirVC.mingsunamestr = self.mingsunamestr;
             [self.navigationController pushViewController:confirVC animated:YES];
-            
             
         }
         else
