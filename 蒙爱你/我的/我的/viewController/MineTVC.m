@@ -13,7 +13,8 @@
 #import "MyListVC.h"
 #import "discountTVC.h"
 #import "AboutUsVC.h"
-
+#import "cooperationVC.h"
+#import "kefuVC.h"
 
 @interface MineTVC ()
 
@@ -159,21 +160,14 @@
         switch (indexPath.row) {
             case 0:// 我要合作
             {
-                
+                cooperationVC *coopvc = [[cooperationVC alloc] init];
+                [self.navigationController pushViewController:coopvc animated:YES];
             }
                 break;
             case 1:// 客服中心
             {
-                NSString *phone = kefudianhua;
-                NSLog(@"phone = %@",phone);
-                
-                UIWebView *webView = [[UIWebView alloc] init];
-                NSString *string = [NSString stringWithFormat:@"tel://%@",phone];
-                NSURL *url = [NSURL URLWithString:string];
-                
-                [webView loadRequest:[NSURLRequest requestWithURL:url]];
-                
-                [self.view addSubview:webView];
+                kefuVC *vc = [[kefuVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
             case 2:// 关于我们
@@ -187,11 +181,6 @@
                 break;
         }
 }
-
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {

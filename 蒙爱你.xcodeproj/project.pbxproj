@@ -258,6 +258,8 @@
 		53CC6C831F3A10600005806A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53CC6C6D1F3A10600005806A /* README.txt */; };
 		53CC6C851F3A10EB0005806A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CC6C841F3A10EB0005806A /* libc++.tbd */; };
 		53CC6C871F3A11290005806A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CC6C861F3A11290005806A /* CoreMotion.framework */; };
+		53E635591F3C1F5200CB9380 /* cooperationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E635581F3C1F5200CB9380 /* cooperationVC.m */; };
+		53E6355D1F3C20F500CB9380 /* kefuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E6355C1F3C20F500CB9380 /* kefuVC.m */; };
 		53E9BD1C1F2C2FB9000BFA60 /* foodCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD1B1F2C2FB9000BFA60 /* foodCollectionViewCell.m */; };
 		53E9BD1F1F2C47D3000BFA60 /* shoucangfoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD1E1F2C47D3000BFA60 /* shoucangfoodModel.m */; };
 		53E9BD221F2C62B0000BFA60 /* submitorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9BD211F2C62B0000BFA60 /* submitorderVC.m */; };
@@ -723,6 +725,10 @@
 		53CC6C711F3A10600005806A /* ZTVendorManagerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZTVendorManagerConfig.h; sourceTree = "<group>"; };
 		53CC6C841F3A10EB0005806A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		53CC6C861F3A11290005806A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		53E635571F3C1F5200CB9380 /* cooperationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cooperationVC.h; sourceTree = "<group>"; };
+		53E635581F3C1F5200CB9380 /* cooperationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cooperationVC.m; sourceTree = "<group>"; };
+		53E6355B1F3C20F500CB9380 /* kefuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kefuVC.h; sourceTree = "<group>"; };
+		53E6355C1F3C20F500CB9380 /* kefuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kefuVC.m; sourceTree = "<group>"; };
 		53E9BD1A1F2C2FB9000BFA60 /* foodCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foodCollectionViewCell.h; sourceTree = "<group>"; };
 		53E9BD1B1F2C2FB9000BFA60 /* foodCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foodCollectionViewCell.m; sourceTree = "<group>"; };
 		53E9BD1D1F2C47D3000BFA60 /* shoucangfoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoucangfoodModel.h; sourceTree = "<group>"; };
@@ -967,6 +973,8 @@
 		11093B8E1F0B3A8C00AFCB20 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				53E6355A1F3C20A300CB9380 /* 客服中心 */,
+				53E635561F3C1F2C00CB9380 /* 我要合作 */,
 				11093B8F1F0B3A8C00AFCB20 /* 关于我们 */,
 				11093B9B1F0B3A8C00AFCB20 /* 我的 */,
 				11093BA21F0B3A8C00AFCB20 /* 我的收藏 */,
@@ -1986,6 +1994,24 @@
 			path = WechatSDK;
 			sourceTree = "<group>";
 		};
+		53E635561F3C1F2C00CB9380 /* 我要合作 */ = {
+			isa = PBXGroup;
+			children = (
+				53E635571F3C1F5200CB9380 /* cooperationVC.h */,
+				53E635581F3C1F5200CB9380 /* cooperationVC.m */,
+			);
+			name = "我要合作";
+			sourceTree = "<group>";
+		};
+		53E6355A1F3C20A300CB9380 /* 客服中心 */ = {
+			isa = PBXGroup;
+			children = (
+				53E6355B1F3C20F500CB9380 /* kefuVC.h */,
+				53E6355C1F3C20F500CB9380 /* kefuVC.m */,
+			);
+			name = "客服中心";
+			sourceTree = "<group>";
+		};
 		53E9BD2C1F2C6F88000BFA60 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2332,6 +2358,7 @@
 				537D15C11F3758BA004592BD /* TackettoVC.m in Sources */,
 				534C17C71F2AE0860067C3E4 /* attractionModel.m in Sources */,
 				117105831F14EF3A008A2F25 /* Home12Cell.m in Sources */,
+				53E6355D1F3C20F500CB9380 /* kefuVC.m in Sources */,
 				18F35F1B1F380CDA00B8152D /* HZCalendarViewController.m in Sources */,
 				113F37341F2B57D500F56628 /* FoodInfoVC.m in Sources */,
 				11405FC91F0E0D3C00B5CBAE /* ShunFengCheModel.m in Sources */,
@@ -2428,6 +2455,7 @@
 				11585AD41F1C6AD500061734 /* BedDetailTVC.m in Sources */,
 				534C17D31F2B148F0067C3E4 /* shoucanggoodsModel.m in Sources */,
 				114416351F132AA60079B1E2 /* ShopPageController.m in Sources */,
+				53E635591F3C1F5200CB9380 /* cooperationVC.m in Sources */,
 				114625101F0C9A790005D61C /* HomeModel.m in Sources */,
 				53E9BD5E1F305F42000BFA60 /* NSMutableArray+AvoidCrash.m in Sources */,
 				534C17531F2839060067C3E4 /* myOrderVC0.m in Sources */,
@@ -2608,7 +2636,7 @@
 					"$(PROJECT_DIR)/蒙爱你/Vendor/ZTVendorManager/VendorSDK/WeChat",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/ZTVendorManager/VendorSDK/WeChat/WechatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.borite.mengaini111;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borite.mengaini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -2656,7 +2684,7 @@
 					"$(PROJECT_DIR)/蒙爱你/Vendor/ZTVendorManager/VendorSDK/WeChat",
 					"$(PROJECT_DIR)/蒙爱你/Vendor/ZTVendorManager/VendorSDK/WeChat/WechatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.borite.mengaini111;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borite.mengaini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
