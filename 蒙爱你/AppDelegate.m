@@ -35,6 +35,7 @@
     // Override point for customization after application launch.
     [ZTVendorManager registerVendorSDK];
     [self configInfo];
+    [self configJPushoptions:launchOptions];
 //    //启动防止崩溃功能
 //    [AvoidCrash becomeEffective];
 //    
@@ -56,7 +57,7 @@
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     
     [JPUSHService setupWithOption:launchOptions appKey:JPushKey
-                          channel:@"app store"
+                          channel:nil
                  apsForProduction:NO
             advertisingIdentifier:nil];
     
@@ -79,6 +80,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+    
     
 }
 
@@ -120,6 +122,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 
