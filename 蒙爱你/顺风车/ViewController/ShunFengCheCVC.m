@@ -170,11 +170,11 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TravelAdviseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    HomeTravelModel *model = self.viewmodel.datalist[indexPath.row];
+    HomeTravelModel *model = self.viewmodel.datalist[indexPath.item];
     [cell.imageV sd_setImageWithURL:model.trip_pic.xd_URL placeholderImage:img_shunFengChe_default];
     cell.nameL.text = model.trip_driver;
     cell.delegate = self;
-    if (model.is_shoucang) {
+    if ([model.is_shoucang isEqualToString:@"1"]) {
         cell.shoucangImg.image = [UIImage imageNamed:@"sc-s"];
     }
     else
@@ -190,7 +190,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     NSLog(@"%ld", indexPath.row);
-    
     self.currentIndex = indexPath;
     HomeTravelVC *vc = [[HomeTravelVC alloc] initWithHomeTravelModel:self.viewmodel.datalist[indexPath.row] pushSource:PushSourceList];
     
@@ -202,21 +201,18 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)myTabVClick1:(UICollectionViewCell *)cell
 {
     NSIndexPath *index = [self.collectionView indexPathForCell:cell];
-
     HomeTravelModel *model = self.viewmodel.datalist[index.item];
-    
     NSString *userid = [userDefault objectForKey:user_key_user_id];
     NSString *type = @"2";
     NSString *isstr = [NSString stringWithFormat:@"%ld",(long)model.trip_id];
     NSString *is_shoucang  = @"";
-    if (model.is_shoucang==1) {
+    if ([model.is_shoucang isEqualToString:@"1"]) {
         is_shoucang = @"0";
     }else
     {
         is_shoucang = @"1";
     }
     NSString *urlstr = [NSString stringWithFormat:get_recommend,userid,isstr,type,is_shoucang];
-    
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
         if ([[obj objectForKey:@"code"]intValue]==200) {
             [self.collectionView.mj_header beginRefreshing];

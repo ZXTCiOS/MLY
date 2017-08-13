@@ -11,7 +11,7 @@
 @interface HomeTravelModel : NSObject
 
 
-@property (nonatomic, assign) BOOL is_shoucang;
+@property (nonatomic, copy) NSString *is_shoucang;
 
 @property (nonatomic, copy) NSString *trip_address;
 

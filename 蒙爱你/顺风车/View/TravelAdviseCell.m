@@ -20,7 +20,7 @@
     // Initialization code
     
     self.imageV.layer.masksToBounds = YES;
-    
+    self.isStored = YES;
     self.shoucangImg.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.shoucangImg addGestureRecognizer:singleTap];
@@ -29,8 +29,8 @@
 
 - (void)setIsStored:(BOOL)isStored{
     _isStored = isStored;
-    NSString *img = isStored ? @"sc-s": @"sc-ns";
-    self.shoucangImg.image = [UIImage imageNamed:img];
+//    NSString *img = isStored ? @"sc-s": @"sc-ns";
+//    self.shoucangImg.image = [UIImage imageNamed:img];
   
 }
 
