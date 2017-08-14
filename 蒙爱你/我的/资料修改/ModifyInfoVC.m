@@ -156,6 +156,7 @@ static NSString *infoidentfid2 = @"infoidentfid2";
         if (!cell) {
             cell = [[myinfoCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoidentfid2];
             cell.infotext.tag = 203;
+            cell.infotext.enabled = NO;
             cell.infotext.delegate = self;
             cell.typelab.text = @"手机号码";
         }
