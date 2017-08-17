@@ -11,6 +11,11 @@
 #import "TabBarController.h"
 #import "AppDelegate.h"
 #import "ZTVendorManager.h"
+#import "WXApi.h"
+#import "UMSocialQQHandler.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+
+
 
 @interface loginVC ()<UITextViewDelegate>
 
@@ -38,6 +43,8 @@
     [self setCornerRadius];
     
     self.payManager = [[ZTVendorPayManager alloc]init];
+    
+    [self weixinLogin];
 }
 
 - (void)setCornerRadius{
@@ -326,14 +333,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)weixinLogin{
+    if([WXApi isWXAppInstalled]){
+        
+        [self.WX setHidden:NO];
+        
+    }else{
+        [self.WX setHidden:YES];
+    }
+    if ([QQApiInterface isQQInstalled]) {
+        [self.QQ setHidden:NO];
+    }
+    else
+    {
+        [self.QQ setHidden:YES];
+    }
+    
+    
 }
-*/
 
 @end

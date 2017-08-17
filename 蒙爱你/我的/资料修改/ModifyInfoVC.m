@@ -10,6 +10,8 @@
 #import "CorePhotoPickerVCManager.h"
 #import "myinfoCell0.h"
 #import "myinfoCell1.h"
+#import "strisNull.h"
+
 #import "MBProgressHUD+XMG.h"
 @interface ModifyInfoVC ()<UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
@@ -154,6 +156,7 @@ static NSString *infoidentfid2 = @"infoidentfid2";
         if (!cell) {
             cell = [[myinfoCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoidentfid2];
             cell.infotext.tag = 203;
+            cell.infotext.enabled = NO;
             cell.infotext.delegate = self;
             cell.typelab.text = @"手机号码";
         }
@@ -193,31 +196,39 @@ static NSString *infoidentfid2 = @"infoidentfid2";
     UITextField *text1 = [self.infoTableview viewWithTag:202];
     //UITextField *text2 = [self.infoTableview viewWithTag:203];
     
-    NSDictionary *para = @{@"user_id":userid,@"api_token":token,@"user_picture":encodedImageStr,@"suffix":@"png",@"user_nickname":text1.text};
-    
-    AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
-    
-    
-    [manager POST:post_infoedit parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+    if (![strisNull isNullToString:encodedImageStr]&&![strisNull isNullToString:text1.text]) {
+        NSDictionary *para = @{@"user_id":userid,@"api_token":token,@"user_picture":encodedImageStr,@"suffix":@"png",@"user_nickname":text1.text};
+        AFHTTPSessionManager*manager =[AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",  nil];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSString *secssionIDstr  = [userDefault objectForKey:sessionID];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        [manager.requestSerializer setValue:secssionIDstr forHTTPHeaderField:@"cookie"];
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"dic-----%@",dic);
-        if ([[dic objectForKey:@"code"] intValue]==200) {
-            [self loaddata];
-            [MBProgressHUD showSuccess:@"修改成功"];
-        }
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    }];
+        
+        [manager POST:post_infoedit parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            NSLog(@"dic-----%@",dic);
+            if ([[dic objectForKey:@"code"] intValue]==200) {
+                [self loaddata];
+                [MBProgressHUD showSuccess:@"修改成功"];
+            }
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        }];
+        
+
+    }else
+    {
+        [MBProgressHUD showSuccess:@"请检查输入"];
+    }
     
-    NSLog(@"finish btn clicked");
+    
+
+        NSLog(@"finish btn clicked");
 }
 
 

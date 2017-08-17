@@ -34,6 +34,7 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
     self.dataSource = [NSMutableArray array];
     self.goodstableView.tableFooterView = [UIView new];
     pn = 1;
+    [self empty];
     [self addHeader];
     [self addFooter];
     
@@ -227,7 +228,7 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
     
     NSString *urlstr = [NSString stringWithFormat:get_quxiaoshoucang,userid,recommend_id];
     [DNNetworking getWithURLString:urlstr success:^(id obj) {
-        [self.goodstableView.mj_header beginRefreshing];
+         [self headerRefreshEndAction];
     } failure:^(NSError *error) {
         
     }];
@@ -260,5 +261,25 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
     [self.navigationController pushViewController:subvc animated:YES];
     
 }
+
+#pragma mark - empty
+
+-(void)empty
+{
+    // method one 配置方法1
+    typeof(self) weakSelf = self;
+    [self.goodstableView emptyViewConfigerBlock:^(FOREmptyAssistantConfiger *configer) {
+        configer.emptyTitle = @"暂无此类信息";
+        configer.emptyTitleFont = [UIFont boldSystemFontOfSize:14];
+        configer.emptyTitleColor = [UIColor colorWithHexString:@"d5d5d5"];
+        configer.emptyImage = [UIImage imageNamed:@"dd-kby"];
+        configer.emptySpaceHeight = 20;
+        configer.emptyViewTapBlock = ^{
+            [weakSelf.goodstableView.mj_header beginRefreshing];
+            //[self addHeader];
+        };
+    }];
+}
+
 
 @end

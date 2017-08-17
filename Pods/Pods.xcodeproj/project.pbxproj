@@ -631,7 +631,7 @@
 		0BA5446A7F7709BC62816444FDCBC6D8 /* NSInvocation+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+BlocksKit.h"; path = "BlocksKit/Core/NSInvocation+BlocksKit.h"; sourceTree = "<group>"; };
 		0BD2A101E32E0BCA54922ABEB9A26590 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
 		0C74142B6E6CC4EB352CF1DECBEFC408 /* NSMutableSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableSet+BlocksKit.m"; path = "BlocksKit/Core/NSMutableSet+BlocksKit.m"; sourceTree = "<group>"; };
-		0D2370AA0B7559C430DE6B13146D8591 /* libMLTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMLTransition.a; path = libMLTransition.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D2370AA0B7559C430DE6B13146D8591 /* libMLTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMLTransition.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D3625420D388DB802A5AD1147E65AAB /* UIControl+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIControl+BlocksKit.m"; path = "BlocksKit/UIKit/UIControl+BlocksKit.m"; sourceTree = "<group>"; };
 		0DA97E8968FEAF00243F8B2C06AFD7E6 /* UITableView+FDTemplateLayoutCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDTemplateLayoutCell.h"; path = "Classes/UITableView+FDTemplateLayoutCell.h"; sourceTree = "<group>"; };
 		0DD7F2261B748B344910BC6ADA073EA1 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoNormalFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
@@ -640,13 +640,13 @@
 		0EE51E961002DD6087787902EB6BA584 /* NSArray+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+BlocksKit.h"; path = "BlocksKit/Core/NSArray+BlocksKit.h"; sourceTree = "<group>"; };
 		0F2EC5E9FAD7CA4392F5FC3C9CC361C4 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		10610F92D8405427CA630360918C1ECA /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		10CCBCCB056A72486367CFB0F3C85B44 /* libTPKeyboardAvoiding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libTPKeyboardAvoiding.a; path = libTPKeyboardAvoiding.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		10CCBCCB056A72486367CFB0F3C85B44 /* libTPKeyboardAvoiding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTPKeyboardAvoiding.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1141F3B8E97BE1EA1E8A60F778E9497E /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		11B84058AD106D3703BEADB4F998FDA0 /* YYTextInput.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextInput.m; path = YYKit/Text/Component/YYTextInput.m; sourceTree = "<group>"; };
 		11BB09FEB4DC9DF41ED265A2124EFD67 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		11D9ED477F25D3EE1045BD3CC6EC9A60 /* UIImage+GIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+GIF.m"; path = "SDWebImage/UIImage+GIF.m"; sourceTree = "<group>"; };
 		1378EFEC88342542D9B997F96E329605 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
-		1390BB3E98FF3CD236BD7765CF82908E /* libHYBLoopScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libHYBLoopScrollView.a; path = libHYBLoopScrollView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1390BB3E98FF3CD236BD7765CF82908E /* libHYBLoopScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHYBLoopScrollView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1397B2AF08DBB3C5FAC1E74C2740E8F0 /* NSAttributedString+YYText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+YYText.m"; path = "YYKit/Text/String/NSAttributedString+YYText.m"; sourceTree = "<group>"; };
 		13CB0B14DBA5D0F505C410B884A50AB4 /* YYWebImageOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYWebImageOperation.m; path = YYKit/Image/YYWebImageOperation.m; sourceTree = "<group>"; };
 		155C5B7CAABF0A311D5FBAA5405049EC /* YYImageCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYImageCoder.h; path = YYKit/Image/YYImageCoder.h; sourceTree = "<group>"; };
@@ -690,7 +690,7 @@
 		2223739A887C34BE0D1838739F38ABD1 /* Pods-蒙爱你-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-蒙爱你-resources.sh"; sourceTree = "<group>"; };
 		2293B644CABBAF5AFF6F7B1330D33527 /* NinaPagerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NinaPagerView-prefix.pch"; sourceTree = "<group>"; };
 		230141E744A695D2B0BA3B8826A4D017 /* WMPageController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WMPageController.m; path = WMPageController/WMPageController.m; sourceTree = "<group>"; };
-		23FF70A5F4C76C09A513CB49AC5F0D11 /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libYYKit.a; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		23FF70A5F4C76C09A513CB49AC5F0D11 /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		242E0B65C1FAB253D0FBB4395B2499D2 /* UIButton+YYWebImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+YYWebImage.m"; path = "YYKit/Image/Categories/UIButton+YYWebImage.m"; sourceTree = "<group>"; };
 		248E727FA00DA37A4D955DA07485A530 /* MJRefreshFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshFooter.m; path = MJRefresh/Base/MJRefreshFooter.m; sourceTree = "<group>"; };
 		24A23AC72CD2873C6F38F3216B1FED71 /* NSTimer+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+YYAdd.m"; path = "YYKit/Base/Foundation/NSTimer+YYAdd.m"; sourceTree = "<group>"; };
@@ -711,12 +711,12 @@
 		2D0B28CCDE1339D6B88BAA14CB25BF09 /* YYTextEffectWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextEffectWindow.h; path = YYKit/Text/Component/YYTextEffectWindow.h; sourceTree = "<group>"; };
 		2D1DB8B1A43DAA8874CD56C41D7CE38B /* NinaPagerView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NinaPagerView.xcconfig; sourceTree = "<group>"; };
 		2D3ADD93689C33CCB7FF6A40DC6E353B /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoGifFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
-		2D5B3F5FE3FD71849AF779506F7949F9 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJRefresh.a; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5B3F5FE3FD71849AF779506F7949F9 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBCC2C40F7C1D5A40B123F871AB5EA2 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
 		2E2D55160F4771AF818B924037506A67 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoNormalFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
 		2E4D51D4CC96C103E4BEA36244368F2A /* YYTransaction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTransaction.m; path = YYKit/Utility/YYTransaction.m; sourceTree = "<group>"; };
 		2F54ED7BBA7821451DBF100D96372369 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackGifFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
-		311350820A494C77B0168ECEFDCFAE7C /* libFORScrollViewEmptyAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFORScrollViewEmptyAssistant.a; path = libFORScrollViewEmptyAssistant.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		311350820A494C77B0168ECEFDCFAE7C /* libFORScrollViewEmptyAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFORScrollViewEmptyAssistant.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3228813167390D10925B1C83FC011E62 /* YYFrameImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYFrameImage.m; path = YYKit/Image/YYFrameImage.m; sourceTree = "<group>"; };
 		324EAA84AD90EA5462067BF171FED288 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDecoder.m; path = SDWebImage/SDWebImageDecoder.m; sourceTree = "<group>"; };
 		329337EFCB7558C5BBA46F66C229A7DD /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MJRefresh.m"; path = "MJRefresh/NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
@@ -819,7 +819,7 @@
 		602BF25CF4CDB0256D91E6A594A67BC0 /* FORScrollViewEmptyAssistant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FORScrollViewEmptyAssistant.h; path = FORScrollViewEmptyAssistant/Classes/FORScrollViewEmptyAssistant.h; sourceTree = "<group>"; };
 		607E3E0F5453FD95C2270C5EBDAC378B /* YYTextRunDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextRunDelegate.m; path = YYKit/Text/String/YYTextRunDelegate.m; sourceTree = "<group>"; };
 		6190ED6F55257C9FB4F95610D687791E /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalHeader.m; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.m; sourceTree = "<group>"; };
-		61C7856B643CE32F3D6BEFFEFDC78B47 /* libWMPageController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libWMPageController.a; path = libWMPageController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		61C7856B643CE32F3D6BEFFEFDC78B47 /* libWMPageController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWMPageController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		634950ECA9CEC29CAC9D6FEA2FADE13F /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		63C8D759A8DA01F76AA11D81B2BD7990 /* UIScrollView+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+YYAdd.h"; path = "YYKit/Base/UIKit/UIScrollView+YYAdd.h"; sourceTree = "<group>"; };
 		6419D79237751E29FE13CA0204762F4B /* UIView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MJExtension.h"; path = "MJRefresh/UIView+MJExtension.h"; sourceTree = "<group>"; };
@@ -864,7 +864,7 @@
 		78180AEE55DEFF0C25EF70CB2272AB09 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		789404894C364569D894790956B1377F /* NSArray+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+YYAdd.m"; path = "YYKit/Base/Foundation/NSArray+YYAdd.m"; sourceTree = "<group>"; };
 		79BD21E13B2E5E8D0F27ED0E964E4E45 /* YYFrameImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYFrameImage.h; path = YYKit/Image/YYFrameImage.h; sourceTree = "<group>"; };
-		79C4A60854E67FB24168E6B5F2AB3D9D /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDWebImage.a; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		79C4A60854E67FB24168E6B5F2AB3D9D /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A01588B0BAF5B990F2E779CB9AC7FF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		7AB43A554E2FF0559AAF49BC2F421EBF /* MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefresh.h; path = MJRefresh/MJRefresh.h; sourceTree = "<group>"; };
 		7B9E5CC21C1F2D3EBBFE1DB08D87C1A9 /* YYTextParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextParser.h; path = YYKit/Text/String/YYTextParser.h; sourceTree = "<group>"; };
@@ -898,29 +898,29 @@
 		8B46E79283D6B92276F81C99EAF71096 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
 		8BE97909A20C7A36392D76433D0DCDC1 /* YYDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYDiskCache.m; path = YYKit/Cache/YYDiskCache.m; sourceTree = "<group>"; };
 		8C06A60EF578B306A205FB048B6E21E1 /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
-		8C08BCCFDB808E681D0B03A6A95E7497 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C08BCCFDB808E681D0B03A6A95E7497 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C352D8CACD21D57CD483841D58BC660 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		8CBF3CE9F76E7224B382292785CA71DE /* NSArray+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+YYAdd.h"; path = "YYKit/Base/Foundation/NSArray+YYAdd.h"; sourceTree = "<group>"; };
 		8D89439F4ECA5876A476318A1F19AB8E /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
 		8E0085EF3B7866D55FB8581DE88B5FDB /* YYTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextView.h; path = YYKit/Text/YYTextView.h; sourceTree = "<group>"; };
 		8E42B02CB4EB8B24FF63F118827621A7 /* YYTextRubyAnnotation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextRubyAnnotation.m; path = YYKit/Text/String/YYTextRubyAnnotation.m; sourceTree = "<group>"; };
-		8F6312CBAD17E9EA5568D1F3E820FD9D /* libPods-蒙爱你.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-蒙爱你.a"; path = "libPods-蒙爱你.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F6312CBAD17E9EA5568D1F3E820FD9D /* libPods-蒙爱你.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-蒙爱你.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD727219398A89654FAFF880E2AF366 /* SDImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCache.m; path = SDWebImage/SDImageCache.m; sourceTree = "<group>"; };
 		90CE487946E93FE38B51F8AEB1CBA07E /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
 		90F5A4850DEF2401B320A36E781F16E5 /* NSObject+BKBlockObservation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+BKBlockObservation.m"; path = "BlocksKit/Core/NSObject+BKBlockObservation.m"; sourceTree = "<group>"; };
 		91625B6262F307B0BC9FB129479E5643 /* NSImage+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSImage+WebCache.m"; path = "SDWebImage/NSImage+WebCache.m"; sourceTree = "<group>"; };
 		928D7AD2AF243CA8D5E0040A8ED0CD76 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		92AAE989C454FB6EC20001B11DE85EA5 /* WMMenuItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WMMenuItem.m; path = WMPageController/WMMenuView/WMMenuItem.m; sourceTree = "<group>"; };
-		92B3107BDBE3A7F74FFBF84F7F5B2290 /* libNinaPagerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libNinaPagerView.a; path = libNinaPagerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92B3107BDBE3A7F74FFBF84F7F5B2290 /* libNinaPagerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNinaPagerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9384C96D53C2B7AE247AB5631102D724 /* SDWebImageCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCompat.m; path = SDWebImage/SDWebImageCompat.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; };
 		940FFC3255B0414B911489055FE8F29F /* NSArray+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+BlocksKit.m"; path = "BlocksKit/Core/NSArray+BlocksKit.m"; sourceTree = "<group>"; };
 		9457896C2B18D4352BB423016A3567CB /* NSMutableSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableSet+BlocksKit.h"; path = "BlocksKit/Core/NSMutableSet+BlocksKit.h"; sourceTree = "<group>"; };
 		952EE9C4E50DCC2B3B903FF48BF59D58 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		9592ACD5BDC62B9DB96A5D9730184FCE /* ResourceBundle-FORScrollViewEmptyAssistant-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FORScrollViewEmptyAssistant-Info.plist"; sourceTree = "<group>"; };
 		9642F55F7D946A5405DB3D8A614FA650 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		96C0D3A4A4BBDD3FC1BB548F448D00EE /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/SDWebImageManager.m; sourceTree = "<group>"; };
-		971C46170FAC12580A0947E1E9ED8FFC /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMBProgressHUD.a; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		971C46170FAC12580A0947E1E9ED8FFC /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		973C3F68DF2F8CE5CC86953AA5F780FA /* NSMutableOrderedSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableOrderedSet+BlocksKit.m"; path = "BlocksKit/Core/NSMutableOrderedSet+BlocksKit.m"; sourceTree = "<group>"; };
 		979C1921C239FCC3F5E9EB87E64B09EF /* UIImagePickerController+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImagePickerController+BlocksKit.h"; path = "BlocksKit/UIKit/UIImagePickerController+BlocksKit.h"; sourceTree = "<group>"; };
 		98E4970D829CA99EAEC98799476DA442 /* YYKitMacro.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYKitMacro.h; path = YYKit/Base/YYKitMacro.h; sourceTree = "<group>"; };
@@ -964,7 +964,7 @@
 		AD4FD7782B2C1BF074E358AFF0EA16D7 /* YYClassInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYClassInfo.h; path = YYKit/Model/YYClassInfo.h; sourceTree = "<group>"; };
 		ADA524DCCA62B6AB74316B42AA41502F /* NSData+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+YYAdd.m"; path = "YYKit/Base/Foundation/NSData+YYAdd.m"; sourceTree = "<group>"; };
 		AE055711D439AC874B9C9FCB13B8AAA9 /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
-		AE15A6A991F0FA9EC0948824BDC7808D /* libBlocksKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libBlocksKit.a; path = libBlocksKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE15A6A991F0FA9EC0948824BDC7808D /* libBlocksKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBlocksKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE44B2885810B5AF7F6140BB44C0425C /* YYTextLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextLayout.m; path = YYKit/Text/Component/YYTextLayout.m; sourceTree = "<group>"; };
 		AEF401A05F4F8EDB5380434EFCD5D4B4 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		AF5E9782C910BCC248AB833BAD3EAAA1 /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
@@ -975,7 +975,7 @@
 		B5030023B0D0EEC1CA003E9B7E860EC4 /* UIView+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+MJExtension.m"; path = "MJRefresh/UIView+MJExtension.m"; sourceTree = "<group>"; };
 		B535DFBEC9C8812167B6848826E5D8C6 /* WMScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WMScrollView.m; path = WMPageController/WMMenuView/WMScrollView.m; sourceTree = "<group>"; };
 		B56B7AED5730E9FFA08D67980EFC71C6 /* UIFont+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+YYAdd.h"; path = "YYKit/Base/UIKit/UIFont+YYAdd.h"; sourceTree = "<group>"; };
-		B5C5030A9DA09B5C3DAC41B80D301CC4 /* libDZNEmptyDataSet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDZNEmptyDataSet.a; path = libDZNEmptyDataSet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C5030A9DA09B5C3DAC41B80D301CC4 /* libDZNEmptyDataSet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDZNEmptyDataSet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5ED3042331B2848FBDF6996685A07A0 /* DZNEmptyDataSet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DZNEmptyDataSet-dummy.m"; sourceTree = "<group>"; };
 		B6F626549DD4208EF69D113B5A288C23 /* NSObject+A2BlockDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+A2BlockDelegate.h"; path = "BlocksKit/DynamicDelegate/NSObject+A2BlockDelegate.h"; sourceTree = "<group>"; };
 		B74E3F01D69ECDF5924DE1FEFF22FC5B /* MJRefreshComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshComponent.h; path = MJRefresh/Base/MJRefreshComponent.h; sourceTree = "<group>"; };
@@ -1082,10 +1082,10 @@
 		EFC2E08EF6FB4EE5D522D1FAC9496068 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		F0C6DD366A55E72CFA4892D9E84A9173 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		F0E989116BBB8659675373E877F3E14F /* YYKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YYKit-dummy.m"; sourceTree = "<group>"; };
-		F105272A42D9C8F0E3C283C386119F08 /* FORScrollViewEmptyAssistant.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FORScrollViewEmptyAssistant.bundle; path = FORScrollViewEmptyAssistant.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F105272A42D9C8F0E3C283C386119F08 /* FORScrollViewEmptyAssistant.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FORScrollViewEmptyAssistant.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13F86490618981EC49BDEAB6514DA93 /* NSObject+BKAssociatedObjects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+BKAssociatedObjects.h"; path = "BlocksKit/Core/NSObject+BKAssociatedObjects.h"; sourceTree = "<group>"; };
 		F24AAF35F39D52A7A5C2C3B6AD2BC948 /* UITableView+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+YYAdd.m"; path = "YYKit/Base/UIKit/UITableView+YYAdd.m"; sourceTree = "<group>"; };
-		F32704078B2BAC57866BC1F258388F35 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32704078B2BAC57866BC1F258388F35 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F387E945FCFD221BF9EBF7AA50B14CA1 /* MFMailComposeViewController+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MFMailComposeViewController+BlocksKit.m"; path = "BlocksKit/MessageUI/MFMailComposeViewController+BlocksKit.m"; sourceTree = "<group>"; };
 		F43871D05A82FC0FF8623C09B4C234CE /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDIndexPathHeightCache.m"; path = "Classes/UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
 		F4DD506D2844B6F8A1C487051AABB0D3 /* YYCGUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYCGUtilities.m; path = YYKit/Base/Quartz/YYCGUtilities.m; sourceTree = "<group>"; };
@@ -1105,7 +1105,7 @@
 		FBCA455273E4219398AF1E8AA69D447C /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		FBD0A96F30A6F8709ED4D18B849C6423 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
 		FC982528B6ED7026D59B3594542F334C /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		FCDB954FEC8EE600A4A3C0D92F576E4E /* libUITableView+FDTemplateLayoutCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libUITableView+FDTemplateLayoutCell.a"; path = "libUITableView+FDTemplateLayoutCell.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCDB954FEC8EE600A4A3C0D92F576E4E /* libUITableView+FDTemplateLayoutCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libUITableView+FDTemplateLayoutCell.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF88B1DBDD175BEFD98D406F711D257 /* YYTextKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextKeyboardManager.h; path = YYKit/Text/Component/YYTextKeyboardManager.h; sourceTree = "<group>"; };
 		FD74F3BFFBB051217094A0F1A687A4CC /* UIActionSheet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+BlocksKit.m"; path = "BlocksKit/UIKit/UIActionSheet+BlocksKit.m"; sourceTree = "<group>"; };
 		FDD5726BE77A2C28BA078F75164958F7 /* WMProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WMProgressView.m; path = WMPageController/WMMenuView/WMProgressView.m; sourceTree = "<group>"; };
@@ -1295,7 +1295,6 @@
 				B535DFBEC9C8812167B6848826E5D8C6 /* WMScrollView.m */,
 				404F7BA49B859A058FC208D947EFC77F /* Support Files */,
 			);
-			name = WMPageController;
 			path = WMPageController;
 			sourceTree = "<group>";
 		};
@@ -1306,7 +1305,6 @@
 				0663C4932A790DB83C9FEF24CB46569D /* MLTransition.m */,
 				1B23A887FA916EF0DE89E7A72E9716E4 /* Support Files */,
 			);
-			name = MLTransition;
 			path = MLTransition;
 			sourceTree = "<group>";
 		};
@@ -1347,7 +1345,6 @@
 				9F5723C9ACFFBE5D93AF8F587373EB08 /* MBProgressHUD.m */,
 				D7E81F1C8EF86FFA386B9190FFEB4818 /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -1650,7 +1647,6 @@
 				4C2ADE605231A5BCD7EB2E74EB2AD18A /* no-arc */,
 				F35B113185A1DDBA49366CB4FAFB8C1C /* Support Files */,
 			);
-			name = YYKit;
 			path = YYKit;
 			sourceTree = "<group>";
 		};
@@ -1689,7 +1685,6 @@
 				212E411B30E93DF0FF0466A1D73CC380 /* UIView+HYBUIViewCommon.m */,
 				45F17D4DD0446164AFAA68A2B65D3C00 /* Support Files */,
 			);
-			name = HYBLoopScrollView;
 			path = HYBLoopScrollView;
 			sourceTree = "<group>";
 		};
@@ -1789,7 +1784,6 @@
 				A45870D8DFEA613F2B78A54756707139 /* UITableView+FDTemplateLayoutCellDebug.m */,
 				BAB6D46BA40DC177457BF01084D99557 /* Support Files */,
 			);
-			name = "UITableView+FDTemplateLayoutCell";
 			path = "UITableView+FDTemplateLayoutCell";
 			sourceTree = "<group>";
 		};
@@ -1802,7 +1796,6 @@
 				3FFE699BABFA25219726BF94748B046D /* Support Files */,
 				7CBF63C5D8AFC87735E98549505BAF7D /* UIKit */,
 			);
-			name = BlocksKit;
 			path = BlocksKit;
 			sourceTree = "<group>";
 		};
@@ -1838,7 +1831,6 @@
 				9954E372D355115BE299631AA39A15FB /* Support Files */,
 				20B46FA48E9183E5463935684CD52A0B /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1894,7 +1886,6 @@
 				E80EF6C75D9CC934CAE084AB9CB0D874 /* ViewController+MASAdditions.m */,
 				0AEC6DFD0EA5921369D9D5152ADAB24F /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -1960,7 +1951,6 @@
 				3636F0EEADAA37971B1F9C07C020ECB8 /* UIView+ViewController.m */,
 				1C247B93133569267FFF95937BB1CE14 /* Support Files */,
 			);
-			name = NinaPagerView;
 			path = NinaPagerView;
 			sourceTree = "<group>";
 		};
@@ -2109,7 +2099,6 @@
 				B0270195C8AB7EBFF8A7BDBE1E9A90D4 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 				D981A62CD44CDAC0C07DA54DA4294E63 /* Support Files */,
 			);
-			name = TPKeyboardAvoiding;
 			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
@@ -2173,7 +2162,6 @@
 				D8DC65FFDC7FE165E2496678CEAE253D /* Resources */,
 				D248F08D904B6985F0AB6667E443D718 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -2183,7 +2171,6 @@
 				5500AD2FB2D1D650EF91E047C9904A91 /* Core */,
 				85E83E96FAD376EA2679807767CF0805 /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -2194,7 +2181,6 @@
 				F84CF326A2332C1AB5715B7A20CEDAFA /* UIScrollView+EmptyDataSet.m */,
 				76EEA70742057E94E97677089381C725 /* Support Files */,
 			);
-			name = DZNEmptyDataSet;
 			path = DZNEmptyDataSet;
 			sourceTree = "<group>";
 		};
@@ -2219,7 +2205,6 @@
 				D9B5B6B49EE26F6052EC57EC746A152E /* Resources */,
 				2B8AB84784CFAC5936EF6E362F907806 /* Support Files */,
 			);
-			name = FORScrollViewEmptyAssistant;
 			path = FORScrollViewEmptyAssistant;
 			sourceTree = "<group>";
 		};
