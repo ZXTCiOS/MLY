@@ -85,7 +85,7 @@
             [defat setValue:user_nickname forKey:@"user_nicknamestr"];
             [defat setValue:user_picture forKey:@"user_picturestr"];
             [defat synchronize];
-            [self.icon sd_setImageWithURL:[NSURL URLWithString:[datadic objectForKey:@"user_picture"]]];
+            [self.icon sd_setImageWithURL:[NSURL URLWithString:[datadic objectForKey:@"user_picture"]] placeholderImage:[UIImage imageNamed:@"5"]];
             self.tele.text = [datadic objectForKey:@"user_phone"];
         }
         
