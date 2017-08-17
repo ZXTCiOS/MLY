@@ -169,6 +169,8 @@
 		1808185F1F39B7CC00B62583 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1808185E1F39B7CC00B62583 /* Security.framework */; };
 		180818611F39B7D600B62583 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818601F39B7D600B62583 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		180818631F39B7DF00B62583 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180818621F39B7DF00B62583 /* libresolv.tbd */; };
+		1843D9D21F4569530001C7C6 /* sanbnoo 蒙爱你02.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1843D9CF1F4569530001C7C6 /* sanbnoo 蒙爱你02.wav */; };
+		1843D9D61F456FA90001C7C6 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843D9D51F456FA90001C7C6 /* LaunchViewController.m */; };
 		18F35F151F380CDA00B8152D /* 12306.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F35F031F380CDA00B8152D /* 12306.png */; };
 		18F35F161F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */; };
 		18F35F171F380CDA00B8152D /* CalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F35F071F380CDA00B8152D /* CalendarMonthHeaderView.m */; };
@@ -573,6 +575,9 @@
 		180818601F39B7D600B62583 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		180818621F39B7DF00B62583 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		180818641F39B9BF00B62583 /* 蒙爱你.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "蒙爱你.entitlements"; sourceTree = "<group>"; };
+		1843D9CF1F4569530001C7C6 /* sanbnoo 蒙爱你02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sanbnoo 蒙爱你02.wav"; sourceTree = "<group>"; };
+		1843D9D41F456FA90001C7C6 /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
+		1843D9D51F456FA90001C7C6 /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		18F35F031F380CDA00B8152D /* 12306.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12306.png; sourceTree = "<group>"; };
 		18F35F041F380CDA00B8152D /* CalendarMonthCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarMonthCollectionViewLayout.h; sourceTree = "<group>"; };
 		18F35F051F380CDA00B8152D /* CalendarMonthCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthCollectionViewLayout.m; sourceTree = "<group>"; };
@@ -894,6 +899,8 @@
 				114A7F4B1F3092B800CFC485 /* Transition_Minsu.m */,
 				114A7F471F3092A500CFC485 /* Transition_Food.h */,
 				114A7F481F3092A500CFC485 /* Transition_Food.m */,
+				1843D9D41F456FA90001C7C6 /* LaunchViewController.h */,
+				1843D9D51F456FA90001C7C6 /* LaunchViewController.m */,
 			);
 			path = "导航栏";
 			sourceTree = "<group>";
@@ -1119,6 +1126,7 @@
 			isa = PBXGroup;
 			children = (
 				117823351F275FBF008B4973 /* Assets.xcassets */,
+				1843D9CD1F4569530001C7C6 /* 音频 */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1683,6 +1691,15 @@
 			path = JPush;
 			sourceTree = "<group>";
 		};
+		1843D9CD1F4569530001C7C6 /* 音频 */ = {
+			isa = PBXGroup;
+			children = (
+				1843D9CF1F4569530001C7C6 /* sanbnoo 蒙爱你02.wav */,
+			);
+			name = "音频";
+			path = "蒙爱你/音频";
+			sourceTree = SOURCE_ROOT;
+		};
 		18F35F021F380CDA00B8152D /* HZCalendarKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -2174,6 +2191,7 @@
 				117105841F14EF3A008A2F25 /* Home12Cell.xib in Resources */,
 				1143157D1F29EF47003705D2 /* FoodListHeaderView.xib in Resources */,
 				113F372D1F2B1C9700F56628 /* FoodCell.xib in Resources */,
+				1843D9D21F4569530001C7C6 /* sanbnoo 蒙爱你02.wav in Resources */,
 				11093BFB1F0B3A8C00AFCB20 /* ModifyInfoVC.xib in Resources */,
 				5381C53F1F348733009B6233 /* wechatquan@3x.png in Resources */,
 				113CBB061F1F274D00C6A766 /* DiscountCell.xib in Resources */,
@@ -2276,6 +2294,7 @@
 				114416451F134AB70079B1E2 /* ShopGoodsModel.m in Sources */,
 				1171054F1F14B380008A2F25 /* discountTVC.m in Sources */,
 				5381C5421F348733009B6233 /* VerButton.m in Sources */,
+				1843D9D61F456FA90001C7C6 /* LaunchViewController.m in Sources */,
 				534C17571F2839280067C3E4 /* myOrderVC1.m in Sources */,
 				115502291F189B6B00977217 /* StarBtn.m in Sources */,
 				531FF3321F317B7800A6A77A /* companyVC.m in Sources */,

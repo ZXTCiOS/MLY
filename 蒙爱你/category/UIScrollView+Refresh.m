@@ -11,6 +11,13 @@
 @implementation UIScrollView (Refresh)
 - (void)addHeaderRefresh:(void(^)())block{
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:block];
+    /*
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:block];
+    //header setImages:<#(NSArray *)#> duration:<#(NSTimeInterval)#> forState:<#(MJRefreshState)#>
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.mj_header = header;
+    */
 }
 - (void)addFooterRefresh:(void(^)())block{
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:block];
