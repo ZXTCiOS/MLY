@@ -51,7 +51,10 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
 - (void)addHeader
 {
     // 头部刷新控件
-    self.goodstableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    __weak typeof (self) weakSelf = self;
+    [self.goodstableView addHeaderRefresh:^{
+        [weakSelf headerRefreshEndAction];
+    }];
     [self.goodstableView.mj_header beginRefreshing];
 }
 
@@ -60,9 +63,6 @@ static NSString *goodsshoucangidentfid1 = @"goodsshoucangidentfid1";
     self.goodstableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshLoadMore)];
 }
 
-- (void)refreshAction {
-    [self headerRefreshEndAction];
-}
 
 - (void)refreshLoadMore {
     

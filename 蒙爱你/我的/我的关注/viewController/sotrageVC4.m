@@ -43,17 +43,16 @@ static NSString *foodcellidentfid = @"foodcellidentfid";
 - (void)addHeader
 {
     // 头部刷新控件
-    self.myCollectionV.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    __weak typeof (self) weakSelf = self;
+    [self.myCollectionV addHeaderRefresh:^{
+        [weakSelf headerRefreshEndAction];
+    }];
     [self.myCollectionV.mj_header beginRefreshing];
 }
 
 - (void)addFooter
 {
     self.myCollectionV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshLoadMore)];
-}
-
-- (void)refreshAction {
-    [self headerRefreshEndAction];
 }
 
 - (void)refreshLoadMore {

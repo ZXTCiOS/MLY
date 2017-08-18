@@ -48,7 +48,10 @@ static NSString *attractionidentfid = @"attractionidentfid";
 - (void)addHeader
 {
     // 头部刷新控件
-    self.attractionsTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    __weak typeof (self) weakSelf = self;
+    [self.attractionsTableView addHeaderRefresh:^{
+        [weakSelf headerRefreshEndAction];
+    }];
     [self.attractionsTableView.mj_header beginRefreshing];
 }
 
@@ -57,9 +60,6 @@ static NSString *attractionidentfid = @"attractionidentfid";
     self.attractionsTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshLoadMore)];
 }
 
-- (void)refreshAction {
-    [self headerRefreshEndAction];
-}
 
 - (void)refreshLoadMore {
     

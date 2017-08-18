@@ -52,17 +52,16 @@
 - (void)addHeader
 {
     // 头部刷新控件
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    __weak typeof (self) weakSelf = self;
+    [self.tableView addHeaderRefresh:^{
+        [weakSelf headerRefreshEndAction];
+    }];
     [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)addFooter
 {
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshLoadMore)];
-}
-
-- (void)refreshAction {
-    [self headerRefreshEndAction];
 }
 
 - (void)refreshLoadMore {
@@ -199,6 +198,8 @@
         }];
 
     }
+    
+
 }
 
 -(void)footerRefreshEndAction
