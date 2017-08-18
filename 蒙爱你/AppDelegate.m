@@ -22,7 +22,9 @@
 #endif
 // 如果需要使用idfa功能所需要引入的头文件（可选）
 #import <AdSupport/AdSupport.h>
-
+#import <AudioToolbox/AudioToolbox.h>
+#import "LaunchViewController.h"
+#import "loginVC.h"
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
@@ -34,8 +36,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [ZTVendorManager registerVendorSDK];
-    [self configInfo];
+    //[self configInfo];
     [self configJPushoptions:launchOptions];
+    [self addAudioForAppAfterLaunching];
 //    //启动防止崩溃功能
 //    [AvoidCrash becomeEffective];
 //    
@@ -43,6 +46,30 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
     return YES;
 }
+
+#pragma mark  add audio
+
+- (void)addAudioForAppAfterLaunching{
+    
+    LaunchViewController *vc = [[LaunchViewController alloc] init];
+    _window.rootViewController = vc;
+    _window.backgroundColor = [UIColor whiteColor];
+    [_window makeKeyAndVisible];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"sanbnoo 蒙爱你02" withExtension:@"wav"];
+    uint a = 10;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)(url), &a);
+    AudioServicesPlaySystemSound(a);
+    [NSTimer scheduledTimerWithTimeInterval:2 block:^(NSTimer * _Nonnull timer) {
+        [self configInfo];
+    } repeats:NO];
+//    AudioServicesPlaySystemSoundWithCompletion(a, ^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self configInfo];
+//        });
+//        
+//    });
+}
+
 
 #pragma mark 极光推送
 
@@ -91,11 +118,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     if ([userDefault valueForKey:user_key_user_id]) {
         _window.rootViewController = [[TabBarController alloc] init];
-        _window.backgroundColor = [UIColor whiteColor];
+        [_window makeKeyAndVisible];
+    } else {
+        loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+        _window.rootViewController = vc;
         [_window makeKeyAndVisible];
     }
-    
-    
 }
 
 
