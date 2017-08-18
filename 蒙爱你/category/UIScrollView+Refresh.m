@@ -10,17 +10,31 @@
 
 @implementation UIScrollView (Refresh)
 - (void)addHeaderRefresh:(void(^)())block{
-    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:block];
-    /*
+    //self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:block];
+    
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:block];
-    //header setImages:<#(NSArray *)#> duration:<#(NSTimeInterval)#> forState:<#(MJRefreshState)#>
+    UIImage *img1 = [UIImage imageNamed:@"21"];
+    UIImage *img2 = [UIImage imageNamed:@"222"];
+    UIImage *img3 = [UIImage imageNamed:@"23"];
+    [header setImages:@[img1] forState:MJRefreshStatePulling];
+    [header setImages:@[img3] forState:MJRefreshStateIdle];
+    [header setImages:@[img1, img2, img3] duration:0.5 forState:MJRefreshStateRefreshing];
     header.lastUpdatedTimeLabel.hidden = YES;
     header.stateLabel.hidden = YES;
     self.mj_header = header;
-    */
+    
 }
 - (void)addFooterRefresh:(void(^)())block{
-    self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:block];
+    //self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:block];
+    MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingBlock:block];
+    UIImage *img1 = [UIImage imageNamed:@"21"];
+    UIImage *img2 = [UIImage imageNamed:@"222"];
+    UIImage *img3 = [UIImage imageNamed:@"23"];
+    [footer setImages:@[img1] forState:MJRefreshStatePulling];
+    [footer setImages:@[img3] forState:MJRefreshStateIdle];
+    [footer setImages:@[img1, img2, img3] duration:0.5 forState:MJRefreshStateRefreshing];
+    footer.stateLabel.hidden = YES;
+    self.mj_footer = footer;
 }
 - (void)beginHeaderRefresh{
     [self.mj_header beginRefreshing];
