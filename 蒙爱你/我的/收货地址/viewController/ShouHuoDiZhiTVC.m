@@ -34,6 +34,7 @@
     [self.tableView registerClass:[NewAddressCell class] forCellReuseIdentifier:@"new"];
     self.title = @"收货地址";
     self.dataSource = [NSMutableArray array];
+    
 }
 
 - (void)didReceiveMemoryWarning {

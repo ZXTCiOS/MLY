@@ -34,7 +34,7 @@
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(0);
     }];
-    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shdz-xz"]];
     UILabel *label = [[UILabel alloc] init];
     label.text = @"新增地址";
     [label sizeToFit];
