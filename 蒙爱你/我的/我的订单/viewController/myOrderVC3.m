@@ -72,12 +72,11 @@ static NSString *myordercell3 = @"myordercell0identfid3";
 - (void)addHeader
 {
     // 头部刷新控件
-    self.ordertableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    __weak typeof (self) weakSelf = self;
+    [self.ordertableView addHeaderRefresh:^{
+        [weakSelf headerRefreshEndAction];
+    }];
     [self.ordertableView.mj_header beginRefreshing];
-}
-
-- (void)refreshAction {
-    [self headerRefreshEndAction];
 }
 
 -(void)headerRefreshEndAction
