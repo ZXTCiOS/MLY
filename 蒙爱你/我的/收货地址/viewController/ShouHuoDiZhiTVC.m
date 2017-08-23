@@ -32,7 +32,7 @@
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     [self.tableView registerNib:[UINib nibWithNibName:@"ShouHuoDiZhiCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.tableView registerClass:[NewAddressCell class] forCellReuseIdentifier:@"new"];
-    self.title = @"收获地址";
+    self.title = @"收货地址";
     self.dataSource = [NSMutableArray array];
 }
 
