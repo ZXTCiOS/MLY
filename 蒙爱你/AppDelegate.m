@@ -25,6 +25,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "LaunchViewController.h"
 #import "loginVC.h"
+#import "ZXTCNavigationViewController.h"
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
@@ -122,7 +123,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } else {
         loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
         vc.relogin = @"0";
-        _window.rootViewController = vc;
+        ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+        _window.rootViewController = navi;
         [_window makeKeyAndVisible];
     }
 }
