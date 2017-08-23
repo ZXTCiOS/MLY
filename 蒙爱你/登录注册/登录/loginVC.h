@@ -10,4 +10,7 @@
 
 @interface loginVC : UIViewController
 
+@property (nonatomic, copy) NSString *relogin;
+
+
 @end

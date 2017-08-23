@@ -10,4 +10,6 @@
 
 @interface FogetPwdViewController : UIViewController
 
+@property (nonatomic, copy) NSString *relogin;
+
 @end

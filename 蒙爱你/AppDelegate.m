@@ -121,6 +121,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [_window makeKeyAndVisible];
     } else {
         loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+        vc.relogin = @"0";
         _window.rootViewController = vc;
         [_window makeKeyAndVisible];
     }

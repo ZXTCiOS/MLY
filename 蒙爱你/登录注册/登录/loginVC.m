@@ -8,6 +8,7 @@
 
 #import "loginVC.h"
 #import "RegisterViewController.h"
+#import "FogetPwdViewController.h"
 #import "TabBarController.h"
 #import "AppDelegate.h"
 #import "ZTVendorManager.h"
@@ -109,9 +110,15 @@
                  NSString *session = [allHeaders objectForKey:@"Set-Cookie"];
                  [user setValue:session forKey:sessionID];
                  
-                 TabBarController *tab = [[TabBarController alloc] init];
-                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                 delegate.window.rootViewController = tab;
+                 if ([self.relogin isEqualToString:@"1"]) {
+                     [self dismissViewControllerAnimated:YES completion:^{
+                         
+                     }];
+                 } else {
+                     TabBarController *tab = [[TabBarController alloc] init];
+                     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                     delegate.window.rootViewController = tab;
+                 }
                  
                  
              } else {
@@ -182,9 +189,15 @@
                  NSString *session = [allHeaders objectForKey:@"Set-Cookie"];
                  [user setValue:session forKey:sessionID];
                  
-                 TabBarController *tab = [[TabBarController alloc] init];
-                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                 delegate.window.rootViewController = tab;
+                 if ([self.relogin isEqualToString:@"1"]) {
+                     [self dismissViewControllerAnimated:YES completion:^{
+                         
+                     }];
+                 } else {
+                     TabBarController *tab = [[TabBarController alloc] init];
+                     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                     delegate.window.rootViewController = tab;
+                 }
                  
                  
              } else {
@@ -271,9 +284,15 @@
              NSString *session = [allHeaders objectForKey:@"Set-Cookie"];
              [user setValue:session forKey:sessionID];
              
-             TabBarController *tab = [[TabBarController alloc] init];
-             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-             delegate.window.rootViewController = tab;
+             if ([self.relogin isEqualToString:@"1"]) {
+                 [self dismissViewControllerAnimated:YES completion:^{
+                     
+                 }];
+             } else {
+                 TabBarController *tab = [[TabBarController alloc] init];
+                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                 delegate.window.rootViewController = tab;
+             }
              
              
          } else {
@@ -300,11 +319,15 @@
 
 
 - (IBAction)registerBtnClicked:(UIButton *)sender {
-    
+    RegisterViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"register"];
+    vc.relogin = self.relogin;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)fogetPwd:(UIButton *)sender {
-    
+    FogetPwdViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"changepwd"];
+    vc.relogin = self.relogin;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -352,5 +375,9 @@
     
     
 }
+
+
+
+
 
 @end

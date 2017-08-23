@@ -132,9 +132,15 @@
             NSString *user_id = [NSString stringWithFormat:@"%@", [data objectForKey:@"user_id"]];
             [user setValue:token forKey:user_key_token];
             [user setValue:user_id forKey:user_key_user_id];
-            TabBarController *tab = [[TabBarController alloc] init];
-            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            delegate.window.rootViewController = tab;
+            if ([self.relogin isEqualToString:@"1"]) {
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
+            } else {
+                TabBarController *tab = [[TabBarController alloc] init];
+                AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                delegate.window.rootViewController = tab;
+            }
         } else {
             
             [self.view showWarning:message];

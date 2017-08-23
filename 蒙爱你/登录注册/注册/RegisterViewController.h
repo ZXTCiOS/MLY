@@ -10,4 +10,6 @@
 
 @interface RegisterViewController : UIViewController
 
+@property (nonatomic, copy) NSString *relogin;
+
 @end
