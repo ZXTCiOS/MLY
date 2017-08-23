@@ -22,7 +22,9 @@ static NSString * const kTencentQQAppID = @"1106264053"; //0x41DF4788
 static NSString * const kTencentQQAppKey = @"pUm1N8h2PSxLvuUn";
 
 //Vendor:WeChat  https://open.weixin.qq.com
-static NSString * const kWeChatAppID = @"wx9d022487205c4ada";
+
+
+static NSString * const kWeChatAppID = @"wx7e9742c68cfa912f";
 static NSString * const kWeChatAppSecret = @"d7cc3983cf0782f8511cee3dc5d6c5c0";
 static NSString * const kWeChatAuthScope = @"snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact, snsapi_base";
 static NSString * const kWeChatStateCode = @"10017179517";

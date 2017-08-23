@@ -79,4 +79,8 @@
 #define QQShareAPPID    @"1106264053"
 #define WEIXIAPPID      @"wx6b7c06a04f9f1f04"
 #define WEIXINAPPSOCKET @"cae1f69018deb12f1a433a6e5487e44a"
+
+#import "loginVC.h"
+#import "ZXTCNavigationViewController.h"
+
 #endif /* wangHeader_h */

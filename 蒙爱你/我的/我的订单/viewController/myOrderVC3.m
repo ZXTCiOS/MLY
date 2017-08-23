@@ -97,6 +97,19 @@ static NSString *myordercell3 = @"myordercell0identfid3";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        
+        if ([[dic objectForKey:@"code"] intValue]==400) {
+            loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            vc.relogin = @"1";
+            ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:^{
+                
+            }];
+        }
+        
         if ([[responseObject objectForKey:@"code"] intValue]==200&&[[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
             NSArray *data = [responseObject objectForKey:@"data"];
             for (int i = 0; i<data.count; i++) {

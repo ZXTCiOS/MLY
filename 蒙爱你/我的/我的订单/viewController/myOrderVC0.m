@@ -97,6 +97,19 @@ static NSString *myordercell0 = @"myordercell0identfid";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        
+        if ([[dic objectForKey:@"code"] intValue]==400) {
+            loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            vc.relogin = @"1";
+            ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:^{
+                
+            }];
+        }
+        
         if ([[responseObject objectForKey:@"code"] intValue]==200&&[[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
             NSArray *data = [responseObject objectForKey:@"data"];
             for (int i = 0; i<data.count; i++) {
@@ -252,6 +265,19 @@ static NSString *myordercell0 = @"myordercell0identfid";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        
+        if ([[dic objectForKey:@"code"] intValue]==400) {
+            loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            vc.relogin = @"1";
+            ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:^{
+                
+            }];
+        }
+        
         [self headerRefreshEndAction];
         if ([[responseObject objectForKey:@"code"] intValue]==200) {
             [MBProgressHUD showSuccess:@"取消成功"];
@@ -289,6 +315,17 @@ static NSString *myordercell0 = @"myordercell0identfid";
         NSLog(@"res-----%@",responseObject);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
         
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        
+        if ([[dic objectForKey:@"code"] intValue]==400) {
+            loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            vc.relogin = @"1";
+            ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:^{
+                
+            }];
+        }
         
         submitorderVC *vc = [[submitorderVC alloc] init];
         vc.goods_typestr = model.ordertype;

@@ -355,6 +355,19 @@ static NSString *confirmorderidentfid10 = @"confirmorderidentfid10";
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res-----%@",responseObject);
+        
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        
+        if ([[dic objectForKey:@"code"] intValue]==400) {
+            loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            vc.relogin = @"1";
+            ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:^{
+                
+            }];
+        }
+        
         if ([[responseObject objectForKey:@"code"] intValue]==200) {
             [MBProgressHUD showSuccess:@"付款成功"];
         }

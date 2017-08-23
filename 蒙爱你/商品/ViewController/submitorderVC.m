@@ -121,6 +121,16 @@ static NSString *submitVCidentfid8 = @"submitVCidentfid8";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"dic-----%@",dic);
+
+        if ([[dic objectForKey:@"code"] intValue]==400) {
+            loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            vc.relogin = @"1";
+            ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:^{
+                
+            }];
+        }
+        
         if ([[dic objectForKey:@"code"] intValue]==200&&[[dic objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
 
             NSDictionary *datadit = [dic objectForKey:@"data"];
@@ -485,6 +495,18 @@ static NSString *submitVCidentfid8 = @"submitVCidentfid8";
         NSLog(@"res-----%@",responseObject);
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];// 关闭状态来网络请求指示
+        
+        id dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"dic-----%@",dic);
+        
+        if ([[dic objectForKey:@"code"] intValue]==400) {
+            loginVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            vc.relogin = @"1";
+            ZXTCNavigationViewController *navi = [[ZXTCNavigationViewController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:^{
+                
+            }];
+        }
         
         if ([[responseObject objectForKey:@"code"] intValue]==200) {
             NSDictionary *data = [responseObject objectForKey:@"data"];
